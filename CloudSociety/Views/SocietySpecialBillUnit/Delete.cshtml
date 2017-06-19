@@ -1,0 +1,34 @@
+﻿@model CloudSocietyEntities.SocietySpecialBillUnit
+@{
+    ViewBag.Title = "Delete Special Bill Unit";
+    ViewBag.Header = "Special Bill Unit";
+    ViewBag.SocietyNameHeader = ViewBag.SocietyHead;
+    Layout = "~/Views/Shared/SocietyLayout.cshtml";
+    bool IsFullAccess = new CloudSociety.Controllers.AppInfoController().IsFullAccess();
+}
+@using (Html.BeginForm())
+{  
+    <fieldset style="width: 500px">
+        <br />
+        <table>
+            <tr>
+                <td class="LabelDel">
+                    Are you sure you want to delete @Model.SocietyBuildingUnit.SocietyBuilding.Building
+                    - @Model.SocietyBuildingUnit.Unit ?
+                </td>
+            </tr>
+             @if (IsFullAccess)
+             {
+            <tr>
+                <td align="center">
+                    <input type="submit" value="Delete" class="buttton" style="width: 45px; height: 23px;
+                        vertical-align: middle;" />
+                </td>
+            </tr>
+             }
+        </table>
+    </fieldset>    
+}
+<div>
+    @Html.ActionLink("Back to List", "Index", new { societySpecialBillID = Model.SocietySpecialBillID, societySubscriptionID = ViewBag.SocietySubscriptionID }, new { @class = "EditDelete" })
+</div>

@@ -1,0 +1,83 @@
+﻿@model CloudSocietyEntities.Tax
+
+@{
+    ViewBag.Title = "Details";
+    ViewBag.Header = "Details";
+    
+}
+<fieldset style="width: 600px">
+
+    <legend>Tax</legend>
+
+     <br />
+    <table border="0" cellpadding="0" cellspacing="0">
+        <tr>
+            <td class="editor-label"  >
+                Head :
+            </td>
+            <td>
+                @Model.Head
+            </td>
+        </tr>
+        <tr>
+            <td class="editor-label"  >
+                TaxRate :
+            </td>
+            <td>
+                @Model.TaxRate
+            </td>
+        </tr>
+        <tr>
+            <td class="editor-label"  >
+                Surcharge:
+            </td>
+            <td>
+                @Model.Surcharge
+            </td>
+        </tr>
+        <tr>
+            <td class="editor-label"  >
+                Cess :
+            </td>
+            <td>
+                @Model.Cess
+            </td>
+        </tr>
+        <tr>
+            <td class="editor-label"  >
+                HiEduCess :
+            </td>
+            <td>
+                @Model.HiEduCess
+            </td>
+        </tr>
+        <tr>
+            <td class="editor-label"  >
+                RoundToPs :
+            </td>
+            <td>
+                @Model.RoundToPs
+            </td>
+        </tr>
+        <tr>
+            <td class="editor-label"  >
+                AcHead :
+            </td>
+            <td>
+                @if (Model.StandardAcHead != null)
+                {
+                    @Model.StandardAcHead.AcHead
+                }
+
+           @*  @Model.StandardAcHead.AcHead*@
+            </td>
+        </tr>
+        
+    </table>
+
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.TaxID }, new { @class = "EditDelete" }) |
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "EditDelete" })
+</p>
+

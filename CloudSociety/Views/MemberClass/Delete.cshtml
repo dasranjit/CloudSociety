@@ -1,0 +1,50 @@
+﻿@model CloudSocietyEntities.MemberClass
+
+@{
+    ViewBag.Title = "Delete Member Class";
+    ViewBag.Header = "Member Class";    
+}
+<div class="LabelDel">
+    Are you sure you want to delete this?</div>
+<br />
+<fieldset style="width: 500px">
+    <legend>Member Class Details</legend>
+     <br />
+    <table>
+        <tr>
+            <td>
+                Class :
+            </td>
+            <td>
+                @Model.Class
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Active :
+            </td>           
+                <td>
+               @if (Model.Active == true)
+               { <text> <img src="@Url.Content("~/Content/Images/tick-green.png")"  /> </text> }
+               else
+               { <text> <img src="@Url.Content("~/Content/Images/Copy of cancel-icon.png")" /></text> }
+            </td>
+        </tr>
+        
+        @using (Html.BeginForm())
+        {
+            @Html.HiddenFor(model=>model.Class)  
+      <tr>
+        <td>
+    <input type="submit" value="Delete" class="buttton" style="width: 45px; height: 23px;
+        vertical-align: middle;" />
+       </td>
+    </tr>
+        }     
+    </table>
+</fieldset>
+<br />
+@Html.ActionLink("Back to List", "Index", null, new { @class = "EditDelete" })
+
+
+

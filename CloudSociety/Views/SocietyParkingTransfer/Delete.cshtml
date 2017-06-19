@@ -1,0 +1,64 @@
+﻿@model CloudSocietyEntities.SocietyParkingTransfer
+@{
+    ViewBag.Title = "Delete Parking Transfer";
+    ViewBag.Header = "Parking Transfer";
+    ViewBag.SocietyNameHeader = ViewBag.SocietyHead;
+    Layout = "~/Views/Shared/SocietyLayout.cshtml";
+    bool IsFullAccess = new CloudSociety.Controllers.AppInfoController().IsFullAccess(); 
+}
+<div class="LabelDel">
+    Are you sure you want to delete this?
+</div>
+<br />
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(false, "Following errors occurred while processing your request")
+    <fieldset style="width: 500px">
+        <legend>Parking Transfer</legend>
+        <table>
+            @* <tr>
+            <td>
+                Society Parking No.:
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.SocietyParking.ParkingNo)
+            </td>
+        </tr>*@
+            <tr>
+                <td>
+                    Transferred On :
+                </td>
+                <td>
+                    @String.Format("{0:dd-MMM-yyyy}", Model.TransferredOn)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Member :
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.SocietyMember.Member)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    End Date :
+                </td>
+                <td>
+                    @String.Format("{0:dd-MMM-yyyy}", Model.EndDate)
+                </td>
+            </tr>
+            @if (IsFullAccess)
+            {
+            <tr>
+                <td align="center" colspan="2">
+                    <input type="submit" value="Delete" class="buttton" style="width: 45px; height: 23px;" />
+                </td>
+            </tr>
+            }
+        </table>
+    </fieldset>
+}
+<div>
+    @Html.ActionLink("Back to List", "Index", new { societyParkingID = Model.SocietyParkingID, societySubscriptionID = (Guid)ViewBag.SocietySubscriptionID }, new { @class = "EditDelete" })
+</div>

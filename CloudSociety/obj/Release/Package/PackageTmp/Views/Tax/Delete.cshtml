@@ -1,0 +1,94 @@
+﻿@model CloudSocietyEntities.Tax
+@{
+    ViewBag.Title = "Delete Tax";
+    ViewBag.Header = "Tax";    
+}
+<div class="LabelDel">
+    Are you sure you want to delete this?</div>
+<br />
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(false, "Following errors occurred while processing your request")
+    @Html.HiddenFor(model => model.TaxID)
+    <fieldset style="width: 600px">
+        <legend>Tax Details</legend>
+        <br />
+        <table border="0" cellpadding="0" cellspacing="0">
+            <tr>
+                <td>
+                    Head :
+                </td>
+                <td>
+                    @Model.Head
+                    @Html.HiddenFor(model => model.Head)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    TaxRate :
+                </td>
+                <td>
+                    @Model.TaxRate
+                    @Html.HiddenFor(model => model.TaxRate)
+                </td>
+            </tr>
+            <tr>
+                <td class="editor-label">
+                    Surcharge :
+                </td>
+                <td>
+                    @Model.Surcharge
+                    @Html.HiddenFor(model => model.Surcharge)
+                </td>
+            </tr>
+            <tr>
+                <td class="editor-label">
+                    Cess :
+                </td>
+                <td>
+                    @Model.Cess
+                    @Html.HiddenFor(model => model.Cess)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Hi-Education Cess :
+                </td>
+                <td>
+                    @Model.HiEduCess
+                    @Html.HiddenFor(model => model.HiEduCess)
+                </td>
+            </tr>
+            <tr>
+                <td class="editor-label">
+                    RoundToPs :
+                </td>
+                <td>
+                    @Model.RoundToPs
+                    @Html.HiddenFor(model => model.RoundToPs)
+                </td>
+            </tr>
+            <tr>
+                <td class="editor-label">
+                    AcHead :
+                </td>
+                <td>
+                    @(Model.StandardAcHead != null ? Model.StandardAcHead.AcHead : "")
+                    @Html.HiddenFor(model => model.AcHeadID)
+                </td>
+            </tr>
+            <tr>
+                <td align="center" colspan="2">
+                    <input type="submit" value="Delete" class="buttton" style="width: 45px; height: 23px;
+                        vertical-align: middle;" />
+                </td>
+            </tr>
+        </table>
+    </fieldset>
+    @Html.HiddenFor(model => model.CreatedByID)
+    @Html.HiddenFor(model => model.CreatedOn)
+    @Html.HiddenFor(model => model.UpdatedByID)
+    @Html.HiddenFor(model => model.UpdatedOn)
+}
+<br />
+@Html.ActionLink("Back to List", "Index", null, new { @class = "EditDelete" })

@@ -1,0 +1,47 @@
+﻿<div class="art-nav">
+    <ul class="art-menu">
+        @*        <li><a href="@Url.Content("~/SocietyReport/MembersWithoutNomineeRegister/" + ViewBag.SocietySubscriptionID)"><span class="l"></span><span class="r"></span><span class="t">Member Register</span></a></li>*@
+        <li><a href="@Url.Content("~/SocietyReport/MemberOwnLedgerReport/" + ViewBag.SocietySubscriptionID)"><span class="l"></span><span class="r"></span><span class="t">Member Ledger</span></a></li>
+        <li><a href="@Url.Content("~/SocietyBill/MemberBillIndex/" + ViewBag.SocietySubscriptionID)"><span class="l"></span><span class="r"></span><span class="t">Member Bills</span></a></li>
+        <li><a href="@Url.Content("~/SocietyReceipt/MemberReceiptIndex/" + ViewBag.SocietySubscriptionID)"><span class="l"></span><span class="r"></span><span class="t">Member Receipts</span></a></li>
+        @*        @if (ViewBag.ShowFinalReports != null)*@
+        @if ((bool)ViewBag.ShowFinalReports)
+        {
+            <li><a href="#"><span class="l"></span><span class="r"></span><span class="t">Final Reports</span></a>
+                <ul>
+                    <li><a href="@Url.Content("~/AccountingReport/PDFIncomeExpenditure/" + ViewBag.SocietySubscriptionID)">Income & Expenditure Statement</a></li>
+                    <li><a href="@Url.Content("~/AccountingReport/PDFScheduleToIncomeExpenditure/" + ViewBag.SocietySubscriptionID)">Schedule to Income & Exp. A/c</a></li>
+                    <li><a href="@Url.Content("~/AccountingReport/PDFBalanceSheet/" + ViewBag.SocietySubscriptionID)">Balance Sheet</a></li>
+                    <li><a href="@Url.Content("~/AccountingReport/PDFScheduleToBalanceSheet/" + ViewBag.SocietySubscriptionID)">Schedule to Balance Sheet</a></li>
+                </ul>
+            </li>
+        }
+        <li><a href="#"><span class="l"></span><span class="r"></span><span class="t">Society</span></a>
+            <ul>
+                @*<li><a href="@Url.Content("~/Home/MemberUpcoming?id=" + ViewBag.SocietySubscriptionID + "&module=Budget Report")">Budget Report</a></li>*@
+                <li><a href="@Url.Content("~/Home/MemberUpcoming?id=" + ViewBag.SocietySubscriptionID + "&module=Update Aadhar Card Detail")">Update Aadhar Card Detail</a></li>
+                <li><a href="@Url.Content("~/Home/MemberUpcoming?id=" + ViewBag.SocietySubscriptionID + "&module=Online Voting")">Online Voting</a></li>
+                @*<li><a href="@Url.Content("~/Home/MemberUpcoming?id=" + ViewBag.SocietySubscriptionID + "&module=Notices")">View Notices</a></li>*@
+                @*<li><a href="@Url.Content("~/Home/MemberUpcoming?id=" + ViewBag.SocietySubscriptionID + "&module=Meetings")">Meetings</a></li>*@
+                @*<li><a href="@Url.Content("~/Home/MemberUpcoming?id=" + ViewBag.SocietySubscriptionID + "&module=Resolutions")">View Resolutions</a></li>
+                    <li><a href="@Url.Content("~/Home/MemberUpcoming?id=" + ViewBag.SocietySubscriptionID + "&module=Complaints")">Lodge & View Complaints</a></li>
+                    <li><a href="@Url.Content("~/Home/MemberUpcoming?id=" + ViewBag.SocietySubscriptionID + "&module=Suggestions")">Add & View Suggestions</a></li>*@
+                <li><a href="@Url.Content("~/Home/MemberUpcoming?id=" + ViewBag.SocietySubscriptionID + "&module=Audit Report")">View Audit Report</a></li>
+                <li><a href="@Url.Content("~/Home/MemberUpcoming?id=" + ViewBag.SocietySubscriptionID + "&module=Bye-Law")">View Bye-Law</a></li>
+                <li><a href="@Url.Content("~/Home/MemberUpcoming?id=" + ViewBag.SocietySubscriptionID + "&module=Plans")">View Plans</a></li>
+                @*<li><a href="@Url.Content("~/Home/MemberUpcoming?id=" + ViewBag.SocietySubscriptionID + "&module=View Security Guard Details")">View Security Guard Details</a></li>*@
+                <li><a href="@Url.Content("~/Home/MemberUpcoming?id=" + ViewBag.SocietySubscriptionID + "&module=Mobile Pay Setup and Payment")">Mobile Pay Setup & Payment</a></li>
+            </ul>
+        </li>
+        @*@{ bool showCommunication = false;
+           if(null != Session["ShowCommunication"]){
+               showCommunication = Convert.ToBoolean(Session["ShowCommunication"]);
+           }           
+        }*@
+        @if ((bool)ViewBag.ShowCommunication)
+        {
+            <li><a href="@Url.Content("~/Communication/Index/" + ViewBag.SocietySubscriptionID)"><span class="l"></span><span class="r"></span><span class="t">Communication</span></a></li>
+        }
+        <li><a href="@Url.Content("~/SocietySubscription/ChangeYear/" + ViewBag.SocietySubscriptionID)"><span class="l"></span><span class="r"></span><span class="t">Change Year</span></a></li>
+    </ul>
+</div>

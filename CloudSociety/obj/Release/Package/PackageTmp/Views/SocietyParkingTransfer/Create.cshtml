@@ -1,0 +1,90 @@
+﻿@model CloudSocietyEntities.SocietyParkingTransfer
+@{
+    ViewBag.Title = "Create Society Parking Transfer";
+    ViewBag.Header = " Society Parking Transfer";
+    ViewBag.SocietyNameHeader = ViewBag.SocietyHead;
+    Layout = "~/Views/Shared/SocietyLayout.cshtml";
+    var societyParking = (CloudSocietyEntities.SocietyParking)ViewBag.SocietyParking;
+    bool IsFullAccess = new CloudSociety.Controllers.AppInfoController().IsFullAccess();    
+}
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+@*==== Scripts to be added for AJAX calendar START ====*@
+<script src="@Url.Content("~/Content/AjaxControlToolkit/3.0.20820.16598/3.0.20820.0/MicrosoftAjax.debug.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Content/AjaxControlToolkit/3.0.20820.16598/3.0.20820.0/AjaxControlToolkit.ExtenderBase.BaseScripts.js")"
+        type="text/javascript"></script>
+<script src="@Url.Content("~/Content/AjaxControlToolkit/3.0.20820.16598/3.0.20820.0/AjaxControlToolkit.Common.Common.js")"
+        type="text/javascript"></script>
+<script src="@Url.Content("~/Content/AjaxControlToolkit/3.0.20820.16598/3.0.20820.0/AjaxControlToolkit.Common.DateTime.js")"
+        type="text/javascript"></script>
+<script src="@Url.Content("~/Content/AjaxControlToolkit/3.0.20820.16598/3.0.20820.0/AjaxControlToolkit.Animation.Animations.js")"
+        type="text/javascript"></script>
+<script src="@Url.Content("~/Content/AjaxControlToolkit/3.0.20820.16598/3.0.20820.0/AjaxControlToolkit.PopupExtender.PopupBehavior.js")"
+        type="text/javascript"></script>
+<script src="@Url.Content("~/Content/AjaxControlToolkit/3.0.20820.16598/3.0.20820.0/AjaxControlToolkit.Animation.AnimationBehavior.js")"
+        type="text/javascript"></script>
+<script src="@Url.Content("~/Content/AjaxControlToolkit/3.0.20820.16598/3.0.20820.0/AjaxControlToolkit.Common.Threading.js")"
+        type="text/javascript"></script>
+<script src="@Url.Content("~/Content/AjaxControlToolkit/3.0.20820.16598/3.0.20820.0/AjaxControlToolkit.Compat.Timer.Timer.js")"
+        type="text/javascript"></script>
+<script src="@Url.Content("~/Content/AjaxControlToolkit/3.0.20820.16598/3.0.20820.0/AjaxControlToolkit.Calendar.CalendarBehavior.js")"
+        type="text/javascript"></script>
+<script type="text/javascript">
+
+    Sys.Application.add_init(appInit);
+
+    function appInit() {
+        $create(AjaxControlToolkit.CalendarBehavior, { format: "dd-MMM-yyyy" }, null, null, $get('TransferredOn'));
+    }   
+</script>
+@*==== END ====*@ 
+<span class="SocName">Parking No : @societyParking.ParkingNo@*societyParking.ParkingType.Type*@</span> 
+<br />
+<br />
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(false, "Following errors occurred while processing your request")
+    <fieldset style="width: 500px">
+        <legend>Create Society Parking Transfer</legend>        
+        <table border="0" cellpadding="0" cellspacing="0">
+            
+            <tr>
+                <td>
+                Member :
+                </td>
+                <td>@Html.DropDownList("SocietyMemberID", new SelectList(ViewBag.SocietyMemberList as System.Collections.IEnumerable, "SocietyMemberID", "Member"), "<- Select From Member ->")
+                    <span class="editor-field">@Html.ValidationMessageFor(model => model.SocietyMemberID)</span>
+                </td>
+            </tr>
+            @*<tr>
+                <td>
+                To Member :
+                </td>
+                <td>@Html.DropDownList("ToMemberID", new SelectList(ViewBag.SocietyMemberList as System.Collections.IEnumerable, "SocietyMemberID", "Member"), "<- Select To Member ->")
+                    <span class="editor-field">@Html.ValidationMessageFor(model => model.FromMemberID)</span>
+                </td>
+            </tr>*@
+            <tr>
+                <td>
+                    Transferred On :
+                </td>
+                <td>
+                   @Html.TextBox("TransferredOn", null, new { @class = "shortWidth" })
+                    <span class="editor-field">@Html.ValidationMessageFor(model => model.TransferredOn)</span>
+                </td>
+            </tr>
+            @if (IsFullAccess)
+            {
+            <tr>
+                <td colspan="2" align="center">
+                    <input type="submit" value="Create" class="buttton" style="width: 45px; height: 23px;" />
+                </td>
+            </tr>
+            }
+        </table>
+    </fieldset>
+    @Html.Hidden("SocietyParkingID", societyParking.SocietyParkingID)
+}
+<div>
+    @Html.ActionLink("Back to List", "Index", new { societyParkingID = societyParking.SocietyParkingID, societySubscriptionID = ViewBag.SocietySubscriptionID }, new { @class = "EditDelete" })
+</div>

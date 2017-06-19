@@ -1,0 +1,62 @@
+﻿@model IEnumerable<CloudSocietyEntities.UserWithSocietyAccess>
+
+@{
+    ViewBag.Title = "Allocate Users";
+    ViewBag.Header = "Allocate Users";
+    var society = (CloudSocietyEntities.Society)ViewBag.Society;
+    Html.Hidden("SocietyID", society.SocietyID);
+}
+
+<span class="SocName">@society.Name</span><br/><br/>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(false, "Following errors occurred while processing your request")
+
+<table border="0" cellpadding="2" cellspacing="0" class="table" id="tabUsers">
+@{
+    int Count = 0;
+}
+    <tr>
+        <th></th>
+        <th>
+            UserName
+        </th>
+        <th>
+            Approved
+        </th>
+    </tr>
+
+@foreach (var item in Model)
+{
+    Count++;
+    <tr @if ((Count % 2) == 0)
+        { <text> class="TableRow" </text> }
+        else
+        { <text> class="altTableRow" </text>}>
+        <td width="20px" >
+            <input id="Chk+@Count" name="Chk+@Count" data-val="true" type="checkbox" @if( item.Access != null){<text> checked="checked" </text> } />
+            <input id="ID+@Count" name="ID+@Count" data-val="true" type="hidden" value="@item.UserId" />
+        </td>
+        <td>
+            @item.UserName
+        </td>
+        <td>
+               @if (item.IsApproved)
+               { <text> <img src="@Url.Content("~/Content/Images/tick-green.png")"  /> </text> }
+               else
+               { <text> <img src="@Url.Content("~/Content/Images/Copy of cancel-icon.png")" /></text> }
+        </td>
+    </tr>
+}
+
+</table>
+<br/><br/>
+    <input type="submit" value="Allocate" class="buttton" style="width: 45px; height: 23px; vertical-align: middle;" />
+}
+<br/><br/>
+<div>
+    @Html.ActionLink("Back to List", "Index", "Society", null, new { @class = "EditDelete" })
+</div>
+
+<br />

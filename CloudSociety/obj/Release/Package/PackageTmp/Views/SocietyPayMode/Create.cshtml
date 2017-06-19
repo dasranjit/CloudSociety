@@ -1,0 +1,77 @@
+﻿@model CloudSocietyEntities.SocietyPayMode
+@{
+    ViewBag.Title = "Create Society Pay Mode";
+    ViewBag.Header = "Society Pay Mode";
+    ViewBag.SocietyNameHeader = ViewBag.SocietyHead;
+    Layout = "~/Views/Shared/SocietyLayout.cshtml";
+    bool IsFullAccess = new CloudSociety.Controllers.AppInfoController().IsFullAccess();
+}
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(false, "Following errors occurred while processing your request")
+    <fieldset style="width: 500px">
+        <legend>Create Society Pay Mode</legend>
+        <br />
+        <table border="0" cellpadding="0" cellspacing="0">
+            <tr>
+                <td>
+                    Pay Mode Code:
+                </td>
+                <td>
+                    @Html.TextBox("PayModeCode", null, new { @class = "shortWidth" })@*@Html.EditorFor(model => model.PayModeCode)*@
+                    <span class="editor-field">@Html.ValidationMessageFor(model => model.PayModeCode)</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Pay Mode :
+                </td>
+                <td>
+                    @Html.TextBox("PayMode", null, new { @class = "maxWidth" })@*@Html.EditorFor(model => model.PayMode)*@
+                    <span class="editor-field">@Html.ValidationMessageFor(model => model.PayMode)</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.AskDetails) :
+                </td>
+                <td>
+                    @*@Html.CheckBox("AskDetails")*@ @Html.EditorFor(model => model.AskDetails) 
+                    <span class="editor-field">@Html.ValidationMessageFor(model => model.AskDetails)</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.Active) :
+                </td>
+                <td>
+                    @*@Html.CheckBox("Active")*@ @Html.EditorFor(model => model.Active)
+                    <span class="editor-field">@Html.ValidationMessageFor(model => model.Active)</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Account Head :
+                </td>
+                <td>
+                    @Html.DropDownList("AcHeadID", new SelectList(ViewBag.AcHeadList as System.Collections.IEnumerable, "AcHeadID", "Name"), "<- Select AcHead ->")
+                    <span class="editor-field">@Html.ValidationMessageFor(model => model.AcHeadID)</span>
+                </td>
+            </tr>
+            @if (IsFullAccess)
+            {
+            <tr>
+                <td colspan="2" align="center">
+                    <input type="submit" value="Create" class="buttton" style="width: 45px; height: 23px;" />
+                </td>
+            </tr>
+            }
+        </table>
+        <input type="hidden" name="SocietyID"  value=@ViewBag.SocietyID></input>
+    </fieldset>
+}
+<div>
+    @Html.ActionLink("Back to List", "Index", new { id = ViewBag.SocietySubscriptionID }, new { @class = "EditDelete" })
+</div>

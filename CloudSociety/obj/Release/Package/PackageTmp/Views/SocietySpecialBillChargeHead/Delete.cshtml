@@ -1,0 +1,56 @@
+﻿@model CloudSocietyEntities.SocietySpecialBillChargeHead
+@{
+    ViewBag.Title = "Delete Special Bill Charge Head";
+    ViewBag.Header = "Special Bill Charge Head";
+    ViewBag.SocietyNameHeader = ViewBag.SocietyHead;
+    Layout = "~/Views/Shared/SocietyLayout.cshtml";
+    bool IsFullAccess = new CloudSociety.Controllers.AppInfoController().IsFullAccess();
+}
+<div class="LabelDel">
+    Are you sure you want to delete this?
+</div>
+<br />
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(false, "Following errors occurred while processing your request")        
+    <fieldset style="width: 400px">
+        <legend>Special Bill Charge Head</legend>
+        <table border="0" cellpadding="0" cellspacing="0">
+           @* <tr>
+                <td>
+                    Society Special Bill :
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.SocietySpecialBillID)
+                </td>
+            </tr>*@
+            <tr>
+                <td>
+                    Charge Head :
+                </td>
+                <td>
+                    @ViewBag.SocietyChargeHead
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Rate :
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Rate)
+                </td>
+            </tr>
+            @if (IsFullAccess)
+            {
+            <tr>
+                <td align="center" colspan="2">
+                    <input type="submit" value="Delete" class="buttton" style="width: 45px; height: 23px;" />
+                </td>
+            </tr>
+            }
+        </table>
+    </fieldset>   
+}
+<div>
+    @Html.ActionLink("Back to List", "Index", new { societySpecialBillID = Model.SocietySpecialBillID, societySubscriptionID = ViewBag.SocietySubscriptionID }, new { @class = "EditDelete" })
+</div>

@@ -1,0 +1,1146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{5B6437A5-B940-456E-A437-BF819F2D7748}</ProjectGuid>
+    <ProjectTypeGuids>{E53F8FEA-EAE0-44A6-8774-FFD645390401};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CloudSociety</RootNamespace>
+    <AssemblyName>CloudSociety</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>false</UseIISExpress>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <MvcProjectUpgradeChecked>true</MvcProjectUpgradeChecked>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="itextsharp, Version=5.0.6.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.Helpers, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.1.0.20105.408\lib\net40\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=3.0.0.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.3.0.50813.1\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.1.0.20105.408\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.WebPages, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.1.0.20105.408\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.1.0.20105.408\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.1.0.20105.408\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controllers\AcCategoryController.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AccountingReportController.cs" />
+    <Compile Include="Controllers\AcHeadController.cs" />
+    <Compile Include="Controllers\AcSubCategoryController.cs" />
+    <Compile Include="Controllers\AcTransactionAcController.cs" />
+    <Compile Include="Controllers\AcTransactionController.cs" />
+    <Compile Include="Controllers\AppInfoController.cs" />
+    <Compile Include="Controllers\BankController.cs" />
+    <Compile Include="Controllers\CommunicationController.cs" />
+    <Compile Include="Controllers\CommunicationTypeController.cs" />
+    <Compile Include="Controllers\DocumentTypeController.cs" />
+    <Compile Include="Controllers\CouponController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MemberClassController.cs" />
+    <Compile Include="Controllers\OccupationController.cs" />
+    <Compile Include="Controllers\ParkingTypeController.cs" />
+    <Compile Include="Controllers\PasswordQuestionController.cs" />
+    <Compile Include="Controllers\PayModeController.cs" />
+    <Compile Include="Controllers\RelationshipController.cs" />
+    <Compile Include="Controllers\SocietyCollectionReversalController.cs" />
+    <Compile Include="Controllers\SocietyMemberDocumentController.cs" />
+    <Compile Include="Controllers\SocietyReportController.cs" />
+    <Compile Include="Controllers\ServiceTypeController.cs" />
+    <Compile Include="Controllers\SocietyBillController.cs" />
+    <Compile Include="Controllers\SocietyBillSeriesController.cs" />
+    <Compile Include="Controllers\SocietyBuildingController.cs" />
+    <Compile Include="Controllers\SocietyBuildingUnitChargeHeadController.cs" />
+    <Compile Include="Controllers\SocietyBuildingUnitController.cs" />
+    <Compile Include="Controllers\SocietyBuildingUnitSubscriptionBalanceController.cs" />
+    <Compile Include="Controllers\SocietyBuildingUnitTransferController.cs" />
+    <Compile Include="Controllers\SocietyChargeHeadController.cs" />
+    <Compile Include="Controllers\SocietyController.cs" />
+    <Compile Include="Controllers\SocietyInvestmentController.cs" />
+    <Compile Include="Controllers\SocietyMemberController.cs" />
+    <Compile Include="Controllers\SocietyMemberJointHolderController.cs" />
+    <Compile Include="Controllers\SocietyMemberNomineeController.cs" />
+    <Compile Include="Controllers\SocietyParkingController.cs" />
+    <Compile Include="Controllers\SocietyParkingTransferController.cs" />
+    <Compile Include="Controllers\SocietyPayModeController.cs" />
+    <Compile Include="Controllers\SocietyReceiptController.cs" />
+    <Compile Include="Controllers\SocietySpecialBillChargeHeadController.cs" />
+    <Compile Include="Controllers\SocietySpecialBillController.cs" />
+    <Compile Include="Controllers\SocietySpecialBillUnitController.cs" />
+    <Compile Include="Controllers\SocietySubscriptionController.cs" />
+    <Compile Include="Controllers\SocietyUserController.cs" />
+    <Compile Include="Controllers\StandardAcCategoryController.cs" />
+    <Compile Include="Controllers\StandardAcHeadController.cs" />
+    <Compile Include="Controllers\StandardAcSubCategoryController.cs" />
+    <Compile Include="Controllers\StandardChargeHeadController.cs" />
+    <Compile Include="Controllers\SubscriberController.cs" />
+    <Compile Include="Controllers\SubscriptionInvoiceController.cs" />
+    <Compile Include="Controllers\TariffController.cs" />
+    <Compile Include="Controllers\TariffRateController.cs" />
+    <Compile Include="Controllers\TaxController.cs" />
+    <Compile Include="Controllers\TDSCategoryController.cs" />
+    <Compile Include="Controllers\TDSCategoryRateController.cs" />
+    <Compile Include="Controllers\UnitTypeController.cs" />
+    <Compile Include="Controllers\UOMController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\BLL\AcCategoryService.cs" />
+    <Compile Include="Models\BLL\AcHeadService.cs" />
+    <Compile Include="Models\BLL\AcSubCategoryService.cs" />
+    <Compile Include="Models\BLL\AcTransactionAcService.cs" />
+    <Compile Include="Models\BLL\AcTransactionService.cs" />
+    <Compile Include="Models\BLL\AcTransactionTDSService.cs" />
+    <Compile Include="Models\BLL\AppInfoService.cs" />
+    <Compile Include="Models\BLL\BankService.cs" />
+    <Compile Include="Models\BLL\CommunicationRecipientService.cs" />
+    <Compile Include="Models\BLL\CommunicationReplyService.cs" />
+    <Compile Include="Models\BLL\CommunicationService.cs" />
+    <Compile Include="Models\BLL\CommunicationTypeService.cs" />
+    <Compile Include="Models\BLL\DocumentTypeService.cs" />
+    <Compile Include="Models\BLL\CouponService.cs" />
+    <Compile Include="Models\BLL\MemberClassService.cs" />
+    <Compile Include="Models\BLL\OccupationService.cs" />
+    <Compile Include="Models\BLL\ParkingTypeService.cs" />
+    <Compile Include="Models\BLL\PasswordQuestionService.cs" />
+    <Compile Include="Models\BLL\PaymentService.cs" />
+    <Compile Include="Models\BLL\PayModeService.cs" />
+    <Compile Include="Models\BLL\RelationshipService.cs" />
+    <Compile Include="Models\BLL\ServiceTypeService.cs" />
+    <Compile Include="Models\BLL\SocietyBillChargeHeadService.cs" />
+    <Compile Include="Models\BLL\SocietyBillSeriesService.cs" />
+    <Compile Include="Models\BLL\SocietyBillService.cs" />
+    <Compile Include="Models\BLL\SocietyBuildingService.cs" />
+    <Compile Include="Models\BLL\SocietyBuildingUnitChargeHeadService.cs" />
+    <Compile Include="Models\BLL\SocietyBuildingUnitService.cs" />
+    <Compile Include="Models\BLL\SocietyBuildingUnitSubscriptionBalanceService.cs" />
+    <Compile Include="Models\BLL\SocietyBuildingUnitTransferService.cs" />
+    <Compile Include="Models\BLL\SocietyChargeHeadService.cs" />
+    <Compile Include="Models\BLL\SocietyCollectionReversalService.cs" />
+    <Compile Include="Models\BLL\SocietyInvestmentService.cs" />
+    <Compile Include="Models\BLL\SocietyMemberDocumentService.cs" />
+    <Compile Include="Models\BLL\SocietyMemberJointHolderService.cs" />
+    <Compile Include="Models\BLL\SocietyMemberNomineeService.cs" />
+    <Compile Include="Models\BLL\SocietyMemberService.cs" />
+    <Compile Include="Models\BLL\SocietyMemberTenantService.cs" />
+    <Compile Include="Models\BLL\SocietyParkingService.cs" />
+    <Compile Include="Models\BLL\SocietyParkingTransferService.cs" />
+    <Compile Include="Models\BLL\SocietyPayModeService.cs" />
+    <Compile Include="Models\BLL\SocietyReceiptService.cs" />
+    <Compile Include="Models\BLL\SocietyService.cs" />
+    <Compile Include="Models\BLL\SocietySpecialBillChargeHeadService.cs" />
+    <Compile Include="Models\BLL\SocietySpecialBillService.cs" />
+    <Compile Include="Models\BLL\SocietySpecialBillUnitService.cs" />
+    <Compile Include="Models\BLL\SocietySubscriptionService.cs" />
+    <Compile Include="Models\BLL\SocietySubscriptionServiceService.cs" />
+    <Compile Include="Models\BLL\SocietyUserService.cs" />
+    <Compile Include="Models\BLL\StandardAcCategoryService.cs" />
+    <Compile Include="Models\BLL\StandardAcHeadService.cs" />
+    <Compile Include="Models\BLL\StandardAcSubCategoryService.cs" />
+    <Compile Include="Models\BLL\StandardChargeHeadService.cs" />
+    <Compile Include="Models\BLL\StateService.cs" />
+    <Compile Include="Models\BLL\SubscriberService.cs" />
+    <Compile Include="Models\BLL\SubscriptionInvoiceService.cs" />
+    <Compile Include="Models\BLL\TariffRateService.cs" />
+    <Compile Include="Models\BLL\TariffService.cs" />
+    <Compile Include="Models\BLL\TaxService.cs" />
+    <Compile Include="Models\BLL\TDSCategoryRateService.cs" />
+    <Compile Include="Models\BLL\TDSCategoryService.cs" />
+    <Compile Include="Models\BLL\UnitTypeService.cs" />
+    <Compile Include="Models\BLL\UOMService.cs" />
+    <Compile Include="Models\BLL\UserDetailService.cs" />
+    <Compile Include="Models\BLL\UserService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\AjaxControlToolkit\3.0.20820.16598\3.0.20820.0\AjaxControlToolkit.Accordion.AccordionBehavior.js" />
+    <Content Include="Content\AjaxControlToolkit\3.0.20820.16598\3.0.20820.0\AjaxControlToolkit.AlwaysVisibleControl.AlwaysVisibleControlBehavior.js" />
+    <Content Include="Content\AjaxControlToolkit\3.0.20820.16598\3.0.20820.0\AjaxControlToolkit.Animation.AnimationBehavior.js" />
+    <Content Include="Content\AjaxControlToolkit\3.0.20820.16598\3.0.20820.0\AjaxControlToolkit.Animation.Animations.js" />
+    <Content Include="Content\AjaxControlToolkit\3.0.20820.16598\3.0.20820.0\AjaxControlToolkit.AutoComplete.AutoCompleteBehavior.js" />
+    <Content Include="Content\AjaxControlToolkit\3.0.20820.16598\3.0.20820.0\AjaxControlToolkit.Calendar.arrow-left.gif" />
+    <Content Include="Content\AjaxControlToolkit\3.0.20820.16598\3.0.20820.0\AjaxControlToolkit.Calendar.arrow-right.gif" />
+    <Content Include="Content\AjaxControlToolkit\3.0.20820.16598\3.0.20820.0\AjaxControlToolkit.Calendar.Calendar.css" />
+    <Content Include="Content\AjaxControlToolkit\3.0.20820.16598\3.0.20820.0\AjaxControlToolkit.Calendar.CalendarBehavior.js" />
+    <Content Include="Content\AjaxControlToolkit\3.0.20820.16598\3.0.20820.0\AjaxControlToolkit.CascadingDropDown.CascadingDropDownBehavior.js" />
+    <Content Include="Content\AjaxControlToolkit\3.0.20820.16598\3.0.20820.0\AjaxControlToolkit.CollapsiblePanel.CollapsiblePanelBehavior.js" />
+    <Content Include="Content\AjaxControlToolkit\3.0.20820.16598\3.0.20820.0\AjaxControlToolkit.Common.Common.js" />
+    <Content Include="Content\AjaxControlToolkit\3.0.20820.16598\3.0.20820.0\AjaxControlToolkit.Common.DateTime.js" />
+    <Content Include="Content\AjaxControlToolkit\3.0.20820.16598\3.0.20820.0\AjaxControlToolkit.Common.Threading.js" />
+    <Content Include="Content\AjaxControlToolkit\3.0.20820.16598\3.0.20820.0\AjaxControlToolkit.Compat.DragDrop.DragDropScripts.js" />
+    <Content Include="Content\AjaxControlToolkit\3.0.20820.16598\3.0.20820.0\AjaxControlToolkit.Compat.Timer.Timer.js" />
+    <Content Include="Content\AjaxControlToolkit\3.0.20820.16598\3.0.20820.0\AjaxControlToolkit.ConfirmButton.confirmButtonBehavior.js" />
+    <Content Include="Content\AjaxControlToolkit\3.0.20820.16598\3.0.20820.0\AjaxControlToolkit.DragPanel.FloatingBehavior.js" />
+    <Content Include="Content\AjaxControlToolkit\3.0.20820.16598\3.0.20820.0\AjaxControlToolkit.DropDown.drop-arrow.gif" />
+    <Content Include="Content\AjaxControlToolkit\3.0.20820.16598\3.0.20820.0\AjaxControlToolkit.DropDown.DropDown.css" />
+    <Content Include="Content\AjaxControlToolkit\3.0.20820.16598\3.0.20820.0\AjaxControlToolkit.DropDown.DropDownBehavior.js" />
+    <Content Include="Content\AjaxControlToolkit\3.0.20820.16598\3.0.20820.0\AjaxControlToolkit.DropShadow.DropShadowBehavior.js" />
+    <Content Include="Content\AjaxControlToolkit\3.0.20820.16598\3.0.20820.0\AjaxControlToolkit.DynamicPopulate.DynamicPopulateBehavior.js" />
+    <Content Include="Content\AjaxControlToolkit\3.0.20820.16598\3.0.20820.0\AjaxControlToolkit.ExtenderBase.BaseScripts.ar.js" />
+    <Content Include="Content\AjaxControlToolkit\3.0.20820.16598\3.0.20820.0\AjaxControlToolkit.ExtenderBase.BaseScripts.cs.js" />
+    <Content Include="Content\AjaxControlToolkit\3.0.20820.16598\3.0.20820.0\AjaxControlToolkit.ExtenderBase.BaseScripts.de.js" />
+    <Content Include="Content\AjaxControlToolkit\3.0.20820.16598\3.0.20820.0\AjaxControlToolkit.ExtenderBase.BaseScripts.es.js" />
+    <Content Include="Content\AjaxControlToolkit\3.0.20820.16598\3.0.20820.0\AjaxControlToolkit.ExtenderBase.BaseScripts.fr.js" />
+    <Content Include="Content\AjaxControlToolkit\3.0.20820.16598\3.0.20820.0\AjaxControlToolkit.ExtenderBase.BaseScripts.he.js" />
+    <Content Include="Content\AjaxControlToolkit\3.0.20820.16598\3.0.20820.0\AjaxControlToolkit.ExtenderBase.BaseScripts.hi.js" />
+    <Content Include="Content\AjaxControlToolkit\3.0.20820.16598\3.0.20820.0\AjaxControlToolkit.ExtenderBase.BaseScripts.it.js" />
+    <Content Include="Content\AjaxControlToolkit\3.0.20820.16598\3.0.20820.0\AjaxControlToolkit.ExtenderBase.BaseScripts.ja.js" />
+    <Content Include="Content\AjaxControlToolkit\3.0.20820.16598\3.0.20820.0\AjaxControlToolkit.ExtenderBase.BaseScripts.js" />
+    <Content Include="Content\AjaxControlToolkit\3.0.20820.16598\3.0.20820.0\AjaxControlToolkit.ExtenderBase.BaseScripts.ko.js" />
+    <Content Include="Content\AjaxControlToolkit\3.0.20820.16598\3.0.20820.0\AjaxControlToolkit.ExtenderBase.BaseScripts.nl.js" />
+    <Content Include="Content\AjaxControlToolkit\3.0.20820.16598\3.0.20820.0\AjaxControlToolkit.ExtenderBase.BaseScripts.pt.js" />
+    <Content Include="Content\AjaxControlToolkit\3.0.20820.16598\3.0.20820.0\AjaxControlToolkit.ExtenderBase.BaseScripts.ru.js" />
+    <Content Include="Content\AjaxControlToolkit\3.0.20820.16598\3.0.20820.0\AjaxControlToolkit.ExtenderBase.BaseScripts.tr-TR.js" />
+    <Content Include="Content\AjaxControlToolkit\3.0.20820.16598\3.0.20820.0\AjaxControlToolkit.ExtenderBase.BaseScripts.zh-CHS.js" />
+    <Content Include="Content\AjaxControlToolkit\3.0.20820.16598\3.0.20820.0\AjaxControlToolkit.ExtenderBase.BaseScripts.zh-CHT.js" />
+    <Content Include="Content\AjaxControlToolkit\3.0.20820.16598\3.0.20820.0\AjaxControlToolkit.FilteredTextBox.FilteredTextBoxBehavior.js" />
+    <Content Include="Content\AjaxControlToolkit\3.0.20820.16598\3.0.20820.0\AjaxControlToolkit.HoverExtender.HoverBehavior.js" />
+    <Content Include="Content\AjaxControlToolkit\3.0.20820.16598\3.0.20820.0\AjaxControlToolkit.HoverMenu.HoverMenuBehavior.js" />
+    <Content Include="Content\AjaxControlToolkit\3.0.20820.16598\3.0.20820.0\AjaxControlToolkit.ListSearch.ListSearchBehavior.js" />
+    <Content Include="Content\AjaxControlToolkit\3.0.20820.16598\3.0.20820.0\AjaxControlToolkit.MaskedEdit.MaskedEditBehavior.js" />
+    <Content Include="Content\AjaxControlToolkit\3.0.20820.16598\3.0.20820.0\AjaxControlToolkit.MaskedEdit.MaskedEditValidator.js" />
+    <Content Include="Content\AjaxControlToolkit\3.0.20820.16598\3.0.20820.0\AjaxControlToolkit.ModalPopup.ModalPopupBehavior.js" />
+    <Content Include="Content\AjaxControlToolkit\3.0.20820.16598\3.0.20820.0\AjaxControlToolkit.MultiHandleSlider.Images.slider_h_handle.gif" />
+    <Content Include="Content\AjaxControlToolkit\3.0.20820.16598\3.0.20820.0\AjaxControlToolkit.MultiHandleSlider.Images.slider_h_handle_down.gif" />
+    <Content Include="Content\AjaxControlToolkit\3.0.20820.16598\3.0.20820.0\AjaxControlToolkit.MultiHandleSlider.Images.slider_h_handle_hover.gif" />
+    <Content Include="Content\AjaxControlToolkit\3.0.20820.16598\3.0.20820.0\AjaxControlToolkit.MultiHandleSlider.Images.slider_h_rail.gif" />
+    <Content Include="Content\AjaxControlToolkit\3.0.20820.16598\3.0.20820.0\AjaxControlToolkit.MultiHandleSlider.Images.slider_h_rail_outer.gif" />
+    <Content Include="Content\AjaxControlToolkit\3.0.20820.16598\3.0.20820.0\AjaxControlToolkit.MultiHandleSlider.Images.slider_v_handle.gif" />
+    <Content Include="Content\AjaxControlToolkit\3.0.20820.16598\3.0.20820.0\AjaxControlToolkit.MultiHandleSlider.Images.slider_v_handle_down.gif" />
+    <Content Include="Content\AjaxControlToolkit\3.0.20820.16598\3.0.20820.0\AjaxControlToolkit.MultiHandleSlider.Images.slider_v_handle_hover.gif" />
+    <Content Include="Content\AjaxControlToolkit\3.0.20820.16598\3.0.20820.0\AjaxControlToolkit.MultiHandleSlider.Images.slider_v_rail.gif" />
+    <Content Include="Content\AjaxControlToolkit\3.0.20820.16598\3.0.20820.0\AjaxControlToolkit.MultiHandleSlider.Images.slider_v_rail_outer.gif" />
+    <Content Include="Content\AjaxControlToolkit\3.0.20820.16598\3.0.20820.0\AjaxControlToolkit.MultiHandleSlider.MultiHandleSlider.css" />
+    <Content Include="Content\AjaxControlToolkit\3.0.20820.16598\3.0.20820.0\AjaxControlToolkit.MultiHandleSlider.MultiHandleSliderBehavior.js" />
+    <Content Include="Content\AjaxControlToolkit\3.0.20820.16598\3.0.20820.0\AjaxControlToolkit.MutuallyExclusiveCheckBox.MutuallyExclusiveCheckBoxBehavior.js" />
+    <Content Include="Content\AjaxControlToolkit\3.0.20820.16598\3.0.20820.0\AjaxControlToolkit.NoBot.NoBotBehavior.js" />
+    <Content Include="Content\AjaxControlToolkit\3.0.20820.16598\3.0.20820.0\AjaxControlToolkit.NumericUpDown.NumericUpDownBehavior.js" />
+    <Content Include="Content\AjaxControlToolkit\3.0.20820.16598\3.0.20820.0\AjaxControlToolkit.PagingBulletedList.PagingBulletedListBehavior.js" />
+    <Content Include="Content\AjaxControlToolkit\3.0.20820.16598\3.0.20820.0\AjaxControlToolkit.PasswordStrength.PasswordStrengthExtenderBehavior.js" />
+    <Content Include="Content\AjaxControlToolkit\3.0.20820.16598\3.0.20820.0\AjaxControlToolkit.PopupControl.PopupControlBehavior.js" />
+    <Content Include="Content\AjaxControlToolkit\3.0.20820.16598\3.0.20820.0\AjaxControlToolkit.PopupExtender.PopupBehavior.js" />
+    <Content Include="Content\AjaxControlToolkit\3.0.20820.16598\3.0.20820.0\AjaxControlToolkit.Rating.RatingBehavior.js" />
+    <Content Include="Content\AjaxControlToolkit\3.0.20820.16598\3.0.20820.0\AjaxControlToolkit.ReorderList.DraggableListItemBehavior.js" />
+    <Content Include="Content\AjaxControlToolkit\3.0.20820.16598\3.0.20820.0\AjaxControlToolkit.ReorderList.DropWatcherBehavior.js" />
+    <Content Include="Content\AjaxControlToolkit\3.0.20820.16598\3.0.20820.0\AjaxControlToolkit.ResizableControl.ResizableControlBehavior.js" />
+    <Content Include="Content\AjaxControlToolkit\3.0.20820.16598\3.0.20820.0\AjaxControlToolkit.RoundedCorners.RoundedCornersBehavior.js" />
+    <Content Include="Content\AjaxControlToolkit\3.0.20820.16598\3.0.20820.0\AjaxControlToolkit.Slider.Images.slider_h_handle.gif" />
+    <Content Include="Content\AjaxControlToolkit\3.0.20820.16598\3.0.20820.0\AjaxControlToolkit.Slider.Images.slider_h_rail.gif" />
+    <Content Include="Content\AjaxControlToolkit\3.0.20820.16598\3.0.20820.0\AjaxControlToolkit.Slider.Images.slider_v_handle.gif" />
+    <Content Include="Content\AjaxControlToolkit\3.0.20820.16598\3.0.20820.0\AjaxControlToolkit.Slider.Images.slider_v_rail.gif" />
+    <Content Include="Content\AjaxControlToolkit\3.0.20820.16598\3.0.20820.0\AjaxControlToolkit.Slider.Slider.css" />
+    <Content Include="Content\AjaxControlToolkit\3.0.20820.16598\3.0.20820.0\AjaxControlToolkit.Slider.SliderBehavior.js" />
+    <Content Include="Content\AjaxControlToolkit\3.0.20820.16598\3.0.20820.0\AjaxControlToolkit.SlideShow.SlideShowBehavior.js" />
+    <Content Include="Content\AjaxControlToolkit\3.0.20820.16598\3.0.20820.0\AjaxControlToolkit.Tabs.tab-active-left.gif" />
+    <Content Include="Content\AjaxControlToolkit\3.0.20820.16598\3.0.20820.0\AjaxControlToolkit.Tabs.tab-active-right.gif" />
+    <Content Include="Content\AjaxControlToolkit\3.0.20820.16598\3.0.20820.0\AjaxControlToolkit.Tabs.tab-active.gif" />
+    <Content Include="Content\AjaxControlToolkit\3.0.20820.16598\3.0.20820.0\AjaxControlToolkit.Tabs.tab-hover-left.gif" />
+    <Content Include="Content\AjaxControlToolkit\3.0.20820.16598\3.0.20820.0\AjaxControlToolkit.Tabs.tab-hover-right.gif" />
+    <Content Include="Content\AjaxControlToolkit\3.0.20820.16598\3.0.20820.0\AjaxControlToolkit.Tabs.tab-hover.gif" />
+    <Content Include="Content\AjaxControlToolkit\3.0.20820.16598\3.0.20820.0\AjaxControlToolkit.Tabs.tab-left.gif" />
+    <Content Include="Content\AjaxControlToolkit\3.0.20820.16598\3.0.20820.0\AjaxControlToolkit.Tabs.tab-line.gif" />
+    <Content Include="Content\AjaxControlToolkit\3.0.20820.16598\3.0.20820.0\AjaxControlToolkit.Tabs.tab-right.gif" />
+    <Content Include="Content\AjaxControlToolkit\3.0.20820.16598\3.0.20820.0\AjaxControlToolkit.Tabs.tab.gif" />
+    <Content Include="Content\AjaxControlToolkit\3.0.20820.16598\3.0.20820.0\AjaxControlToolkit.Tabs.Tabs.css" />
+    <Content Include="Content\AjaxControlToolkit\3.0.20820.16598\3.0.20820.0\AjaxControlToolkit.Tabs.Tabs.js" />
+    <Content Include="Content\AjaxControlToolkit\3.0.20820.16598\3.0.20820.0\AjaxControlToolkit.TextboxWatermark.TextboxWatermark.js" />
+    <Content Include="Content\AjaxControlToolkit\3.0.20820.16598\3.0.20820.0\AjaxControlToolkit.ToggleButton.ToggleButton.js" />
+    <Content Include="Content\AjaxControlToolkit\3.0.20820.16598\3.0.20820.0\AjaxControlToolkit.UpdatePanelAnimation.UpdatePanelAnimationBehavior.js" />
+    <Content Include="Content\AjaxControlToolkit\3.0.20820.16598\3.0.20820.0\AjaxControlToolkit.ValidatorCallout.alert-large.gif" />
+    <Content Include="Content\AjaxControlToolkit\3.0.20820.16598\3.0.20820.0\AjaxControlToolkit.ValidatorCallout.alert-small.gif" />
+    <Content Include="Content\AjaxControlToolkit\3.0.20820.16598\3.0.20820.0\AjaxControlToolkit.ValidatorCallout.close.gif" />
+    <Content Include="Content\AjaxControlToolkit\3.0.20820.16598\3.0.20820.0\AjaxControlToolkit.ValidatorCallout.ValidatorCallout.css" />
+    <Content Include="Content\AjaxControlToolkit\3.0.20820.16598\3.0.20820.0\AjaxControlToolkit.ValidatorCallout.ValidatorCalloutBehavior.js" />
+    <Content Include="Content\AjaxControlToolkit\3.0.20820.16598\3.0.20820.0\MicrosoftAjax.debug.js" />
+    <Content Include="Content\cloud.css" />
+    <Content Include="Content\Images\aboutus.jpg" />
+    <Content Include="Content\Images\ad.jpg" />
+    <Content Include="Content\Images\ad2.jpg" />
+    <Content Include="Content\Images\arrow-red.jpg" />
+    <Content Include="Content\Images\arrow.gif" />
+    <Content Include="Content\Images\bg-back.jpg" />
+    <Content Include="Content\Images\bg-menu.jpg" />
+    <Content Include="Content\Images\bg-title.jpg" />
+    <Content Include="Content\Images\bg.gif" />
+    <Content Include="Content\Images\bottom.jpg" />
+    <Content Include="Content\Images\Button.JPG" />
+    <Content Include="Content\Images\c1-favicon.gif" />
+    <Content Include="Content\Images\clientele.jpg" />
+    <Content Include="Content\Images\cloudslideshow.jpg" />
+    <Content Include="Content\Images\cloudsoc.jpg" />
+    <Content Include="Content\Images\companyname_300_a4size.png" />
+    <Content Include="Content\Images\conatact.jpg" />
+    <Content Include="Content\Images\Copy of cancel-icon.png" />
+    <Content Include="Content\Images\cs.jpg" />
+    <Content Include="Content\Images\downlaod-pdf.jpg" />
+    <Content Include="Content\Images\fadedBar4.png" />
+    <Content Include="Content\Images\go.jpg" />
+    <Content Include="Content\Images\icon-pdf.gif" />
+    <Content Include="Content\Images\image1.jpg" />
+    <Content Include="Content\Images\learnmore.jpg" />
+    <Content Include="Content\Images\left.jpg" />
+    <Content Include="Content\Images\menubg.jpg" />
+    <Content Include="Content\Images\menuitem.png" />
+    <Content Include="Content\Images\mission.jpg" />
+    <Content Include="Content\Images\nav.png" />
+    <Content Include="Content\Images\NormalPage.gif" />
+    <Content Include="Content\Images\NormalPageGrt9.gif" />
+    <Content Include="Content\Images\pb.jpg" />
+    <Content Include="Content\Images\pf.jpg" />
+    <Content Include="Content\Images\redarrow.gif" />
+    <Content Include="Content\Images\SelectedPage.gif" />
+    <Content Include="Content\Images\SelectedPageGrt9.gif" />
+    <Content Include="Content\Images\services.jpg" />
+    <Content Include="Content\Images\sm.jpg" />
+    <Content Include="Content\Images\spacer.gif" />
+    <Content Include="Content\Images\sub.jpg" />
+    <Content Include="Content\Images\subitem.png" />
+    <Content Include="Content\Images\team.jpg" />
+    <Content Include="Content\Images\tick-green.png" />
+    <Content Include="Content\Images\topic-red.jpg" />
+    <Content Include="Content\Images\vision.jpg" />
+    <Content Include="Content\Images\whitearrow.jpg" />
+    <Content Include="Content\Images\whiteman.jpg" />
+    <Content Include="Content\Images\wic.jpg" />
+    <Content Include="Content\style.ie6.css" />
+    <Content Include="Content\style.ie7.css" />
+    <Content Include="Global.asax" />
+    <Content Include="Scripts\AppInfo.js" />
+    <Content Include="Scripts\communication.js" />
+    <Content Include="Scripts\DateFuncs.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery.min.js" />
+    <Content Include="Scripts\jquery.ui.core.js" />
+    <Content Include="Scripts\jquery.ui.core.min.js" />
+    <Content Include="Scripts\Menuscript.js" />
+    <Content Include="Scripts\SocietyReceipt.js" />
+    <Content Include="Scripts\SocietySubscriptionCreate.js" />
+    <Content Include="Scripts\SubscriptionInvoice.js" />
+    <Content Include="Scripts\webtoolkit.sortabletable.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Content\Site.css" />
+    <Content Include="Content\themes\base\jquery-ui.css" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Scripts\jquery-1.4.4.js" />
+    <Content Include="Scripts\jquery-1.4.4.min.js" />
+    <Content Include="Scripts\jquery-1.4.4-vsdoc.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-ui.js" />
+    <Content Include="Scripts\jquery-ui.min.js" />
+    <Content Include="Scripts\MicrosoftAjax.js" />
+    <Content Include="Scripts\MicrosoftAjax.debug.js" />
+    <Content Include="Scripts\MicrosoftMvcAjax.js" />
+    <Content Include="Scripts\MicrosoftMvcAjax.debug.js" />
+    <Content Include="Scripts\MicrosoftMvcValidation.js" />
+    <Content Include="Scripts\MicrosoftMvcValidation.debug.js" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Account\ChangePassword.cshtml" />
+    <Content Include="Views\Account\ChangePasswordSuccess.cshtml" />
+    <Content Include="Views\Account\LogOn.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_LogOnPartial.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="FileRepository\Communication\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CloudSocietyCaching\CloudSocietyCaching.csproj">
+      <Project>{FDFBF78C-10BB-42D1-B31C-6A25D93E9DE7}</Project>
+      <Name>CloudSocietyCaching</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CloudSocietyEntities\CloudSocietyEntities.csproj">
+      <Project>{C2F40B2E-5285-4F27-98A8-7D69CD414652}</Project>
+      <Name>CloudSocietyEntities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CloudSocietyLib\CloudSocietyLib.csproj">
+      <Project>{08153F79-9412-4660-9847-8E4E5210E5FD}</Project>
+      <Name>CloudSocietyLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CommonLib\CommonLib.csproj">
+      <Project>{ADBC68CC-88C5-40FB-8754-44E45E014B1E}</Project>
+      <Name>CommonLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\InstamojoAPI\InstamojoAPI.csproj">
+      <Project>{f7a6f676-8b3b-4ae3-a3a5-b73299bdfb3e}</Project>
+      <Name>InstamojoAPI</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Subscriber\Create.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Subscriber\CreateSuccess.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\AdminIndex.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Subscriber\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Subscriber\Edit.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Subscriber\Details.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\AcCategory\Create.cshtml" />
+    <Content Include="Views\AcCategory\Edit.cshtml" />
+    <Content Include="Views\AcCategory\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Bank\Create.cshtml" />
+    <Content Include="Views\Bank\Delete.cshtml" />
+    <Content Include="Views\Bank\Details.cshtml" />
+    <Content Include="Views\Bank\Edit.cshtml" />
+    <Content Include="Views\Bank\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Coupon\Create.cshtml" />
+    <Content Include="Views\Coupon\Delete.cshtml" />
+    <Content Include="Views\Coupon\Details.cshtml" />
+    <Content Include="Views\Coupon\Edit.cshtml" />
+    <Content Include="Views\Coupon\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\MemberClass\Create.cshtml" />
+    <Content Include="Views\MemberClass\Delete.cshtml" />
+    <Content Include="Views\MemberClass\Details.cshtml" />
+    <Content Include="Views\MemberClass\Edit.cshtml" />
+    <Content Include="Views\MemberClass\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Occupation\Create.cshtml" />
+    <Content Include="Views\Occupation\Delete.cshtml" />
+    <Content Include="Views\Occupation\Details.cshtml" />
+    <Content Include="Views\Occupation\Edit.cshtml" />
+    <Content Include="Views\Occupation\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\ParkingType\Create.cshtml" />
+    <Content Include="Views\ParkingType\Delete.cshtml" />
+    <Content Include="Views\ParkingType\Details.cshtml" />
+    <Content Include="Views\ParkingType\Edit.cshtml" />
+    <Content Include="Views\ParkingType\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Relationship\Create.cshtml" />
+    <Content Include="Views\Relationship\Delete.cshtml" />
+    <Content Include="Views\Relationship\Details.cshtml" />
+    <Content Include="Views\Relationship\Edit.cshtml" />
+    <Content Include="Views\Relationship\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\ServiceType\Create.cshtml" />
+    <Content Include="Views\ServiceType\Delete.cshtml" />
+    <Content Include="Views\ServiceType\Details.cshtml" />
+    <Content Include="Views\ServiceType\Edit.cshtml" />
+    <Content Include="Views\ServiceType\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\StandardAcCategory\Create.cshtml" />
+    <Content Include="Views\StandardAcCategory\Delete.cshtml" />
+    <Content Include="Views\StandardAcCategory\Details.cshtml" />
+    <Content Include="Views\StandardAcCategory\Edit.cshtml" />
+    <Content Include="Views\StandardAcCategory\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\StandardAcHead\Create.cshtml" />
+    <Content Include="Views\StandardAcHead\Delete.cshtml" />
+    <Content Include="Views\StandardAcHead\Details.cshtml" />
+    <Content Include="Views\StandardAcHead\Edit.cshtml" />
+    <Content Include="Views\StandardAcHead\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\StandardAcSubCategory\Create.cshtml" />
+    <Content Include="Views\StandardAcSubCategory\Delete.cshtml" />
+    <Content Include="Views\StandardAcSubCategory\Details.cshtml" />
+    <Content Include="Views\StandardAcSubCategory\Edit.cshtml" />
+    <Content Include="Views\StandardAcSubCategory\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\StandardChargeHead\Create.cshtml" />
+    <Content Include="Views\StandardChargeHead\Delete.cshtml" />
+    <Content Include="Views\StandardChargeHead\Details.cshtml" />
+    <Content Include="Views\StandardChargeHead\Edit.cshtml" />
+    <Content Include="Views\StandardChargeHead\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Tariff\Create.cshtml" />
+    <Content Include="Views\Tariff\Delete.cshtml" />
+    <Content Include="Views\Tariff\Details.cshtml" />
+    <Content Include="Views\Tariff\Edit.cshtml" />
+    <Content Include="Views\Tariff\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Tax\Create.cshtml" />
+    <Content Include="Views\Tax\Delete.cshtml" />
+    <Content Include="Views\Tax\Details.cshtml" />
+    <Content Include="Views\Tax\Edit.cshtml" />
+    <Content Include="Views\Tax\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\TDSCategory\Create.cshtml" />
+    <Content Include="Views\TDSCategory\Delete.cshtml" />
+    <Content Include="Views\TDSCategory\Details.cshtml" />
+    <Content Include="Views\TDSCategory\Edit.cshtml" />
+    <Content Include="Views\TDSCategory\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\UnitType\Create.cshtml" />
+    <Content Include="Views\UnitType\Delete.cshtml" />
+    <Content Include="Views\UnitType\Details.cshtml" />
+    <Content Include="Views\UnitType\Edit.cshtml" />
+    <Content Include="Views\UnitType\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\UOM\Create.cshtml" />
+    <Content Include="Views\UOM\Delete.cshtml" />
+    <Content Include="Views\UOM\Details.cshtml" />
+    <Content Include="Views\UOM\Edit.cshtml" />
+    <Content Include="Views\UOM\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Society\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\TariffRate\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\TariffRate\Create.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\TariffRate\Delete.cshtml" />
+    <Content Include="Views\TariffRate\Edit.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SocietySubscription\Create.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SocietySubscription\PayIndex.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\SubscriberMenu.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\AdminMenu.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SubscriptionInvoice\Details.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SubscriptionInvoice\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SubscriptionInvoice\Payment.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Account\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SubscriptionInvoice\Print.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SocietySubscription\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SocietySubscription\Edit.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SocietySubscription\Renew.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SocietyUser\AllocateUser.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\SocietyMenu.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SocietySubscription\Select.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SocietySubscription\Menu.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Society\Edit.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Society\Param.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SocietyBuildingUnit\Create.cshtml" />
+    <Content Include="Views\SocietyBuildingUnit\Edit.cshtml" />
+    <Content Include="Views\SocietyBuildingUnit\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SocietyBuilding\Create.cshtml" />
+    <Content Include="Views\SocietyBuilding\Edit.cshtml" />
+    <Content Include="Views\SocietyBuilding\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SubscriptionInvoice\SendSuccess.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SocietyParking\Create.cshtml" />
+    <Content Include="Views\SocietyParking\Edit.cshtml" />
+    <Content Include="Views\SocietyParking\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SocietyMember\Create.cshtml" />
+    <Content Include="Views\SocietyMember\Details.cshtml" />
+    <Content Include="Views\SocietyMember\Edit.cshtml" />
+    <Content Include="Views\SocietyMember\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SocietyBuildingUnitChargeHead\Create.cshtml" />
+    <Content Include="Views\SocietyBuildingUnitChargeHead\Edit.cshtml" />
+    <Content Include="Views\SocietyBuildingUnitChargeHead\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SocietyParkingTransfer\Create.cshtml" />
+    <Content Include="Views\SocietyParkingTransfer\Edit.cshtml" />
+    <Content Include="Views\SocietyParkingTransfer\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\AcHead\Create.cshtml" />
+    <Content Include="Views\AcHead\Details.cshtml" />
+    <Content Include="Views\AcHead\Edit.cshtml" />
+    <Content Include="Views\AcHead\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\AcSubCategory\Create.cshtml" />
+    <Content Include="Views\AcSubCategory\Edit.cshtml" />
+    <Content Include="Views\AcSubCategory\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\AdminLayout.cshtml" />
+    <Content Include="Views\Shared\SocietyLayout.cshtml" />
+    <Content Include="Views\Shared\SubscriberLayout.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SocietyBillSeries\Create.cshtml" />
+    <Content Include="Views\SocietyBillSeries\Edit.cshtml" />
+    <Content Include="Views\SocietyBillSeries\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SocietyChargeHead\Create.cshtml" />
+    <Content Include="Views\SocietyChargeHead\Edit.cshtml" />
+    <Content Include="Views\SocietyChargeHead\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SocietyInvestment\Create.cshtml" />
+    <Content Include="Views\SocietyInvestment\Edit.cshtml" />
+    <Content Include="Views\SocietyInvestment\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SocietyMemberJointHolder\Create.cshtml" />
+    <Content Include="Views\SocietyMemberJointHolder\Details.cshtml" />
+    <Content Include="Views\SocietyMemberJointHolder\Edit.cshtml" />
+    <Content Include="Views\SocietyMemberJointHolder\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SocietyMemberNominee\Create.cshtml" />
+    <Content Include="Views\SocietyMemberNominee\Details.cshtml" />
+    <Content Include="Views\SocietyMemberNominee\Edit.cshtml" />
+    <Content Include="Views\SocietyMemberNominee\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SocietyPayMode\Create.cshtml" />
+    <Content Include="Views\SocietyPayMode\Edit.cshtml" />
+    <Content Include="Views\SocietyPayMode\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SocietyReceipt\Create.cshtml" />
+    <Content Include="Views\SocietyReceipt\Edit.cshtml" />
+    <Content Include="Views\SocietyReceipt\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SocietySpecialBill\Create.cshtml" />
+    <Content Include="Views\SocietySpecialBill\Edit.cshtml" />
+    <Content Include="Views\SocietySpecialBill\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SocietyBill\BillList.cshtml" />
+    <Content Include="Views\SocietyBill\Details.cshtml" />
+    <Content Include="Views\SocietyBill\Index.cshtml" />
+    <Content Include="Views\SocietyBill\Print.cshtml" />
+    <Content Include="Views\SocietyBill\SendSuccess.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\AcTransaction\Create.cshtml" />
+    <Content Include="Views\AcTransaction\Details.cshtml" />
+    <Content Include="Views\AcTransaction\Edit.cshtml" />
+    <Content Include="Views\AcTransaction\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SocietyBuildingUnitTransfer\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SocietyBuildingUnitTransfer\Create.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SocietyBuildingUnitTransfer\Edit.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SocietySpecialBillChargeHead\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SocietyBuildingUnit\Details.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SocietySpecialBillChargeHead\Create.cshtml" />
+    <Content Include="Views\SocietySpecialBillChargeHead\Edit.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SocietySpecialBillUnit\Create.cshtml" />
+    <Content Include="Views\SocietySpecialBillUnit\Delete.cshtml" />
+    <Content Include="Views\SocietySpecialBillUnit\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SocietyBuildingUnitSubscriptionBalance\Create1.cshtml" />
+    <Content Include="Views\SocietyBuildingUnitSubscriptionBalance\Create2.cshtml" />
+    <Content Include="Views\SocietyBuildingUnitSubscriptionBalance\Delete1.cshtml" />
+    <Content Include="Views\SocietyBuildingUnitSubscriptionBalance\Delete2.cshtml" />
+    <Content Include="Views\SocietyBuildingUnitSubscriptionBalance\Edit1.cshtml" />
+    <Content Include="Views\SocietyBuildingUnitSubscriptionBalance\Edit2.cshtml" />
+    <Content Include="Views\SocietyBuildingUnitSubscriptionBalance\Index1.cshtml" />
+    <Content Include="Views\SocietyBuildingUnitSubscriptionBalance\Index2.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\AboutUs.cshtml" />
+    <Content Include="Views\Home\Clientele.cshtml" />
+    <Content Include="Views\Home\CloudComputing.cshtml" />
+    <Content Include="Views\Home\ContactUs.cshtml" />
+    <Content Include="Views\Home\Index1.cshtml" />
+    <Content Include="Views\Home\Mission.cshtml" />
+    <Content Include="Views\Home\Productbenefits.cshtml" />
+    <Content Include="Views\Home\Productfeature.cshtml" />
+    <Content Include="Views\Home\Services.cshtml" />
+    <Content Include="Views\Home\Sitemap.cshtml" />
+    <Content Include="Views\Home\Team.cshtml" />
+    <Content Include="Views\Home\Vision.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SubscriptionInvoice\PrintChallan.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Subscriber\Terms.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SocietyBill\BillAbbreviation.cshtml" />
+    <Content Include="Views\SocietyBill\Create.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Views\SocietyBill\Delete.cshtml" />
+    <Content Include="Views\SocietyBill\SendSuccessToAll.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Account\Terms.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\PasswordQuestion\Create.cshtml" />
+    <Content Include="Views\PasswordQuestion\Delete.cshtml" />
+    <Content Include="Views\PasswordQuestion\Edit.cshtml" />
+    <Content Include="Views\PasswordQuestion\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Account\AskUserName.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Account\ResetPassword.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\TDSCategoryRate\Create.cshtml" />
+    <Content Include="Views\TDSCategoryRate\Delete.cshtml" />
+    <Content Include="Views\TDSCategoryRate\Details.cshtml" />
+    <Content Include="Views\TDSCategoryRate\Edit.cshtml" />
+    <Content Include="Views\TDSCategoryRate\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Account\CreateTrialUserSuccess.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SocietyReceipt\Details.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SocietyReceipt\ListOfBuildingUnitBillAbbreviation.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SocietyReceipt\Print.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_HomeLayout.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\AppInfo\Edit.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SocietyBuildingUnitSubscriptionBalance\AskBuildingUnit.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SocietyReceipt\Delete.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\AcTransactionAc\Create.cshtml" />
+    <Content Include="Views\AcTransactionAc\Edit.cshtml" />
+    <Content Include="Views\AcTransactionAc\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SocietyReport\BillDates.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\AcHead\IndexWithSearch.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\StandardAcHead\IndexWithSearch.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SocietyReport\BillRegisterReport.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SocietyReport\MemberLedgerReport.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\AcTransactionAc\AskPeriodAcHead.cshtml" />
+    <Content Include="Views\AcTransactionAc\BankReconciliation.cshtml" />
+    <Content Include="Views\AcTransactionAc\Delete.cshtml" />
+    <Content Include="Views\AcTransactionAc\SetReconciledDate.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\MessageToViewer.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SocietyReport\PDFCollectionReport.cshtml" />
+    <Content Include="Views\SocietyReport\SocietyInvestmentReport.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SocietySubscription\ReportMessage.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\AccountingReport\GeneralLedgerReport.cshtml" />
+    <Content Include="Views\AccountingReport\TransactionReport.cshtml" />
+    <Content Include="Views\AccountingReport\TrialBalanceReport.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SocietySubscription\Delete.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SocietyReport\ParkingRegister.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SocietyReport\AmountBalancesReport.cshtml" />
+    <Content Include="Views\SocietyReport\CollectionReport.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\PayMode\Create.cshtml" />
+    <Content Include="Views\PayMode\Delete.cshtml" />
+    <Content Include="Views\PayMode\Edit.cshtml" />
+    <Content Include="Views\PayMode\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\AcCategory\Delete.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Account\ResetStatus.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\AccountingReport\BankReconciliationReport.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\AcHead\Delete.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\AcSubCategory\Delete.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\AcTransaction\CreateAcYearClosingEntry.cshtml" />
+    <Content Include="Views\AcTransaction\Delete.cshtml" />
+    <Content Include="Views\AcTransaction\DeleteAcYearClosingEntry.cshtml" />
+    <Content Include="Views\AcTransaction\DeleteClosingBalance.cshtml" />
+    <Content Include="Views\AcTransaction\DeleteYearEndEntry.cshtml" />
+    <Content Include="Views\AcTransaction\Print.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SocietyBillSeries\Delete.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SocietyBuilding\Delete.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SocietyBuildingUnit\Delete.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SocietyBuildingUnitChargeHead\Delete.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SocietyBuildingUnitTransfer\Delete.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SocietyChargeHead\Delete.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SocietyInvestment\Delete.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SocietyMember\Delete.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SocietyMemberJointHolder\Delete.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SocietyMemberNominee\Delete.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SocietyParking\Delete.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SocietyParkingTransfer\Delete.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SocietyPayMode\Delete.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SocietySpecialBill\Delete.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SocietySpecialBillChargeHead\Delete.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Subscriber\Delete.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\AccountingReport\BalanceSheet.cshtml" />
+    <Content Include="Views\AccountingReport\FinalReports.cshtml" />
+    <Content Include="Views\AccountingReport\MailSendingStatus.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\AppInfo\IsFullAccessToSupport.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Society\IndexForSupport.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SocietyMember\ManageLogIn.cshtml" />
+    <Content Include="Views\SocietyMember\ManageRole.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\AccountingReport\IncomeExpenditureStatement.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\AccountingReport\IncomeExpenditureSchedule.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\AccountingReport\BalanceSheetSchedule.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SocietyCollectionReversal\Create.cshtml" />
+    <Content Include="Views\SocietyCollectionReversal\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SocietyCollectionReversal\Delete.cshtml" />
+    <Content Include="Views\SocietyCollectionReversal\Details.cshtml" />
+    <Content Include="Views\SocietyCollectionReversal\Edit.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SocietyReport\CollectionReversalReport.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SocietyMember\Menu.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SocietyBill\MemberBillIndex.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SocietyReceipt\MemberReceiptIndex.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\MemberMenu.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\AccountingReport\ReceiptAndPaymentStatementReport.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SocietyBill\Recreate.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+    <Content Include="Views\SocietySubscription\Lock.cshtml" />
+    <Content Include="Views\Home\Upcoming.cshtml" />
+    <Content Include="Views\Home\Subscription.cshtml" />
+    <Content Include="Views\CommunicationType\Create.cshtml" />
+    <Content Include="Views\CommunicationType\Delete.cshtml" />
+    <Content Include="Views\CommunicationType\Edit.cshtml" />
+    <Content Include="Views\CommunicationType\Index.cshtml" />
+    <Content Include="Views\Communication\Index.cshtml" />
+    <Content Include="Views\Communication\Create.cshtml" />
+    <Content Include="Views\Communication\Edit.cshtml" />
+    <Content Include="Views\Communication\Delete.cshtml" />
+    <Content Include="Views\Communication\Detail.cshtml" />
+    <Content Include="Views\Communication\Publish.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\PublishProfiles\Profile1.pubxml" />
+    <Content Include="Views\SocietyReport\MemberOwnLedgerReport.cshtml" />
+    <Content Include="Views\Communication\PVDisplayFileContains.cshtml" />
+    <Content Include="Views\Communication\PVDisplayFilePreviwe.cshtml" />
+    <Content Include="Views\Society\Configurations.cshtml" />
+    <Content Include="Views\Society\EditConfigurations.cshtml" />
+    <Content Include="Views\SocietyMemberDocument\Index.cshtml" />
+    <Content Include="Views\DocumentType\Index.cshtml" />
+    <Content Include="Views\DocumentType\Create.cshtml" />
+    <Content Include="Views\DocumentType\Delete.cshtml" />
+    <Content Include="Views\DocumentType\Details.cshtml" />
+    <Content Include="Views\DocumentType\Edit.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Views\SocietyReceipt\HoldReceipts.cshtml" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>2562</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost/CloudSociety</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

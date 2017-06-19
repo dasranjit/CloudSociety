@@ -1,0 +1,274 @@
+﻿@model IEnumerable<CloudSocietyEntities.MemberLedger>
+@{
+    ViewBag.Title = "Member Ledger Report";
+    ViewBag.Header = "Member Ledger Report";
+    ViewBag.SocietyNameHeader = ViewBag.SocietyHead;
+    Layout = "~/Views/Shared/SocietyLayout.cshtml";
+    string date = "";
+    decimal RecAmoutTd;
+    decimal BillAmoutTd;
+    decimal TotalBillAmountTd = 0;
+    decimal TotalRecAmountTd = 0;
+    decimal BalanceTd = 0;
+    bool IsBill = false;
+    string BillAmount = "";
+    string ReceiptAmount = "";
+    string BalanceAmount = "";
+    string memberName = ViewBag.MemberName != null ? ViewBag.MemberName : "MEMBER";
+    Guid? SocietyMemberID = null;
+    var TempReceipt = (List<CloudSocietyEntities.SocietyReceiptOnhold>)ViewBag.TempReceipt;
+
+}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+@if (ViewBag.PaymentMessage == "")
+{
+    <div id="divLedgerDetails">
+        <span class="SocName">@memberName's LEDGER AS ON @ViewBag.AsOn </span>
+        <br />
+        <br />
+        <table border="0" cellpadding="2" cellspacing="0" class="table">
+            @{
+    int Count = 1;
+            }
+            @foreach (var item in Model)
+            {
+                if (Count == 1)
+                {
+                <tr>
+                    <th style="text-align: center">DocNo </th>
+                    <th style="text-align: center">DocDate </th>
+                    <th style="width: 350px; text-align: center">Particulars </th>
+                    <th style="text-align: right">Bill Amount(Dr)</th>
+                    <th style="text-align: right">Receipt Amount(Cr) </th>
+                    <th style="text-align: right">Balance Amount</th>
+                </tr>
+                }
+                <tr @if ((Count % 2) == 0)
+                    { <text> class="TableRow" </text>  }
+                    else
+                    { <text> class="altTableRow" </text> }>
+                    <td>@item.BillNo</td>
+                    <td>
+                        @{date = item.BillDate != null ? String.Format("{0:dd-MMM-yy}", item.BillDate) : "";}
+                        @date
+                    </td>
+                    <td>
+                        @item.Particulars
+                    </td>
+                    <td style="text-align: right">
+                        @{
+                          SocietyMemberID = item.SocietyMemberID;
+                          IsBill = item.BillNo != "" ? item.BillNo.Substring(0, 1) == "B" || item.BillNo.Substring(0, 1) == "V" : false;
+                          BillAmoutTd = 0;
+                          RecAmoutTd = 0;
+                          BillAmoutTd = IsBill ? ((item.ChgAmt ?? 0) + (item.NonChgAmt ?? 0) + (item.IntAmt ?? 0) + (item.TaxAmt ?? 0) - (item.Advance ?? 0)) : 0;
+                          TotalBillAmountTd += BillAmoutTd;
+                          RecAmoutTd = (!IsBill && item.BillNo != "") ? ((item.ChgAmt ?? 0) + (item.NonChgAmt ?? 0) + (item.IntAmt ?? 0) + (item.TaxAmt ?? 0) + (item.Advance ?? 0)) : 0;
+                          TotalRecAmountTd += RecAmoutTd;
+                          BalanceTd += ((item.ChgBal ?? 0) + (item.NonChgBal ?? 0) + (item.IntBal ?? 0) + (item.TaxBal ?? 0) - (item.AdvBal ?? 0));
+                          BillAmount = BillAmoutTd == 0 ? "-" : BillAmoutTd.ToString();
+                          ReceiptAmount = RecAmoutTd == 0 ? "-" : RecAmoutTd.ToString();
+                          BalanceAmount = BalanceTd < 0 ? Math.Abs(BalanceTd) + " Cr" : (BalanceTd == 0 ? BalanceTd + "" : BalanceTd + " Dr");
+                        }
+                        @BillAmount
+                    </td>
+                    <td style="text-align: right">@ReceiptAmount</td>
+                    <td style="text-align: right">@BalanceAmount</td>
+                </tr>
+                          Count = Count + 1;
+            }
+            @if (Count == 1)
+            {
+                <tr class="TableRow">
+                    <td>Currently there are no Records</td>
+                </tr> 
+            }
+            else
+            {
+                <tr>
+                    <td colspan="3" style="text-align: right; font-weight: bold;">Member Total :</td>
+                    <td style="text-align: right; font-weight: bold;">@TotalBillAmountTd</td>
+                    <td style="text-align: right; font-weight: bold;">@TotalRecAmountTd</td>
+                    <td></td>
+                </tr>
+            }
+        </table>
+        <br />
+        @if (Count > 1)
+        {
+            <div>
+                @Html.ActionLink("Download PDF", "MemberOwnLedgerReport", new { id = ViewBag.SocietySubscriptionID, IsToDownLoad = true }, new { @class = "buttton", @style = "color: white !important; width: 75px;" })
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+   @if (ViewBag.ShowPaymentLink)
+   { 
+       <input type="button" value="Pay by Gateway" onclick="showPaymentDetais()" class="buttton" style="color: white !important; width: 105px;" />
+   }
+            </div>
+        }
+
+        @if (null != TempReceipt)
+        {
+            if (TempReceipt.Count > 0)
+            {
+                Count = 1;
+            <br />
+            <span class="SocName">Hold Receipt Transactions Details</span>
+            <br />
+            <br />
+            <table border="0" cellpadding="2" cellspacing="0" class="table">
+                <tr>
+                    <th style="text-align: center">Receipt Date </th>
+                    <th style="text-align: right">Receipt Amount(Cr) </th>
+                </tr>
+                @foreach (var Receipt in TempReceipt)
+                {
+                    <tr @if ((Count % 2) == 0)
+                        { <text> class="TableRow" </text>  }
+                        else
+                        { <text> class="altTableRow" </text> }>
+                        <td>@String.Format("{0:dd-MMM-yy}", Receipt.ReceiptDate)</td>
+
+                        <td style="text-align: right">@Receipt.Amount</td>
+                    </tr>
+                        Count = Count + 1;
+                }
+            </table>
+            }
+        }
+
+    </div>
+    <br />
+    <div id="divPaymentDetails" style="display: none;">
+        <h3>Total Balance is &#8377 @BalanceAmount.Replace(" Dr", "").Replace(" Cr", "") </h3>
+        <table>
+            <tr>
+                <td colspan="3"></td>
+            </tr>
+            <tr>
+                <td class="editor-label">Paying Amount </td>
+                <td>:</td>
+                <td class="editor-field">
+                    <input type="text" id="txtPayingAmt" onblur="validate()" title="Minimum amount should be Rs 100.00" name="PayingAmt" onkeypress="return isNumberKey(event)" value="@BalanceAmount.Replace(" Dr", "").Replace(" Cr", "")" class="maxWidth"/>
+                    <span id="txtPayingAmtError" style="display: none; color: red; margin-bottom: -10px;">Please enter valid amount to proceed.</span>
+                </td>
+            </tr>
+            <tr>
+                <td class="editor-label">Bill Abbreviation</td>
+                <td>:</td>
+                <td class="editor-field">
+                    @Html.DropDownList("BillAbbreviation", new SelectList(ViewBag.SocietyBillSeriesList as System.Collections.IEnumerable, "BillAbbreviation", "BillAbbreviation"))
+                </td>
+            </tr>
+            @*  <tr>
+            <td class="editor-label">Branch</td>
+            <td>:</td>
+            <td class="editor-field">
+                @Html.TextBox("Branch", null, new { @class = "maxWidth" })
+            </td>
+        </tr>*@
+            <tr>
+                <td colspan="3" align="center">&nbsp;</td>
+            </tr>
+            <tr>
+                <td colspan="3" align="center">
+                    <input type="button" value="Cancel" onclick="hidePaymentDetais()" class="buttton" style="color: white !important; width: 85px;" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="button" value="Proceed To Pay" class="buttton" style="color: white !important; width: 105px;" onclick="ProceedToPay()" />
+                </td>
+            </tr>
+        </table>
+    </div>
+    @Html.Hidden("BillAbbreviation", "")
+    @Html.Hidden("SocietyMemberID", SocietyMemberID)
+    @Html.Hidden("SocietySubscriptionID", (Guid)ViewBag.SocietySubscriptionID)
+}
+else
+{
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <span class="EditDelete" style="font-size: 24px !important; margin-left: 220px !important">
+        @ViewBag.PaymentMessage
+    </span>
+}
+
+<div id="myModal" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+        @*<span class="close">&times;</span>*@
+        <div class="loader"></div>
+        <span>Please wait..</span>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    var modal = document.getElementById('myModal');
+    // When the user clicks anywhere outside of the modal, close it
+    //window.onclick = function (event) {
+    //    if (event.target == modal) {
+    //        modal.style.display = "none";
+    //    }
+    //}
+
+    function showPaymentDetais() {
+        document.getElementById("divLedgerDetails").style.display = 'none';
+        document.getElementById("divPaymentDetails").style.display = 'block';
+    }
+    function hidePaymentDetais() {
+        document.getElementById("divLedgerDetails").style.display = 'block';
+        document.getElementById("divPaymentDetails").style.display = 'none';
+    }
+    function isNumberKey(evt) {
+        var charCode = (evt.which) ? evt.which : evt.keyCode;
+        if (charCode != 46 && charCode > 31
+          && (charCode < 48 || charCode > 57))
+            return false;
+
+        return true;
+    }
+    function validate() {
+        var isValid = true;
+        var value = document.getElementById("txtPayingAmt").value;
+        if (value < 100) {
+            document.getElementById("txtPayingAmtError").style.display = 'block';
+            isValid = false;
+        } else {
+            document.getElementById("txtPayingAmtError").style.display = 'none';
+        }
+        //value = document.getElementById("BankID").value;
+        //if (value == "") {
+        //    document.getElementById("bankIDError").style.display = 'block';
+        //    isValid = false;
+        //} else {
+        //    document.getElementById("bankIDError").style.display = 'none';
+        //}
+        return isValid;
+    }
+    function ProceedToPay() {
+        if (!validate()) {
+            return false;
+        }
+        value = document.getElementById("txtPayingAmt").value;
+
+        modal.style.display = "block";
+        var societyReceipt = {};
+        societyReceipt.SocietyMemberID = document.getElementById("SocietyMemberID").value;
+        societyReceipt.Amount = value;
+        societyReceipt.BillAbbreviation = document.getElementById("BillAbbreviation").value;
+        //societyReceipt.Branch = document.getElementById("Branch").value;
+        societyReceipt.SocietySubscriptionID = document.getElementById("SocietySubscriptionID").value;
+
+        $.post("/SocietyReport/ProcessPayment", societyReceipt, function (response) {
+            if (response.status == "true") {
+                window.location = response.redirectUrl;
+                //$("#divPaymentDetails").html("<h3>Your payment done successfully.</h3>")
+            } else {
+                $("#divPaymentDetails").html("<h3 style='color : red;'>Your payment order is failed.</h3>")
+            }
+            modal.style.display = "none";
+        });
+    }
+</script>

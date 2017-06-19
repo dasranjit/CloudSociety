@@ -1,0 +1,111 @@
+﻿@model IEnumerable<CloudSocietyEntities.Tax>
+@{
+    ViewBag.Title = "Tax";
+    ViewBag.Header = "Tax List";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<div class="buttton" style="width: 65px;">
+    @Html.ActionLink("Create New", "Create")</div>
+<br />
+<table border="0" cellpadding="2" cellspacing="0" class="table">
+    @{
+        int Count = 1;
+    }
+    @foreach (var item in Model)
+    {
+        if (Count == 1)
+        {
+        <tr>
+            <th>
+            </th>
+            <th>
+                Head
+            </th>
+            <th>
+                TaxRate
+            </th>
+            <th>
+                Surcharge
+            </th>
+            <th>
+                Cess
+            </th>
+            <th>
+                HiEduCess
+            </th>
+            <th>
+                RoundToPs
+            </th>
+            <th>
+                AcHead
+            </th>
+        </tr>
+        }
+        <tr @if ((Count % 2) == 0)
+            { <text> class="TableRow" </text> }
+            else
+            { <text> class="altTableRow" </text>} >
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.TaxID }, new { @class = "EditDelete" })
+                |
+                @Html.ActionLink("Delete", "Delete", new { id = item.TaxID }, new { @class = "EditDelete" })
+                @*               @Html.ActionLink("Details", "Details", new { id = item.TaxID }, new { @class = "EditDelete" }) *@
+            </td>
+            <td>
+                @item.Head
+            </td>
+            <td>
+                @String.Format("{0:F}", item.TaxRate)
+            </td>
+            <td>
+                @String.Format("{0:F}", item.Surcharge)
+            </td>
+            <td>
+                @String.Format("{0:F}", item.Cess)
+            </td>
+            <td>
+                @String.Format("{0:F}", item.HiEduCess)
+            </td>
+            <td>
+                @item.RoundToPs
+            </td>
+            <td>
+                @if (item.StandardAcHead != null)
+                {
+                    @item.StandardAcHead.AcHead
+                }
+            </td>
+            @*<td width="10px">
+                @item.SubscriptionApplicable
+            </td>
+            <td width="10px">
+                @item.SocietyApplicable
+            </td>
+            <td width="10px">
+                  @item.StandardAcHead.AcHead
+               @* @item.StandardAcHead.AcHead
+            </td>
+            @*<td width="10px">
+                @item.CreatedByID
+            </td>
+            <td width="10px">
+                @String.Format("{0:g}", item.CreatedOn)
+            </td>
+            <td width="10px">
+                @item.UpdatedByID
+            </td>
+            <td width="10px">
+                @String.Format("{0:g}", item.UpdatedOn)
+            </td>*@
+        </tr>
+    
+                Count = Count + 1;
+
+    }
+    @if (Count == 1)
+    {<tr class="TableRow">
+        <td>
+            Currently there are no Records
+        </td>
+    </tr> }
+</table>

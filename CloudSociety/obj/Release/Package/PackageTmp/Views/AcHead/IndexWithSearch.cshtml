@@ -1,0 +1,71 @@
+﻿@model IEnumerable<CloudSocietyEntities.AcHead>
+@{
+    ViewBag.Title = "Account Head";
+    ViewBag.Header = "Account Head List";
+    ViewBag.SocietyNameHeader = ViewBag.SocietyHead;
+    Layout = "~/Views/Shared/SocietyLayout.cshtml"; 
+}
+@using (Html.BeginForm("IndexWithSearch", "AcHead", FormMethod.Get))
+{
+    @Html.ValidationSummary(false, "Following errors occurred while processing your request")
+    <fieldset style="width: 750px">
+        <legend>Search</legend>
+        <table>            
+            <tr>
+                <td>
+                    By Name :
+                </td>
+                <td>
+                    @Html.TextBox("Name", null, new { @class = "mediumWidth" })                    
+                </td>               
+                <td>
+                   By Sub-Category :
+                </td>
+                <td>
+                    @Html.TextBox("SubCategory", null, new { @class = "mediumWidth" })                    
+                </td>
+                
+                <td align="center">                   
+                     &nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="submit" value="Search" class="buttton" style="width: 45px; height: 23px;
+                        vertical-align: middle;" />
+                </td>
+                </tr>
+                  
+        </table>
+    </fieldset>
+    @Html.Hidden("id", (Guid)ViewBag.SocietySubscriptionID) 
+}
+<div class="buttton" style="width: 65px;">
+    @Html.ActionLink("Create New", "Create", new { id = ViewBag.SocietySubscriptionID })</div>
+<br />
+@if (Model.Count() > 0)
+{
+    var grid = new WebGrid(Model, canPage: true, defaultSort: "Sequence", canSort: true, rowsPerPage: 10);
+    grid.Pager(WebGridPagerModes.NextPrevious);
+    WebGridColumn[] columnSet = new WebGridColumn[8];
+    columnSet[0] = grid.Column("", "", @<text><div style='width: 120px'>@Html.ActionLink("Edit", "Edit", new { id = item.AcHeadID, societySubscriptionID = ViewBag.SocietySubscriptionID, backUrl = grid.GetPageUrl(grid.PageIndex) }, new { @class = "EditDelete" }) | @Html.ActionLink("Delete", "Delete", new { id = item.AcHeadID, societySubscriptionID = ViewBag.SocietySubscriptionID, backUrl = grid.GetPageUrl(grid.PageIndex) }, new { @class = "EditDelete" }) | @Html.ActionLink("Details", "Details", new { id = item.AcHeadID, societySubscriptionID = ViewBag.SocietySubscriptionID, backUrl = grid.GetPageUrl(grid.PageIndex) }, new { @class = "EditDelete" })</div></text>);
+    columnSet[1] = grid.Column("Name", "Name", @<text><div style='width: 300px'>@item.Name</div></text>);
+    columnSet[2] = grid.Column("AcSubCategoryID", "Sub-Category", @<text><div style='width: 260px'>@item.AcSubCategory.SubCategory</div></text>, canSort: false);
+    columnSet[3] = grid.Column("Sequence", "Sequence", @<text><div style='width: 60px'>@item.Sequence</div></text>);
+    columnSet[4] = grid.Column("Nature", "Nature", @<text> <div style='width: 100px'>@(item.Nature == "C" ? "Cash" : (item.Nature == "B" ? "Bank" : (item.Nature == "S" ? "Creditor" : (item.Nature == "D" ? "Debtor" : (item.Nature == "T" ? "TDS" :(item.Nature == "F" ? "Year End Closing Transaction" : ""))))))</div></text>);
+    columnSet[5] = grid.Column("TDSCategoryID", "TDSCategory", @<text><div style='width: 100px'>@(item.TDSCategoryID != null ? item.TDSCategory.Category : "")</div></text>, canSort: false);
+    columnSet[6] = grid.Column("TDSCompany", "TDSCompany", @<text><div style='width: 30px'>@if (item.TDSCompany == true)
+                                                                                            {<text><center><img src="@Url.Content("~/Content/Images/tick-green.png")" /></center></text> }</div></text>, canSort: false);
+    columnSet[7] = grid.Column("Active", "Active", @<text><div style='width: 30px'>@if (item.Active == true)
+                                                                                   {<text><center><img src="@Url.Content("~/Content/Images/tick-green.png")"  /></center></text> }</div></text>, canSort: false);   
+    @grid.GetHtml(tableStyle: "table", footerStyle: "webgrid-footer", rowStyle: "TableRow", alternatingRowStyle: "altTableRow", columns: grid.Columns(columnSet))
+}
+else
+{
+<table>       <tr class="TableRow">
+            <td>
+                No Record Found.
+            </td>
+        </tr> 
+   </table> 
+}
+<br />
+<div>
+    @Html.ActionLink("Back ", "Menu", "SocietySubscription", new { id = ViewBag.SocietySubscriptionID }, new { @class = "EditDelete" })
+</div>

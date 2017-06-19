@@ -1,0 +1,48 @@
+﻿@model CloudSocietyEntities.Occupation
+@{
+    ViewBag.Title = "Delete Occupation";
+    ViewBag.Header = "Occupation";     
+}
+<div class="LabelDel">
+    Are you sure you want to delete this?</div>
+<br />
+<fieldset style="width: 600px">
+    <legend>Occupation Details</legend>
+    <br />
+    <table>
+        <tr>
+            <td>
+                Name :
+            </td>
+            <td>
+                @Model.Name
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Active :
+            </td>
+            <td>
+                @if (Model.Active == true)
+                { <text>
+                    <img src="@Url.Content("~/Content/Images/tick-green.png")"  />
+                    </text> }
+                else
+                { <text>
+                    <img src="@Url.Content("~/Content/Images/Copy of cancel-icon.png")" /></text> }
+            </td>
+        </tr>
+        @using (Html.BeginForm())
+        {
+            @Html.HiddenFor(model=>model.Name)
+            <tr>
+                <td>
+                    <input type="submit" value="Delete" class="buttton" style="width: 45px; height: 23px;
+                        vertical-align: middle;" />
+                </td>
+            </tr>     
+        }
+    </table>
+</fieldset>
+<br />
+@Html.ActionLink("Back to List", "Index", null, new { @class = "EditDelete" })

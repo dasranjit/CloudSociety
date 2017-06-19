@@ -1,0 +1,149 @@
+﻿@model CloudSocietyEntities.AcHead
+@{
+    ViewBag.Title = "Edit Account Head";
+    ViewBag.Header = "Account Head";
+    ViewBag.SocietyNameHeader = ViewBag.SocietyHead;
+    Layout = "~/Views/Shared/SocietyLayout.cshtml";
+    bool IsFullAccess = new CloudSociety.Controllers.AppInfoController().IsFullAccess();  
+}
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(false, "Following errors occurred while processing your request")
+    <fieldset style="width: 550px">
+        <legend>Edit Account Head</legend>
+        <br />
+        <table border="0" cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="editor-label">
+                    @Html.LabelFor(model => model.Name) :
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.Name)
+                    <span class="editor-field">@Html.ValidationMessageFor(model => model.Name)</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Sub-Category :
+                </td>
+                <td>
+                    @Html.DropDownList("SubCategoryID", new SelectList(ViewBag.AcSubCategoryList as System.Collections.IEnumerable, "SubCategoryID", "SubCategory"), "<- Select Sub-Category ->")
+                    <span class="editor-field">@Html.ValidationMessageFor(model => model.SubCategoryID)</span>
+                </td>
+            </tr>
+            <tr>
+                <td class="editor-label">
+                    @Html.LabelFor(model => model.Sequence) :
+                </td>
+                <td>
+                    @Html.TextBox("Sequence", Model.Sequence, new { @class = "shortWidth" })
+                    @*<input type="text" name="Sequence" size="5" value=""></input>@Html.EditorFor(model => model.Sequence)*@
+                    <span class="editor-field">@Html.ValidationMessageFor(model => model.Sequence)</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Nature :
+                </td>
+                <td>
+                    @Html.DropDownList("Nature", ViewBag.NatureList as SelectList, "<- Select Nature ->")
+                    @*@Html.EditorFor(model => model.Nature)*@ <span class="editor-field">@Html.ValidationMessageFor(model => model.Nature)</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    TDS Category :
+                </td>
+                <td>
+                    @Html.DropDownList("TDSCategoryID", new SelectList(ViewBag.TDSCategoryList as System.Collections.IEnumerable, "TDSCategoryID", "Category"), "<- Select TDS Category ->")
+                    <span class="editor-field">@Html.ValidationMessageFor(model => model.SubCategoryID)</span>
+                </td>
+            </tr>
+            <tr>
+                <td class="editor-label">
+                    TDS Company :
+                </td>
+                <td>
+                    @Html.CheckBox("TDSCompany") @*@Html.EditorFor(model => model.TDSCompany)*@ <span
+                        class="editor-field">@Html.ValidationMessageFor(model => model.TDSCompany)</span>
+                </td>
+            </tr>
+            <tr>
+                <td class="editor-label">
+                    @Html.LabelFor(model => model.PAN) :
+                </td>
+                <td>
+                    @Html.TextBox("PAN", Model.PAN, new { @class = "mediumWidth" })
+                    @*<input type="text" name="PAN" size="25" value=""></input>@Html.EditorFor(model => model.PAN)*@
+                    <span class="editor-field">@Html.ValidationMessageFor(model => model.PAN)</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Address :
+                </td>
+                <td>
+                    @Html.TextAreaFor(model => model.Address, 3, 50, 1) @*@Html.EditorFor(model => model.Address)*@
+                    <span class="editor-field">@Html.ValidationMessageFor(model => model.Address)</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    City :
+                </td>
+                <td>
+                    @Html.TextBox("City", Model.City, new { @class = "shortWidth" })
+                    @*<input type="text" name="City" size="10" value=""></input>@Html.EditorFor(model => model.City)*@
+                    <span class="editor-field">@Html.ValidationMessageFor(model => model.City)</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    PIN :
+                </td>
+                <td>
+                    @Html.TextBox("PIN", Model.PIN, new { @class = "shortWidth" })
+                    @*<input type="text" name="PIN" size="10" value=""></input>@Html.EditorFor(model => model.PIN)*@
+                    <span class="editor-field">@Html.ValidationMessageFor(model => model.PIN)</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    State :
+                </td>
+                <td>
+                    @Html.DropDownList("StateID", new SelectList(ViewBag.StateList as System.Collections.IEnumerable, "StateID", "Name"), "<- Select State ->")
+                    <span class="editor-field">@Html.ValidationMessageFor(model => model.StateID)</span>
+                </td>
+            </tr>
+            <tr>
+                <td class="editor-label">
+                    Active :
+                </td>
+                <td>
+                    @Html.CheckBox("Active") @*@Html.EditorFor(model => model.Active)*@ <span class="editor-field">@Html.ValidationMessageFor(model => model.Active)</span>
+                </td>
+            </tr>
+            @if (IsFullAccess)
+            {
+                <tr>
+                    <td colspan="2" align="center">
+                        <input type="submit" value="Save" class="buttton" style="width: 45px; height: 23px;
+                            vertical-align: middle;" />
+                    </td>
+                </tr>
+            }
+        </table>
+        @Html.HiddenFor(model => model.AcHeadID)
+        @Html.HiddenFor(model => model.CountryCode)
+        @Html.HiddenFor(model => model.SocietyID)
+        @Html.HiddenFor(model => model.CreatedByID)
+        @Html.HiddenFor(model => model.CreatedOn)
+    </fieldset>
+}
+<div>
+    @*@Html.ActionLink("Back to List", "Index", new { id = ViewBag.SocietySubscriptionID }, new { @class = "EditDelete" })*@
+    <a href="@ViewBag.BackUrl" class="EditDelete">Back to List</a>
+</div>

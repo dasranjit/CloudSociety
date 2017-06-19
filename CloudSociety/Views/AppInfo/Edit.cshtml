@@ -1,0 +1,172 @@
+﻿@model CloudSocietyEntities.AppInfo
+@{
+    ViewBag.Title = "Edit AppInfo";
+    ViewBag.Header = "AppInfo";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+    Dictionary<string, string> mailBody = (Dictionary<string, string>)ViewBag.MailBody;
+}
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+<script type="text/javascript" src="../../Scripts/jquery.min.js"></script>
+<script type="text/javascript">
+    jQuery(document).ready(function () {
+        jQuery(".content").hide();
+        //toggle the componenet with class msg_body
+        jQuery(".heading").click(function () {
+            jQuery(this).next(".content").slideToggle(500);
+        });
+    });
+</script>
+<style type="text/css">
+    .layer1
+    {
+        margin: 0;
+        padding: 0;
+        width: 860px;
+    }
+    
+    .heading
+    {
+        margin: 1px; /*color: #fff;*/
+        padding: 3px 10px;
+        cursor: pointer; /*position: relative; background-color: #c30;*/
+    }
+    .content
+    {
+        padding: 5px 10px; /* background-color: #fafafa;*/
+    }
+    p
+    {
+        padding: 5px 0;
+    }
+</style>
+<h3>
+    @if (ViewBag.EditStatus != "")
+    {
+       @ViewBag.EditStatus
+    }
+</h3>
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(false, "Following errors occurred while processing your request")
+    <fieldset style="width: 870px">
+        <legend>Edit AppInfo</legend>
+        <table border="0" style="width: 650px">
+            <tr>
+                <td>
+                    <div>
+                        <p class="heading">
+                            <span class="EditDelete">Edit Terms & Conditions</span>
+                        </p>
+                        <div class="content">
+                            <textarea id="TrialTerms" name="TrialTerms" rows="15" cols="100">@Html.Raw(Model.TrialTerms)</textarea></div>
+                        <p class="heading">
+                            <span class="EditDelete">Edit Trial User's Mail Body</span></p>
+                        <div class="content">
+                            <textarea id="TrialMailBody" name="TrialMailBody" rows="15" cols="100">@Html.Raw(mailBody["TrialMailBody"])</textarea></div>
+                        <p class="heading">
+                            <span class="EditDelete">Edit Invoice's Mail Body</span></p>
+                        <div class="content">
+                            <textarea id="InvoiceMailBody" name="InvoiceMailBody" rows="15" cols="100">@Html.Raw(mailBody["InvoiceMailBody"])</textarea></div>
+                        <p class="heading">
+                            <span class="EditDelete">Edit Bill's Mail Body</span></p>
+                        <div class="content">
+                            <textarea id="BillMailBody" name="BillMailBody" rows="15" cols="100">@Html.Raw(mailBody["BillMailBody"])</textarea></div>
+                        <p class="heading">
+                            <span class="EditDelete">Edit Receipt's Mail Body</span>
+                        </p>
+                        <div class="content">
+                            <textarea id="ReceiptMailBody" name="ReceiptMailBody" rows="15" cols="100">@Html.Raw(mailBody["ReceiptMailBody"])</textarea>
+                        </div>
+                        <p class="heading">
+                            <span class="EditDelete">Edit Receipt Reversal's Mail Body</span>
+                        </p>
+                        <div class="content">
+                            <textarea id="ReceiptReversalBody" name="ReceiptReversalBody" rows="15" cols="100">@Html.Raw(mailBody["ReceiptReversalBody"])</textarea>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <table border="0">
+                        <tr>
+                            <td>
+                                Trial Period :
+                            </td>
+                            <td>
+                                @Html.TextBox("TrialPeriod", Model.TrialPeriod, new { @class = "shortWidth" })<span
+                                    class="editor-field"> @Html.ValidationMessageFor(model => model.TrialPeriod)</span>
+                            </td>
+                            <td>
+                                Trial Members Per Society :
+                            </td>
+                            <td>
+                                @Html.TextBox("TrialMembersPerSociety", Model.TrialMembersPerSociety, new { @class = "shortWidth" })<span
+                                    class="editor-field"> @Html.ValidationMessageFor(model => model.TrialMembersPerSociety)</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Training No Of Societies :
+                            </td>
+                            <td>
+                                @Html.TextBox("TrainingNoOfSocieties", Model.TrainingNoOfSocieties, new { @class = "shortWidth" })<span
+                                    class="editor-field"> @Html.ValidationMessageFor(model => model.TrainingNoOfSocieties)</span>
+                            </td>
+                            <td>
+                                Training Members Per Society :
+                            </td>
+                            <td>
+                                @Html.TextBox("TrainingMembersPerSociety", Model.TrainingMembersPerSociety, new { @class = "shortWidth" })
+                                <span class="editor-field">@Html.ValidationMessageFor(model => model.TrainingMembersPerSociety)</span>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <table border="0">
+                        <tr>
+                            <td>
+                                UOM :
+                            </td>
+                            <td>
+                                @Html.DropDownList("UOMID", new SelectList(ViewBag.UOMList as System.Collections.IEnumerable, "UOMID", "Unit"), "<- Select UOM ->")
+                                <span class="editor-field">@Html.ValidationMessageFor(model => model.UOMID)</span>
+                            </td>
+                            <td>
+                                Subscription Tax :
+                            </td>
+                            <td>
+                                @Html.DropDownList("SubscriptionTaxID", new SelectList(ViewBag.SubscriptionTaxList as System.Collections.IEnumerable, "TaxID", "Head"), "<- Select Subscription Tax ->")
+                                <span class="editor-field">@Html.ValidationMessageFor(model => model.SubscriptionTaxID)</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="4">
+                                Subscription Invoice Due Days :
+                                @Html.TextBox("SubscriptionInvoiceDueDays", Model.SubscriptionInvoiceDueDays, new { @class = "shortWidth" })
+                                <span class="editor-field">@Html.ValidationMessageFor(model => model.SubscriptionInvoiceDueDays)</span>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td align="center">
+                    <input type="submit" value="Save" class="buttton" style="width: 45px; height: 23px;
+                        vertical-align: middle;" />
+                </td>
+            </tr>
+        </table>
+    </fieldset>
+    @Html.HiddenFor(model => model.ID)
+    @Html.HiddenFor(model => model.Abbreviation)
+    @Html.HiddenFor(model => model.Currency)
+    @Html.HiddenFor(model => model.CurrencyImagePath)     
+    @Html.HiddenFor(model => model.TrialNoOfSocieties)
+    @Html.HiddenFor(model => model.TrialTerms) 
+    @Html.HiddenFor(model => model.SubscriberTerms)
+}

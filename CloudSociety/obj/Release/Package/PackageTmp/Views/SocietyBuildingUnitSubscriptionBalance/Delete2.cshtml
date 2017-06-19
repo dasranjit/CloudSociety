@@ -1,0 +1,157 @@
+﻿@model CloudSocietyEntities.SocietyBuildingUnitSubscriptionBalance
+@{
+    ViewBag.Title = "Delete Society Building Unit Subscription Balance";
+    ViewBag.Header = " Society Building Unit Subscription Balance";
+    ViewBag.SocietyNameHeader = ViewBag.SocietyHead;
+    Layout = "~/Views/Shared/SocietyLayout.cshtml";
+    bool IsFullAccess = new CloudSociety.Controllers.AppInfoController().IsFullAccess();
+}
+<div class="LabelDel">
+    Are you sure you want to delete this?</div>
+<br />
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(false, "Following errors occurred while processing your request")
+    
+    <fieldset style="width: 500px">
+        <legend>Delete Society Building Unit Subscription Balance </legend>
+        <br />
+        <table border="0" cellpadding="0" cellspacing="0">
+            <tr>
+                <td>
+                    Building Unit :
+                </td>
+                <td>
+                    @Model.SocietyBuildingUnit.SocietyBuilding.Building - @Model.SocietyBuildingUnit.Unit
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Bill Abbreviation :
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.BillAbbreviation)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Society Member :
+                </td>
+                <td>
+                    @Model.SocietyMember.Member
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Principal Amount :
+                </td>
+                <td>
+                    @Model.PrincipalAmount
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Principal Receipt :
+                </td>
+                <td>
+                    @Model.PrincipalReceipt
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Interest Amount :
+                </td>
+                <td>
+                    @Model.InterestAmount
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Interest Receipt :
+                </td>
+                <td>
+                    @Model.InterestReceipt
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Special Bill Amount :
+                </td>
+                <td>
+                    @Model.SpecialBillAmount
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Special Bill Receipt :
+                </td>
+                <td>
+                    @Model.SpecialBillReceipt
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Tax Amount :
+                </td>
+                <td>
+                    @Model.TaxAmount
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Tax Receipt :
+                </td>
+                <td>
+                    @Model.TaxReceipt
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Advance :
+                </td>
+                <td>
+                    @Model.Advance
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Advance Adjusted:
+                </td>
+                <td>
+                    @Model.AdvanceAdjusted
+                </td>
+            </tr>
+            @if (IsFullAccess)
+            {
+            <tr>
+                <td colspan="2" align="center">
+                    <input type="submit" value="Delete" class="buttton" style="width: 45px; height: 23px;" />
+                </td>
+            </tr>
+            }
+        </table>
+    </fieldset>  
+    @Html.HiddenFor(m => m.SocietyBuildingUnitSubscriptionBalanceID)
+    @Html.HiddenFor(m => m.SocietyBuildingUnitID)
+    @Html.HiddenFor(m => m.SocietyMemberID)
+    @*@Html.HiddenFor(m => m.SocietySubscriptionID)*@
+    @Html.HiddenFor(m => m.BillAbbreviation)
+    @*@Html.HiddenFor(m => m.PrincipalAmount)
+    @Html.HiddenFor(m => m.InterestAmount)
+    @Html.HiddenFor(m => m.PrincipalReceipt)
+    @Html.HiddenFor(m => m.InterestReceipt)
+    @Html.HiddenFor(m => m.SpecialBillAmount)
+    @Html.HiddenFor(m => m.SpecialBillReceipt)
+    @Html.HiddenFor(m => m.TaxAmount)
+    @Html.HiddenFor(m => m.TaxReceipt)
+    @Html.HiddenFor(m => m.Advance)
+    @Html.HiddenFor(m => m.AdvanceAdjusted)
+    @Html.HiddenFor(m => m.UpdatedByID)
+    @Html.HiddenFor(m => m.UpdatedOn)*@
+    @Html.HiddenFor(m => m.CreatedByID)
+    @Html.HiddenFor(m => m.CreatedOn)
+        
+}
+<div>
+    @Html.ActionLink("Back to List", "Index2", new { societyBuildingUnitID = Model.SocietyBuildingUnitID, societySubscriptionID = ViewBag.SocietySubscriptionID }, new { @class = "EditDelete" })
+</div>

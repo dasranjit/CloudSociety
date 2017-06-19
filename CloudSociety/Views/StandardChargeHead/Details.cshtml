@@ -1,0 +1,62 @@
+﻿@model CloudSocietyEntities.StandardChargeHead
+@{
+    ViewBag.Title = "Details";
+    ViewBag.Header = "Details";
+   
+}
+
+<fieldset style="width: 580px">
+
+    <legend>Standard ChargeHead</legend>
+     <br />
+    <table border="0" cellpadding="0" cellspacing="0">
+      <tr>
+            <td class="editor-label"  >
+                ChargeHead :
+            </td>
+            <td>
+          @Model.ChargeHead
+            </td>
+        </tr>
+       
+        <tr>
+            <td class="editor-label"  >
+               ChargeInterest :
+            </td>
+            <td>
+                @Model.ChargeInterest
+            </td>
+        </tr>
+        <tr>
+            <td class="editor-label"  >
+               AcHead :
+            </td>
+            <td>
+                @Model.StandardAcHead.AcHead
+            </td>
+        </tr>
+        <tr>
+            <td class="editor-label"  >
+                Nature:
+            </td>
+            <td>
+                  @(Model.Nature == "C" ? "Construction Cost Basis" : (Model.Nature == "A" ? "Per Area" : (Model.Nature == "L" ? "Late Payment Penalty" : (Model.Nature == "E" ? "Early Payment Discount" : ""))))
+            </td>
+        </tr>
+        <tr>
+            <td class="editor-label"  >
+                Sequence :
+            </td>
+            <td>
+                @Model.Sequence
+            </td>
+        </tr>
+       
+    </table>
+    </fieldset>
+<p>
+     @Html.ActionLink("Edit", "Edit", new { id = Model.ChargeHeadID }, new { @class = "EditDelete" }) |
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "EditDelete" })
+</p>
+
+

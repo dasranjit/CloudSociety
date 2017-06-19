@@ -1,0 +1,15 @@
+D:\MySoftware\CloudComputing\CloudSociety\CommonLib\bin\Debug\CommonLib.dll
+D:\MySoftware\CloudComputing\CloudSociety\CommonLib\bin\Debug\CommonLib.pdb
+D:\MySoftware\CloudComputing\CloudSociety\CommonLib\obj\Debug\CommonLib.dll
+D:\MySoftware\CloudComputing\CloudSociety\CommonLib\obj\Debug\CommonLib.pdb
+D:\MySoftware\CloudComputing\CloudSociety\CommonLib\obj\Debug\CommonLib.csprojResolveAssemblyReference.cache
+C:\My Files\MySoftware\CloudComputing\CloudSociety\CommonLib\bin\Debug\CommonLib.dll
+C:\My Files\MySoftware\CloudComputing\CloudSociety\CommonLib\bin\Debug\CommonLib.pdb
+C:\My Files\MySoftware\CloudComputing\CloudSociety\CommonLib\obj\Debug\CommonLib.dll
+C:\My Files\MySoftware\CloudComputing\CloudSociety\CommonLib\obj\Debug\CommonLib.pdb
+C:\My Files\MySoftware\CloudComputing\CloudSociety\CommonLib\obj\Debug\CommonLib.csprojResolveAssemblyReference.cache
+D:\MyWork\CloudSociety\CommonLib\obj\Debug\CommonLib.csprojResolveAssemblyReference.cache
+D:\MyWork\CloudSociety\CommonLib\obj\Debug\CommonLib.dll
+D:\MyWork\CloudSociety\CommonLib\obj\Debug\CommonLib.pdb
+D:\MyWork\CloudSociety\CommonLib\bin\Debug\CommonLib.dll
+D:\MyWork\CloudSociety\CommonLib\bin\Debug\CommonLib.pdb

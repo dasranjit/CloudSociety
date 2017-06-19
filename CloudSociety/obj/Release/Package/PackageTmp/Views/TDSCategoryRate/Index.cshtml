@@ -1,0 +1,73 @@
+﻿@model IEnumerable<CloudSocietyEntities.TDSCategoryRate>
+@{
+    ViewBag.Title = "TDS Category Rate";
+    ViewBag.Header = "TDS Category Rate List";
+    var TDSCategory = (CloudSocietyEntities.TDSCategory)ViewBag.TDSCategory;    
+}
+<span class="SocName">TDS Category : @TDSCategory.Category @*&nbsp;&nbsp; AcHead : @TDSCategory.AcHeads &nbsp;&nbsp; Section: @TDSCategory.Section*@
+</span>
+<br />
+<br />
+<div class="buttton" style="width: 65px;">
+    @Html.ActionLink("Create New", "Create", new { TDSCategoryID = TDSCategory.TDSCategoryID })
+</div>
+<br />
+<table border="0" cellpadding="2" cellspacing="0" class="table">
+    @{
+        int Count = 1;
+    }
+    @foreach (var item in Model)
+    {
+        if (Count == 1)
+        {
+        <tr>
+            <th>
+            </th>
+            <th>
+                From Date
+            </th>
+            <th>
+                To Date
+            </th>
+            <th>
+                Company Rate
+            </th>
+            <th>
+                Non Company Rate
+            </th>
+        </tr>
+        }
+@*@foreach (var item in Model)*@
+        <tr @if ((Count % 2) == 0)
+            { <text> class="TableRow" </text> }
+            else
+            { <text> class="altTableRow" </text>} >
+            <td width="70px" >
+                @Html.ActionLink("Edit", "Edit", new { id = item.TDSCategoryRateID, TDSCategoryID = TDSCategory.TDSCategoryID }, new { @class = "EditDelete" })
+                | @Html.ActionLink("Delete", "Delete", new { id = item.TDSCategoryRateID }, new { @class = "EditDelete" })
+            </td>
+            <td width="100px">
+                @String.Format("{0:dd-MMM-yyyy}", item.FromDate)
+            </td>
+            <td width="100px">
+                @String.Format("{0:dd-MMM-yyyy}", item.ToDate)
+            </td>
+            <td width="100px">
+                @String.Format("{0:F}", item.CompanyRate)
+            </td>
+            <td width="110px">
+                @String.Format("{0:F}", item.NonCompanyRate)
+            </td>
+        </tr>    
+           Count = Count + 1;
+    }
+    @if (Count == 1)
+    {<tr class="TableRow">
+        <td>
+            Currently there are no Records
+        </td>
+    </tr>}
+</table>
+<p>
+    @Html.ActionLink("Back to TDS Category", "Index", "TDSCategory", null, new { @class = "EditDelete" })
+</p>

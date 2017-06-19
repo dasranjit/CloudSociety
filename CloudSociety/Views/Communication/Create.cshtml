@@ -1,0 +1,130 @@
+﻿@model CloudSocietyEntities.Communication
+@{
+    ViewBag.Title = "Create Message";
+    ViewBag.Header = "Message";
+    ViewBag.SocietyNameHeader = ViewBag.SocietyHead;
+    Layout = "~/Views/Shared/SocietyLayout.cshtml";
+    bool IsFullAccess = new CloudSociety.Controllers.AppInfoController().IsFullAccess();  
+}
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+
+<script type="text/javascript">
+   
+    $(document).ready(function () {
+        $('#btnRemoveFile').hide();
+        $("#file_error").html("");
+        $("#btnPreviewFile").hide();
+    });    
+    function onChangefileDoc() {
+        var isValidFileSelected = validateFile();
+        if ($('#fileDoc')[0].files.length > 0) {
+            $('#btnRemoveFile').show();
+            if (isValidFileSelected) {
+                $("#btnPreviewFile").show();
+            } else {
+                $("#btnPreviewFile").hide();
+            }
+        } else {
+            $('#btnRemoveFile').hide();
+            $("#btnPreviewFile").hide();
+        }
+    }
+    function RemoveSelectedFile() {
+        $('#fileDoc').val('');
+        $("#file_error").html("");
+        $('#btnRemoveFile').hide();
+        $("#btnPreviewFile").hide();
+    }
+    function validateFile() {
+        $("#file_error").html("");
+        //Type Validation 
+        var ext = $('#fileDoc').val().split('.').pop().toLowerCase();
+        if ("" != ext && $.inArray(ext, ['gif', 'png', 'jpg', 'jpeg', 'pdf']) == -1) {
+            $("#file_error").html("Please select Image/PDF file.");
+            //$(".demoInputBox").css("border-color", "#FF0000");
+            return false;
+        }
+        //Size validation
+        var maxFileSize = parseInt('@ViewBag.MaxFileSize');
+        if (maxFileSize > 0) {
+            if ($('#fileDoc')[0].files.length > 0) {
+                //$(".demoInputBox").css("border-color", "#F0F0F0");
+                var file_size = $('#fileDoc')[0].files[0].size;
+                if (file_size > (maxFileSize * 1048576)) {
+                    $("#file_error").html("File size should be less than " + maxFileSize + " MB");
+                    //$(".demoInputBox").css("border-color", "#FF0000");
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+</script>
+@using (Html.BeginForm("Create", "Communication", FormMethod.Post, new { enctype = "multipart/form-data", onSubmit = "return validateFile();" }))
+{
+    @Html.ValidationSummary(false, "Following errors occurred while processing your request")
+    <fieldset style="width: 700px">
+        <legend>Create Message</legend>
+        <table border="0" cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="editor-label">
+                    @Html.Label("Type")</td>
+                <td>:</td>
+                <td class="editor-field">
+                    @Html.DropDownList("CommunicationTypeID", new SelectList(ViewBag.communicationTypeList as System.Collections.IEnumerable, "CommunicationTypeID", "CommunicationType1"), "<- Select Communication Type ->", new { @class = "maxWidth" })
+                    <span class="editor-field">@Html.ValidationMessageFor(model => model.CommunicationTypeID)</span>
+                </td>
+            </tr>
+            <tr>
+                <td class="editor-label">
+                    @Html.LabelFor(model => model.Subject)
+                </td>
+                <td>:</td>
+                <td class="editor-field">
+                    @Html.TextBox("Subject", null, new { @class = "maxWidth" })
+                    <span class="editor-field">@Html.ValidationMessageFor(model => model.Subject)</span>
+                </td>
+            </tr>
+            <tr>
+                <td>Upload File  
+                </td>
+                <td>:</td>
+                <td class="editor-field">
+                    <table>
+                        <tr>
+                            <td>
+                                <input type="file" id="fileDoc" name="fileDoc" onchange="onChangefileDoc()" style="margin-left: -7px;" /></td>
+                            <td>
+                                <input id="btnRemoveFile" type="button" onclick="RemoveSelectedFile()" value="Remove File" />
+                            </td>
+                            <td>
+                                @Html.Partial("PVDisplayFilePreviwe")
+                            </td>
+                            <td><span id="file_error" class="field-validation-error"></span></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>Message 
+                </td>
+                <td>:</td>
+                <td class="editor-field">
+                    @Html.TextAreaFor(model => model.Details, 10, 50, 1)
+                    <span class="editor-field">@Html.ValidationMessageFor(model => model.Details)</span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3" align="center">
+                    <input type="submit" value="Create" class="buttton" style="width: 45px; height: 23px;" />
+                </td>
+            </tr>
+        </table>
+        @Html.Hidden("id", (Guid)ViewBag.id)
+    </fieldset>
+}
+<div>
+    @Html.ActionLink("Back to List", "Index", new { id = (Guid)ViewBag.id }, new { @class = "EditDelete" })
+</div>

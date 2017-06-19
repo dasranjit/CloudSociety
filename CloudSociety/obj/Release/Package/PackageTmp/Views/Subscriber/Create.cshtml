@@ -1,0 +1,177 @@
+﻿@model CloudSocietyEntities.Subscriber
+@{
+    ViewBag.Title = "Create New Subscriber";
+    ViewBag.Header = "Subscriber";
+}
+<script type="text/javascript">
+    function stopThis() {
+        var Phone = document.getElementById("Phone").value;
+        var Mobile = document.getElementById("Mobile").value;
+        var errormessage = new String();
+//        if (document.getElementById("PasswordQuestion").value == "")
+//        { errormessage += "\nPassword Question Cannot be blank"; }
+//        if (document.getElementById("PasswordAnswer").value == "")
+//        { errormessage += "\nPassword Answer Cannot be blank"; }
+        if ((Phone == "") && (Mobile == "")) { errormessage += "\nEither phone or mobile is required!"; }
+        // Put field checks above this point.
+        if (errormessage.length > 2) {
+            alert('NOTE:' + errormessage);
+            return false;
+        }
+        return true;
+    }    
+</script>
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(false, "Following errors occurred while processing your request")
+    <fieldset style="width: 650px">
+        <legend>Create New Subscriber</legend>
+        <table border="0" cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="editor-label">
+                    @Html.Label("User Name :")
+                </td>
+                <td>
+                    @Html.TextBox("UserName", null, new { @class = "maxWidth" })@*@Html.EditorFor(model => model.UserName)*@
+                    <span class="editor-field">@Html.ValidationMessageFor(model => model.UserName)</span>
+                </td>
+            </tr>
+            <tr>
+                <td class="editor-label">
+                    @Html.LabelFor(model => model.Email) :
+                </td>
+                <td>
+                    @Html.TextBox("Email", null, new { @class = "maxWidth" })
+                    @*@Html.EditorFor(model => model.Email)*@ <span class="editor-field">@Html.ValidationMessageFor(model => model.Email)</span>
+                </td>
+            </tr>
+            <tr>
+                <td class="editor-label">
+                    @Html.LabelFor(model => model.Password) :
+                </td>
+                <td>
+                    @Html.Password("Password", null, new { @class = "mediumWidth" })@*@Html.EditorFor(model => model.Password)*@
+                    <span class="editor-field">@Html.ValidationMessageFor(model => model.Password)</span>
+                </td>
+            </tr>
+            <tr>
+                <td class="editor-label">
+                    @Html.Label("Confirm Password :")
+                </td>
+                <td>
+                    @Html.Password("ConfirmPassword", null, new { @class = "mediumWidth" })@*@Html.EditorFor(model => model.ConfirmPassword)*@
+                    <div class="editor-field">@Html.ValidationMessageFor(model => model.ConfirmPassword)</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="editor-label">
+                    @Html.Label("Password Question :")
+                </td>
+                <td>
+                    @Html.DropDownList("PasswordQuestion", new SelectList(ViewBag.PasswordQuestions as System.Collections.IEnumerable, "Question", "Question"), "<- Select Password Question ->")
+                    <span class="editor-field">@Html.ValidationMessageFor(model => model.PasswordQuestion)</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.Label("Password Answer :")
+                </td>
+                <td>
+                    @Html.TextBox("PasswordAnswer", null, new { @class = "maxWidth"})
+                    <span class="editor-field">@Html.ValidationMessageFor(model => model.PasswordAnswer)</span>
+                </td>
+            </tr>
+            <tr>
+                <td class="editor-label">
+                    @Html.LabelFor(model => model.Name) :
+                </td>
+                <td>
+                    @Html.TextBox("Name", null, new { @class = "maxWidth" })@*@Html.EditorFor(model => model.Name)*@
+                    <span class="editor-field">@Html.ValidationMessageFor(model => model.Name)</span>
+                </td>
+            </tr>
+            <tr>
+                <td class="editor-label">
+                    @Html.LabelFor(model => model.Abbreviation) :
+                </td>
+                <td>
+                    @Html.TextBox("Abbreviation", null, new { @class = "shortWidth" })@*@Html.EditorFor(model => model.Abbreviation)*@
+                    <span class="editor-field">@Html.ValidationMessageFor(model => model.Abbreviation)</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Address :
+                </td>
+                <td>
+                    @Html.TextAreaFor(model => model.Address, 3, 35, 1) @*@Html.EditorFor(model => model.Address)*@
+                    <span class="editor-field">@Html.ValidationMessageFor(model => model.Address)</span>
+                </td>
+            </tr>
+            <tr>
+                <td class="editor-label">
+                    @Html.LabelFor(model => model.City) :
+                </td>
+                <td>
+                    @Html.TextBox("City", null, new { @class = "shortWidth" })@*@Html.EditorFor(model => model.City)*@
+                    <span class="editor-field">@Html.ValidationMessageFor(model => model.City)</span>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    @Html.LabelFor(model => model.PIN) :&nbsp;&nbsp;&nbsp;&nbsp;
+                    @Html.TextBox("PIN", null, new { @class = "shortWidth" })@*@Html.EditorFor(model => model.PIN)*@
+                    <span class="editor-field">@Html.ValidationMessageFor(model => model.PIN)</span>
+                </td>
+            </tr>
+            <tr>
+                <td class="editor-label">
+                    @Html.LabelFor(model => model.State) :
+                </td>
+                <td>
+                    @Html.DropDownList("StateID", new SelectList(ViewBag.States as System.Collections.IEnumerable, "StateID", "Name"), "<- Select State ->")
+                    @Html.ValidationMessageFor(model => model.StateID)
+                </td>
+            </tr>
+            <tr>
+                <td class="editor-label">
+                    @Html.Label("Contact Person :")
+                </td>
+                <td>
+                    @Html.TextBox("ContactPerson", null, new { @class = "maxWidth" })@*@Html.EditorFor(model => model.ContactPerson)*@
+                    <span class="editor-field">@Html.ValidationMessageFor(model => model.ContactPerson)</span>
+                </td>
+            </tr>
+            <tr>
+                <td class="editor-label">
+                    @Html.LabelFor(model => model.Phone) :
+                </td>
+                <td>
+                    @Html.TextBox("Phone", null, new { @class = "shortWidth" })@*@Html.EditorFor(model => model.Phone)*@
+                    <span class="editor-field">@Html.ValidationMessageFor(model => model.Phone)</span>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    @Html.LabelFor(model => model.Mobile) :&nbsp;&nbsp;&nbsp;&nbsp;
+                    @Html.TextBox("Mobile", null, new { @class = "shortWidth" })@*@Html.EditorFor(model => model.Mobile)*@
+                    <span class="editor-field">@Html.ValidationMessageFor(model => model.Mobile)</span>
+                </td>
+            </tr>
+            <tr>
+                <td align="center" colspan="2">
+                    <input type="submit" value="Create" class="buttton" style="width: 45px; height: 23px;"
+                        onclick="return stopThis();" />
+                </td>
+            </tr>
+        </table>
+    </fieldset>
+}
+@if(Membership.GetUser()!=null) 
+{
+    <div>
+        @Html.ActionLink("Back To List", "Index", "Subscriber", null, new { @class = "EditDelete" })
+    </div>
+}
+else
+{
+    <div>
+        @Html.ActionLink("Terms & Conditions", "Terms", "Subscriber", null, new { @class = "EditDelete" })
+    </div>
+}

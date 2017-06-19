@@ -1,0 +1,105 @@
+﻿@{
+    ViewBag.Title = "Balance Sheet";
+    ViewBag.Header = "Balance Sheet";
+    ViewBag.SocietyNameHeader = ViewBag.SocietyHead;
+    Layout = "~/Views/Shared/SocietyLayout.cshtml";
+    var FromDate = String.Format("{0:dd-MMM-yyyy}", (DateTime)ViewBag.FromDate);
+    var ToDate = String.Format("{0:dd-MMM-yyyy}", (DateTime)ViewBag.ToDate);
+}
+<script src="@Url.Content("~/Scripts/DateFuncs.js")" type="text/javascript"></script>
+@*==== Scripts to be added for AJAX calendar START ====*@
+<script src="@Url.Content("~/Content/AjaxControlToolkit/3.0.20820.16598/3.0.20820.0/MicrosoftAjax.debug.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Content/AjaxControlToolkit/3.0.20820.16598/3.0.20820.0/AjaxControlToolkit.ExtenderBase.BaseScripts.js")"
+        type="text/javascript"></script>
+<script src="@Url.Content("~/Content/AjaxControlToolkit/3.0.20820.16598/3.0.20820.0/AjaxControlToolkit.Common.Common.js")"
+        type="text/javascript"></script>
+<script src="@Url.Content("~/Content/AjaxControlToolkit/3.0.20820.16598/3.0.20820.0/AjaxControlToolkit.Common.DateTime.js")"
+        type="text/javascript"></script>
+<script src="@Url.Content("~/Content/AjaxControlToolkit/3.0.20820.16598/3.0.20820.0/AjaxControlToolkit.Animation.Animations.js")"
+        type="text/javascript"></script>
+<script src="@Url.Content("~/Content/AjaxControlToolkit/3.0.20820.16598/3.0.20820.0/AjaxControlToolkit.PopupExtender.PopupBehavior.js")"
+        type="text/javascript"></script>
+<script src="@Url.Content("~/Content/AjaxControlToolkit/3.0.20820.16598/3.0.20820.0/AjaxControlToolkit.Animation.AnimationBehavior.js")"
+        type="text/javascript"></script>
+<script src="@Url.Content("~/Content/AjaxControlToolkit/3.0.20820.16598/3.0.20820.0/AjaxControlToolkit.Common.Threading.js")"
+        type="text/javascript"></script>
+<script src="@Url.Content("~/Content/AjaxControlToolkit/3.0.20820.16598/3.0.20820.0/AjaxControlToolkit.Compat.Timer.Timer.js")"
+        type="text/javascript"></script>
+<script src="@Url.Content("~/Content/AjaxControlToolkit/3.0.20820.16598/3.0.20820.0/AjaxControlToolkit.Calendar.CalendarBehavior.js")"
+        type="text/javascript"></script>
+<script type="text/javascript">
+    Sys.Application.add_init(appInit);
+    function appInit() {
+        $create(AjaxControlToolkit.CalendarBehavior, { format: "dd-MMM-yyyy" }, null, null, $get('AsOnDate'));
+    }
+    function CheckNullInput() {
+        return CheckFutureDate(document.getElementById("AsOnDate").value);
+    }
+
+    function DateRangeCheck(DateToCheck, SDate, EDate) {
+
+        var firstIndex = SDate.indexOf("-");
+        var secondIndex = SDate.lastIndexOf("-");
+
+        var d1 = SDate.substring(0, firstIndex);
+        var m1 = changeMonthStringtoNumber(SDate.substring(firstIndex + 1, secondIndex));
+        var y1 = SDate.substring(secondIndex + 1, SDate.length);
+        var SDateFull = m1 + "/" + d1 + "/" + y1;
+
+        var d2 = EDate.substring(0, firstIndex);
+        var m2 = changeMonthStringtoNumber(EDate.substring(firstIndex + 1, secondIndex));
+        var y2 = EDate.substring(secondIndex + 1, EDate.length);
+        var EDateFull = m2 + "/" + d2 + "/" + y2;
+
+        var d0 = DateToCheck.substring(0, firstIndex);
+        var m0 = changeMonthStringtoNumber(DateToCheck.substring(firstIndex + 1, secondIndex));
+        var y0 = DateToCheck.substring(secondIndex + 1, DateToCheck.length);
+        var DateToCheckFull = m0 + "/" + d0 + "/" + y0;
+
+        var startDate = new Date(SDateFull);
+        var endDate = new Date(EDateFull);
+        var checkDate = new Date(DateToCheckFull);
+
+        if (SDate != '' && EDate != '' && (checkDate < startDate || checkDate > endDate)) {
+            alert('DATE must be between ' + SDate + ' and ' + EDate);
+            return false;
+        }
+        return true;
+    }
+
+    function Validate(Start, End) {
+        var AsOnDate = document.getElementById("AsOnDate").value;
+        return (DateRangeCheck(AsOnDate, Start, End));  //  && CheckNullInput()
+    }
+</script>
+@*==== END ====*@
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(false, "Following errors occurred while processing your request")
+    <fieldset style="width: 450px">
+        <legend>Fill The Following Field</legend>
+        <table>
+            <tr>
+                <td>
+                    As On Date :
+                </td>
+                <td>
+                    @Html.TextBox("AsOnDate", ToDate, new { @class = "shortWidth" })                    
+                </td>
+            </tr>
+            <tr>
+                <td align="center" colspan="2">
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+@*                    <input type="submit" value="GO" class="buttton" style="width: 40px; height: 23px;
+                        vertical-align: middle;" onclick="return CheckNullInput();" />*@
+                    <input type="submit" value="GO" class="buttton" style="width: 40px; height: 23px;
+                        vertical-align: middle;" onclick="return Validate('@FromDate', '@ToDate');" />
+                </td>
+            </tr>
+        </table>
+    </fieldset>  
+    @Html.Hidden("SocietySubscriptionID", (Guid)ViewBag.SocietySubscriptionID)          
+}
+<div>
+    @Html.ActionLink("Back", "Menu", "SocietySubscription", new { id = ViewBag.SocietySubscriptionID }, new { @class = "EditDelete" })
+</div>

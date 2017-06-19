@@ -1,0 +1,158 @@
+﻿@model CloudSocietyEntities.SocietyCollectionReversal
+@{
+    ViewBag.Title = "Society Collection Reversal Details";
+    ViewBag.Header = "Society Collection Reversal";
+    ViewBag.SocietyNameHeader = ViewBag.SocietyHead;
+    Layout = "~/Views/Shared/SocietyLayout.cshtml";
+    bool IsFullAccess = new CloudSociety.Controllers.AppInfoController().IsFullAccess();
+}
+<fieldset style="width: 600px">
+    <legend>Society Collection Reversal Details</legend>
+    <table>
+        <tr>
+            <td>
+                Doc No :
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.DocNo)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Bill Abbreviation
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.BillAbbreviation)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Building Unit
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.SocietyBuildingUnit.SocietyBuilding.Building) -
+                @Html.DisplayFor(model => model.SocietyBuildingUnit.Unit)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Society Member
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.SocietyMember.Member)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Reversal Date
+            </td>
+            <td>
+                @String.Format("{0:dd-MMM-yyyy}", Model.ReversalDate)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Collection Receipt
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.SocietyReceipt.SocietyReceiptDetails)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Particulars
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Particulars)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Principal Adjusted
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.PrincipalAdjusted)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Interest Adjusted
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.InterestAdjusted)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                NonChg Adjusted
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.NonChgAdjusted)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Tax Adjusted
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.TaxAdjusted)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Advance
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Advance)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Pay Mode :
+            </td>
+            <td>
+                @(Model.SocietyPayMode != null ? Model.SocietyPayMode.PayMode : "")
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Pay Ref No :
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.PayRefNo)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Pay Ref Date :
+            </td>
+            <td>
+                @String.Format("{0:dd-MMM-yyyy}", Model.PayRefDate)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Bank :
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Bank.Name)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Branch :
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Branch)
+            </td>
+        </tr>
+    </table>
+</fieldset>
+<div>
+@*    @if (IsFullAccess && (bool)ViewBag.YearOpen)
+    {
+        @Html.ActionLink("Edit", "Edit", new { id = Model.SocietyCollectionReversalID }, new { @class = "EditDelete" }) 
+        <text>|</text>
+    }*@
+    @Html.ActionLink("Back To List", "Index", new { id = Model.SocietySubscriptionID }, new { @class = "EditDelete" })
+</div>

@@ -1,0 +1,150 @@
+﻿@model CloudSocietyEntities.SocietyBuildingUnitSubscriptionBalance
+@{
+    ViewBag.Title = "Edit Society Building Unit Subscription Balance";
+    ViewBag.Header = " Society Building Unit Subscription Balance";
+    ViewBag.SocietyNameHeader = ViewBag.SocietyHead;
+    Layout = "~/Views/Shared/SocietyLayout.cshtml";
+    bool IsFullAccess = new CloudSociety.Controllers.AppInfoController().IsFullAccess();
+}
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+<span class="SocName">Building Unit: @Model.SocietyBuildingUnit.SocietyBuilding.Building
+    - @Model.SocietyBuildingUnit.Unit</span>
+<br />
+<br />
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(false, "Following errors occurred while processing your request")
+    <fieldset style="width: 450px">
+        <legend>Edit Society Building Unit Subscription Balance</legend>
+        <br />
+        <table border="0" cellpadding="0" cellspacing="0">
+            <tr>
+                <td>
+                    Society Member :
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.SocietyMember.Member)
+                    @*@Html.DropDownList("SocietyMemberID", new SelectList(ViewBag.SocietyMembersList as System.Collections.IEnumerable, "SocietyMemberID", "Member"))
+                    <span class="editor-field">@Html.ValidationMessageFor(model => model.SocietyMemberID)</span>*@
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Bill Abbreviation :
+                </td>
+                <td>
+                    @Html.DropDownList("BillAbbreviation", new SelectList(ViewBag.BillAbbreviationList as System.Collections.IEnumerable, "BillAbbreviation", "BillAbbreviation"))
+                    <span class="editor-field">@Html.ValidationMessageFor(model => model.BillAbbreviation)</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Principal Amount :
+                </td>
+                <td>
+                    @Html.TextBox("PrincipalAmount", Model.PrincipalAmount, new { @class = "shortWidth" })@*@Html.EditorFor(model => model.PrincipalAmount)*@
+                    <span class="editor-field">@Html.ValidationMessageFor(model => model.PrincipalAmount)</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Principal Receipt :
+                </td>
+                <td>
+                    @Html.TextBox("PrincipalReceipt", Model.PrincipalReceipt, new { @class = "shortWidth" })@*@Html.EditorFor(model => model.PrincipalReceipt)*@
+                    <span class="editor-field">@Html.ValidationMessageFor(model => model.PrincipalReceipt)</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Interest Amount :
+                </td>
+                <td>
+                    @Html.TextBox("InterestAmount", Model.InterestAmount, new { @class = "shortWidth" })@*@Html.EditorFor(model => model.InterestAmount)*@
+                    <span class="editor-field">@Html.ValidationMessageFor(model => model.InterestAmount)</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Interest Receipt :
+                </td>
+                <td>
+                    @Html.TextBox("InterestReceipt", Model.InterestReceipt, new { @class = "shortWidth" })@*@Html.EditorFor(model => model.InterestReceipt)*@
+                    <span class="editor-field">@Html.ValidationMessageFor(model => model.InterestReceipt)</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Special Bill Amount :
+                </td>
+                <td>
+                    @Html.TextBox("SpecialBillAmount", Model.SpecialBillAmount, new { @class = "shortWidth" })@*@Html.EditorFor(model => model.SpecialBillAmount)*@
+                    <span class="editor-field">@Html.ValidationMessageFor(model => model.SpecialBillAmount)</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Special Bill Receipt :
+                </td>
+                <td>
+                    @Html.TextBox("SpecialBillReceipt", Model.SpecialBillReceipt, new { @class = "shortWidth" })@*@Html.EditorFor(model => model.SpecialBillReceipt)*@
+                    <span class="editor-field">@Html.ValidationMessageFor(model => model.SpecialBillReceipt)</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Tax Amount :
+                </td>
+                <td>
+                    @Html.TextBox("TaxAmount", Model.TaxAmount, new { @class = "shortWidth" })@*@Html.EditorFor(model => model.SpecialBillReceipt)*@
+                    <span class="editor-field">@Html.ValidationMessageFor(model => model.TaxAmount)</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Tax Receipt :
+                </td>
+                <td>
+                    @Html.TextBox("TaxReceipt", Model.TaxReceipt, new { @class = "shortWidth" })@*@Html.EditorFor(model => model.TaxReceipt)*@
+                    <span class="editor-field">@Html.ValidationMessageFor(model => model.TaxReceipt)</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Advance :
+                </td>
+                <td>
+                    @Html.TextBox("Advance", Model.Advance, new { @class = "shortWidth" })@*@Html.EditorFor(model => model.TaxReceipt)*@
+                    <span class="editor-field">@Html.ValidationMessageFor(model => model.Advance)</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Advance Adjusted:
+                </td>
+                <td>
+                    @Html.TextBox("AdvanceAdjusted", Model.AdvanceAdjusted, new { @class = "shortWidth" })
+                    <span class="editor-field">@Html.ValidationMessageFor(model => model.AdvanceAdjusted)</span>
+                </td>
+            </tr>
+            @if (IsFullAccess)
+            {
+            <tr>
+                <td colspan="2" align="center">
+                    <input type="submit" value="Save" class="buttton" style="width: 45px; height: 23px;" />
+                </td>
+            </tr>
+            }
+        </table>
+        @Html.HiddenFor(model => model.SocietyBuildingUnitSubscriptionBalanceID)
+        @Html.HiddenFor(model => model.SocietySubscriptionID)
+        @Html.HiddenFor(model => model.SocietyBuildingUnitID)
+        @Html.HiddenFor(model => model.SocietyMemberID)
+        @Html.HiddenFor(model => model.CreatedByID)
+        @Html.HiddenFor(model => model.CreatedOn)
+    </fieldset>
+}
+<div>
+    @Html.ActionLink("Back to List", "Index2", new { societyBuildingUnitID = Model.SocietyBuildingUnitID, societySubscriptionID = ViewBag.SocietySubscriptionID }, new { @class = "EditDelete" })
+</div>

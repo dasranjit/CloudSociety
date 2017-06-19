@@ -1,0 +1,56 @@
+﻿@model CloudSocietyEntities.Subscriber
+
+@{
+    ViewBag.Title = "Details";
+    
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Subscriber</legend>
+
+    <div class="display-label">Name</div>
+    <div class="display-field">@Model.Name</div>
+
+    <div class="display-label">Abbreviation</div>
+    <div class="display-field">@Model.Abbreviation</div>
+
+    <div class="display-label">Address</div>
+    <div class="display-field">@Model.Address</div>
+
+    <div class="display-label">City</div>
+    <div class="display-field">@Model.City</div>
+
+    <div class="display-label">PIN</div>
+    <div class="display-field">@Model.PIN</div>
+
+    <div class="display-label">State</div>
+    <div class="display-field">@Model.State.Name</div>
+
+    <div class="display-label">Country</div>
+    <div class="display-field">@Model.Country.Name</div>
+
+    <div class="display-label">ContactPerson</div>
+    <div class="display-field">@Model.ContactPerson</div>
+
+    <div class="display-label">Phone</div>
+    <div class="display-field">@Model.Phone</div>
+
+    <div class="display-label">Mobile</div>
+    <div class="display-field">@Model.Mobile</div>
+
+    <div class="display-label">Active</div>
+    <div class="display-field">@(Model.Active?"Y":"N")</div>
+
+    <div class="display-label">CreatedOn</div>
+    <div class="display-field">@String.Format("{0:g}", Model.CreatedOn)</div>
+
+    <div class="display-label">UpdatedOn</div>
+    <div class="display-field">@String.Format("{0:g}", Model.UpdatedOn)</div>
+</fieldset>
+<p>
+@*    @Html.ActionLink("Edit", "Edit", new { id=Model.SubscriberID }) |
+*@    @Html.ActionLink("Back to List", "Index")
+</p>
+

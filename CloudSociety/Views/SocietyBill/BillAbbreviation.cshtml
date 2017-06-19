@@ -1,0 +1,35 @@
+﻿@model CloudSocietyEntities.SocietyBill
+@{
+    ViewBag.Title = "List Of Bill Abbreviations";
+    ViewBag.Header = "List of Bill Abbreviations";
+    ViewBag.SocietyNameHeader = ViewBag.SocietyHead;
+    Layout = "~/Views/Shared/SocietyLayout.cshtml";
+    var societyBillSeriesList = ViewBag.SocietyBillSeriesList;
+}
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(false, "Following errors occurred while processing your request")
+   
+    <br />
+if (societyBillSeriesList.Count > 0)
+{      
+        
+    <div>
+        Bill Abbreviation : @Html.DropDownList("BillAbbreviation", new SelectList(ViewBag.SocietyBillSeriesList as System.Collections.IEnumerable, "BillAbbreviation", "BillAbbreviation"), "<- Select Bill Abbreviation ->")
+        &nbsp&nbsp&nbsp
+        <input type="submit" value=" GO " class="buttton" style="width: 45px; height: 23px;
+            vertical-align: middle;" />
+    </div>  
+}
+else
+{
+    <div class="TableRow">
+        Currently there are no Records</div>
+}
+}
+<div>
+    @Html.ActionLink("Back", "Menu", "SocietySubscription", new { id = ViewBag.SocietySubscriptionID }, new { @class = "EditDelete" })
+</div>

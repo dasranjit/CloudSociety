@@ -1,0 +1,31 @@
+﻿@model IEnumerable<CloudSocietyEntities.StandardAcSubCategory>
+@{
+    ViewBag.Title = "Account Sub-Category";
+    ViewBag.Header = "Account Sub-Category List";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<div class="buttton" style="width: 65px;">
+    @Html.ActionLink("Create New", "Create")</div>
+<br />
+@if(Model.Count()>0){
+    var grid = new WebGrid(Model, canPage: true, defaultSort: "Sequence", canSort: true, rowsPerPage: 10);    
+    grid.Pager(WebGridPagerModes.NextPrevious);
+
+    WebGridColumn[] columnSet = new WebGridColumn[4];
+    columnSet[0] = grid.Column("", "", format: @<text><div style='width: 70px'>@Html.ActionLink("Edit", "Edit", new { id = item.SubCategoryID, backUrl = grid.GetPageUrl(grid.PageIndex) }, new { @class = "EditDelete" }) | @Html.ActionLink("Delete", "Delete", new { id = item.SubCategoryID, backUrl = grid.GetPageUrl(grid.PageIndex) }, new { @class = "EditDelete" })</text>, canSort: false);
+    columnSet[1] = grid.Column("SubCategory", "Sub-Category",@<text><div style ='width : 300px'>@item.SubCategory</div></text>);
+    columnSet[2] = grid.Column("CategoryID", "Category", format: @<text><div style ='width : 300px'>@(item.CategoryID != null ? item.StandardAcCategory.Category : "")</div></text>);
+    columnSet[3] = grid.Column("Sequence", "Sequence");  
+    @grid.GetHtml(tableStyle: "table", footerStyle: "webgrid-footer", rowStyle: "TableRow", alternatingRowStyle: "altTableRow", columns: grid.Columns(columnSet))
+}
+else
+{
+    <table> 
+          <tr class="TableRow">
+            <td>
+                No Record Found.
+            </td>
+        </tr> 
+   </table>  
+}
+

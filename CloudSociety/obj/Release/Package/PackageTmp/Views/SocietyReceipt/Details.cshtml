@@ -1,0 +1,169 @@
+﻿@model CloudSocietyEntities.SocietyReceipt
+@{
+    ViewBag.Title = "Society Receipt Details";
+    ViewBag.Header = "Society Receipt";
+    ViewBag.SocietyNameHeader = ViewBag.SocietyHead;
+    Layout = "~/Views/Shared/SocietyLayout.cshtml";
+    bool IsFullAccess = new CloudSociety.Controllers.AppInfoController().IsFullAccess();
+    bool IsMember = (bool)ViewBag.IsMember;
+}
+<fieldset style="width: 600px">
+    <legend>Society Receipt Details</legend>
+    <table border="0" cellpadding="0" cellspacing="0">
+        <tr>
+            <td>
+                Receipt No :
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.ReceiptNo)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Receipt Date :
+            </td>
+            <td>
+                @String.Format("{0:dd-MMM-yyyy}", Model.ReceiptDate)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Building Unit :
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.SocietyBuildingUnit.SocietyBuilding.Building) -
+                @Html.DisplayFor(model => model.SocietyBuildingUnit.Unit)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Member :
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.SocietyMember.Member)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Bill Abbreviation :
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.BillAbbreviation)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Particulars :
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Particulars)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Amount :
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Amount)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Principal Adjusted :
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.PrincipalAdjusted)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                NonChg Adjusted :
+            </td>
+            <td>@Html.DisplayFor(model => model.NonChgAdjusted)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Interest Adjusted :
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.InterestAdjusted)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Tax Adjusted :
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.TaxAdjusted)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Advance :
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Advance)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Pay Mode :
+            </td>
+            <td>
+                @(Model.SocietyPayMode != null ? Model.SocietyPayMode.PayMode : "")
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Pay Ref No :
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.PayRefNo)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Pay Ref Date :
+            </td>
+            <td>
+                @String.Format("{0:dd-MMM-yyyy}", Model.PayRefDate)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Bank :
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Bank.Name)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Branch :
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Branch)
+            </td>
+        </tr>
+    </table>
+</fieldset>
+<div>
+    @if (!IsMember && IsFullAccess && Model.SocietyCollectionReversals.Count == 0 && (bool)ViewBag.YearOpen)
+    {
+        @*@Html.ActionLink("Edit", "Edit", new { id = Model.SocietyReceiptID }, new { @class = "EditDelete" })
+        <text>|</text>*@
+    }
+    @*@Html.ActionLink("Print Receipt", "Print", new { id = Model.SocietyReceiptID }, new { target = "_blank", @class = "EditDelete" })
+    |*@
+    @Html.ActionLink("DownloadPDF", "CreatePdf", new { id = Model.SocietyReceiptID }, new { @class = "EditDelete" })
+    |
+    @if (IsMember)
+    {
+        @Html.ActionLink("Back to List", "MemberReceiptIndex", new { id = Model.SocietySubscriptionID }, new { @class = "EditDelete" })
+    }
+    else
+    {
+        @Html.ActionLink("Back to List", "Index", new { id = Model.SocietySubscriptionID }, new { @class = "EditDelete" })
+    }
+</div>

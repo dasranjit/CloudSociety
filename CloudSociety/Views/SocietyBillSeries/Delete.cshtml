@@ -1,0 +1,128 @@
+﻿@model CloudSocietyEntities.SocietyBillSeries
+@{
+    ViewBag.Title = "Delete Bill Series";
+    ViewBag.Header = " Bill Series";
+    ViewBag.SocietyNameHeader = ViewBag.SocietyHead;
+    Layout = "~/Views/Shared/SocietyLayout.cshtml";
+    bool IsFullAccess = new CloudSociety.Controllers.AppInfoController().IsFullAccess();
+}
+<div class="LabelDel">
+    Are you sure you want to delete this?
+</div>
+<br />
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(model => model.BillAbbreviation)
+    @Html.ValidationSummary(false, "Following errors occurred while processing your request")        
+    <fieldset style="width: 500px">
+        <legend>Bill Series</legend>
+        <table>
+            <tr>
+                <td>
+                    Bill Abbreviation :
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.BillAbbreviation)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Tax :
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Tax.Head)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Billing Frequency :
+                </td>
+                <td>
+                    @*@(Model.BillingFrequency == "M" ? "Monthly" : (Model.BillingFrequency == "Q" ? "Quarterly" : (Model.BillingFrequency == "H" ? "Half-Yearly" : (Model.BillingFrequency == "Y" ? "Yearly" : ""))))*@
+                    @(Model.BillingFrequency == "M" ? "Monthly" : (Model.BillingFrequency == "B" ? "Bi-Monthly" : (Model.BillingFrequency == "Q" ? "Quarterly" : (Model.BillingFrequency == "H" ? "Half-Yearly" : (Model.BillingFrequency == "Y" ? "Yearly" : "")))))
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Bill Day :
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.BillDay)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Due Days :
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.DueDays)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Terms :
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Terms)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Note :
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Note)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Print Area :
+                </td>
+                <td>
+                    @if (Model.PrintArea == true)
+                    { <text>
+                        <img alt="Selected" src="@Url.Content("~/Content/Images/tick-green.png")"  />
+                        </text> }
+                    else
+                    { <text>
+                        <img alt="Not Selected" src="@Url.Content("~/Content/Images/Copy of cancel-icon.png")" /></text> }
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Interest Rate :
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.InterestRate)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Minimum Interest :
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.MinimumInterest)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    OS Adjustment :
+                </td>
+                <td>
+                    @(Model.OSAdjustment == "A" ? "Tax/Int/NonChg/Chg" : (Model.OSAdjustment == "B" ? "Tax/Chg/Int/NonChg" : ""))
+                </td>
+            </tr>
+            @if (IsFullAccess)
+            {
+                <tr>
+                    <td align="center" colspan="2">
+                        <input type="submit" value="Delete" class="buttton" style="width: 45px; height: 23px;" />
+                    </td>
+                </tr>
+            }
+        </table>
+    </fieldset>   
+}
+<div>
+    @Html.ActionLink("Back to List", "Index", new { id = ViewBag.SocietySubscriptionID }, new { @class = "EditDelete" })
+</div>

@@ -1,0 +1,225 @@
+﻿@model IEnumerable<CloudSocietyEntities.SocietyReceipt>
+@{
+    ViewBag.Title = "Society Receipts";
+    ViewBag.Header = "Society Receipt List";
+    ViewBag.SocietyNameHeader = ViewBag.SocietyHead;
+    Layout = "~/Views/Shared/SocietyLayout.cshtml";
+    var lockedTillDate = (DateTime?)ViewBag.LockedTillDate;
+    //ModelStateDictionary ModelState = (ModelStateDictionary)ViewBag.ModelState;
+}
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/DateFuncs.js")" type="text/javascript"></script>
+@*==== Scripts to be added for AJAX calendar START ====*@
+<script src="@Url.Content("~/Content/AjaxControlToolkit/3.0.20820.16598/3.0.20820.0/MicrosoftAjax.debug.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Content/AjaxControlToolkit/3.0.20820.16598/3.0.20820.0/AjaxControlToolkit.ExtenderBase.BaseScripts.js")"
+        type="text/javascript"></script>
+<script src="@Url.Content("~/Content/AjaxControlToolkit/3.0.20820.16598/3.0.20820.0/AjaxControlToolkit.Common.Common.js")"
+        type="text/javascript"></script>
+<script src="@Url.Content("~/Content/AjaxControlToolkit/3.0.20820.16598/3.0.20820.0/AjaxControlToolkit.Common.DateTime.js")"
+        type="text/javascript"></script>
+<script src="@Url.Content("~/Content/AjaxControlToolkit/3.0.20820.16598/3.0.20820.0/AjaxControlToolkit.Animation.Animations.js")"
+        type="text/javascript"></script>
+<script src="@Url.Content("~/Content/AjaxControlToolkit/3.0.20820.16598/3.0.20820.0/AjaxControlToolkit.PopupExtender.PopupBehavior.js")"
+        type="text/javascript"></script>
+<script src="@Url.Content("~/Content/AjaxControlToolkit/3.0.20820.16598/3.0.20820.0/AjaxControlToolkit.Animation.AnimationBehavior.js")"
+        type="text/javascript"></script>
+<script src="@Url.Content("~/Content/AjaxControlToolkit/3.0.20820.16598/3.0.20820.0/AjaxControlToolkit.Common.Threading.js")"
+        type="text/javascript"></script>
+<script src="@Url.Content("~/Content/AjaxControlToolkit/3.0.20820.16598/3.0.20820.0/AjaxControlToolkit.Compat.Timer.Timer.js")"
+        type="text/javascript"></script>
+<script src="@Url.Content("~/Content/AjaxControlToolkit/3.0.20820.16598/3.0.20820.0/AjaxControlToolkit.Calendar.CalendarBehavior.js")"
+        type="text/javascript"></script>
+@*==== END ====*@
+@if (!ViewBag.ReadOnly)
+{
+    <div class="buttton" style="width: 65px;">
+        @Html.ActionLink("Create New", "ListOfBuildingUnitBillAbbreviation", new { id = ViewBag.SocietySubscriptionID })</div>
+    <br />    
+}
+@if (Model != null)
+{
+<script type="text/javascript">
+    Sys.Application.add_init(appInit);
+    function appInit() {
+        $create(AjaxControlToolkit.CalendarBehavior, { format: "dd-MMM-yyyy" }, null, null, $get('FromDate'));
+        $create(AjaxControlToolkit.CalendarBehavior, { format: "dd-MMM-yyyy" }, null, null, $get('ToDate'));
+    }
+</script>
+    using (Html.BeginForm())
+    {
+    @Html.ValidationSummary(false, "Following errors occurred while processing your request")
+    <fieldset style="width: 480px">
+        <table border="0" cellpadding="0" cellspacing="0">
+            <tr>
+                <td>
+                    From&nbsp;Date&nbsp;:&nbsp;&nbsp;
+                    @Html.TextBox("FromDate", String.Format("{0:dd-MMM-yyyy}", (DateTime)ViewBag.FromDate), new { @class = "shortWidth" })
+                </td>
+                <td>
+                    &nbsp;&nbsp;
+                    To&nbsp;Date&nbsp;:&nbsp;&nbsp;
+                    @Html.TextBox("ToDate", String.Format("{0:dd-MMM-yyyy}", (DateTime)ViewBag.ToDate), new { @class = "shortWidth" })
+                </td>
+                <td>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="submit" value="GO" class="buttton" style="width: 45px; height: 23px;
+                        vertical-align: middle;" onclick="return CompareTwoDates();" />
+                </td>
+            </tr>
+        </table>
+    </fieldset>
+    }
+    <span class="EditDelete">
+        @ViewBag.SendMessage
+    </span>
+<table border="0" cellpadding="2" cellspacing="0" class="table">
+    @{
+    int Count = 1;
+    }
+    @foreach (var item in Model)
+    {
+        if (Count == 1)
+        {
+        <tr>
+            <th>
+            </th>
+            <th>
+                Building Unit
+            </th>
+            <th>
+                Receipt Date
+            </th>
+            <th>
+                Receipt No
+            </th>
+            <th>
+                Amount
+            </th>
+            <th>
+                Principal Adjusted
+            </th>
+            <th>
+                Interest Adjusted
+            </th>
+            <th>
+                NonChg Adjusted
+            </th>
+            <th>
+                Tax Adjusted
+            </th>
+            <th>
+                Advance
+            </th>
+            @*<th>
+                Particulars
+            </th>
+            <th>
+                Pay Mode Code
+            </th>
+            <th>
+                Pay Ref No
+            </th>
+            <th>
+                Pay Ref Date
+            </th>
+            <th>
+                Bank
+            </th>
+            <th>
+                Branch
+            </th>
+            *@
+        </tr>
+        }  
+        <tr @if ((Count % 2) == 0)
+            { <text> class="TableRow" </text> }
+            else
+            { <text> class="altTableRow" </text>} >
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = item.SocietyReceiptID }, new { @class = "EditDelete" })                
+                @if (!ViewBag.ReadOnly && item.SocietyCollectionReversals.Count == 0 && (lockedTillDate == null || item.ReceiptDate > lockedTillDate))
+                {
+                @*<samp>|</samp>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.SocietyReceiptID }, new { @class = "EditDelete" })*@
+                <samp>|</samp>
+                @Html.ActionLink("Delete", "Delete", new { id = item.SocietyReceiptID }, new { @class = "EditDelete" }) 
+                }
+                 | 
+                @Html.ActionLink("Send Email", "SendMail", new { id = item.SocietyReceiptID }, new { @class = "EditDelete" }) 
+                 | 
+                @Html.ActionLink("DownloadPDF", "CreatePdf", new { id = item.SocietyReceiptID }, new { @class = "EditDelete" }) 
+                @if (item.SocietyCollectionReversals.Count > 0)
+                {
+                <samp>| REVERSED: </samp>
+                    @item.SocietyCollectionReversals.First().DocNo;
+                }
+@*               | 
+                @Html.ActionLink("Delete", "Delete", new { id = item.SocietyReceiptID }, new { @class = "EditDelete" })*@ 
+               @*  @Html.ActionLink("Print Receipt", "Print", new { id = item.SocietyReceiptID }, new { target = "_blank", @class = "EditDelete" })*@
+            </td>
+            <td>
+                @item.SocietyBuildingUnit.SocietyBuilding.Building <span>- </span>@item.SocietyBuildingUnit.Unit
+            </td>
+            <td>
+                @String.Format("{0:dd-MMM-yyyy}", item.ReceiptDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReceiptNo)
+            </td>
+            <td align="right">
+                @Html.DisplayFor(modelItem => item.Amount)
+            </td>
+            <td align="right">
+                @Html.DisplayFor(modelItem => item.PrincipalAdjusted)
+            </td>
+            <td align="right">
+                @Html.DisplayFor(modelItem => item.InterestAdjusted)
+            </td>
+            <td align="right">
+                @Html.DisplayFor(modelItem => item.NonChgAdjusted)
+            </td>
+            <td align="right">
+                @Html.DisplayFor(modelItem => item.TaxAdjusted)
+            </td>
+            <td align="right">
+                @Html.DisplayFor(modelItem => item.Advance)
+            </td>
+            @* <td>
+                @Html.DisplayFor(modelItem => item.Particulars)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PayModeCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PayRefNo)
+            </td>
+            <td>
+                @String.Format("{0:dd-MMM-yyyy}", item.PayRefDate)
+            </td>
+            <td>
+                @(item.BankID != null ? item.Bank.Name : "")
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Branch)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AcTransactionID)
+             </td>*@
+        </tr>
+                Count = Count + 1;
+    }
+    @if (Count == 1)
+    {
+        <tr class="TableRow">
+            <td>
+                Currently there are no Records
+            </td>
+        </tr> 
+    }
+</table>
+}
+    <br />
+<div>
+    @Html.ActionLink("Back", "Menu", "SocietySubscription", new { id = ViewBag.SocietySubscriptionID }, new { @class = "EditDelete" })
+</div>

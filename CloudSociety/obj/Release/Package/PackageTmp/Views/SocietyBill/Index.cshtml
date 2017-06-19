@@ -1,0 +1,54 @@
+﻿@model CloudSocietyEntities.SocietyBill
+@{
+    ViewBag.Title = "List Of Bill Dates";
+    ViewBag.Header = "List Of Bill Dates";
+    ViewBag.SocietyNameHeader = ViewBag.SocietyHead;
+    Layout = "~/Views/Shared/SocietyLayout.cshtml";
+    var datelist = (System.Collections.Generic.List<DateTime>)ViewBag.BillDatesList;
+}
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+<span class="SocName">Bill Abbreviation : @ViewBag.BillAbbreviation</span>
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(false, "Following errors occurred while processing your request")
+   
+    <br />
+    <table>
+        @if (datelist.Count == 0)
+        {
+            <tr class="TableRow">
+                <td>
+                    Currently there are no Records
+                </td>
+            </tr> 
+        }
+        else
+        {    
+@* Bill Date : @Html.DropDownList("BillDate", new SelectList(datelist as System.Collections.IEnumerable, "BillDate"), "<- Select Bill Date ->")*@
+            <tr>
+                <td>
+                    Bill Date :
+                </td>
+                <td>
+                    <select name="BillDate">
+                        <option value=""><- Select Bill Date -></option>
+                        @foreach (var items in datelist)
+                        {
+                            <option value="@items">@String.Format("{0:dd-MMM-yyyy}", items)</option>
+                        }
+                    </select>
+                    <span class="editor-field">@Html.ValidationMessageFor(model => model.BillDate)</span>
+                </td>
+                <td>
+                    &nbsp&nbsp&nbsp
+                    <input type="submit" value=" GO " class="buttton" style="width: 45px; height: 23px;
+                        vertical-align: middle;" />
+                </td>
+            </tr>
+        }
+    </table>
+}
+<div>
+    @Html.ActionLink("Back", "Menu", "SocietySubscription", new { id = ViewBag.SocietySubscriptionID }, new { @class = "EditDelete" })
+</div>

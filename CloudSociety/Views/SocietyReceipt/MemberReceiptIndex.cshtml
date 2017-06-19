@@ -1,0 +1,105 @@
+﻿@model IEnumerable<CloudSocietyEntities.SocietyReceipt>
+@{
+    ViewBag.Title = "Member Receipts";
+    ViewBag.Header = ViewBag.MemberName + " - Receipts";
+    ViewBag.SocietyNameHeader = ViewBag.SocietyHead;
+    Layout = "~/Views/Shared/SocietyLayout.cshtml";
+}
+<table border="0" cellpadding="2" cellspacing="0" class="table">
+    @{
+        int Count = 1;
+    }
+    @foreach (var item in Model)
+    {
+        if (Count == 1)
+        {
+        <tr>
+            <th>
+            </th>
+            <th>
+                Building Unit
+            </th>
+            <th>
+                Receipt Date
+            </th>
+            <th>
+                Receipt No
+            </th>
+            <th>
+                Amount
+            </th>
+            <th>
+                Principal Adjusted
+            </th>
+            <th>
+                Interest Adjusted
+            </th>
+            <th>
+                NonChg Adjusted
+            </th>
+            <th>
+                Tax Adjusted
+            </th>
+            <th>
+                Advance
+            </th>
+        </tr>
+        }  
+        <tr @if ((Count % 2) == 0)
+            { <text> class="TableRow" </text> }
+            else
+            { <text> class="altTableRow" </text>} >
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = item.SocietyReceiptID }, new { @class = "EditDelete" })                
+                 | 
+                @Html.ActionLink("DownloadPDF", "CreatePdf", new { id = item.SocietyReceiptID }, new { @class = "EditDelete" }) 
+                @if (item.SocietyCollectionReversals.Count > 0)
+                {
+                <samp>| REVERSED: </samp>
+                    @item.SocietyCollectionReversals.First().DocNo;    
+                }
+            </td>
+            <td>
+                @item.SocietyBuildingUnit.SocietyBuilding.Building <span>- </span>@item.SocietyBuildingUnit.Unit
+            </td>
+            <td>
+                @String.Format("{0:dd-MMM-yyyy}", item.ReceiptDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReceiptNo)
+            </td>
+            <td align="right">
+                @Html.DisplayFor(modelItem => item.Amount)
+            </td>
+            <td align="right">
+                @Html.DisplayFor(modelItem => item.PrincipalAdjusted)
+            </td>
+            <td align="right">
+                @Html.DisplayFor(modelItem => item.InterestAdjusted)
+            </td>
+            <td align="right">
+                @Html.DisplayFor(modelItem => item.NonChgAdjusted)
+            </td>
+            <td align="right">
+                @Html.DisplayFor(modelItem => item.TaxAdjusted)
+            </td>
+            <td align="right">
+                @Html.DisplayFor(modelItem => item.Advance)
+            </td>
+        </tr>
+                Count = Count + 1;
+    }
+    @if (Count == 1)
+    {
+        <tr class="TableRow">
+            <td>
+                Currently there are no Records
+            </td>
+        </tr> 
+    }
+</table>
+@*<div>
+<br />
+    @Html.ActionLink("Back", "Menu", "SocietyMember", new { id = ViewBag.SocietySubscriptionID }, new { @class = "EditDelete" })
+</div>
+*@

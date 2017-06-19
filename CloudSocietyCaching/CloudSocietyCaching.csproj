@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{FDFBF78C-10BB-42D1-B31C-6A25D93E9DE7}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CloudSocietyCaching</RootNamespace>
+    <AssemblyName>CloudSocietyCaching</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AcCategoryCache.cs" />
+    <Compile Include="AcHeadCache.cs" />
+    <Compile Include="AcSubCategoryCache.cs" />
+    <Compile Include="AcTransactionAcCache.cs" />
+    <Compile Include="AcTransactionCache.cs" />
+    <Compile Include="AcTransactionTDSCache.cs" />
+    <Compile Include="AppInfoCache.cs" />
+    <Compile Include="BankCache.cs" />
+    <Compile Include="CommunicationCache.cs" />
+    <Compile Include="CommunicationRecipientCache.cs" />
+    <Compile Include="CommunicationReplyCache.cs" />
+    <Compile Include="CommunicationTypeCache.cs" />
+    <Compile Include="DocumentTypeCache.cs" />
+    <Compile Include="CouponCache.cs" />
+    <Compile Include="MemberClassCache.cs" />
+    <Compile Include="OccupationCache.cs" />
+    <Compile Include="ParkingTypeCache.cs" />
+    <Compile Include="PasswordQuestionCache.cs" />
+    <Compile Include="PayModeCache.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RelationshipCache.cs" />
+    <Compile Include="ServiceTypeCache.cs" />
+    <Compile Include="SocietyBillCache.cs.cs" />
+    <Compile Include="SocietyBillChargeHeadCache.cs" />
+    <Compile Include="SocietyBillSeriesCache.cs" />
+    <Compile Include="SocietyBuildingCache.cs" />
+    <Compile Include="SocietyBuildingUnitCache.cs" />
+    <Compile Include="SocietyBuildingUnitChargeHeadCache.cs" />
+    <Compile Include="SocietyBuildingUnitSubscriptionBalanceCache.cs" />
+    <Compile Include="SocietyBuildingUnitTransferCache.cs" />
+    <Compile Include="SocietyCache.cs" />
+    <Compile Include="SocietyChargeHeadCache.cs" />
+    <Compile Include="SocietyCollectionReversalCache.cs" />
+    <Compile Include="SocietyInvestmentCache.cs" />
+    <Compile Include="SocietyMemberCache.cs" />
+    <Compile Include="SocietyMemberDocumentCache.cs" />
+    <Compile Include="SocietyMemberJointHolderCache.cs" />
+    <Compile Include="SocietyMemberNomineeCache.cs" />
+    <Compile Include="SocietyMemberTenantCache.cs" />
+    <Compile Include="SocietyParkingCache.cs" />
+    <Compile Include="SocietyParkingTransferCache.cs" />
+    <Compile Include="SocietyPayModeCache.cs" />
+    <Compile Include="SocietyReceiptCache.cs" />
+    <Compile Include="SocietySpecialBillCache.cs" />
+    <Compile Include="SocietySpecialBillChargeHeadCache.cs" />
+    <Compile Include="SocietySpecialBillUnitCache.cs" />
+    <Compile Include="SocietySubscriptionCache.cs" />
+    <Compile Include="SocietySubscriptionServiceCache.cs" />
+    <Compile Include="SocietyUserCache.cs" />
+    <Compile Include="StandardAcCategoryCache.cs" />
+    <Compile Include="StandardAcHeadCache.cs" />
+    <Compile Include="StandardAcSubCategoryCache.cs" />
+    <Compile Include="StandardChargeHeadCache.cs" />
+    <Compile Include="StateCache.cs" />
+    <Compile Include="SubscriberCache.cs" />
+    <Compile Include="SubscriptionInvoiceCache.cs" />
+    <Compile Include="TariffCache.cs" />
+    <Compile Include="TariffRateCache.cs" />
+    <Compile Include="TaxCache.cs" />
+    <Compile Include="TDSCategoryCache.cs" />
+    <Compile Include="TDSCategoryRateCache.cs" />
+    <Compile Include="UnitTypeCache.cs" />
+    <Compile Include="UOMCache.cs" />
+    <Compile Include="UserCache.cs" />
+    <Compile Include="UserDetailCache.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CloudSocietyEntities\CloudSocietyEntities.csproj">
+      <Project>{C2F40B2E-5285-4F27-98A8-7D69CD414652}</Project>
+      <Name>CloudSocietyEntities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CloudSocietyLib\CloudSocietyLib.csproj">
+      <Project>{08153F79-9412-4660-9847-8E4E5210E5FD}</Project>
+      <Name>CloudSocietyLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CloudSocietyRepositories\CloudSocietyRepositories.csproj">
+      <Project>{6C9DF962-B2D7-44EB-963F-423505FE4A0F}</Project>
+      <Name>CloudSocietyRepositories</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CommonLib\CommonLib.csproj">
+      <Project>{ADBC68CC-88C5-40FB-8754-44E45E014B1E}</Project>
+      <Name>CommonLib</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

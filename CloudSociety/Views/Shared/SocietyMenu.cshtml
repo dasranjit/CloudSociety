@@ -1,0 +1,226 @@
+﻿@{
+    var ShowAccountingMenu = (bool)ViewBag.ShowAccountingMenu;
+    var ShowBillingMenu = (bool)ViewBag.ShowBillingMenu;
+    var IsTrialUser = (bool)(ViewBag.TrialUser);
+    bool IsPrevYearAccountingEnabled = (bool)ViewBag.IsPrevYearAccountingEnabled;
+    string SocietyReportUrl = "~/SocietySubscription/ReportMessage?societySubscriptionID=" + ViewBag.SocietySubscriptionID + "&ControllerName=SocietyReport&ActionName=";
+    string AccountingReportUrl = "~/SocietySubscription/ReportMessage?societySubscriptionID=" + ViewBag.SocietySubscriptionID + "&ControllerName=AccountingReport&ActionName=";    
+}
+<div class="art-nav">
+    <ul class="art-menu">
+        <li><a href="#"><span class="l"></span><span class="r"></span><span class="t">Society</span></a>
+            <ul>
+                <li><a href="@Url.Content("~/Society/Edit/" + ViewBag.SocietySubscriptionID)">Society
+                    Details</a></li>
+                @if (ShowBillingMenu)
+                {
+@*<li><a href="@Url.Content("~/Society/BillingParam/" + ViewBag.SocietySubscriptionID)">Billing Parameters</a></li>*@
+                    if (ShowAccountingMenu)
+                    {
+                    <li><a href="@Url.Content("~/Society/Param/" + ViewBag.SocietySubscriptionID)">Parameters</a></li>
+                    }
+                    <li><a href="@Url.Content("~/SocietyMember/Index/" + ViewBag.SocietySubscriptionID)">
+                        Member Details</a></li>
+                    <li><a href="@Url.Content("~/SocietyBuilding/Index/" + ViewBag.SocietySubscriptionID)">
+                        Building Details</a></li>
+                    <li><a href="@Url.Content("~/SocietyParking/Index/" + ViewBag.SocietySubscriptionID)">
+                        Parking Details</a></li>
+                }
+                <li><a href="@Url.Content("~/SocietyBuildingUnitSubscriptionBalance/Index1/" + ViewBag.SocietySubscriptionID)">
+                    Building Unit Balance</a></li>
+                @if (!IsTrialUser)
+                {
+                    <li><a href="@Url.Content("~/SocietySubscription/ChangeYear/" + ViewBag.SocietySubscriptionID)">
+                        Change Year</a></li>
+                    if (Roles.IsUserInRole("Subscriber") || Roles.IsUserInRole("SocietyAdmin") || Roles.IsUserInRole("CompanyAdmin"))
+                    {
+                        <li><a href="@Url.Content("~/SocietySubscription/Lock/" + ViewBag.SocietySubscriptionID)">
+                            Lock Transactions</a></li>
+                    }
+                }
+            </ul>
+        </li>
+        @if (ShowBillingMenu)
+        {
+@*        <li><a href="#"><span class="l"></span><span class="r"></span><span class="t">Member</span></a>
+            <ul>
+                <li><a href="@Url.Content("~/SocietyShare/Index/" + ViewBag.SocietySubscriptionID)">Shares</a></li>
+                <li><a href="@Url.Content("~/ShareTransfer/Index/" + ViewBag.SocietySubscriptionID)">Share Transfers</a></li>                
+            </ul>
+        </li>
+*@        
+            <li><a href="#"><span class="l"></span><span class="r"></span><span class="t">Billing</span></a>
+                <ul>
+                    <li><a href="@Url.Content("~/SocietyChargeHead/Index/" + ViewBag.SocietySubscriptionID)">
+                        Charge Heads</a></li>
+                    <li><a href="@Url.Content("~/SocietyBillSeries/Index/" + ViewBag.SocietySubscriptionID)">
+                        Bill Series</a></li>
+                    <li><a href="@Url.Content("~/SocietySpecialBill/Index/" + ViewBag.SocietySubscriptionID)">
+                        Special Bills</a></li>
+                    @*<li><a href="@Url.Content("~/SocietyBillTransaction/Index/" + ViewBag.SocietySubscriptionID)">Bill Change</a></li>
+                    <li><a href="@Url.Content("~/SocietyBill/Generate/" + ViewBag.SocietySubscriptionID)">Generate Bill</a></li>*@
+                    <li><a href="@Url.Content("~/SocietyBill/BillAbbreviation/" + ViewBag.SocietySubscriptionID)">
+                        Bills</a></li>
+                @if (Roles.IsUserInRole("Support"))
+                {
+                    <li><a href="@Url.Content("~/SocietyBill/Recreate/" + ViewBag.SocietySubscriptionID)">
+                        Recreate A/c Transactions</a></li>
+                }
+                </ul>
+            </li>
+            <li><a href="#"><span class="l"></span><span class="r"></span><span class="t">Collection</span></a>
+                <ul>
+                    <li><a href="@Url.Content("~/SocietyPayMode/Index/" + ViewBag.SocietySubscriptionID)">
+                        Pay Mode</a></li>
+                    <li><a href="@Url.Content("~/SocietyReceipt/Index/" + ViewBag.SocietySubscriptionID)">
+                        Receipt</a></li>
+                    <li><a href="@Url.Content("~/SocietyReceipt/HoldReceipts/" + ViewBag.SocietySubscriptionID)">
+                        On Hold Receipt</a></li>
+                    <li><a href="@Url.Content("~/SocietyCollectionReversal/Index/" + ViewBag.SocietySubscriptionID)">
+                        Collection Reversal</a></li>
+                    <li><a href="@Url.Content("~/SocietyInvestment/Index/" + ViewBag.SocietySubscriptionID)">
+                        Investment</a></li>
+                </ul>
+            </li>
+        }
+        <li><a href="#"><span class="l"></span><span class="r"></span><span class="t">Report</span></a>
+            <ul>
+                <li><a href="#">Members Report &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                    &nbsp; &nbsp; &nbsp; >></a>
+                    <ul>
+                        @*<li><a href="@Url.Content("~/SocietyReport/PDFMembersReport/" + ViewBag.SocietySubscriptionID)">Member Register</a></li>*@
+                        <li><a href="@Url.Content(SocietyReportUrl + "MembersRegister")" >Member Register</a></li>
+                        <li><a href="@Url.Content(SocietyReportUrl + "NominationRegister")">Nomination Register</a></li>
+                        <li><a href="@Url.Content(SocietyReportUrl + "CommitteeMembersList")">List of Committee
+                            Members</a></li>
+                    </ul>
+                </li>
+                <li><a href="@Url.Content("~/SocietyReport/MemberLedgerReport/" + ViewBag.SocietySubscriptionID)">
+                    Member Ledger Report</a></li>
+                <li><a href="@Url.Content("~/SocietyReport/AmountBalancesReport/" + ViewBag.SocietySubscriptionID)">
+                    Member Balance Report</a></li>
+                <li><a href="@Url.Content(SocietyReportUrl + "JFormReport")">"J" Form</a></li>
+                <li><a href="@Url.Content(SocietyReportUrl + "IFormReport")">"I" Form</a></li>
+                <li><a href="#">Shares Report &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                    &nbsp; &nbsp; &nbsp; &nbsp; >></a>
+                    <ul>
+                        <li><a href="@Url.Content(SocietyReportUrl + "ShareRegister")">Share Register</a></li>
+                        <li><a href="@Url.Content(SocietyReportUrl + "ShareTransferReport")">Share Transfer
+                            Register</a></li>
+                        <li><a href="@Url.Content(SocietyReportUrl + "ShareLedgerReport")">Share Ledger Register</a></li>
+                    </ul>
+                </li>
+                <li><a href="@Url.Content("~/SocietyReport/BillRegisterReport/" + ViewBag.SocietySubscriptionID)">
+                    Bill Register</a></li>
+                <li><a href="@Url.Content("~/SocietyReport/CollectionReport/" + ViewBag.SocietySubscriptionID)" >
+                    Collection Report</a></li>
+                <li><a href="@Url.Content("~/SocietyReport/CollectionReversalReport/" + ViewBag.SocietySubscriptionID)" >
+                    Collection Reversal Report</a></li>
+                <li><a href="@Url.Content("~/SocietyReport/SocietyInvestmentReport/" + ViewBag.SocietySubscriptionID)">
+                    Investment Report</a></li>
+                <li><a href="@Url.Content("~/SocietyReport/ParkingRegister/" + ViewBag.SocietySubscriptionID)">
+                    Parking Register</a></li>
+            </ul>
+        </li>
+        @if (ShowBillingMenu || ShowAccountingMenu)
+        {
+            <li><a href="#"><span class="l"></span><span class="r"></span><span class="t">Account</span></a>
+                <ul>
+                    <li><a href="@Url.Content("~/AcCategory/Index/" + ViewBag.SocietySubscriptionID)">Account
+                        Category</a></li>
+                    <li><a href="@Url.Content("~/AcSubCategory/Index/" + ViewBag.SocietySubscriptionID)">
+                        Account Sub Category</a></li>
+                    <li><a href="@Url.Content("~/AcHead/Index/" + ViewBag.SocietySubscriptionID)">Account</a></li>
+                </ul>
+            </li>
+        }
+        @if (ShowAccountingMenu)
+        {
+            <li><a href="#"><span class="l"></span><span class="r"></span><span class="t">Transaction</span></a>
+                <ul>@*CR-CashReceipt,CP-CashPayment,BP-BankPayment,BR-BankReceipt,PB-PuchaseBill,EB-ExpenseBill,MC-Member Collection,AA-Opening Balance,ZZ-Closing Balance,JV-JournalVoucher,SB-SocietyBill*@
+                    @if (!IsPrevYearAccountingEnabled)
+                    {
+                        <li><a href="@Url.Content("~/AcTransaction/Index?societySubscriptionID=" + ViewBag.SocietySubscriptionID + "&docType=OP")">
+                            Opening Balance</a></li>
+                    }
+                    <li><a href="@Url.Content("~/AcTransaction/Index?societySubscriptionID=" + ViewBag.SocietySubscriptionID + "&docType=CP")">
+                        Cash Payment</a></li>
+                    <li><a href="@Url.Content("~/AcTransaction/Index?societySubscriptionID=" + ViewBag.SocietySubscriptionID + "&docType=CR")">
+                        Cash Receipt</a></li>
+                    <li><a href="@Url.Content("~/AcTransaction/Index?societySubscriptionID=" + ViewBag.SocietySubscriptionID + "&docType=BP")">
+                        Bank Payment</a></li>
+                    <li><a href="@Url.Content("~/AcTransaction/Index?societySubscriptionID=" + ViewBag.SocietySubscriptionID + "&docType=BR")">
+                        Bank Receipt</a></li>
+                    <li><a href="@Url.Content("~/AcTransaction/Index?societySubscriptionID=" + ViewBag.SocietySubscriptionID + "&docType=PB")">
+                        Purchase Bill</a></li>
+                    <li><a href="@Url.Content("~/AcTransaction/Index?societySubscriptionID=" + ViewBag.SocietySubscriptionID + "&docType=EB")">
+                        Expense Bill</a></li>
+                    <li><a href="@Url.Content("~/AcTransaction/Index?societySubscriptionID=" + ViewBag.SocietySubscriptionID + "&docType=JV")">
+                        Journal Voucher</a></li>
+                    @if (ShowBillingMenu)
+                    {
+                        <li><a href="@Url.Content("~/AcTransaction/Index?societySubscriptionID=" + ViewBag.SocietySubscriptionID + "&docType=SB")">
+                            Society Bill</a></li>
+                        <li><a href="@Url.Content("~/AcTransaction/Index?societySubscriptionID=" + ViewBag.SocietySubscriptionID + "&docType=MC")">
+                            Member Collection</a></li>
+                        <li><a href="@Url.Content("~/AcTransaction/Index?societySubscriptionID=" + ViewBag.SocietySubscriptionID + "&docType=CV")">
+                            Collection Reversal</a></li>
+                    }
+                    <li><a href="@Url.Content("~/AcTransaction/Index?societySubscriptionID=" + ViewBag.SocietySubscriptionID + "&docType=YC")">
+                        Year End Closing Entry</a></li>
+                </ul>
+            </li>
+        }
+        @if (ShowAccountingMenu)
+        {
+            <li><a href="#"><span class="l"></span><span class="r"></span><span class="t">A/c Report</span></a>
+                <ul>
+                    <li><a href="@Url.Content("~/AccountingReport/TransactionReport/" + ViewBag.SocietySubscriptionID)">
+                        Transaction Register</a></li>
+                    <li><a href="@Url.Content("~/AccountingReport/GeneralLedgerReport/" + ViewBag.SocietySubscriptionID)">
+                        General Ledger</a></li>
+                    <li><a href="@Url.Content("~/AccountingReport/TrialBalanceReport/" + ViewBag.SocietySubscriptionID)">
+                        Trial Balance</a></li>
+                    <li><a href="@Url.Content("~/AccountingReport/IncomeExpenditureStatement/" + ViewBag.SocietySubscriptionID)">
+                        Income & Expenditure A/c</a></li>
+                    <li><a href="@Url.Content("~/AccountingReport/IncomeExpenditureSchedule/" + ViewBag.SocietySubscriptionID)">
+                        Schedule to Income & Expenditure A/c</a></li>
+                    <li><a href="@Url.Content("~/AccountingReport/BalanceSheet/" + ViewBag.SocietySubscriptionID)">
+                        Balance Sheet</a></li>
+                    <li><a href="@Url.Content("~/AccountingReport/BalanceSheetSchedule/" + ViewBag.SocietySubscriptionID)">
+                        Schedule to Balance Sheet</a></li>
+                    <li><a href="@Url.Content("~/AccountingReport/FinalReports/" + ViewBag.SocietySubscriptionID)">
+                        Final Reports</a></li>
+                    <li><a href="@Url.Content("~/AccountingReport/BankReconciliationReport/" + ViewBag.SocietySubscriptionID)">
+                        Bank Reconciliation Report</a></li>
+                    <li><a href="@Url.Content("~/AccountingReport/ReceiptAndPaymentStatementReport/" + ViewBag.SocietySubscriptionID)">
+                        Receipt & Payment Report</a></li>
+                </ul>
+            </li>              
+            <li><a href="#"><span class="l"></span><span class="r"></span><span class="t">A/c Utility</span></a>
+                <ul>
+                    <li><a href="@Url.Content("~/AcTransaction/CreateAcYearClosingEntry/" + ViewBag.SocietySubscriptionID)">
+                        Create Year End Entry</a></li>
+                    <li><a href="@Url.Content("~/AcTransaction/DeleteAcYearClosingEntry/" + ViewBag.SocietySubscriptionID)">
+                        Delete Year End Entry</a></li>
+                    <li><a href="@Url.Content("~/AcTransactionAc/AskPeriodAcHead/" + ViewBag.SocietySubscriptionID)">
+                        Bank Reconciliation</a></li>
+                </ul>
+            </li> 
+        }
+            <li><a href="#"><span class="l"></span><span class="r"></span><span class="t">Management</span></a>
+                <ul>
+                    <li><a href="@Url.Content("~/Home/Upcoming?id=" + ViewBag.SocietySubscriptionID + "&module=Budgeting")">Budgeting</a></li>
+                    <li><a href="@Url.Content("~/Home/Upcoming?id=" + ViewBag.SocietySubscriptionID + "&module=Online Voting")">Online Voting</a></li>
+                    @*<li><a href="@Url.Content("~/Home/Upcoming?id=" + ViewBag.SocietySubscriptionID + "&module=Notices")">Notices</a></li>
+                    <li><a href="@Url.Content("~/Home/Upcoming?id=" + ViewBag.SocietySubscriptionID + "&module=Meetings")">Meetings</a></li>
+                    <li><a href="@Url.Content("~/Home/Upcoming?id=" + ViewBag.SocietySubscriptionID + "&module=Complaints")">Complaints</a></li>
+                    <li><a href="@Url.Content("~/Home/Upcoming?id=" + ViewBag.SocietySubscriptionID + "&module=Suggestion Box")">Suggestion Box</a></li>*@
+                    <li><a href="@Url.Content("~/Home/Upcoming?id=" + ViewBag.SocietySubscriptionID + "&module=Upload Audit Report")">Upload Audit Report</a></li>
+                    <li><a href="@Url.Content("~/Home/Upcoming?id=" + ViewBag.SocietySubscriptionID + "&module=Upload Bye-Law")">Upload Bye-Law</a></li>
+                    <li><a href="@Url.Content("~/Home/Upcoming?id=" + ViewBag.SocietySubscriptionID + "&module=Upload Plans")">Upload Plans</a></li>
+                    @*<li><a href="@Url.Content("~/Home/Upcoming?id=" + ViewBag.SocietySubscriptionID + "&module=Security Guard Details")">Security Guard Details</a></li>*@
+                </ul>
+            </li> 
+    </ul>
+</div>

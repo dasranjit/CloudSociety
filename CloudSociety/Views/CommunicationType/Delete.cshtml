@@ -1,0 +1,105 @@
+﻿@model CloudSocietyEntities.CommunicationType
+@{
+    ViewBag.Title = "Delete Communication Type";
+    ViewBag.Header = "Communication Type";  
+}
+<div class="LabelDel">
+    Are you sure you want to delete this?</div>
+<br />
+<fieldset style="width: 500px">
+    <legend>Details Of Communication Type</legend>
+    <br />
+    <table>
+        <tr>
+            <td>
+                Type :
+            </td>
+            <td>
+                @Model.CommunicationType1
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Active :
+            </td>
+            <td>
+                @if (Model.Active == true)
+                { <text>
+                    <img src="@Url.Content("~/Content/Images/tick-green.png")"  />
+                    </text> }
+                else
+                { <text>
+                    <img src="@Url.Content("~/Content/Images/Copy of cancel-icon.png")" /></text> }
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Only For Office Bearer :
+            </td>
+            <td>
+                @if (Model.OnlyForOfficeBearer == true)
+                { <text>
+                    <img src="@Url.Content("~/Content/Images/tick-green.png")"  />
+                    </text> }
+                else
+                { <text>
+                    <img src="@Url.Content("~/Content/Images/Copy of cancel-icon.png")" /></text> }
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Is Approval Needed :
+            </td>
+            <td>
+                @if (Model.IsApprovalNeeded == true)
+                { <text>
+                    <img src="@Url.Content("~/Content/Images/tick-green.png")"  />
+                    </text> }
+                else
+                { <text>
+                    <img src="@Url.Content("~/Content/Images/Copy of cancel-icon.png")" /></text> }
+            </td>
+        </tr>
+        <tr>
+            <td>
+               Is To Send Selective :
+            </td>
+            <td>
+                @if (Model.IsToSendSelective == true)
+                { <text>
+                    <img src="@Url.Content("~/Content/Images/tick-green.png")"  />
+                    </text> }
+                else
+                { <text>
+                    <img src="@Url.Content("~/Content/Images/Copy of cancel-icon.png")" /></text> }
+            </td>
+        </tr>
+        <tr>
+            <td>
+               Need To Close :
+            </td>
+            <td>
+                @if (Model.NeedToClose == true)
+                { <text>
+                    <img src="@Url.Content("~/Content/Images/tick-green.png")"  />
+                    </text> }
+                else
+                { <text>
+                    <img src="@Url.Content("~/Content/Images/Copy of cancel-icon.png")" /></text> }
+            </td>
+        </tr>
+
+        @using (Html.BeginForm())
+        {
+            @Html.HiddenFor(model => model.CommunicationTypeID)
+            <tr>
+                <td>
+                    <input type="submit" value="Delete" class="buttton" style="width: 45px; height: 23px;
+                        vertical-align: middle;" />
+                </td>
+            </tr>                     
+        }
+    </table>
+</fieldset>
+<br />
+@Html.ActionLink("Back to List", "Index", null, new { @class = "EditDelete" })

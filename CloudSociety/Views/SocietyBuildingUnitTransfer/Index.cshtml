@@ -1,0 +1,83 @@
+﻿@model IEnumerable<CloudSocietyEntities.SocietyBuildingUnitTransfer>
+@{
+    ViewBag.Title = "Society Building Unit Transfer";
+    ViewBag.Header = "Society Building Unit Transfer";
+    var societyBuildingUnit = (CloudSocietyEntities.SocietyBuildingUnit)ViewBag.SocietyBuildingUnit;
+    ViewBag.SocietyNameHeader = ViewBag.SocietyHead;
+    Layout = "~/Views/Shared/SocietyLayout.cshtml";   
+}
+<span class="SocName">Building : @societyBuildingUnit.SocietyBuilding.Building</span>&nbsp;<span
+    class="SocName">Unit : @societyBuildingUnit.Unit</span>
+<br />
+<br />
+<div class="buttton" style="width: 65px;">
+    @Html.ActionLink("Create New", "Create", new { societyBuildingUnitID = societyBuildingUnit.SocietyBuildingUnitID, societySubscriptionID = ViewBag.SocietySubscriptionID })
+</div>
+<br />
+<table border="0" cellpadding="2" cellspacing="0" class="table">
+    @{
+        int Count = 1;
+    }
+    @foreach (var item in Model)
+    {
+        if (Count == 1)
+        {
+        <tr>
+            <th>
+            </th>
+            <th>
+                Member
+            </th>
+            <th>
+                Transfer Date
+            </th>
+            <th>
+                Remarks
+            </th>
+            <th>
+                Transfer Fee
+            </th>
+            <th>
+                Payment Details
+            </th>
+        </tr>
+        }  
+        <tr @if ((Count % 2) == 0)
+            { <text> class="TableRow" </text> }
+            else
+            { <text> class="altTableRow" </text>} >
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.SocietyBuildingUnitTransferID, societySubscriptionID = ViewBag.SocietySubscriptionID }, new { @class = "EditDelete" })
+                | @Html.ActionLink("Delete", "Delete", new { id = item.SocietyBuildingUnitTransferID, societySubscriptionID = ViewBag.SocietySubscriptionID }, new { @class = "EditDelete" })
+            </td>
+            <td>
+                @item.SocietyMember.Member
+            </td>
+            <td>
+                @String.Format("{0:dd-MMM-yyyy}", item.TransferDate)
+            </td>
+            <td>
+                @item.Remarks
+            </td>
+            <td>
+                @String.Format("{0:0.00}", item.TransferFee)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PaymentDetails)
+            </td>
+        </tr>
+           Count = Count + 1;
+    }
+    @if (Count == 1)
+    {
+        <tr class="TableRow">
+            <td>
+                Currently there are no Records
+            </td>
+        </tr> 
+    }
+</table>
+<br />
+<div>
+    @Html.ActionLink("Back to Building Unit List", "Index", "SocietyBuildingUnit", new { societyBuildingID = societyBuildingUnit.SocietyBuilding.SocietyBuildingID, societySubscriptionID = ViewBag.SocietySubscriptionID }, new { @class = "EditDelete" })
+</div>

@@ -1,0 +1,79 @@
+﻿@model CloudSocietyEntities.CommunicationType
+@{
+    ViewBag.Title = "Edit Communication Type";
+    ViewBag.Header = " Communication Type";
+   
+}
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(false, "Following errors occurred while processing your request")
+    <fieldset style="width: 600px">
+        <legend>Edit Communication Type</legend>
+        @Html.HiddenFor(model => model.CommunicationTypeID)
+        <br />
+        <table border="0" cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="editor-label"  >
+                    Type :
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.CommunicationType1)<span class="editor-field"> @Html.ValidationMessageFor(model => model.CommunicationType1)</span>
+                </td>
+            </tr>
+            <tr>
+                <td class="editor-label">
+                    @Html.LabelFor(model => model.Active) :
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.Active)<span class="editor-field">@Html.ValidationMessageFor(model => model.Active)</span>
+                </td>
+            </tr>
+            <tr>
+                <td class="editor-label">
+                    @Html.LabelFor(model => model.OnlyForOfficeBearer) :
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.OnlyForOfficeBearer)<span class="editor-field">@Html.ValidationMessageFor(model => model.OnlyForOfficeBearer)</span>
+                </td>
+            </tr>
+            <tr>
+                <td class="editor-label">
+                    @Html.LabelFor(model => model.IsApprovalNeeded) :
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.IsApprovalNeeded)<span class="editor-field">@Html.ValidationMessageFor(model => model.IsApprovalNeeded)</span>
+                </td>
+            </tr>
+            <tr>
+                <td class="editor-label">
+                    @Html.LabelFor(model => model.IsToSendSelective) :
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.IsToSendSelective)<span class="editor-field">@Html.ValidationMessageFor(model => model.IsToSendSelective)</span>
+                </td>
+            </tr>
+            <tr>
+                <td class="editor-label">
+                    @Html.LabelFor(model => model.NeedToClose) :
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.NeedToClose)<span class="editor-field">@Html.ValidationMessageFor(model => model.NeedToClose)</span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="submit" value="Save" class="buttton" style="width: 45px;height:23px;vertical-align:middle;" />
+                </td>
+            </tr>
+        </table>
+      
+        @Html.HiddenFor(model => model.CreatedByID)
+        @Html.HiddenFor(model => model.CreatedOn)
+
+    </fieldset>
+}
+<div>
+    @Html.ActionLink("Back to List", "Index",null, new { @class = "EditDelete" })
+</div>

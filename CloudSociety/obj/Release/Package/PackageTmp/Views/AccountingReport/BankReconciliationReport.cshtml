@@ -1,0 +1,113 @@
+﻿@model IEnumerable<CloudSocietyEntities.AcTransactionAc>
+@{
+    ViewBag.Title = "Bank Reconciliation Report";
+    ViewBag.Header = "Bank Reconciliation Report";
+    ViewBag.SocietyNameHeader = ViewBag.SocietyHead;
+    Layout = "~/Views/Shared/SocietyLayout.cshtml";   
+}
+@*==== Scripts to be added for AJAX calendar START ====*@
+<script src="@Url.Content("~/Content/AjaxControlToolkit/3.0.20820.16598/3.0.20820.0/MicrosoftAjax.debug.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Content/AjaxControlToolkit/3.0.20820.16598/3.0.20820.0/AjaxControlToolkit.ExtenderBase.BaseScripts.js")"
+        type="text/javascript"></script>
+<script src="@Url.Content("~/Content/AjaxControlToolkit/3.0.20820.16598/3.0.20820.0/AjaxControlToolkit.Common.Common.js")"
+        type="text/javascript"></script>
+<script src="@Url.Content("~/Content/AjaxControlToolkit/3.0.20820.16598/3.0.20820.0/AjaxControlToolkit.Common.DateTime.js")"
+        type="text/javascript"></script>
+<script src="@Url.Content("~/Content/AjaxControlToolkit/3.0.20820.16598/3.0.20820.0/AjaxControlToolkit.Animation.Animations.js")"
+        type="text/javascript"></script>
+<script src="@Url.Content("~/Content/AjaxControlToolkit/3.0.20820.16598/3.0.20820.0/AjaxControlToolkit.PopupExtender.PopupBehavior.js")"
+        type="text/javascript"></script>
+<script src="@Url.Content("~/Content/AjaxControlToolkit/3.0.20820.16598/3.0.20820.0/AjaxControlToolkit.Animation.AnimationBehavior.js")"
+        type="text/javascript"></script>
+<script src="@Url.Content("~/Content/AjaxControlToolkit/3.0.20820.16598/3.0.20820.0/AjaxControlToolkit.Common.Threading.js")"
+        type="text/javascript"></script>
+<script src="@Url.Content("~/Content/AjaxControlToolkit/3.0.20820.16598/3.0.20820.0/AjaxControlToolkit.Compat.Timer.Timer.js")"
+        type="text/javascript"></script>
+<script src="@Url.Content("~/Content/AjaxControlToolkit/3.0.20820.16598/3.0.20820.0/AjaxControlToolkit.Calendar.CalendarBehavior.js")"
+        type="text/javascript"></script>
+<script type="text/javascript">
+    Sys.Application.add_init(appInit);
+    function appInit() {
+        $create(AjaxControlToolkit.CalendarBehavior, { format: "dd-MMM-yyyy" }, null, null, $get('AsOnDate'));
+    }
+
+    function SetAsOnDate() {
+        document.form2.AsOnDate.value = document.form1.AsOnDate.value;
+        document.form1.AcHeadID.focus();
+    }
+    function SetAcHeadID() {
+        document.form2.AcHeadID.value = document.form1.AcHeadID.value;
+    }
+
+    function CheckNullInput() {
+        if (document.getElementById("AsOnDate").value == "") {
+            alert("As On Date field cannot be blank !!");
+            return false;
+        }
+        if (document.getElementById("AcHeadID").value == "") {
+            alert("Ac Head  field cannot be blank !!");
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+</script>
+@*==== END ====*@
+<fieldset style="width: 450px">
+    <legend>Fill The Following Fields</legend>
+     @using (Html.BeginForm("BankReconciliationReport", "AccountingReport", new { id = ViewBag.SocietySubscriptionID }, FormMethod.Post, new { name = "form1" }))
+     {
+        @Html.ValidationSummary(false, "Following errors occurred while processing your request")    
+        <table>
+            <tr>
+                <td>
+                    As On Date :
+                </td>
+                <td>
+                    @Html.TextBox("AsOnDate", null, new { @class = "shortWidth" , onblur = "SetAsOnDate()" })
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    Account Head :
+                    @Html.DropDownList("AcHeadID", new SelectList(ViewBag.AcHeadList as System.Collections.IEnumerable, "AcHeadID", "Name"), "<- Select Account Head->", new { onblur = "SetAcHeadID()" })
+                </td>
+            </tr>            
+        </table>
+        <table>
+            <tr>
+                <td align="center">
+                    <input type="submit" value="Download PDF" class="buttton" style="width: 85px; height: 23px;
+                        vertical-align: middle;" onclick="return CheckNullInput();" />
+                </td>
+            </tr>
+        </table>
+        @Html.Hidden("SocietySubscriptionID", (Guid)ViewBag.SocietySubscriptionID)
+     }
+    <table>
+        <tr>
+            <td align="center">
+                @using (Html.BeginForm("SendMail", "AccountingReport", new { id = ViewBag.SocietySubscriptionID }, FormMethod.Post, new { name = "form2" }))
+                {
+                    @Html.Hidden("AsOnDate")
+                    @Html.Hidden("AcHeadID")
+                    @Html.Hidden("Report1", false)
+                    @Html.Hidden("Report2", false)
+                    @Html.Hidden("Report3", false)
+                    @Html.Hidden("Report4", false)
+                    @Html.Hidden("Report5", false)
+                    @Html.Hidden("Report6", false)
+                    @Html.Hidden("Report7", true)
+                    @Html.Hidden("SocietySubscriptionID", (Guid)ViewBag.SocietySubscriptionID)   
+                    <input type="submit" value="Send Mail" class="buttton" style="width: 65px; height: 23px;
+                        vertical-align: middle;" onclick="return CheckNullInput();" />
+                }
+            </td>
+        </tr>
+    </table>
+</fieldset>
+<div>
+    @Html.ActionLink("Back", "Menu", "SocietySubscription", new { id = ViewBag.SocietySubscriptionID }, new { @class = "EditDelete" })
+</div>
+

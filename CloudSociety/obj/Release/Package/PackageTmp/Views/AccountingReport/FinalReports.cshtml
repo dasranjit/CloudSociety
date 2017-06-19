@@ -1,0 +1,93 @@
+﻿@{
+    ViewBag.Title = "Final Reports";
+    ViewBag.Header = "Final Reports";
+    ViewBag.SocietyNameHeader = ViewBag.SocietyHead;
+    Layout = "~/Views/Shared/SocietyLayout.cshtml";
+    bool IsFullAccess = new CloudSociety.Controllers.AppInfoController().IsFullAccess();
+}
+<br />
+@using (Html.BeginForm("SendMail", null, new { id = (Guid)ViewBag.SocietySubscriptionID }))
+{     
+    @Html.ValidationSummary(false, "Following errors occurred while processing your request")       
+    <table cellpadding="2" class="table">
+        <tr>
+            <th>
+                List Of Reports
+            </th>
+            <th>
+                Download PDF
+            </th>
+            <th>
+                Select & Send Mail
+            </th>
+        </tr>
+        <tr class="TableRow">
+            <td>
+                1. Income & Expenditure Statement
+            </td>
+            <td align="center">
+                <a href='@Url.Action("PDFIncomeExpenditure", "AccountingReport", new { id = ViewBag.SocietySubscriptionID})'>
+                    <img style='border : 0' title='Download PDF Of Income & Expenditure Statement' src='@Url.Content("~/Content/Images/icon-pdf.gif")' /></a>@*@Html.ActionLink("Download PDF", "DownLoadPDF", "AccountingReport", new { id = ViewBag.SocietySubscriptionID, ReportName = "IncomeExpenditureStatement" }, new { @class = "buttton" })*@
+            </td>
+            <td align="center">
+                @Html.CheckBox("Report1", true)
+            </td>
+        </tr>
+        <tr class="altTableRow">
+            <td>
+                2. Schedule To Income & Expenditure Statement
+            </td>
+            <td align="center">
+                <a href='@Url.Action("PDFScheduleToIncomeExpenditure", "AccountingReport", new { id = ViewBag.SocietySubscriptionID})'>
+                    <img style='border : 0' title='Download PDF Of Schedule To Income & Expenditure Statement' src='@Url.Content("~/Content/Images/icon-pdf.gif")' /></a>
+            </td>
+            <td align="center">
+                @Html.CheckBox("Report2", true)
+            </td>
+        </tr>
+        <tr class="TableRow">
+            <td>
+                3. Balance Sheet
+            </td>
+            <td align="center">
+                <a href='@Url.Action("PDFBalanceSheet", "AccountingReport", new { id = ViewBag.SocietySubscriptionID })'>
+                    <img style='border : 0' title='Download PDF Of Balance Sheet' src='@Url.Content("~/Content/Images/icon-pdf.gif")' /></a>
+            </td>
+            <td align="center">
+                @Html.CheckBox("Report3", true)
+            </td>
+        </tr>
+        <tr class="altTableRow">
+            <td>
+                4. Schedule To Balance Sheet
+            </td>
+            <td align="center">
+                <a href='@Url.Action("PDFScheduleToBalanceSheet", "AccountingReport", new { id = ViewBag.SocietySubscriptionID })'>
+                    <img style='border : 0' title='Download PDF Of Schedule To Balance Sheet' src='@Url.Content("~/Content/Images/icon-pdf.gif")' /></a>
+            </td>
+            <td align="center">
+                @Html.CheckBox("Report4", true)
+            </td>
+        </tr>
+         @if (IsFullAccess)
+         {
+        <tr class="TableRow">
+            <td>
+            </td>
+            <td align="center">
+                @*@Html.ActionLink("Download All", "DownLoadPDF", "AccountingReport", new { id = ViewBag.SocietySubscriptionID, ReportName = "AllReports" }, new { @class = "buttton" })*@
+            </td>
+            <td align="center">
+                <input type="submit" value="Send" class="buttton" style="width: 45px; height: 23px;" />
+            </td>
+        </tr>
+         }
+    </table>
+   @Html.Hidden("Report5", false)
+   @Html.Hidden("Report6", false)
+   @Html.Hidden("Report7", false)
+}
+<br />
+<div>
+    @Html.ActionLink("Back", "Menu", "SocietySubscription", new { id = ViewBag.SocietySubscriptionID }, new { @class = "EditDelete" })
+</div>

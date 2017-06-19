@@ -1,0 +1,138 @@
+﻿@model CloudSocietyEntities.AcTransaction
+
+@{
+    ViewBag.Title = "DeleteClosingBalance";
+}
+
+<h2>DeleteClosingBalance</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>AcTransaction</legend>
+
+    <div class="display-label">SocietyID</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SocietyID)
+    </div>
+
+    <div class="display-label">DocType</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DocType)
+    </div>
+
+    <div class="display-label">Serial</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Serial)
+    </div>
+
+    <div class="display-label">DocNo</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DocNo)
+    </div>
+
+    <div class="display-label">DocDate</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DocDate)
+    </div>
+
+    <div class="display-label">Particulars</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Particulars)
+    </div>
+
+    <div class="display-label">AcHeadID</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.AcHeadID)
+    </div>
+
+    <div class="display-label">PayModeCode</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PayModeCode)
+    </div>
+
+    <div class="display-label">PayRefNo</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PayRefNo)
+    </div>
+
+    <div class="display-label">PayRefDate</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PayRefDate)
+    </div>
+
+    <div class="display-label">BankID</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.BankID)
+    </div>
+
+    <div class="display-label">Branch</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Branch)
+    </div>
+
+    <div class="display-label">BillNo</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.BillNo)
+    </div>
+
+    <div class="display-label">BillDate</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.BillDate)
+    </div>
+
+    <div class="display-label">DelDocNo</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DelDocNo)
+    </div>
+
+    <div class="display-label">DelDocDate</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DelDocDate)
+    </div>
+
+    <div class="display-label">CreatedByID</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CreatedByID)
+    </div>
+
+    <div class="display-label">CreatedOn</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CreatedOn)
+    </div>
+
+    <div class="display-label">UpdatedByID</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.UpdatedByID)
+    </div>
+
+    <div class="display-label">UpdatedOn</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.UpdatedOn)
+    </div>
+
+    <div class="display-label">SocietySubscriptionID</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SocietySubscriptionID)
+    </div>
+
+    <div class="display-label">AcYear</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.AcYear)
+    </div>
+
+    <div class="display-label">DrAmount</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DrAmount)
+    </div>
+
+    <div class="display-label">CrAmount</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CrAmount)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

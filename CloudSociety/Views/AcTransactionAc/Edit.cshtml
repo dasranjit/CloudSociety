@@ -1,0 +1,104 @@
+﻿@model CloudSocietyEntities.AcTransactionAc
+@{
+    ViewBag.Title = "Edit Account";
+    ViewBag.Header = " Account";
+    ViewBag.SocietyNameHeader = ViewBag.SocietyHead;
+    Layout = "~/Views/Shared/SocietyLayout.cshtml";
+    bool IsFullAccess = new CloudSociety.Controllers.AppInfoController().IsFullAccess(); 
+}
+<link rel="stylesheet" type="text/css" href="http://cdn.webrupee.com/font" />
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+<span class="SocName">Document Type : @(Model.AcTransaction.DocType == "CP" ? "Cash Payment" : (Model.AcTransaction.DocType == "CR" ? "Cash Receipt" : (Model.AcTransaction.DocType == "BP" ? "Bank Payment" : (Model.AcTransaction.DocType == "BR" ? "Bank Receipt" : (Model.AcTransaction.DocType == "PB" ? "Purchase Bill" : (Model.AcTransaction.DocType == "EB" ? "Expense Bill" : (Model.AcTransaction.DocType == "SB" ? "Society Bill" : (Model.AcTransaction.DocType == "JV" ? "Journal Voucher" : ""))))))))</span>&nbsp;
+&nbsp; &nbsp;@*<span class="SocName">Total Amount : <span class="WebRupee">Rs </span>@(Model.AcTransaction.Amount??0)</span>*@
+@{
+    decimal DrTotal = Model.AcTransaction.DrAmount ?? 0;
+    decimal CrTotal = Model.AcTransaction.CrAmount ?? 0;
+    decimal DiffTotal = 0;    
+    <span class="SocName">Balance Amount : <span class="WebRupee">Rs </span>
+        @if (DrTotal > CrTotal)
+        {
+            DiffTotal = DrTotal - CrTotal;   
+            @Math.Abs(DiffTotal) <span>Cr.</span>
+        }
+        else if (DrTotal < CrTotal)
+        {
+            DiffTotal = CrTotal - DrTotal;   
+            @Math.Abs(DiffTotal) <span>Dr.</span>
+        }
+        else
+        {
+            DiffTotal = CrTotal - DrTotal;   
+            @Math.Abs(DiffTotal) 
+        }</span>
+}
+<br />
+<br />
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(false, "Following errors occurred while processing your request")
+    <fieldset style="width: 600px">
+        <legend>Edit Account</legend>
+        <table border="0" cellpadding="0" cellspacing="0">
+            <tr>
+                <td>
+                    Account Head :
+                </td>
+                <td>
+                    @Html.DropDownList("AcHeadID", new SelectList(ViewBag.AcHeadList as System.Collections.IEnumerable, "AcHeadID", "Name"), "<- Select Account Head->")
+                    <span class="editor-field">@Html.ValidationMessageFor(model => model.AcHeadID)</span>
+                </td>
+            </tr>
+            @if (Model.AcTransaction.DocType == "JV")
+            {<tr>
+                <td>
+                    Debit : @Html.RadioButton("DrCr", "D", true)
+                </td>
+                <td>
+                    Credit : @Html.RadioButton("DrCr", "C")
+                    <span class="editor-field">@Html.ValidationMessageFor(model => model.DrCr)</span>
+                </td>
+            </tr>}
+            <tr>
+                <td>
+                    Particulars :
+                </td>
+                <td>
+                    @Html.TextBox("Particulars", Model.Particulars, new { @class = "maxWidth" })
+                    <span class="editor-field">@Html.ValidationMessageFor(model => model.Particulars)</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Amount :
+                </td>
+                <td>
+                    @Html.TextBox("Amount", Model.Amount, new { @class = "shortWidth" })
+                </td>
+            </tr>
+            @if (IsFullAccess)
+            {         
+                <tr>
+                    <td colspan="2" align="center">
+                        <input type="submit" value="Save" class="buttton" style="width: 45px; height: 23px;" />
+                    </td>
+                </tr>
+            }
+        </table>
+    </fieldset>
+    @Html.HiddenFor(model => model.AcTransactionAcID) 
+    @Html.HiddenFor(model => model.AcTransactionID) 
+    @Html.HiddenFor(model => model.SocietyID) 
+    @Html.HiddenFor(model => model.Nature) 
+if (Model.AcTransaction.DocType != "JV")
+{
+    @Html.HiddenFor(model => model.DrCr) 
+}
+    @Html.HiddenFor(model => model.Amount) 
+    @Html.HiddenFor(model => model.Reconciled)    
+    @Html.HiddenFor(model => model.CreatedByID) 
+    @Html.HiddenFor(model => model.CreatedOn) 
+}
+<div>
+    @Html.ActionLink("Back to List", "Index", new { AcTransactionID = Model.AcTransaction.AcTransactionID }, new { @class = "EditDelete" })
+</div>

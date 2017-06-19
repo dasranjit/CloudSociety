@@ -1,0 +1,224 @@
+﻿@model CloudSocietyEntities.SocietyBill
+@{
+    Layout = null;
+    var billChargeHeadList = (IEnumerable<CloudSocietyEntities.SocietyBillChargeHeadWithHead>)ViewBag.SocietyBillChargeHeadList;   
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Print Society Bill</title>
+    <link  rel="icon" href="@Url.Content("~/Content/Images/c1-favicon.gif")" type="image/ico"/>
+    <link rel="stylesheet" type="text/css" href="http://cdn.webrupee.com/font" />
+</head>
+<body onload="javascript:window.print()">
+    <table style="width: 650px;">
+        <tr>
+            <td>
+                <div align="center" style="font-size: 15px">
+                    <strong>@Model.Society.Name .</strong></div>
+                <div align="center" style="font-size: 11px">
+                    Regd. No. : @Model.Society.RegistrationNo Dated : @String.Format("{0:dd-MMM-yyyy}", Model.Society.RegistrationDate)
+                    ,
+                    @(Model.Society.TaxRegistrationNo == null ? "" : "Service Tax No. : " + Model.Society.TaxRegistrationNo)</div>
+                <div align="center" style="font-size: 13px">
+                    @Model.Society.Address , @Model.Society.City - @Model.Society.PIN</div>
+                <div align="center" style="font-size: 15px">
+                    <u><strong>@Model.SocietyBillSery.Note B I L L </strong></u>
+                </div>
+            </td>
+        </tr>
+    </table>
+    <table style="border: thin solid #000000; width: 650px;">
+        <tr>
+            <td width="190px">
+                <strong>Unit No : @Model.SocietyBuildingUnit.SocietyBuilding.Building - @Model.SocietyBuildingUnit.Unit<br />
+                    Name : @Model.SocietyMember.Member
+                </strong>
+            </td>
+            <td align="center">
+                <strong>@Model.Particulars</strong>
+            </td>
+            <td align="right" width="65px">
+                Bill No. :<br />
+                Bill Date :
+            </td>
+            <td width="129px">
+                @Model.BillNo
+                <br />
+                @String.Format("{0:dd-MMM-yyyy}", Model.BillDate)
+            </td>
+        </tr>
+        <tr>
+            <td align="center" colspan="3" style="border-style: solid none solid none; border-width: thin;
+                border-color: #000000;">
+                <strong>Nature Of Charges</strong>
+            </td>
+            <td align="right" style="border-style: solid none solid solid; border-width: thin thin thin 1px;
+                border-color: #000000;">
+                <strong>Amount&nbsp;</strong>
+            </td>
+        </tr>
+        @foreach (var items in billChargeHeadList)
+        {
+            <tr>
+                <td colspan="3">
+                    &nbsp; @items.ChargeHead
+                </td>
+                <td align="right" style="border-style: none none none solid; border-width: 1px; border-color: #000000">
+                    @items.Amount&nbsp;
+                </td>
+            </tr>
+        }
+        <tr>
+            <td colspan="3">
+                &nbsp;
+            </td>
+            <td align="right" style="border-style: none none none solid; border-width: 1px; border-color: #000000">
+                &nbsp;
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3" align="right" style="border-style: solid none solid none; border-width: 1px;
+                border-color: #000000">
+                Gross Amount
+            </td>
+            <td align="right" style="border-color: #000000; border-style: solid none solid solid;
+                border-top-width: 1px; border-left-width: 1px; border-bottom-width: 1px;">
+                @{
+                    decimal total = (Model.uAmount.HasValue ? Model.uAmount.Value : 0)  + (Model.Interest ?? 0) + (Model.TaxAmount ?? 0);
+                }
+                @total&nbsp;
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                @if (Model.Arrears != null && Model.Arrears != 0)
+                {
+                    <text>Add : Arrears &nbsp;@Model.Arrears,</text>  
+                }
+                @if (Model.InterestArrears != null && Model.InterestArrears != 0)
+                {
+                    <text>Add : Interest Arrears &nbsp;@Model.InterestArrears,</text>                   
+                }
+                @if (Model.NonChgArrears != null && Model.NonChgArrears != 0)
+                {
+                    <text>Add : NonChgArrears &nbsp;@Model.NonChgArrears,</text> 
+                }
+                @if (Model.TaxArrears != null && Model.TaxArrears != 0)
+                {
+                    <text>Add : Tax Arrears &nbsp;@Model.TaxArrears,</text>  
+                }
+                @if (Model.Advance != null && Model.Advance != 0)
+                {
+                    <text>Advance &nbsp;@Model.Advance.</text> 
+                }
+            </td>
+            <td>
+                &nbsp;
+            </td>
+        </tr>
+        @* <tr>
+            <td colspan="3" align="right">
+                Add : Previous Dues
+            </td>
+            <td align="right" style="border-left-style: solid; border-left-width: 1px; border-left-color: #000000">
+                ToDo&nbsp;
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3" align="right">
+                Add : Previous Penalty
+            </td>
+            <td align="right" style="border-left-style: solid; border-left-width: 1px; border-left-color: #000000">
+                ToDo&nbsp;
+            </td>
+        </tr>*@
+        <tr>
+            <td colspan="3" align="right" style="border-style: solid none none none; border-width: 1px;
+                border-color: #000000">
+                <strong>Net Amount Payable</strong>
+            </td>
+            <td align="right" style="border-left-style: solid; border-left-width: 1px; border-left-color: #000000;
+                border-top-style: solid; border-top-width: 1px;" class="style2">
+                <strong><span class="WebRupee">Rs </span>@Model.Payable</strong>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4" style="border-color: #000000; border-style: solid none solid none;
+                border-bottom-width: 1px; border-top-width: 1px">
+                <strong>In Words :@CommonLib.Financial.ChangeCurrencyToWords.changeCurrencyToWords(Model.Payable.ToString())
+                </strong>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4">
+                @{  if (Model.SocietyBillSery.Terms != null)
+                    {
+                        string str = null;
+                        string[] strArr = null;
+                        int count = 0;
+                        str = Model.SocietyBillSery.Terms;
+                        char[] splitchar = { '\r', '\n' };
+                        strArr = str.Split(splitchar);
+                        for (count = 0; count <= (strArr.Length - 1); count++)
+                        {
+                    <div>@strArr[count]</div>
+                        }
+                    }
+                }
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4">
+                <div>
+                    &nbsp;
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4">
+                <div>
+                    &nbsp;
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4" align="right">
+                <div>
+                    For @Model.Society.Name.ToUpper()
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4">
+                <div>
+                    &nbsp;
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4">
+                <div>
+                    &nbsp;
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Checked By :
+            </td>
+            <td colspan="3" align="right">
+                @Model.Society.Signatory
+            </td>
+        </tr>
+        @*<tr><td colspan="4">*This is system generated bill so signature in not required.</td></tr>*@
+    </table>
+    <table width="650px">
+        <tr>
+            <td align="center">
+                E. & O. E
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

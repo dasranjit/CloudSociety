@@ -1,0 +1,68 @@
+﻿@model CloudSocietyEntities.TariffRate
+@{
+    ViewBag.Title = "Delete Tariff Rate";
+    ViewBag.Header = "Tariff Rate";
+}
+<div class="LabelDel">
+    Are you sure you want to delete this?
+</div>
+<br />
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(false, "Following errors occurred while processing your request")
+    @Html.HiddenFor(model => model.TariffRateID)
+    <fieldset style="width: 600px">
+        <legend>TDS Category Rate Details</legend>
+        <br />
+        <table border="0" cellpadding="0" cellspacing="0">
+            <tr>
+                <td>
+                    Service Type :
+                </td>
+                <td>
+                    @(Model.ServiceType.Chargeability == "O" ? "One Time" : (Model.ServiceType.Chargeability == "M" ? "Monthly" : "Quarterly"))
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Chargeability :
+                </td>
+                <td>
+                     @(Model.ServiceType.Basis == "M" ? "Per Member" : "Per Society")
+                </td>
+            </tr>
+            @*<tr>
+                <td>
+                    Basis :
+                </td>
+                <td>
+                    @(Model.ServiceType.Basis != null ? (Model.ServiceType.Basis) : "")
+                </td>
+            </tr>*@
+            <tr>
+                <td>
+                    Rate :
+                </td>
+                <td>
+                    @Model.Rate
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="submit" value="Delete" class="buttton" style="width: 45px; height: 23px;
+                        vertical-align: middle;" />
+                </td>
+            </tr>
+        </table>
+    </fieldset>
+    @Html.HiddenFor(model => model.TariffID)
+    @Html.HiddenFor(model => model.ServiceTypeID)
+    @Html.HiddenFor(model => model.CreatedByID)
+    @Html.HiddenFor(model => model.CreatedOn)
+    @Html.HiddenFor(model => model.UpdatedByID)
+    @Html.HiddenFor(model => model.UpdatedOn)
+}
+<br />
+<div>
+    @Html.ActionLink("Back to List", "Index", "TariffRate", new { parentid = (object)Model.TariffID }, new { @class = "EditDelete" })
+</div>

@@ -1,0 +1,38 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Header 
+{
+    <div class="DivHeader" style="color: #C70102;">
+        @ViewBag.SocietyNameHeader
+    </div>
+}
+@section Styles 
+{
+    @if (Request.IsAuthenticated)
+    {
+        if (ViewBag.ShowSocietyMenu != null)
+        {
+            Html.RenderPartial("SocietyMenu");
+        }
+        if (ViewBag.ShowMemberMenu != null)
+        {
+            Html.RenderPartial("MemberMenu");
+        }
+    }
+}
+@section SocietyIndexLink
+{
+    @if (!Roles.IsUserInRole("TrialUser") && !Roles.IsUserInRole("Member") && !Roles.IsUserInRole("OfficeBearer"))
+    {
+        if (Roles.IsUserInRole("Support"))
+        {
+        <a href="@Url.Content("~/Society/IndexForSupport")" class="EditDelete">Back To Index</a>
+        }
+        else
+        {
+        <a href="@Url.Content("~/Society/Index")" class="EditDelete">Society Index</a>
+        }
+    }
+}
+@RenderBody()

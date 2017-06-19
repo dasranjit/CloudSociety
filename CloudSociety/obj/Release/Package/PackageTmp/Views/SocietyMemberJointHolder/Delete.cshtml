@@ -1,0 +1,144 @@
+﻿@model CloudSocietyEntities.SocietyMemberJointHolder
+@{
+    ViewBag.Title = "Delete Member Joint Holder";
+    ViewBag.Header = " Member Joint Holder ";
+    ViewBag.SocietyNameHeader = ViewBag.SocietyHead;
+    Layout = "~/Views/Shared/SocietyLayout.cshtml";
+    bool IsFullAccess = new CloudSociety.Controllers.AppInfoController().IsFullAccess();
+}
+<div class="LabelDel">
+    Are you sure you want to delete this?
+</div>
+<br />
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(false, "Following errors occurred while processing your request")   
+    <fieldset style="width: 500px">
+        <legend>Member Joint Holder Details</legend>
+        <table>
+            <tr>
+                <td>
+                    Name :
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Name)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Member Class :
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.MemberClass.Class)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Start Date :
+                </td>
+                <td>
+                    @String.Format("{0:dd-MMM-yyyy}", Model.StartDate)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    End Date :
+                </td>
+                <td>
+                    @String.Format("{0:dd-MMM-yyyy}", Model.EndDate)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Enterance Fee Paid On :
+                </td>
+                <td>
+                    @String.Format("{0:dd-MMM-yyyy}", Model.EnteranceFeePaidOn)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Address :
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Address)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    City :
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.City)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    PIN :
+                </td>
+                <td>
+                    @Model.PIN
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    State :
+                </td>
+                <td>
+                    @(Model.StateID == null ? "" : Model.State.Name)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Country :
+                </td>
+                <td>
+                    @(Model.StateID == null ? "" : Model.State.Country.Name)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Phone No :
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.PhoneNo)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Office Phone No :
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.OfficePhoneNo)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Mobile No :
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.MobileNo)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    EMail Id :
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.EMailId)
+                </td>
+            </tr>
+            @if (IsFullAccess)
+            {
+            <tr>
+                <td align="center" colspan="2">
+                    <input type="submit" value="Delete" class="buttton" style="width: 45px; height: 23px;" />
+                </td>
+            </tr>
+            }
+        </table>
+    </fieldset>
+    @Html.HiddenFor(m => m.SocietyMemberJointHolderID)
+    @Html.Hidden("societySubscriptionID", (Guid)ViewBag.SocietySubscriptionID)
+}
+@Html.ActionLink("Back to List", "Index", new { societyMemberID = Model.SocietyMemberID, societySubscriptionID = ViewBag.SocietySubscriptionID }, new { @class = "EditDelete" })

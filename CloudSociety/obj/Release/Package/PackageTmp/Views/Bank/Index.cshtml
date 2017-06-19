@@ -1,0 +1,20 @@
+﻿@model IEnumerable<CloudSocietyEntities.Bank>
+@{
+    ViewBag.Title = "Bank";
+    ViewBag.Header = "Bank List";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<div class="buttton" style="width: 65px;">
+    @Html.ActionLink("Create New", "Create")</div>
+<br />
+@{
+    var grid = new WebGrid(Model, canPage: true, canSort: true, rowsPerPage: 10);
+    grid.Pager(WebGridPagerModes.NextPrevious);       
+}
+@grid.GetHtml(tableStyle: "table", footerStyle: "webgrid-footer", rowStyle: "TableRow", alternatingRowStyle: "altTableRow",
+columns: grid.Columns(
+                       grid.Column("", "", format: @<text><div style ='width : 70px'>@Html.ActionLink("Edit", "Edit", new { id = item.BankID, backUrl = grid.GetPageUrl(grid.PageIndex) }, new { @class = "EditDelete" }) | @Html.ActionLink("Delete", "Delete", new { id = item.BankID, backUrl = grid.GetPageUrl(grid.PageIndex) }, new { @class = "EditDelete" })</div></text>, canSort: false),
+                       grid.Column("Name", "Name",format: @<text><div style ='width : 300px'>@item.Name</div></text>),
+                                                  grid.Column("Active", "Active", canSort: false, format: @<text><div style ='width : 60px'>@if (item.Active == true){<text><center><img src="@Url.Content("~/Content/Images/tick-green.png")"  /></center></text> }</div></text>)
+                                                  )
+              )

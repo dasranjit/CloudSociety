@@ -1,0 +1,237 @@
+﻿@model CloudSocietyEntities.SubscriptionInvoice
+ 
+@if (Model != null)
+{
+    ViewBag.Title = "Subscription Invoice";
+    ViewBag.Header = "Subscription Invoice";
+    <fieldset style="width: 750px">
+        <legend>Subscription Invoice</legend>
+        @{
+    var Society = (CloudSocietyEntities.Society)ViewBag.Society;
+    int slno = 1;                 
+        }
+        <table border="1" cellpadding="0" cellspacing="0" width="750px">
+            <tr>
+                <td>
+                    @if (Model.SubscriberID != null)
+                    {
+                        <strong>@Model.Subscriber.Name</strong>
+                        <br />                        
+                        @Model.Subscriber.Address
+                        <br /> 
+                        @Model.Subscriber.City
+                        <span>&nbsp;</span>
+                        @Model.Subscriber.PIN
+                        <br /> 
+                        @Model.Subscriber.State.Name 
+                        <span>,</span>
+                        @Model.Subscriber.Country.Name 
+                    }
+                    else
+                    {
+                        <strong>Society Name : @Model.Society.Name</strong>
+                        <br />   
+                        @Model.Society.Address
+                        <br />
+                        @Model.Society.City
+                        <span>&nbsp;</span>
+                        @Model.Society.PIN
+                        <br />
+                   if (Model.Society.StateID != null)
+                   {
+                        @Model.Society.State.Name
+                        <span>,</span>
+                   }
+                   if (Model.Society.CountryCode != null)
+                   {
+                        @Model.Society.Country.Name                       
+                   }
+                    }
+                </td>
+                <td width="265px">
+                    Invoice No &nbsp&nbsp&nbsp: @Model.InvoiceNo<br />
+                    Invoice Date : @String.Format("{0:dd-MMM-yyyy}", Model.InvoiceDate)<br />
+                    Due Date &nbsp&nbsp&nbsp&nbsp&nbsp: @String.Format("{0:dd-MMM-yyyy}", Model.DueDate)
+                </td>
+            </tr>
+        </table>
+        <br />
+        <table border="0" cellpadding="0" cellspacing="0" width="750px" style="border: 1px solid #000000;">
+            <tr>
+                <th>
+                    Sl.No.
+                </th>
+                <th align="left">
+                    Society Name
+                </th>
+                <th align="left">
+                    Subscription Start Date
+                </th>
+                <th align="left">
+                    Subscription End Date
+                </th>
+                <th align="left">
+                    No of Additional Members
+                </th>
+                <th align="left">
+                    Month
+                </th>
+            </tr>
+            <!--For Each Society -->
+            @foreach (var subscription in Model.SocietySubscriptionInvoices)
+            {                      
+                <tr>
+                    <td>@slno .
+                    </td>
+                    <td>
+                        @if (subscription.SocietySubscription.SocietyID == null)
+                        {
+                            <span>&nbsp</span>
+                        }
+                        else
+                        {
+                            @subscription.SocietySubscription.Society.Name                           
+                        }
+                    </td>
+                    <td>
+                        @String.Format("{0:dd-MMM-yyyy}", subscription.SocietySubscription.SubscriptionStart)
+                    </td>
+                    <td>
+                        @String.Format("{0:dd-MMM-yyyy}", subscription.SocietySubscription.SubscriptionEnd)
+                    </td>
+                    <td>
+                        @subscription.NoOfMembers
+                    </td>
+                    <td>
+                        @subscription.SubscribedMonths
+                    </td>
+                </tr>               
+                <tr>
+                    <td colspan="3">
+                    </td>
+                    <th>
+                        Service Types
+                    </th>
+                    <th align="right">
+                        Amount
+                    </th>
+                    <th>
+                    </th>
+                </tr>
+                <!--For Each Service Type -->
+                   foreach (var serviceType in subscription.SocietySubscriptionInvoiceServices)
+                   {
+                <tr>
+                    <td colspan="3">
+                    </td>
+                    <td>
+                        @serviceType.ServiceType.Type
+                    </td>
+                    <td align="right">@serviceType.Amount
+                    </td>
+                </tr>
+                   }
+                <tr>
+                    <td colspan="3">
+                    </td>
+                    <td>
+                        Total :
+                    </td>
+                    <td align="right" style="border-style: solid none none none; border-width: 1px; border-color: #000000;">
+                        @subscription.Amount
+                    </td>
+                </tr> 
+                   slno = slno + 1;
+
+            }
+        </table>
+        <br />
+        <!-- To Display of discount and tax-->
+        <table border="0" cellpadding="0" cellspacing="0" width="750px">
+            <tr>
+                <td>
+                    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                </td>
+                <td>
+                    Sub-Total :
+                </td>
+                <td align="right">
+                    @Model.Amount
+                </td>
+                <td>
+                    &nbsp&nbsp&nbsp
+                </td>
+            </tr>
+            @if (Model.Discount != 0)
+            {
+                <tr>
+                    <td>
+                    </td>
+                    <td>
+                        Less Discount :
+                    </td>
+                    <td align="right">
+                        @Model.Discount
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+            }
+            <tr>
+                <td>
+                </td>
+                <td>
+                    @Model.Tax
+                </td>
+                <td align="right">
+                    @Model.TaxAmount
+                </td>
+                <td>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                </td>
+                <td align="right">
+                    <strong>Grand Total :</strong>
+                </td>
+                <td align="right" style="border-style: solid none none none; border-width: 1px; border-color: #000000;">
+                    <strong>@Model.InvoiceAmount</strong>
+                </td>
+                <td>
+                </td>
+            </tr>
+        </table>
+        <br />
+        <strong>In Words :@CommonLib.Financial.ChangeCurrencyToWords.changeCurrencyToWords(Model.InvoiceAmount)
+        </strong>
+    </fieldset>
+    <br />
+    <table>
+        <tr>
+            <td>
+                @Html.ActionLink("Print Invoice", "Print", new { id = (Guid)Model.SubscriptionInvoiceID }, new { target = "_blank", @class = "buttton" })
+            </td>
+            <td>
+                @Html.ActionLink("Print Challan", "PrintChallan",  new { id = (Guid)Model.SubscriptionInvoiceID }, new { target = "_blank", @class = "buttton" })
+            </td>
+            <td>
+                @Html.ActionLink("Download PDF", "CreatePdf", "SubscriptionInvoice", new { id = Model.SubscriptionInvoiceID }, new { @class = "buttton" })
+            </td>
+            <td>
+                @Html.ActionLink("Send Mail", "SendMail", "SubscriptionInvoice", new { id = Model.SubscriptionInvoiceID }, new { @class = "buttton" })
+            </td>
+        </tr>
+    </table>
+    <p>
+        @if ((bool)ViewBag.BackToAccountIndex)
+        {
+            @Html.ActionLink("Back to List", "Index", null, new { @class = "EditDelete" })  
+            //new { id = Model.SubscriptionInvoiceID }
+        }
+        else
+        {
+            @Html.ActionLink("Back to List", "Index", "Society", null, new { @class = "EditDelete" })
+        }
+    </p>
+}

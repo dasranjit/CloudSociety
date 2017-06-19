@@ -1,0 +1,85 @@
+﻿@{
+    ViewBag.Title = "Balances Report";
+    ViewBag.Header = "Balances Report";
+    ViewBag.SocietyNameHeader = ViewBag.SocietyHead;
+    Layout = "~/Views/Shared/SocietyLayout.cshtml";
+    IEnumerable<CloudSocietyEntities.SocietyBuilding> SocietyBuildingList = (IEnumerable<CloudSocietyEntities.SocietyBuilding>)ViewBag.SocietyBuildingList;
+}
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+<script language="javascript" type="text/javascript">
+    function isNumber() {
+        var n = document.getElementById("Amount").value;
+        if (isNaN(n) == true) {
+            alert("Invalid Amount!");
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+</script>
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(false, "Following errors occurred while processing your request")
+    <fieldset style="width: 600px">
+        <legend>Enter The Following Details</legend>
+        <br />
+        <table border="0" cellpadding="0" cellspacing="0">
+            <tr>
+                <td>
+                    Amount (Rs):
+                </td>
+                <td>
+                    @Html.TextBox("Amount") <span>*Note : Keep blank for all balance</span>
+                </td>
+            </tr>
+            <tr>
+                <td align ="right" >
+                    @Html.Label("For :")
+                </td>
+                <td>
+                    @if (SocietyBuildingList.Count() > 1)
+                    {          
+                        @Html.DropDownList("SocietyBuildingID", new SelectList(ViewBag.SocietyBuildingList as System.Collections.IEnumerable, "SocietyBuildingID", "Building"), "<- Select Building ->")
+                    }
+                    else
+                    {
+                        if (SocietyBuildingList.Count() == 1)
+                        {                      
+                        @SocietyBuildingList.FirstOrDefault().Building                                         
+                        @Html.Hidden("SocietyBuildingID", SocietyBuildingList.FirstOrDefault().SocietyBuildingID)
+                        }
+                        else
+                        {
+                        <text>No Building is avalilable. </text>
+                        @Html.Hidden("SocietyBuildingID", null) 
+                        }
+                    }
+                </td>
+            </tr>
+        <tr>
+            <td>
+                Bill Abbreviation :
+            </td>
+            <td>
+                @Html.DropDownList("BillAbbreviation", new SelectList(ViewBag.BillAbbreviationList as System.Collections.IEnumerable, "BillAbbreviation", "BillAbbreviation"), "<- All Abbreviations ->")
+            </td>
+        </tr>
+            <tr>
+                <td colspan="2">
+                    @Html.Label("Show balances in details:") @Html.CheckBox("IsDetails", true)
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <input type="submit" value="GO" class="buttton" style="width: 45px; height: 23px;
+                        vertical-align: middle;" onclick="return isNumber()" />
+                </td>
+            </tr>
+        </table>
+    </fieldset>
+}
+<div>
+    @Html.ActionLink("Back", "Menu", "SocietySubscription", new { id = (Guid)ViewBag.SocietySubscriptionID }, new { @class = "EditDelete" })
+</div>

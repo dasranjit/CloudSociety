@@ -1,0 +1,114 @@
+﻿@model CloudSocietyEntities.SocietyReceipt
+@{
+    ViewBag.Title = "Delete Society Receipt";
+    ViewBag.Header = " Society Receipt";
+    ViewBag.SocietyNameHeader = ViewBag.SocietyHead;
+    Layout = "~/Views/Shared/SocietyLayout.cshtml";
+    bool IsFullAccess = new CloudSociety.Controllers.AppInfoController().IsFullAccess();
+}
+@if ((bool)ViewBag.AllowToDelete)
+{
+    <div class="LabelDel">
+        Are you sure you want to delete this?</div>
+}
+else
+{    
+    <table>
+        <tr>
+            <td align="left">
+                <div class="divFailure">
+                    This receipt is already accounted in bills can not be deleted !!</div>
+            </td>
+        </tr>
+    </table>                
+}
+<br />
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(false, "Following errors occurred while processing your request")
+    
+    <fieldset style="width: 500px">
+        <legend>Delete Society Receipt </legend>
+        <br />
+        <table border="0" cellpadding="0" cellspacing="0">
+            <tr>
+                <td>
+                    Building Unit :
+                </td>
+                <td>
+                    @Model.SocietyBuildingUnit.SocietyBuilding.Building - @Model.SocietyBuildingUnit.Unit
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Society Member :
+                </td>
+                <td>
+                    @Model.SocietyMember.Member
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Bill Abbreviation :
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.BillAbbreviation)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Receipt No :
+                </td>
+                <td>
+                    @Model.ReceiptNo
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Receipt Date :
+                </td>
+                <td>
+                    @String.Format("{0:dd-MMM-yyyy}", Model.ReceiptDate)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Amount :
+                </td>
+                <td>
+                    @Model.Amount
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Particulars :
+                </td>
+                <td>
+                    @Model.Particulars
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    @if ((bool)ViewBag.AllowToDelete)
+                    {
+                        if (IsFullAccess)
+                        {
+                        <input type="submit" value="Delete" class="buttton" style="width: 45px; height: 23px;" />
+                        }
+                    }                   
+                </td>
+            </tr>
+        </table>
+    </fieldset>  
+    @Html.HiddenFor(m => m.SocietyReceiptID)
+    @Html.HiddenFor(m => m.ReceiptNo)
+    @Html.HiddenFor(m => m.SocietyBuildingUnitID)
+    @Html.HiddenFor(m => m.SocietyMemberID)    
+    @Html.HiddenFor(m => m.BillAbbreviation)    
+    @Html.HiddenFor(m => m.CreatedByID)
+    @Html.HiddenFor(m => m.CreatedOn)
+        
+}
+<div>
+    @Html.ActionLink("Back to List", "Index", new { id = Model.SocietySubscriptionID }, new { @class = "EditDelete" })
+</div>

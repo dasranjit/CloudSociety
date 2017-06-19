@@ -1,0 +1,1106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CloudSocietyModelStoreContainer" CdmEntityContainer="CloudSocietyEntities">
+    <EntitySetMapping Name="AcCategories">
+      <EntityTypeMapping TypeName="CloudSocietyModel.AcCategory">
+        <MappingFragment StoreEntitySet="AcCategories">
+          <ScalarProperty Name="SocietyID" ColumnName="SocietyID" />
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="DrCr" ColumnName="DrCr" />
+          <ScalarProperty Name="Nature" ColumnName="Nature" />
+          <ScalarProperty Name="Sequence" ColumnName="Sequence" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="CreatedByID" ColumnName="CreatedByID" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="UpdatedByID" ColumnName="UpdatedByID" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AcHeads">
+      <EntityTypeMapping TypeName="CloudSocietyModel.AcHead">
+        <MappingFragment StoreEntitySet="AcHeads">
+          <ScalarProperty Name="SocietyID" ColumnName="SocietyID" />
+          <ScalarProperty Name="AcHeadID" ColumnName="AcHeadID" />
+          <ScalarProperty Name="Name" ColumnName="AcHead" />
+          <ScalarProperty Name="SubCategoryID" ColumnName="SubCategoryID" />
+          <ScalarProperty Name="Sequence" ColumnName="Sequence" />
+          <ScalarProperty Name="Nature" ColumnName="Nature" />
+          <ScalarProperty Name="TDSCategoryID" ColumnName="TDSCategoryID" />
+          <ScalarProperty Name="TDSCompany" ColumnName="TDSCompany" />
+          <ScalarProperty Name="PAN" ColumnName="PAN" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="PIN" ColumnName="PIN" />
+          <ScalarProperty Name="StateID" ColumnName="StateID" />
+          <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="CreatedByID" ColumnName="CreatedByID" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="UpdatedByID" ColumnName="UpdatedByID" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AcSubCategories">
+      <EntityTypeMapping TypeName="CloudSocietyModel.AcSubCategory">
+        <MappingFragment StoreEntitySet="AcSubCategories">
+          <ScalarProperty Name="SocietyID" ColumnName="SocietyID" />
+          <ScalarProperty Name="SubCategoryID" ColumnName="SubCategoryID" />
+          <ScalarProperty Name="SubCategory" ColumnName="SubCategory" />
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="PartDetails" ColumnName="PartDetails" />
+          <ScalarProperty Name="Sequence" ColumnName="Sequence" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="CreatedByID" ColumnName="CreatedByID" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="UpdatedByID" ColumnName="UpdatedByID" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AcTransactionAcs">
+      <EntityTypeMapping TypeName="CloudSocietyModel.AcTransactionAc">
+        <MappingFragment StoreEntitySet="AcTransactionAcs">
+          <ScalarProperty Name="AcTransactionAcID" ColumnName="AcTransactionAcID" />
+          <ScalarProperty Name="AcTransactionID" ColumnName="AcTransactionID" />
+          <ScalarProperty Name="SocietyID" ColumnName="SocietyID" />
+          <ScalarProperty Name="YearID" ColumnName="YearID" />
+          <ScalarProperty Name="Nature" ColumnName="Nature" />
+          <ScalarProperty Name="AcHeadID" ColumnName="AcHeadID" />
+          <ScalarProperty Name="DrCr" ColumnName="DrCr" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="Particulars" ColumnName="Particulars" />
+          <ScalarProperty Name="Reconciled" ColumnName="Reconciled" />
+          <ScalarProperty Name="CreatedByID" ColumnName="CreatedByID" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="UpdatedByID" ColumnName="UpdatedByID" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AcTransactions">
+      <EntityTypeMapping TypeName="CloudSocietyModel.AcTransaction">
+        <MappingFragment StoreEntitySet="AcTransactions">
+          <ScalarProperty Name="AcTransactionID" ColumnName="AcTransactionID" />
+          <ScalarProperty Name="SocietyID" ColumnName="SocietyID" />
+          <ScalarProperty Name="YearID" ColumnName="YearID" />
+          <ScalarProperty Name="DocType" ColumnName="DocType" />
+          <ScalarProperty Name="Serial" ColumnName="Serial" />
+          <ScalarProperty Name="DocNo" ColumnName="DocNo" />
+          <ScalarProperty Name="DocDate" ColumnName="DocDate" />
+          <ScalarProperty Name="Particulars" ColumnName="Particulars" />
+          <ScalarProperty Name="AcHeadID" ColumnName="AcHeadID" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="PayModeCode" ColumnName="PayModeCode" />
+          <ScalarProperty Name="PayRefNo" ColumnName="PayRefNo" />
+          <ScalarProperty Name="PayRefDate" ColumnName="PayRefDate" />
+          <ScalarProperty Name="BankID" ColumnName="BankID" />
+          <ScalarProperty Name="Branch" ColumnName="Branch" />
+          <ScalarProperty Name="BillNo" ColumnName="BillNo" />
+          <ScalarProperty Name="BillDate" ColumnName="BillDate" />
+          <ScalarProperty Name="DelDocNo" ColumnName="DelDocNo" />
+          <ScalarProperty Name="DelDocDate" ColumnName="DelDocDate" />
+          <ScalarProperty Name="CreatedByID" ColumnName="CreatedByID" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="UpdatedByID" ColumnName="UpdatedByID" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AcTransactionTDS">
+      <EntityTypeMapping TypeName="CloudSocietyModel.AcTransactionTD">
+        <MappingFragment StoreEntitySet="AcTransactionTDS">
+          <ScalarProperty Name="AcTransactionTDSID" ColumnName="AcTransactionTDSID" />
+          <ScalarProperty Name="AcTransactionID" ColumnName="AcTransactionID" />
+          <ScalarProperty Name="SocietyID" ColumnName="SocietyID" />
+          <ScalarProperty Name="YearID" ColumnName="YearID" />
+          <ScalarProperty Name="TDSCategoryID" ColumnName="TDSCategoryID" />
+          <ScalarProperty Name="TDSAcccountID" ColumnName="TDSAcccountID" />
+          <ScalarProperty Name="AcHeadID" ColumnName="AcHeadID" />
+          <ScalarProperty Name="GrossAmount" ColumnName="GrossAmount" />
+          <ScalarProperty Name="TDSAmount" ColumnName="TDSAmount" />
+          <ScalarProperty Name="PayTransactionID" ColumnName="PayTransactionID" />
+          <ScalarProperty Name="TDSDepositDate" ColumnName="TDSDepositDate" />
+          <ScalarProperty Name="ChallanNo" ColumnName="ChallanNo" />
+          <ScalarProperty Name="BSRCode" ColumnName="BSRCode" />
+          <ScalarProperty Name="ReceiptNo" ColumnName="ReceiptNo" />
+          <ScalarProperty Name="CertificateNo" ColumnName="CertificateNo" />
+          <ScalarProperty Name="CertificateDate" ColumnName="CertificateDate" />
+          <ScalarProperty Name="CreatedByID" ColumnName="CreatedByID" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="UpdatedByID" ColumnName="UpdatedByID" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AcYears">
+      <EntityTypeMapping TypeName="CloudSocietyModel.AcYear">
+        <MappingFragment StoreEntitySet="AcYears">
+          <ScalarProperty Name="YearID" ColumnName="YearID" />
+          <ScalarProperty Name="SocietyID" ColumnName="SocietyID" />
+          <ScalarProperty Name="FromDate" ColumnName="FromDate" />
+          <ScalarProperty Name="ToDate" ColumnName="ToDate" />
+          <ScalarProperty Name="Abbr" ColumnName="Abbr" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="CreatedByID" ColumnName="CreatedByID" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="UpdatedByID" ColumnName="UpdatedByID" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AppInfoSet">
+      <EntityTypeMapping TypeName="CloudSocietyModel.AppInfo">
+        <MappingFragment StoreEntitySet="AppInfo">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Abbreviation" ColumnName="Abbreviation" />
+          <ScalarProperty Name="Currency" ColumnName="Currency" />
+          <ScalarProperty Name="CurrencyImagePath" ColumnName="CurrencyImagePath" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Banks">
+      <EntityTypeMapping TypeName="CloudSocietyModel.Bank">
+        <MappingFragment StoreEntitySet="Banks">
+          <ScalarProperty Name="BankID" ColumnName="BankID" />
+          <ScalarProperty Name="Name" ColumnName="Bank" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="CreatedByID" ColumnName="CreatedByID" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="UpdatedByID" ColumnName="UpdatedByID" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CessationReasons">
+      <EntityTypeMapping TypeName="CloudSocietyModel.CessationReason">
+        <MappingFragment StoreEntitySet="CessationReasons">
+          <ScalarProperty Name="CessationReasonID" ColumnName="CessationReasonID" />
+          <ScalarProperty Name="Reason" ColumnName="CessationReason" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="CreatedByID" ColumnName="CreatedByID" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="UpdatedByID" ColumnName="UpdatedByID" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Countries">
+      <EntityTypeMapping TypeName="CloudSocietyModel.Country">
+        <MappingFragment StoreEntitySet="Countries">
+          <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+          <ScalarProperty Name="Name" ColumnName="Country" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Coupons">
+      <EntityTypeMapping TypeName="CloudSocietyModel.Coupon">
+        <MappingFragment StoreEntitySet="Coupons">
+          <ScalarProperty Name="CouponNo" ColumnName="CouponNo" />
+          <ScalarProperty Name="IPIN" ColumnName="IPIN" />
+          <ScalarProperty Name="DiscountPerc" ColumnName="DiscountPerc" />
+          <ScalarProperty Name="DiscountAmount" ColumnName="DiscountAmount" />
+          <ScalarProperty Name="ValidityStart" ColumnName="ValidityStart" />
+          <ScalarProperty Name="ValidityEnd" ColumnName="ValidityEnd" />
+          <ScalarProperty Name="MinAmount" ColumnName="MinAmount" />
+          <ScalarProperty Name="MaxAmount" ColumnName="MaxAmount" />
+          <ScalarProperty Name="AssignedToID" ColumnName="AssignedToID" />
+          <ScalarProperty Name="CreatedByID" ColumnName="CreatedByID" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="UpdatedByID" ColumnName="UpdatedByID" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MemberClasses">
+      <EntityTypeMapping TypeName="CloudSocietyModel.MemberClass">
+        <MappingFragment StoreEntitySet="MemberClasses">
+          <ScalarProperty Name="MemberClassID" ColumnName="MemberClassID" />
+          <ScalarProperty Name="Class" ColumnName="MemberClass" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="CreatedByID" ColumnName="CreatedByID" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="UpdatedByID" ColumnName="UpdatedByID" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Occupations">
+      <EntityTypeMapping TypeName="CloudSocietyModel.Occupation">
+        <MappingFragment StoreEntitySet="Occupations">
+          <ScalarProperty Name="OccupationID" ColumnName="OccupationID" />
+          <ScalarProperty Name="Name" ColumnName="Occupation" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="CreatedByID" ColumnName="CreatedByID" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="UpdatedByID" ColumnName="UpdatedByID" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ParkingTypes">
+      <EntityTypeMapping TypeName="CloudSocietyModel.ParkingType">
+        <MappingFragment StoreEntitySet="ParkingTypes">
+          <ScalarProperty Name="ParkingTypeID" ColumnName="ParkingTypeID" />
+          <ScalarProperty Name="Type" ColumnName="ParkingType" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="CreatedByID" ColumnName="CreatedByID" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="UpdatedByID" ColumnName="UpdatedByID" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PayModes">
+      <EntityTypeMapping TypeName="CloudSocietyModel.PayMode">
+        <MappingFragment StoreEntitySet="PayModes">
+          <ScalarProperty Name="PayModeCode" ColumnName="PayModeCode" />
+          <ScalarProperty Name="Mode" ColumnName="PayMode" />
+          <ScalarProperty Name="AskDetails" ColumnName="AskDetails" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Relationships">
+      <EntityTypeMapping TypeName="CloudSocietyModel.Relationship">
+        <MappingFragment StoreEntitySet="Relationships">
+          <ScalarProperty Name="RelationshipID" ColumnName="RelationshipID" />
+          <ScalarProperty Name="Name" ColumnName="Relationship" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="CreatedByID" ColumnName="CreatedByID" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="UpdatedByID" ColumnName="UpdatedByID" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ServiceTypes">
+      <EntityTypeMapping TypeName="CloudSocietyModel.ServiceType">
+        <MappingFragment StoreEntitySet="ServiceTypes">
+          <ScalarProperty Name="ServiceTypeID" ColumnName="ServiceTypeID" />
+          <ScalarProperty Name="Type" ColumnName="ServiceType" />
+          <ScalarProperty Name="Mandatory" ColumnName="Mandatory" />
+          <ScalarProperty Name="Chargeability" ColumnName="Chargeability" />
+          <ScalarProperty Name="Basis" ColumnName="Basis" />
+          <ScalarProperty Name="Nature" ColumnName="Nature" />
+          <ScalarProperty Name="Sequence" ColumnName="Sequence" />
+          <ScalarProperty Name="CreatedByID" ColumnName="CreatedByID" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="UpdatedByID" ColumnName="UpdatedByID" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ShareTransferPayments">
+      <EntityTypeMapping TypeName="CloudSocietyModel.ShareTransferPayment">
+        <MappingFragment StoreEntitySet="ShareTransferPayments">
+          <ScalarProperty Name="ShareTransferPaymentID" ColumnName="ShareTransferPaymentID" />
+          <ScalarProperty Name="ShareTransferID" ColumnName="ShareTransferID" />
+          <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+          <ScalarProperty Name="PayModeCode" ColumnName="PayModeCode" />
+          <ScalarProperty Name="PayRefNo" ColumnName="PayRefNo" />
+          <ScalarProperty Name="PayRefDate" ColumnName="PayRefDate" />
+          <ScalarProperty Name="BankID" ColumnName="BankID" />
+          <ScalarProperty Name="Branch" ColumnName="Branch" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="AcTransactionID" ColumnName="AcTransactionID" />
+          <ScalarProperty Name="CreatedByID" ColumnName="CreatedByID" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="UpdatedByID" ColumnName="UpdatedByID" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ShareTransfers">
+      <EntityTypeMapping TypeName="CloudSocietyModel.ShareTransfer">
+        <MappingFragment StoreEntitySet="ShareTransfers">
+          <ScalarProperty Name="ShareTransferID" ColumnName="ShareTransferID" />
+          <ScalarProperty Name="SocietyID" ColumnName="SocietyID" />
+          <ScalarProperty Name="SocietyShareID" ColumnName="SocietyShareID" />
+          <ScalarProperty Name="FromMemberID" ColumnName="FromMemberID" />
+          <ScalarProperty Name="ToMemberID" ColumnName="ToMemberID" />
+          <ScalarProperty Name="LodgedOn" ColumnName="LodgedOn" />
+          <ScalarProperty Name="ApprovedOn" ColumnName="ApprovedOn" />
+          <ScalarProperty Name="TransferFee" ColumnName="TransferFee" />
+          <ScalarProperty Name="CreatedByID" ColumnName="CreatedByID" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="UpdatedByID" ColumnName="UpdatedByID" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Societies">
+      <EntityTypeMapping TypeName="CloudSocietyModel.Society">
+        <MappingFragment StoreEntitySet="Societies">
+          <ScalarProperty Name="SocietyID" ColumnName="SocietyID" />
+          <ScalarProperty Name="Name" ColumnName="Society" />
+          <ScalarProperty Name="Abbreviation" ColumnName="Abbreviation" />
+          <ScalarProperty Name="RegistrationNo" ColumnName="RegistrationNo" />
+          <ScalarProperty Name="RegistrationDate" ColumnName="RegistrationDate" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="PIN" ColumnName="PIN" />
+          <ScalarProperty Name="StateID" ColumnName="StateID" />
+          <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+          <ScalarProperty Name="Builder" ColumnName="Builder" />
+          <ScalarProperty Name="Architect" ColumnName="Architect" />
+          <ScalarProperty Name="Signatory" ColumnName="Signatory" />
+          <ScalarProperty Name="PAN" ColumnName="PAN" />
+          <ScalarProperty Name="TAN" ColumnName="TAN" />
+          <ScalarProperty Name="Capital" ColumnName="Capital" />
+          <ScalarProperty Name="uNoOfMembers" ColumnName="uNoOfMembers" />
+          <ScalarProperty Name="UOMID" ColumnName="UOMID" />
+          <ScalarProperty Name="BillAbbreviation" ColumnName="BillAbbreviation" />
+          <ScalarProperty Name="BillingFrequency" ColumnName="BillingFrequency" />
+          <ScalarProperty Name="BillDay" ColumnName="BillDay" />
+          <ScalarProperty Name="DueDays" ColumnName="DueDays" />
+          <ScalarProperty Name="AdvanceBilling" ColumnName="AdvanceBilling" />
+          <ScalarProperty Name="AutoTrigger" ColumnName="AutoTrigger" />
+          <ScalarProperty Name="MergeSpecialBill" ColumnName="MergeSpecialBill" />
+          <ScalarProperty Name="ConstructionCost" ColumnName="ConstructionCost" />
+          <ScalarProperty Name="LatePaymentPenaltyAmount" ColumnName="LatePaymentPenaltyAmount" />
+          <ScalarProperty Name="LatePaymentPenaltyPerc" ColumnName="LatePaymentPenaltyPerc" />
+          <ScalarProperty Name="LatePaymentPenaltyOn" ColumnName="LatePaymentPenaltyOn" />
+          <ScalarProperty Name="EarlyPaymentDiscountDays" ColumnName="EarlyPaymentDiscountDays" />
+          <ScalarProperty Name="EarlyPaymentDiscountAmount" ColumnName="EarlyPaymentDiscountAmount" />
+          <ScalarProperty Name="EarlyPaymentDiscountPerc" ColumnName="EarlyPaymentDiscountPerc" />
+          <ScalarProperty Name="Terms" ColumnName="Terms" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="PrintArea" ColumnName="PrintArea" />
+          <ScalarProperty Name="InterestRate" ColumnName="InterestRate" />
+          <ScalarProperty Name="InterestFrequency" ColumnName="InterestFrequency" />
+          <ScalarProperty Name="InterestFrom" ColumnName="InterestFrom" />
+          <ScalarProperty Name="MinimumInterest" ColumnName="MinimumInterest" />
+          <ScalarProperty Name="OSAdjustment" ColumnName="OSAdjustment" />
+          <ScalarProperty Name="AccountPosting" ColumnName="AccountPosting" />
+          <ScalarProperty Name="MemberAcHeadID" ColumnName="MemberAcHeadID" />
+          <ScalarProperty Name="InterestAcHeadID" ColumnName="InterestAcHeadID" />
+          <ScalarProperty Name="TransferFeeAcHeadID" ColumnName="TransferFeeAcHeadID" />
+          <ScalarProperty Name="uMinDate" ColumnName="uMinDate" />
+          <ScalarProperty Name="uMaxDate" ColumnName="uMaxDate" />
+          <ScalarProperty Name="SubscriberID" ColumnName="SubscriberID" />
+          <ScalarProperty Name="CreatedByID" ColumnName="CreatedByID" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="UpdatedByID" ColumnName="UpdatedByID" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SocietyBillChargeHeads">
+      <EntityTypeMapping TypeName="CloudSocietyModel.SocietyBillChargeHead">
+        <MappingFragment StoreEntitySet="SocietyBillChargeHeads">
+          <ScalarProperty Name="SocietyBillID" ColumnName="SocietyBillID" />
+          <ScalarProperty Name="ChargeHeadID" ColumnName="ChargeHeadID" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="CreatedByID" ColumnName="CreatedByID" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="UpdatedByID" ColumnName="UpdatedByID" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SocietyBills">
+      <EntityTypeMapping TypeName="CloudSocietyModel.SocietyBill">
+        <MappingFragment StoreEntitySet="SocietyBills">
+          <ScalarProperty Name="SocietyBillID" ColumnName="SocietyBillID" />
+          <ScalarProperty Name="SocietyID" ColumnName="SocietyID" />
+          <ScalarProperty Name="SocietyBuildingUnitID" ColumnName="SocietyBuildingUnitID" />
+          <ScalarProperty Name="BillType" ColumnName="BillType" />
+          <ScalarProperty Name="BillAbbreviation" ColumnName="BillAbbreviation" />
+          <ScalarProperty Name="BillNo" ColumnName="BillNo" />
+          <ScalarProperty Name="BillDate" ColumnName="BillDate" />
+          <ScalarProperty Name="uAmount" ColumnName="uAmount" />
+          <ScalarProperty Name="Arrears" ColumnName="Arrears" />
+          <ScalarProperty Name="InterestArrears" ColumnName="InterestArrears" />
+          <ScalarProperty Name="Interest" ColumnName="Interest" />
+          <ScalarProperty Name="Tax" ColumnName="Tax" />
+          <ScalarProperty Name="TaxAmount" ColumnName="TaxAmount" />
+          <ScalarProperty Name="Payable" ColumnName="Payable" />
+          <ScalarProperty Name="Particulars" ColumnName="Particulars" />
+          <ScalarProperty Name="AcTransactionID" ColumnName="AcTransactionID" />
+          <ScalarProperty Name="CreatedByID" ColumnName="CreatedByID" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="UpdatedByID" ColumnName="UpdatedByID" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SocietyBillSeriesSet">
+      <EntityTypeMapping TypeName="CloudSocietyModel.SocietyBillSeries">
+        <MappingFragment StoreEntitySet="SocietyBillSeries">
+          <ScalarProperty Name="SocietyID" ColumnName="SocietyID" />
+          <ScalarProperty Name="BillAbbreviation" ColumnName="BillAbbreviation" />
+          <ScalarProperty Name="TaxID" ColumnName="TaxID" />
+          <ScalarProperty Name="TaxAcHeadID" ColumnName="TaxAcHeadID" />
+          <ScalarProperty Name="CreatedByID" ColumnName="CreatedByID" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="UpdatedByID" ColumnName="UpdatedByID" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SocietyBillTransactions">
+      <EntityTypeMapping TypeName="CloudSocietyModel.SocietyBillTransaction">
+        <MappingFragment StoreEntitySet="SocietyBillTransactions">
+          <ScalarProperty Name="SocietyBillTransactionID" ColumnName="SocietyBillTransactionID" />
+          <ScalarProperty Name="SocietyID" ColumnName="SocietyID" />
+          <ScalarProperty Name="SocietyBuildingUnitID" ColumnName="SocietyBuildingUnitID" />
+          <ScalarProperty Name="BillType" ColumnName="BillType" />
+          <ScalarProperty Name="BillAbbreviation" ColumnName="BillAbbreviation" />
+          <ScalarProperty Name="TransactionDate" ColumnName="TransactionDate" />
+          <ScalarProperty Name="ChargeHeadID" ColumnName="ChargeHeadID" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="Particulars" ColumnName="Particulars" />
+          <ScalarProperty Name="SocietyBillID" ColumnName="SocietyBillID" />
+          <ScalarProperty Name="CreatedByID" ColumnName="CreatedByID" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="UpdatedByID" ColumnName="UpdatedByID" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SocietyBuildings">
+      <EntityTypeMapping TypeName="CloudSocietyModel.SocietyBuilding">
+        <MappingFragment StoreEntitySet="SocietyBuildings">
+          <ScalarProperty Name="SocietyBuildingID" ColumnName="SocietyBuildingID" />
+          <ScalarProperty Name="SocietyID" ColumnName="SocietyID" />
+          <ScalarProperty Name="Building" ColumnName="Building" />
+          <ScalarProperty Name="NoOfFloors" ColumnName="NoOfFloors" />
+          <ScalarProperty Name="Lift" ColumnName="Lift" />
+          <ScalarProperty Name="CreatedByID" ColumnName="CreatedByID" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="UpdatedByID" ColumnName="UpdatedByID" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SocietyBuildingUnitChargeHeads">
+      <EntityTypeMapping TypeName="CloudSocietyModel.SocietyBuildingUnitChargeHead">
+        <MappingFragment StoreEntitySet="SocietyBuildingUnitChargeHeads">
+          <ScalarProperty Name="SocietyBuildingUnitID" ColumnName="SocietyBuildingUnitID" />
+          <ScalarProperty Name="ChargeHeadID" ColumnName="ChargeHeadID" />
+          <ScalarProperty Name="Rate" ColumnName="Rate" />
+          <ScalarProperty Name="CreatedByID" ColumnName="CreatedByID" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="UpdatedByID" ColumnName="UpdatedByID" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SocietyBuildingUnitParkingTypes">
+      <EntityTypeMapping TypeName="CloudSocietyModel.SocietyBuildingUnitParkingType">
+        <MappingFragment StoreEntitySet="SocietyBuildingUnitParkingTypes">
+          <ScalarProperty Name="SocietyBuildingUnitParkingTypeID" ColumnName="SocietyBuildingUnitParkingTypeID" />
+          <ScalarProperty Name="SocietyBuildingUnitID" ColumnName="SocietyBuildingUnitID" />
+          <ScalarProperty Name="ParkingTypeID" ColumnName="ParkingTypeID" />
+          <ScalarProperty Name="Nos" ColumnName="Nos" />
+          <ScalarProperty Name="CreatedByID" ColumnName="CreatedByID" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="UpdatedByID" ColumnName="UpdatedByID" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SocietyBuildingUnits">
+      <EntityTypeMapping TypeName="CloudSocietyModel.SocietyBuildingUnit">
+        <MappingFragment StoreEntitySet="SocietyBuildingUnits">
+          <ScalarProperty Name="SocietyBuildingUnitID" ColumnName="SocietyBuildingUnitID" />
+          <ScalarProperty Name="SocietyBuildingID" ColumnName="SocietyBuildingID" />
+          <ScalarProperty Name="Unit" ColumnName="Unit" />
+          <ScalarProperty Name="UnitTypeID" ColumnName="UnitTypeID" />
+          <ScalarProperty Name="FloorNo" ColumnName="FloorNo" />
+          <ScalarProperty Name="Wing" ColumnName="Wing" />
+          <ScalarProperty Name="CarpetArea" ColumnName="CarpetArea" />
+          <ScalarProperty Name="ChargeableArea" ColumnName="ChargeableArea" />
+          <ScalarProperty Name="TerraceArea" ColumnName="TerraceArea" />
+          <ScalarProperty Name="PrincipalAmount" ColumnName="PrincipalAmount" />
+          <ScalarProperty Name="InterestAmount" ColumnName="InterestAmount" />
+          <ScalarProperty Name="PrincipalReceipt" ColumnName="PrincipalReceipt" />
+          <ScalarProperty Name="InterestReceipt" ColumnName="InterestReceipt" />
+          <ScalarProperty Name="SpecialBillAmount" ColumnName="SpecialBillAmount" />
+          <ScalarProperty Name="SpecialBillReceipt" ColumnName="SpecialBillReceipt" />
+          <ScalarProperty Name="CreatedByID" ColumnName="CreatedByID" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="UpdatedByID" ColumnName="UpdatedByID" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SocietyChargeHeads">
+      <EntityTypeMapping TypeName="CloudSocietyModel.SocietyChargeHead">
+        <MappingFragment StoreEntitySet="SocietyChargeHeads">
+          <ScalarProperty Name="SocietyID" ColumnName="SocietyID" />
+          <ScalarProperty Name="ChargeHeadID" ColumnName="ChargeHeadID" />
+          <ScalarProperty Name="ChargeHead" ColumnName="ChargeHead" />
+          <ScalarProperty Name="ChargeInterest" ColumnName="ChargeInterest" />
+          <ScalarProperty Name="AcHeadID" ColumnName="AcHeadID" />
+          <ScalarProperty Name="Nature" ColumnName="Nature" />
+          <ScalarProperty Name="Rate" ColumnName="Rate" />
+          <ScalarProperty Name="Sequence" ColumnName="Sequence" />
+          <ScalarProperty Name="BillAbbreviation" ColumnName="BillAbbreviation" />
+          <ScalarProperty Name="CreatedByID" ColumnName="CreatedByID" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="UpdatedByID" ColumnName="UpdatedByID" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SocietyInvestments">
+      <EntityTypeMapping TypeName="CloudSocietyModel.SocietyInvestment">
+        <MappingFragment StoreEntitySet="SocietyInvestments">
+          <ScalarProperty Name="SocietyInvestmentID" ColumnName="SocietyInvestmentID" />
+          <ScalarProperty Name="SocietyID" ColumnName="SocietyID" />
+          <ScalarProperty Name="BankID" ColumnName="BankID" />
+          <ScalarProperty Name="Bank" ColumnName="Bank" />
+          <ScalarProperty Name="DocumentNo" ColumnName="DocumentNo" />
+          <ScalarProperty Name="DocumentDate" ColumnName="DocumentDate" />
+          <ScalarProperty Name="MaturityDate" ColumnName="MaturityDate" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="InterestRate" ColumnName="InterestRate" />
+          <ScalarProperty Name="ChequeNo" ColumnName="ChequeNo" />
+          <ScalarProperty Name="ChequeDate" ColumnName="ChequeDate" />
+          <ScalarProperty Name="MaturityAmount" ColumnName="MaturityAmount" />
+          <ScalarProperty Name="ClosureDate" ColumnName="ClosureDate" />
+          <ScalarProperty Name="ClosureAmount" ColumnName="ClosureAmount" />
+          <ScalarProperty Name="RealizationDate" ColumnName="RealizationDate" />
+          <ScalarProperty Name="CreatedByID" ColumnName="CreatedByID" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="UpdatedByID" ColumnName="UpdatedByID" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SocietyMemberJointHolders">
+      <EntityTypeMapping TypeName="CloudSocietyModel.SocietyMemberJointHolder">
+        <MappingFragment StoreEntitySet="SocietyMemberJointHolders">
+          <ScalarProperty Name="SocietyMemberJointHolderID" ColumnName="SocietyMemberJointHolderID" />
+          <ScalarProperty Name="SocietyMemberID" ColumnName="SocietyMemberID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="MemberClassID" ColumnName="MemberClassID" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="CessationReasonID" ColumnName="CessationReasonID" />
+          <ScalarProperty Name="CessationReason" ColumnName="CessationReason" />
+          <ScalarProperty Name="EnteranceFeePaidOn" ColumnName="EnteranceFeePaidOn" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="PIN" ColumnName="PIN" />
+          <ScalarProperty Name="StateID" ColumnName="StateID" />
+          <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+          <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+          <ScalarProperty Name="OfficePhoneNo" ColumnName="OfficePhoneNo" />
+          <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+          <ScalarProperty Name="EMailId" ColumnName="EMailId" />
+          <ScalarProperty Name="CreatedByID" ColumnName="CreatedByID" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="UpdatedByID" ColumnName="UpdatedByID" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SocietyMemberNominees">
+      <EntityTypeMapping TypeName="CloudSocietyModel.SocietyMemberNominee">
+        <MappingFragment StoreEntitySet="SocietyMemberNominees">
+          <ScalarProperty Name="SocietyMemberNomineeID" ColumnName="SocietyMemberNomineeID" />
+          <ScalarProperty Name="SocietyMemberID" ColumnName="SocietyMemberID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="RelationshipID" ColumnName="RelationshipID" />
+          <ScalarProperty Name="Relationship" ColumnName="Relationship" />
+          <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="PIN" ColumnName="PIN" />
+          <ScalarProperty Name="StateID" ColumnName="StateID" />
+          <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+          <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+          <ScalarProperty Name="OfficePhoneNo" ColumnName="OfficePhoneNo" />
+          <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+          <ScalarProperty Name="EMailId" ColumnName="EMailId" />
+          <ScalarProperty Name="NominationPerc" ColumnName="NominationPerc" />
+          <ScalarProperty Name="NominationDate" ColumnName="NominationDate" />
+          <ScalarProperty Name="MCMDate" ColumnName="MCMDate" />
+          <ScalarProperty Name="RevocationDate" ColumnName="RevocationDate" />
+          <ScalarProperty Name="CreatedByID" ColumnName="CreatedByID" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="UpdatedByID" ColumnName="UpdatedByID" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SocietyMembers">
+      <EntityTypeMapping TypeName="CloudSocietyModel.SocietyMember">
+        <MappingFragment StoreEntitySet="SocietyMembers">
+          <ScalarProperty Name="SocietyMemberID" ColumnName="SocietyMemberID" />
+          <ScalarProperty Name="SocietyID" ColumnName="SocietyID" />
+          <ScalarProperty Name="FolioNo" ColumnName="FolioNo" />
+          <ScalarProperty Name="Member" ColumnName="Member" />
+          <ScalarProperty Name="MemberClassID" ColumnName="MemberClassID" />
+          <ScalarProperty Name="SocietyBuildingUnitID" ColumnName="SocietyBuildingUnitID" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="CessationReasonID" ColumnName="CessationReasonID" />
+          <ScalarProperty Name="CessationReason" ColumnName="CessationReason" />
+          <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="PIN" ColumnName="PIN" />
+          <ScalarProperty Name="StateID" ColumnName="StateID" />
+          <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+          <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+          <ScalarProperty Name="HomePhoneNo" ColumnName="HomePhoneNo" />
+          <ScalarProperty Name="OfficePhoneNo" ColumnName="OfficePhoneNo" />
+          <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+          <ScalarProperty Name="OccupationID" ColumnName="OccupationID" />
+          <ScalarProperty Name="Occupation" ColumnName="Occupation" />
+          <ScalarProperty Name="LoanFrom" ColumnName="LoanFrom" />
+          <ScalarProperty Name="LoanClearedOn" ColumnName="LoanClearedOn" />
+          <ScalarProperty Name="Occupied" ColumnName="Occupied" />
+          <ScalarProperty Name="Rented" ColumnName="Rented" />
+          <ScalarProperty Name="FourWheelers" ColumnName="FourWheelers" />
+          <ScalarProperty Name="TwoWheelers" ColumnName="TwoWheelers" />
+          <ScalarProperty Name="CreatedByID" ColumnName="CreatedByID" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="UpdatedByID" ColumnName="UpdatedByID" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SocietyMemberTenants">
+      <EntityTypeMapping TypeName="CloudSocietyModel.SocietyMemberTenant">
+        <MappingFragment StoreEntitySet="SocietyMemberTenants">
+          <ScalarProperty Name="SocietyMemberTenantID" ColumnName="SocietyMemberTenantID" />
+          <ScalarProperty Name="SocietyMemberID" ColumnName="SocietyMemberID" />
+          <ScalarProperty Name="Tenant" ColumnName="Tenant" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="PIN" ColumnName="PIN" />
+          <ScalarProperty Name="StateID" ColumnName="StateID" />
+          <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+          <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+          <ScalarProperty Name="OfficePhoneNo" ColumnName="OfficePhoneNo" />
+          <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+          <ScalarProperty Name="EMailId" ColumnName="EMailId" />
+          <ScalarProperty Name="CreatedByID" ColumnName="CreatedByID" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="UpdatedByID" ColumnName="UpdatedByID" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SocietyPayModes">
+      <EntityTypeMapping TypeName="CloudSocietyModel.SocietyPayMode">
+        <MappingFragment StoreEntitySet="SocietyPayModes">
+          <ScalarProperty Name="SocietyID" ColumnName="SocietyID" />
+          <ScalarProperty Name="PayModeCode" ColumnName="PayModeCode" />
+          <ScalarProperty Name="PayMode" ColumnName="PayMode" />
+          <ScalarProperty Name="AskDetails" ColumnName="AskDetails" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="AcHeadID" ColumnName="AcHeadID" />
+          <ScalarProperty Name="CreatedByID" ColumnName="CreatedByID" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="UpdatedByID" ColumnName="UpdatedByID" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SocietyReceipts">
+      <EntityTypeMapping TypeName="CloudSocietyModel.SocietyReceipt">
+        <MappingFragment StoreEntitySet="SocietyReceipts">
+          <ScalarProperty Name="SocietyReceiptID" ColumnName="SocietyReceiptID" />
+          <ScalarProperty Name="SocietyID" ColumnName="SocietyID" />
+          <ScalarProperty Name="SocietyBuildingUnitID" ColumnName="SocietyBuildingUnitID" />
+          <ScalarProperty Name="ReceiptDate" ColumnName="ReceiptDate" />
+          <ScalarProperty Name="ReceiptNo" ColumnName="ReceiptNo" />
+          <ScalarProperty Name="BillType" ColumnName="BillType" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="PrincipalAdjusted" ColumnName="PrincipalAdjusted" />
+          <ScalarProperty Name="InterestAdjusted" ColumnName="InterestAdjusted" />
+          <ScalarProperty Name="Particulars" ColumnName="Particulars" />
+          <ScalarProperty Name="PayModeCode" ColumnName="PayModeCode" />
+          <ScalarProperty Name="PayRefNo" ColumnName="PayRefNo" />
+          <ScalarProperty Name="PayRefDate" ColumnName="PayRefDate" />
+          <ScalarProperty Name="BankID" ColumnName="BankID" />
+          <ScalarProperty Name="Branch" ColumnName="Branch" />
+          <ScalarProperty Name="AcTransactionID" ColumnName="AcTransactionID" />
+          <ScalarProperty Name="CreatedByID" ColumnName="CreatedByID" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="UpdatedByID" ColumnName="UpdatedByID" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SocietyShares">
+      <EntityTypeMapping TypeName="CloudSocietyModel.SocietyShare">
+        <MappingFragment StoreEntitySet="SocietyShares">
+          <ScalarProperty Name="SocietyShareID" ColumnName="SocietyShareID" />
+          <ScalarProperty Name="SocietyID" ColumnName="SocietyID" />
+          <ScalarProperty Name="CertificateNo" ColumnName="CertificateNo" />
+          <ScalarProperty Name="IssueDate" ColumnName="IssueDate" />
+          <ScalarProperty Name="NoOfShares" ColumnName="NoOfShares" />
+          <ScalarProperty Name="DistinctiveFrom" ColumnName="DistinctiveFrom" />
+          <ScalarProperty Name="DistinctiveTo" ColumnName="DistinctiveTo" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="PayDate" ColumnName="PayDate" />
+          <ScalarProperty Name="AmountAtAllotment" ColumnName="AmountAtAllotment" />
+          <ScalarProperty Name="SocietyBuildingUnitID" ColumnName="SocietyBuildingUnitID" />
+          <ScalarProperty Name="CreatedByID" ColumnName="CreatedByID" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="UpdatedByID" ColumnName="UpdatedByID" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SocietySpecialBillChargeHeads">
+      <EntityTypeMapping TypeName="CloudSocietyModel.SocietySpecialBillChargeHead">
+        <MappingFragment StoreEntitySet="SocietySpecialBillChargeHeads">
+          <ScalarProperty Name="SocietySpecialBillID" ColumnName="SocietySpecialBillID" />
+          <ScalarProperty Name="ChargeHeadID" ColumnName="ChargeHeadID" />
+          <ScalarProperty Name="Rate" ColumnName="Rate" />
+          <ScalarProperty Name="CreatedByID" ColumnName="CreatedByID" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="UpdatedByID" ColumnName="UpdatedByID" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SocietySpecialBills">
+      <EntityTypeMapping TypeName="CloudSocietyModel.SocietySpecialBill">
+        <MappingFragment StoreEntitySet="SocietySpecialBills">
+          <ScalarProperty Name="SocietySpecialBillID" ColumnName="SocietySpecialBillID" />
+          <ScalarProperty Name="SocietyID" ColumnName="SocietyID" />
+          <ScalarProperty Name="Abbreviation" ColumnName="Abbreviation" />
+          <ScalarProperty Name="UnitTypeID" ColumnName="UnitTypeID" />
+          <ScalarProperty Name="SocietyBuildingUnitID" ColumnName="SocietyBuildingUnitID" />
+          <ScalarProperty Name="FromDate" ColumnName="FromDate" />
+          <ScalarProperty Name="ToDate" ColumnName="ToDate" />
+          <ScalarProperty Name="TaxID" ColumnName="TaxID" />
+          <ScalarProperty Name="CreatedByID" ColumnName="CreatedByID" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="UpdatedByID" ColumnName="UpdatedByID" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SocietySpecialBillUnits">
+      <EntityTypeMapping TypeName="CloudSocietyModel.SocietySpecialBillUnit">
+        <MappingFragment StoreEntitySet="SocietySpecialBillUnits">
+          <ScalarProperty Name="SocietySpecialBillID" ColumnName="SocietySpecialBillID" />
+          <ScalarProperty Name="SocietyBuildingUnitID" ColumnName="SocietyBuildingUnitID" />
+          <ScalarProperty Name="CreatedByID" ColumnName="CreatedByID" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="UpdatedByID" ColumnName="UpdatedByID" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SocietySubscriptionInvoices">
+      <EntityTypeMapping TypeName="CloudSocietyModel.SocietySubscriptionInvoice">
+        <MappingFragment StoreEntitySet="SocietySubscriptionInvoices">
+          <ScalarProperty Name="SocietySubscriptionInvoiceID" ColumnName="SocietySubscriptionInvoiceID" />
+          <ScalarProperty Name="SocietySubscriptionID" ColumnName="SocietySubscriptionID" />
+          <ScalarProperty Name="NoOfMembers" ColumnName="NoOfMembers" />
+          <ScalarProperty Name="TariffID" ColumnName="TariffID" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="SubscriptionInvoiceID" ColumnName="SubscriptionInvoiceID" />
+          <ScalarProperty Name="CreatedByID" ColumnName="CreatedByID" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="UpdatedByID" ColumnName="UpdatedByID" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SocietySubscriptionInvoiceServices">
+      <EntityTypeMapping TypeName="CloudSocietyModel.SocietySubscriptionInvoiceService">
+        <MappingFragment StoreEntitySet="SocietySubscriptionInvoiceServices">
+          <ScalarProperty Name="SocietySubscriptionInvoiceID" ColumnName="SocietySubscriptionInvoiceID" />
+          <ScalarProperty Name="ServiceTypeID" ColumnName="ServiceTypeID" />
+          <ScalarProperty Name="Nos" ColumnName="Nos" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="CreatedByID" ColumnName="CreatedByID" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="UpdatedByID" ColumnName="UpdatedByID" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SocietySubscriptions">
+      <EntityTypeMapping TypeName="CloudSocietyModel.SocietySubscription">
+        <MappingFragment StoreEntitySet="SocietySubscriptions">
+          <ScalarProperty Name="SocietySubscriptionID" ColumnName="SocietySubscriptionID" />
+          <ScalarProperty Name="SocietyID" ColumnName="SocietyID" />
+          <ScalarProperty Name="SubscriptionStart" ColumnName="SubscriptionStart" />
+          <ScalarProperty Name="SubscriptionEnd" ColumnName="SubscriptionEnd" />
+          <ScalarProperty Name="NoOfMembers" ColumnName="NoOfMembers" />
+          <ScalarProperty Name="CreatedByID" ColumnName="CreatedByID" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="UpdatedByID" ColumnName="UpdatedByID" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SocietySubscriptionServices">
+      <EntityTypeMapping TypeName="CloudSocietyModel.SocietySubscriptionService">
+        <MappingFragment StoreEntitySet="SocietySubscriptionServices">
+          <ScalarProperty Name="SocietySubscriptionID" ColumnName="SocietySubscriptionID" />
+          <ScalarProperty Name="ServiceTypeID" ColumnName="ServiceTypeID" />
+          <ScalarProperty Name="CreatedByID" ColumnName="CreatedByID" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="UpdatedByID" ColumnName="UpdatedByID" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SocietyUsers">
+      <EntityTypeMapping TypeName="CloudSocietyModel.SocietyUser">
+        <MappingFragment StoreEntitySet="SocietyUsers">
+          <ScalarProperty Name="SocietyID" ColumnName="SocietyID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="Access" ColumnName="Access" />
+          <ScalarProperty Name="CreatedByID" ColumnName="CreatedByID" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="UpdatedByID" ColumnName="UpdatedByID" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StandardAcCategories">
+      <EntityTypeMapping TypeName="CloudSocietyModel.StandardAcCategory">
+        <MappingFragment StoreEntitySet="StandardAcCategories">
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="DrCr" ColumnName="DrCr" />
+          <ScalarProperty Name="Nature" ColumnName="Nature" />
+          <ScalarProperty Name="Sequence" ColumnName="Sequence" />
+          <ScalarProperty Name="CreatedByID" ColumnName="CreatedByID" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="UpdatedByID" ColumnName="UpdatedByID" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StandardAcHeads">
+      <EntityTypeMapping TypeName="CloudSocietyModel.StandardAcHead">
+        <MappingFragment StoreEntitySet="StandardAcHeads">
+          <ScalarProperty Name="AcHeadID" ColumnName="AcHeadID" />
+          <ScalarProperty Name="AcHead" ColumnName="AcHead" />
+          <ScalarProperty Name="SubCategoryID" ColumnName="SubCategoryID" />
+          <ScalarProperty Name="Sequence" ColumnName="Sequence" />
+          <ScalarProperty Name="Nature" ColumnName="Nature" />
+          <ScalarProperty Name="TDSCategoryID" ColumnName="TDSCategoryID" />
+          <ScalarProperty Name="TDSCompany" ColumnName="TDSCompany" />
+          <ScalarProperty Name="CreatedByID" ColumnName="CreatedByID" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="UpdatedByID" ColumnName="UpdatedByID" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StandardAcSubCategories">
+      <EntityTypeMapping TypeName="CloudSocietyModel.StandardAcSubCategory">
+        <MappingFragment StoreEntitySet="StandardAcSubCategories">
+          <ScalarProperty Name="SubCategoryID" ColumnName="SubCategoryID" />
+          <ScalarProperty Name="SubCategory" ColumnName="SubCategory" />
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="PartDetails" ColumnName="PartDetails" />
+          <ScalarProperty Name="Sequence" ColumnName="Sequence" />
+          <ScalarProperty Name="CreatedByID" ColumnName="CreatedByID" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="UpdatedByID" ColumnName="UpdatedByID" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StandardChargeHeads">
+      <EntityTypeMapping TypeName="CloudSocietyModel.StandardChargeHead">
+        <MappingFragment StoreEntitySet="StandardChargeHeads">
+          <ScalarProperty Name="ChargeHeadID" ColumnName="ChargeHeadID" />
+          <ScalarProperty Name="ChargeHead" ColumnName="ChargeHead" />
+          <ScalarProperty Name="ChargeInterest" ColumnName="ChargeInterest" />
+          <ScalarProperty Name="AcHeadID" ColumnName="AcHeadID" />
+          <ScalarProperty Name="Nature" ColumnName="Nature" />
+          <ScalarProperty Name="Sequence" ColumnName="Sequence" />
+          <ScalarProperty Name="CreatedByID" ColumnName="CreatedByID" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="UpdatedByID" ColumnName="UpdatedByID" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="States">
+      <EntityTypeMapping TypeName="CloudSocietyModel.State">
+        <MappingFragment StoreEntitySet="States">
+          <ScalarProperty Name="StateID" ColumnName="StateID" />
+          <ScalarProperty Name="StateCode" ColumnName="StateCode" />
+          <ScalarProperty Name="Name" ColumnName="State" />
+          <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Subscribers">
+      <EntityTypeMapping TypeName="CloudSocietyModel.Subscriber">
+        <MappingFragment StoreEntitySet="Subscribers">
+          <ScalarProperty Name="SubscriberID" ColumnName="SubscriberID" />
+          <ScalarProperty Name="Name" ColumnName="Subscriber" />
+          <ScalarProperty Name="Abbreviation" ColumnName="Abbreviation" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="PIN" ColumnName="PIN" />
+          <ScalarProperty Name="StateID" ColumnName="StateID" />
+          <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+          <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="CreatedByID" ColumnName="CreatedByID" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="UpdatedByID" ColumnName="UpdatedByID" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SubscriptionInvoices">
+      <EntityTypeMapping TypeName="CloudSocietyModel.SubscriptionInvoice">
+        <MappingFragment StoreEntitySet="SubscriptionInvoices">
+          <ScalarProperty Name="SubscriptionInvoiceID" ColumnName="SubscriptionInvoiceID" />
+          <ScalarProperty Name="InvoiceNo" ColumnName="InvoiceNo" />
+          <ScalarProperty Name="InvoiceDate" ColumnName="InvoiceDate" />
+          <ScalarProperty Name="SubscriberID" ColumnName="SubscriberID" />
+          <ScalarProperty Name="CouponNo" ColumnName="CouponNo" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+          <ScalarProperty Name="Tax" ColumnName="Tax" />
+          <ScalarProperty Name="TaxAmount" ColumnName="TaxAmount" />
+          <ScalarProperty Name="InvoiceAmount" ColumnName="InvoiceAmount" />
+          <ScalarProperty Name="PaidAmount" ColumnName="PaidAmount" />
+          <ScalarProperty Name="PaidOn" ColumnName="PaidOn" />
+          <ScalarProperty Name="PayModeCode" ColumnName="PayModeCode" />
+          <ScalarProperty Name="PayRefNo" ColumnName="PayRefNo" />
+          <ScalarProperty Name="PayRefDate" ColumnName="PayRefDate" />
+          <ScalarProperty Name="BankID" ColumnName="BankID" />
+          <ScalarProperty Name="Branch" ColumnName="Branch" />
+          <ScalarProperty Name="CreatedByID" ColumnName="CreatedByID" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="UpdatedByID" ColumnName="UpdatedByID" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TariffRates">
+      <EntityTypeMapping TypeName="CloudSocietyModel.TariffRate">
+        <MappingFragment StoreEntitySet="TariffRates">
+          <ScalarProperty Name="TariffRateID" ColumnName="TariffRateID" />
+          <ScalarProperty Name="TariffID" ColumnName="TariffID" />
+          <ScalarProperty Name="ServiceTypeID" ColumnName="ServiceTypeID" />
+          <ScalarProperty Name="Rate" ColumnName="Rate" />
+          <ScalarProperty Name="CreatedByID" ColumnName="CreatedByID" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="UpdatedByID" ColumnName="UpdatedByID" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tariffs">
+      <EntityTypeMapping TypeName="CloudSocietyModel.Tariff">
+        <MappingFragment StoreEntitySet="Tariffs">
+          <ScalarProperty Name="TariffID" ColumnName="TariffID" />
+          <ScalarProperty Name="Name" ColumnName="Tariff" />
+          <ScalarProperty Name="wef" ColumnName="wef" />
+          <ScalarProperty Name="uEndDate" ColumnName="uEndDate" />
+          <ScalarProperty Name="CreatedByID" ColumnName="CreatedByID" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="UpdatedByID" ColumnName="UpdatedByID" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Taxes">
+      <EntityTypeMapping TypeName="CloudSocietyModel.Tax">
+        <MappingFragment StoreEntitySet="Taxes">
+          <ScalarProperty Name="TaxID" ColumnName="TaxID" />
+          <ScalarProperty Name="Head" ColumnName="Tax" />
+          <ScalarProperty Name="TaxRate" ColumnName="TaxRate" />
+          <ScalarProperty Name="Surcharge" ColumnName="Surcharge" />
+          <ScalarProperty Name="Cess" ColumnName="Cess" />
+          <ScalarProperty Name="HiEduCess" ColumnName="HiEduCess" />
+          <ScalarProperty Name="RoundToPs" ColumnName="RoundToPs" />
+          <ScalarProperty Name="SubscriptionApplicable" ColumnName="SubscriptionApplicable" />
+          <ScalarProperty Name="SocietyApplicable" ColumnName="SocietyApplicable" />
+          <ScalarProperty Name="AcHeadID" ColumnName="AcHeadID" />
+          <ScalarProperty Name="CreatedByID" ColumnName="CreatedByID" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="UpdatedByID" ColumnName="UpdatedByID" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TDSCategories">
+      <EntityTypeMapping TypeName="CloudSocietyModel.TDSCategory">
+        <MappingFragment StoreEntitySet="TDSCategories">
+          <ScalarProperty Name="TDSCategoryID" ColumnName="TDSCategoryID" />
+          <ScalarProperty Name="Category" ColumnName="TDSCategory" />
+          <ScalarProperty Name="AcHeadID" ColumnName="AcHeadID" />
+          <ScalarProperty Name="Section" ColumnName="Section" />
+          <ScalarProperty Name="CreatedByID" ColumnName="CreatedByID" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="UpdatedByID" ColumnName="UpdatedByID" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TDSCategoryRates">
+      <EntityTypeMapping TypeName="CloudSocietyModel.TDSCategoryRate">
+        <MappingFragment StoreEntitySet="TDSCategoryRates">
+          <ScalarProperty Name="TDSCategoryRateID" ColumnName="TDSCategoryRateID" />
+          <ScalarProperty Name="TDSCategoryID" ColumnName="TDSCategoryID" />
+          <ScalarProperty Name="FromDate" ColumnName="FromDate" />
+          <ScalarProperty Name="ToDate" ColumnName="ToDate" />
+          <ScalarProperty Name="CompanyRate" ColumnName="CompanyRate" />
+          <ScalarProperty Name="NonCompanyRate" ColumnName="NonCompanyRate" />
+          <ScalarProperty Name="CreatedByID" ColumnName="CreatedByID" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="UpdatedByID" ColumnName="UpdatedByID" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UnitTypes">
+      <EntityTypeMapping TypeName="CloudSocietyModel.UnitType">
+        <MappingFragment StoreEntitySet="UnitTypes">
+          <ScalarProperty Name="UnitTypeID" ColumnName="UnitTypeID" />
+          <ScalarProperty Name="Type" ColumnName="UnitType" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="CreatedByID" ColumnName="CreatedByID" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="UpdatedByID" ColumnName="UpdatedByID" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UOMs">
+      <EntityTypeMapping TypeName="CloudSocietyModel.UOM">
+        <MappingFragment StoreEntitySet="UOMs">
+          <ScalarProperty Name="UOMID" ColumnName="UOMID" />
+          <ScalarProperty Name="Unit" ColumnName="UOM" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="CreatedByID" ColumnName="CreatedByID" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="UpdatedByID" ColumnName="UpdatedByID" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserDetails">
+      <EntityTypeMapping TypeName="CloudSocietyModel.UserDetail">
+        <MappingFragment StoreEntitySet="UserDetails">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="LoginExpiryDate" ColumnName="LoginExpiryDate" />
+          <ScalarProperty Name="SubscriberID" ColumnName="SubscriberID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

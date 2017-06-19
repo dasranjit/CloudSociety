@@ -1,0 +1,48 @@
+﻿@{
+    ViewBag.Title = "Society Member Menu";
+    ViewBag.Header = ViewBag.MemberName;    // "Society Member Menu";
+    ViewBag.SocietyNameHeader = ViewBag.SocietyHead;
+    var ShowFinalReports = (bool)ViewBag.ShowFinalReports;
+    Layout = "~/Views/Shared/SocietyLayout.cshtml";
+}
+@*<br />
+<div class="buttton" style="width: 200px;">
+    @Html.ActionLink("Member Register", "MembersRegister", "SocietyReport", new { id = ViewBag.SocietySubscriptionID })
+</div>
+<br />
+<div class="buttton" style="width: 200px;">
+    @Html.ActionLink("Member Ledger", "MemberOwnLedgerReport", "SocietyReport", new { id = ViewBag.SocietySubscriptionID })
+</div>
+<br />
+@if (ShowFinalReports)
+{
+<div class="buttton" style="width: 200px;">
+    @Html.ActionLink("Income & Expenditure Statement", "PDFIncomeExpenditure", "AccountingReport", new { id = ViewBag.SocietySubscriptionID })
+</div>
+<br />
+<div class="buttton" style="width: 200px;">
+    @Html.ActionLink("Schedule to Income & Expenditure Statement", "PDFSchedulToIncomeExpenditure", "AccountingReport", new { id = ViewBag.SocietySubscriptionID })
+</div>
+<br />
+<div class="buttton" style="width: 200px;">
+    @Html.ActionLink("Balance Sheet", "PDFBalanceSheet", "AccountingReport", new { id = ViewBag.SocietySubscriptionID })
+</div>
+<br />
+<div class="buttton" style="width: 200px;">
+    @Html.ActionLink("Schedule to Balance Sheet", "PDFSchedulToBalanceSheet", "AccountingReport", new { id = ViewBag.SocietySubscriptionID })
+</div>
+<br />
+}
+<div class="buttton" style="width: 200px;">
+    @Html.ActionLink("Member Bills", "MemberBillIndex", "SocietyBill", new { id = ViewBag.SocietySubscriptionID })
+</div>
+<br />
+<div class="buttton" style="width: 200px;">
+    @Html.ActionLink("Member Receipts", "MemberReceiptIndex", "SocietyReceipt", new { id = ViewBag.SocietySubscriptionID })
+</div>
+<br />
+<div class="buttton" style="width: 200px;">
+    @Html.ActionLink("Change Year", "ChangeYear", "SocietySubscription", new { id = ViewBag.SocietySubscriptionID })
+</div>
+<br />
+*@

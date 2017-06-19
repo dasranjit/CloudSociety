@@ -1,0 +1,38 @@
+﻿@model IEnumerable<CloudSocietyEntities.AcCategory>
+@{
+    ViewBag.Title = "Account Category";
+    ViewBag.Header = "Account Category List";
+    ViewBag.SocietyNameHeader = ViewBag.SocietyHead;
+    Layout = "~/Views/Shared/SocietyLayout.cshtml";
+}
+<div class="buttton" style="width: 65px;">
+    @Html.ActionLink("Create New", "Create", new { id = ViewBag.SocietySubscriptionID })</div>
+<br />
+
+@if(Model.Count()>0){
+    var grid = new WebGrid(Model, canPage: false, canSort: true, defaultSort: "Sequence");    
+    //grid.Pager(WebGridPagerModes.NextPrevious);
+    WebGridColumn[] columnSet = new WebGridColumn[6];
+    columnSet[0] = grid.Column("", "", format: @<text> @Html.ActionLink("Edit", "Edit", new { id = item.CategoryID, societySubscriptionID = ViewBag.SocietySubscriptionID, backUrl = grid.GetSortUrl(grid.SortColumn) }, new { @class = "EditDelete" }) | @Html.ActionLink("Delete", "Delete", new { id = item.CategoryID, societySubscriptionID = ViewBag.SocietySubscriptionID, backUrl = grid.GetSortUrl(grid.SortColumn) }, new { @class = "EditDelete" })</text>, canSort: false);
+    columnSet[1] = grid.Column("Category", "Category");
+    columnSet[2] = grid.Column("DrCr", "DrCr", format: @<text> @(item.DrCr == "D" ? "Debit" : (item.DrCr == "C" ? "Credit" : " "))</text>);
+    columnSet[3] = grid.Column("Nature", "Nature", format: @<text> @(item.Nature == "I" ? "Income Expenditure" : (item.Nature == "B" ? "Balance Sheet" :  ""))</text>);
+    columnSet[4] = grid.Column("Sequence", "Sequence");
+    columnSet[5] = grid.Column("Active", "Active", format: @<text>@if (item.Active == true){<text><center><img src="@Url.Content("~/Content/Images/tick-green.png")" /></center></text> }</text>, canSort: false);
+    @grid.GetHtml(tableStyle: "table", footerStyle: "webgrid-footer", rowStyle: "TableRow", alternatingRowStyle: "altTableRow", columns: grid.Columns(columnSet))  
+}
+else
+{
+<table>
+       <tr class="TableRow">
+            <td>
+                No Record Found.
+            </td>
+        </tr> 
+   </table> 
+}
+
+<br />
+<div>
+    @Html.ActionLink("Back ", "Menu", "SocietySubscription", new { id = ViewBag.SocietySubscriptionID }, new { @class = "EditDelete" })
+</div>

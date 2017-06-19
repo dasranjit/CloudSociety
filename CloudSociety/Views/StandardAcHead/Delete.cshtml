@@ -1,0 +1,104 @@
+﻿@model CloudSocietyEntities.StandardAcHead
+@{
+    ViewBag.Title = "Delete Standard Account Head";
+    ViewBag.Header = "Standard Account Head";   
+}
+<div class="LabelDel">
+    Are you sure you want to delete this?</div>
+<br />
+@using (Html.BeginForm())
+{
+     @Html.ValidationSummary(false, "Following errors occurred while processing your request")
+    @Html.HiddenFor(model => model.AcHeadID)
+    <fieldset style="width: 600px">
+        <legend>Standard Account Head Details</legend>
+        <br />
+        <table border="0" cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="editor-label">
+                    Sequence :
+                </td>
+                <td>
+                    @Model.Sequence
+                    @Html.HiddenFor(model => model.Sequence)
+                </td>
+            </tr>
+            <tr>
+                <td class="editor-label">
+                    Account Head :
+                </td>
+                <td>
+                    @Model.AcHead
+                    @Html.HiddenFor(model => model.AcHead)
+                </td>
+            </tr>
+            <tr>
+                <td class="editor-label">
+                    Sub-Category :
+                </td>
+                <td>
+                    @(Model.StandardAcSubCategory!=null?Model.StandardAcSubCategory.SubCategory:"")
+                    @Html.HiddenFor(model => model.SubCategoryID)
+                </td>
+            </tr>
+            @if (Model.Nature != null)
+            {
+                <tr>
+                    <td>
+                        Nature :
+                    </td>
+                    <td>
+                       @(Model.Nature == "C" ? "Cash" : (Model.Nature == "B" ? "Bank" : (Model.Nature == "S" ? "Creditor" : (Model.Nature == "D" ? "Debtor" : (Model.Nature == "T" ? "TDS" : (Model.Nature == "F" ? "Year End Closing Transaction" : ""))))))
+                        @Html.HiddenFor(model => model.Nature)
+                    </td>
+                </tr>
+            }
+            @if (Model.TDSCategory != null)
+            {
+                <tr>
+                    <td>
+                        TDS Category :
+                    </td>
+                    <td>
+                        @Model.TDSCategory.Category
+                        @Html.HiddenFor(model => model.TDSCategoryID)
+                    </td>
+                </tr>   
+            }
+            <tr>
+                <td>
+                    TDS Category :
+                </td>
+                <td>
+                    @if (Model.TDSCompany == true)
+                    {
+                        <text>
+                        <img src="@Url.Content("~/Content/Images/tick-green.png")"  />
+                        </text> 
+                    }
+                    else
+                    { 
+                        <text>
+                        <img src="@Url.Content("~/Content/Images/Copy of cancel-icon.png")" />
+                        </text>
+                    }
+                    @Html.HiddenFor(model => model.TDSCompany)
+                </td>
+            </tr>
+            <tr>
+                <td align="center" colspan="2">
+                    <input type="submit" value="Delete" class="buttton" style="width: 45px; height: 23px;
+                        vertical-align: middle;" />
+                </td>
+            </tr>
+        </table>
+    </fieldset>
+    @Html.HiddenFor(model => model.CreatedByID)
+    @Html.HiddenFor(model => model.CreatedOn)
+    @Html.HiddenFor(model => model.UpdatedByID)
+    @Html.HiddenFor(model => model.UpdatedOn)
+}
+<br />
+<div>   
+    <a href="@ViewBag.BackUrl" class="EditDelete">Back to List</a>
+</div>

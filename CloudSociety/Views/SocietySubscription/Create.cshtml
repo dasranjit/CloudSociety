@@ -1,0 +1,294 @@
+﻿@model CloudSocietyEntities.SocietySubscription
+@{
+    ViewBag.Title = "Create Society Subscription";
+    ViewBag.Header = "Society Subscription";
+}
+
+<script src="@Url.Content("~/Scripts/SocietySubscriptionCreate.js")" type="text/javascript"></script>
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+@*==== Scripts to be added for AJAX calendar START ====*@
+<script src="@Url.Content("~/Content/AjaxControlToolkit/3.0.20820.16598/3.0.20820.0/MicrosoftAjax.debug.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Content/AjaxControlToolkit/3.0.20820.16598/3.0.20820.0/AjaxControlToolkit.ExtenderBase.BaseScripts.js")"
+        type="text/javascript"></script>
+<script src="@Url.Content("~/Content/AjaxControlToolkit/3.0.20820.16598/3.0.20820.0/AjaxControlToolkit.Common.Common.js")"
+        type="text/javascript"></script>
+<script src="@Url.Content("~/Content/AjaxControlToolkit/3.0.20820.16598/3.0.20820.0/AjaxControlToolkit.Common.DateTime.js")"
+        type="text/javascript"></script>
+<script src="@Url.Content("~/Content/AjaxControlToolkit/3.0.20820.16598/3.0.20820.0/AjaxControlToolkit.Animation.Animations.js")"
+        type="text/javascript"></script>
+<script src="@Url.Content("~/Content/AjaxControlToolkit/3.0.20820.16598/3.0.20820.0/AjaxControlToolkit.PopupExtender.PopupBehavior.js")"
+        type="text/javascript"></script>
+<script src="@Url.Content("~/Content/AjaxControlToolkit/3.0.20820.16598/3.0.20820.0/AjaxControlToolkit.Animation.AnimationBehavior.js")"
+        type="text/javascript"></script>
+<script src="@Url.Content("~/Content/AjaxControlToolkit/3.0.20820.16598/3.0.20820.0/AjaxControlToolkit.Common.Threading.js")"
+        type="text/javascript"></script>
+<script src="@Url.Content("~/Content/AjaxControlToolkit/3.0.20820.16598/3.0.20820.0/AjaxControlToolkit.Compat.Timer.Timer.js")"
+        type="text/javascript"></script>
+<script src="@Url.Content("~/Content/AjaxControlToolkit/3.0.20820.16598/3.0.20820.0/AjaxControlToolkit.Calendar.CalendarBehavior.js")"
+        type="text/javascript"></script>
+<script type="text/javascript">
+
+    Sys.Application.add_init(appInit);
+
+    function appInit() {
+        $create(AjaxControlToolkit.CalendarBehavior, { format: "dd-MMM-yyyy" }, null, null, $get('SubscriptionStart'));
+        $create(AjaxControlToolkit.CalendarBehavior, { format: "dd-MMM-yyyy" }, null, null, $get('SubscriptionEnd'));
+    }
+</script>
+@*==== END ====*@
+
+<script type="text/javascript">
+    $(document).ready(function () { $("input.autocompleteOff").attr("autocomplete", "off"); });
+</script>
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(false, "Following errors occurred while processing your request")
+    <fieldset style="width: 550px">
+        <legend>Create Society Subscription</legend>
+        <br />
+        <table border="0" cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="editor-label">
+                    @Html.LabelFor(model => model.Society.Name)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.Society.Name)<span class="editor-field"> &nbsp;&nbsp;&nbsp;&nbsp;@Html.ValidationMessageFor(model => model.Society.Name)</span>
+                </td>
+            </tr>
+            <tr>
+                <td class="editor-label">
+                    @Html.LabelFor(model => model.Society.Address)
+                </td>
+                <td>
+                    @Html.TextAreaFor(model => model.Society.Address, 4, 48, 1)
+                    <span class="editor-field">@Html.ValidationMessageFor(model => model.Society.Address)</span>
+                </td>
+            </tr>
+            <tr>
+                <td class="editor-label">
+                    @Html.LabelFor(model => model.Society.City)
+                </td>
+                <td>
+                    <input type="text" name="Society.City" size="20" value=""></input>@*@Html.EditorFor(model => model.Society.City)*@
+                    <span class="editor-field">@Html.ValidationMessageFor(model => model.Society.City)</span>
+                </td>
+            </tr>
+            <tr>
+                <td class="editor-label">
+                    @Html.LabelFor(model => model.Society.PIN)
+                </td>
+                <td>
+                    <input type="text" name="Society.PIN" size="10" value=""></input>@*@Html.EditorFor(model => model.Society.PIN)*@
+                    <span class="editor-field">@Html.ValidationMessageFor(model => model.Society.PIN)</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.Society.State)
+                </td>
+                <td>
+                    @Html.DropDownList("StateID", new SelectList(ViewBag.StateList as System.Collections.IEnumerable, "StateID", "Name"), "<- Select State ->")
+                    <span class="editor-field">@Html.ValidationMessageFor(model => model.Society.StateID)</span>
+                </td>
+            </tr>
+            <tr>
+                <td class="editor-label">
+                    Contact Person
+                </td>
+                <td>
+                    <input type="text" name="Society.ContactPerson" size="40" value=""></input>@*@Html.EditorFor(model => model.Society.ContactPerson)*@
+                    <span class="editor-field">@Html.ValidationMessageFor(model => model.Society.ContactPerson)</span>
+                </td>
+            </tr>
+            <tr>
+                <td class="editor-label">
+                    @Html.LabelFor(model => model.Society.Phone)
+                </td>
+                <td>
+                    <input type="text" name="Society.Phone" size="10" value=""></input>@*@Html.EditorFor(model => model.Society.Phone)*@
+                    <span class="editor-field">@Html.ValidationMessageFor(model => model.Society.Phone)</span>
+                </td>
+            </tr>
+            <tr>
+                <td class="editor-label">
+                    Society Mobile No 
+                </td>
+                <td>
+                    <input type="text" name="Society.Mobile" size="10" value=""></input>@*@Html.EditorFor(model => model.Society.Mobile)*@
+                    <span class="editor-field">@Html.ValidationMessageFor(model => model.Society.Mobile)</span>
+                </td>
+            </tr>
+            <tr>
+                <td class="editor-label">
+                    Society EMail Id 
+                </td>
+                <td>
+                    <input type="text" name="Society.EMailId" size="10" value=""></input>@*@Html.EditorFor(model => model.Society.Mobile)*@
+                    <span class="editor-field">@Html.ValidationMessageFor(model => model.Society.EMailId)</span>
+                </td>
+            </tr>
+            <tr>
+                <td class="editor-label">No Of Members
+                </td>
+                <td>
+                    <input class="text-box single-line autocompleteOff" data-val="true" data-val-number="The field NoOfAdditionalMembers must be a number." data-val-required="The NoOfAdditionalMembers field is required." id="NoOfAdditionalMembers" name="NoOfAdditionalMembers" type="text" onkeyup="NoOfMembers(this)" /><span class="editor-field"> &nbsp;&nbsp;&nbsp;&nbsp;<span class="field-validation-valid" data-valmsg-for="NoOfAdditionalMembers" data-valmsg-replace="true"></span></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="editor-label">Subscription Start
+                </td>
+                <td>
+                    <input class="text-box single-line" data-val="true" data-val-required="The SubscriptionStart field is required." id="SubscriptionStart" name="SubscriptionStart" type="text" onchange="MonthStartCheck(this)" /><span class="editor-field"> &nbsp;&nbsp;&nbsp;&nbsp;<span class="field-validation-valid" data-valmsg-for="SubscriptionStart" data-valmsg-replace="true"></span></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="editor-label">Subscription End
+                </td>
+                <td>
+                    <input class="text-box single-line" data-val="true" data-val-required="The SubscriptionEnd field is required." id="SubscriptionEnd" name="SubscriptionEnd" type="text" onchange="MonthendCheck(this)" /><span class="editor-field"> &nbsp;&nbsp;&nbsp;&nbsp;<span class="field-validation-valid" data-valmsg-for="SubscriptionEnd" data-valmsg-replace="true"></span></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="editor-label">Subscribed Months
+                </td>
+                <td>
+                    <input class="text-box single-line autocompleteOff" data-val="true" data-val-number="The field SubscribedMonths must be a number." data-val-required="The SubscribedMonths field is required." id="SubscribedMonths" name="SubscribedMonths" type="text" onkeyup="Months(this)" /><span class="editor-field"> &nbsp;&nbsp;&nbsp;&nbsp;<span class="field-validation-valid" data-valmsg-for="SubscribedMonths" data-valmsg-replace="true"></span></span>
+                </td>
+            </tr>
+        </table>
+
+        <br />
+
+        <table border="0" cellpadding="2" cellspacing="0" class="table" id="tabServices">
+            @{
+    int Count = 0;
+            }
+
+
+            @foreach (var item in (IEnumerable<CloudSocietyEntities.TariffRate>)ViewBag.Services)
+            {
+                Count++;
+                if (Count == 1)
+                {
+                <tr>
+                    <th></th>
+                    <th>Service Type
+                    </th>
+                    <th>Chargeability
+                    </th>
+                    <th>Quantity
+                    </th>
+                    <th>Rate
+                    </th>
+                    <th>Period
+                    </th>
+                    <th>Amount
+                    </th>
+                </tr>
+                }
+                <tr @if ((Count % 2) == 0)
+                    { <text> class="TableRow" </text> }
+                    else
+                    { <text> class="altTableRow" </text>}>
+                    <td width="20px">
+                        <input id="Chk+@Count" name="Chk+@Count" data-val="true" type="checkbox" checked="checked" onclick="CheckBox()" @if (item.ServiceType.Mandatory.Value == true)
+                                                                                                                                        {<text> style="visibility:hidden;" </text> } />
+                        <input id="ID+@Count" name="ID+@Count" data-val="true" type="hidden" value="@item.ServiceTypeID" />
+                        @*            <input id="@cnt" name="@cnt" data-val="true" type="checkbox" checked="checked" />
+@{
+       cnt++;
+}
+*@        </td>
+                    <td width="120px">
+                        @item.ServiceType.Type
+                    </td>
+                    <td width="80px">
+                        <label id="lblChargeability+@Count" >@(item.ServiceType.Chargeability == "O" ? "One Time" : (item.ServiceType.Chargeability == "M" ? "Monthly" : "Quarterly"))</label>
+                    </td>
+                    <td width="100px" align="center">
+                        <label id="lblBasis+@Count" style="visibility:hidden;" >@item.ServiceType.Basis</label>
+                        <label id="lblQuantity+@Count" >@(item.ServiceType.Basis == "M" ? "0" : "1")</label>
+                        &nbsp;
+            @(item.ServiceType.Basis == "M" ? " Members" : " Society")
+                    </td>
+                    <td width="45px" align="right">
+                        <label id="lblRate+@Count" >@item.Rate</label>
+                    </td>
+                    <td width="20px" align="right">
+                        <label id="lblPeriod+@Count" ></label>
+                    </td>
+                    <td width="70px" align="right">
+                        <label id="lblAmount+@Count" >@(item.ServiceType.Chargeability == "O" && item.ServiceType.Basis == "S" ? @item.Rate.ToString() : "")</label>
+                    </td>
+                </tr>
+            }
+
+
+            <tr class="altTableRow">
+
+
+                <td colspan="5"><b>Net Amount</b></td>
+
+
+                @{decimal TotalAmount = 0;}
+                @foreach (var item in (IEnumerable<CloudSocietyEntities.TariffRate>)ViewBag.Services)
+                {
+                    if (item.ServiceType.Chargeability == "O" && item.ServiceType.Basis == "S")
+                    {
+                        TotalAmount = TotalAmount + @item.Rate;
+                    }
+                }
+                <td colspan="2" align="Right"><b>
+                    <label id="lblNetAmt" />@String.Format("{0:0.00}", TotalAmount)</b></td>
+            </tr>
+            <tr class="altTableRow">
+
+                <td colspan="5"><b>@ViewBag.TaxPrompt</b><input id="TaxRate" type="hidden" value="@ViewBag.TaxPerc" /></td>
+
+                @{
+                decimal TaxAmount = 0;
+                TaxAmount = (TotalAmount / 100) * ViewBag.TaxPerc;
+                }
+                <td colspan="2" align="Right"><b>
+                    <label id="lblTaxAmt" />@String.Format("{0:0.00}", TaxAmount)</b></td>
+            </tr>
+            <tr class="altTableRow">
+
+                <td colspan="5"><b>Grand Total</b></td>
+
+                @{
+                decimal GrandTotal = 0;
+                GrandTotal = TotalAmount + TaxAmount;
+                }
+                <td colspan="2" align="Right"><b>
+                    <label id="lblTotAmt" />@String.Format("{0:0.00}", GrandTotal)</b></td>
+
+
+                @Html.Hidden("NoOfServiceType", Count)
+            </tr>
+        </table>
+
+        @*        <p>
+        @Html.RadioButton("NextOption","Another Society",true)
+        @Html.RadioButton("NextOption","Checkout")
+        <input checked="checked" id="NextOptionS" name="NextOption" type="radio" value="Society" />Create Another Society<br />
+        <input id="NextOptionC" name="NextOption" type="radio" value="Checkout" />Proceed for Checkout
+        </p>
+*@
+        <br />
+        <br />
+        <input type="submit" value="Create" class="buttton" style="width: 45px; height: 23px; vertical-align: middle;" />
+        <br />
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index", "Society", null, new { @class = "EditDelete" })
+</div>
+
+<br />

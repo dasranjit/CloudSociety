@@ -1,0 +1,108 @@
+﻿@model CloudSocietyEntities.SocietySpecialBillUnit
+@{
+    ViewBag.Title = "Create Special Bill Unit";
+    ViewBag.Header = "Special Bill Unit";
+    ViewBag.SocietyNameHeader = ViewBag.SocietyHead;
+    var societySpecialBill = (CloudSocietyEntities.SocietySpecialBill)ViewBag.SocietySpecialBill;
+    Layout = "~/Views/Shared/SocietyLayout.cshtml";
+    bool IsFullAccess = new CloudSociety.Controllers.AppInfoController().IsFullAccess();
+}
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(false, "Following errors occurred while processing your request") 
+    <fieldset style="width: 600px">
+        <legend>Create Special Bill Unit</legend>
+        <br />
+        <table border="0" cellpadding="0" cellspacing="0">
+            @Html.Hidden("SocietySpecialBillID", societySpecialBill.SocietySpecialBillID)
+            <tr>
+                <td>
+                    Society Building Unit :
+                </td>
+                <td>
+                    @Html.DropDownList("SocietyBuildingUnitID", new SelectList(ViewBag.SocietyBuildingUnitList as System.Collections.IEnumerable, "SocietyBuildingUnitID", "BuildingUnit"), "<- Select Building Unit ->")
+                    <span class="editor-field">@Html.ValidationMessageFor(model => model.SocietyBuildingUnitID)</span>
+                </td>
+            </tr>
+             @if (IsFullAccess)
+             {
+             <tr>
+                <td colspan="2" align="center">
+                    <input type="submit" value="Create" class="buttton" style="width: 45px; height: 23px;" />
+                </td>
+            </tr>
+             }
+        </table>
+    </fieldset>
+}
+<div>
+    @Html.ActionLink("Back to List", "Index", new { societySpecialBillID = societySpecialBill.SocietySpecialBillID, societySubscriptionID = ViewBag.SocietySubscriptionID }, new { @class = "EditDelete" })
+</div>
+@*
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>SocietySpecialBillUnit</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SocietySpecialBillID)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SocietySpecialBillID)
+            @Html.ValidationMessageFor(model => model.SocietySpecialBillID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SocietyBuildingUnitID)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SocietyBuildingUnitID)
+            @Html.ValidationMessageFor(model => model.SocietyBuildingUnitID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CreatedByID)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CreatedByID)
+            @Html.ValidationMessageFor(model => model.CreatedByID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CreatedOn)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CreatedOn)
+            @Html.ValidationMessageFor(model => model.CreatedOn)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.UpdatedByID)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.UpdatedByID)
+            @Html.ValidationMessageFor(model => model.UpdatedByID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.UpdatedOn)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.UpdatedOn)
+            @Html.ValidationMessageFor(model => model.UpdatedOn)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+*@

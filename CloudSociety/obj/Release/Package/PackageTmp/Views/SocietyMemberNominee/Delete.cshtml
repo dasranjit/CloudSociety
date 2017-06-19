@@ -1,0 +1,170 @@
+﻿@model CloudSocietyEntities.SocietyMemberNominee
+@{
+    ViewBag.Title = "Delete Member Nominee";
+    ViewBag.Header = " Member Member Nominee ";
+    ViewBag.SocietyNameHeader = ViewBag.SocietyHead;
+    Layout = "~/Views/Shared/SocietyLayout.cshtml";
+    bool IsFullAccess = new CloudSociety.Controllers.AppInfoController().IsFullAccess(); 
+}
+<div class="LabelDel">
+    Are you sure you want to delete this?
+</div>
+<br />
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(false, "Following errors occurred while processing your request")  
+    <fieldset style="width: 500px">
+        <legend>Member Nominee Details</legend>
+        <table border="0" cellpadding="0" cellspacing="0">
+            <tr>
+                <td>
+                    Name
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Name)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Relationship :
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.RelationshipEntity.Name)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Other Relationship :
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Relationship)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Birth Date :
+                </td>
+                <td>
+                    @String.Format("{0:dd-MMM-yyyy}", Model.BirthDate)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Address :
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Address)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    City :
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.City)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    PIN :
+                </td>
+                <td>
+                    @Model.PIN
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    State :
+                </td>
+                <td>
+                    @(Model.StateID == null ? "" : Model.State.Name)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Country :
+                </td>
+                <td>
+                    @(Model.StateID == null ? "" : Model.State.Country.Name)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Phone No :
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.PhoneNo)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Office Phone No :
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.OfficePhoneNo)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Mobile No :
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.MobileNo)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    EMail ID :
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.EMailId)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Nomination Perc :
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.NominationPerc)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Nomination Date :
+                </td>
+                <td>
+                    @String.Format("{0:dd-MMM-yyyy}", Model.NominationDate)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    MCM Date :
+                </td>
+                <td>
+                    @String.Format("{0:dd-MMM-yyyy}", Model.MCMDate)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Revocation Date :
+                </td>
+                <td>
+                    @String.Format("{0:dd-MMM-yyyy}", Model.RevocationDate)
+                </td>
+            </tr>
+            @if (IsFullAccess)
+            {
+            <tr>
+                <td align="center" colspan="2">
+                    <input type="submit" value="Delete" class="buttton" style="width: 45px; height: 23px;" />
+                </td>
+            </tr>
+            }
+        </table>
+    </fieldset>
+    @Html.HiddenFor(m => m.SocietyMemberNomineeID)
+    @Html.Hidden("societySubscriptionID", (Guid)ViewBag.SocietySubscriptionID)
+}
+<div>
+    @Html.ActionLink("Back to List", "Index", new { societyMemberID = Model.SocietyMemberID, societySubscriptionID = ViewBag.SocietySubscriptionID }, new { @class = "EditDelete" })
+</div>

@@ -1,0 +1,56 @@
+﻿@model CloudSocietyEntities.Communication
+@{
+    ViewBag.Title = "Delete Message";
+    ViewBag.Header = " Message ";
+    ViewBag.SocietyNameHeader = ViewBag.SocietyHead;
+    Layout = "~/Views/Shared/SocietyLayout.cshtml";
+    bool IsFullAccess = new CloudSociety.Controllers.AppInfoController().IsFullAccess();     
+}
+<div class="LabelDel">
+    Are you sure you want to delete this?
+</div>
+<br />
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(model=>model.CommunicationID) 
+    @Html.ValidationSummary(false, "Following errors occurred while processing your request")  
+    <fieldset style="width: 500px">
+        <legend>Message Detail</legend>
+        <table>
+            <tr>
+                <td>
+                    Type :
+                </td>
+                <td>
+                    @ViewBag.ct
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Subject :
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Subject)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Message :
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Details)
+                </td>
+            </tr>
+            @if (IsFullAccess)
+            {
+                <tr>
+                    <td align="center" colspan="2">
+                        <input type="submit" value="Delete" class="buttton" style="width: 45px; height: 23px;" />
+                    </td>
+                </tr>   
+            }
+        </table>
+    </fieldset>
+    @Html.Hidden("id", (Guid)ViewBag.id) 
+}
+@Html.ActionLink("Back to List", "Index", new { id = (Guid)ViewBag.id}, new { @class = "EditDelete" })

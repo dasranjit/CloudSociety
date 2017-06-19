@@ -1,0 +1,161 @@
+﻿@model CloudSocietyEntities.SocietyMemberNominee
+@{
+    ViewBag.Title = "Details Member Nominee";
+    ViewBag.Header = "Details Member Nominee";
+    ViewBag.SocietyNameHeader = ViewBag.SocietyHead;
+    Layout = "~/Views/Shared/SocietyLayout.cshtml";
+    var societyMember = (CloudSocietyEntities.SocietyMember)ViewBag.SocietyMember;
+    bool IsFullAccess = new CloudSociety.Controllers.AppInfoController().IsFullAccess(); 
+}
+<span class="SocName">@societyMember.Member</span>
+<br />
+<br />
+<fieldset style="width: 500px">
+    <legend>Member Nominee Details</legend>
+    <table border="0" cellpadding="0" cellspacing="0">
+        <tr>
+            <td>
+                Name
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Name)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Relationship :
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.RelationshipEntity.Name)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Other Relationship :
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Relationship)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Birth Date :
+            </td>
+            <td>
+                @String.Format("{0:dd-MMM-yyyy}", Model.BirthDate)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Address :
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Address)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                City :
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.City)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                PIN :
+            </td>
+            <td>
+                @Model.PIN
+            </td>
+        </tr>
+        <tr>
+            <td>
+                State :
+            </td>
+            <td>
+                @(Model.StateID == null ? "" : Model.State.Name)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Country :
+            </td>
+            <td>
+                @(Model.StateID == null ? "" : Model.State.Country.Name)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Phone No :
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.PhoneNo)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Office Phone No :
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.OfficePhoneNo)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Mobile No :
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.MobileNo)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                EMail ID :
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.EMailId)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Nomination Perc :
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.NominationPerc)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Nomination Date :
+            </td>
+            <td>
+                @String.Format("{0:dd-MMM-yyyy}", Model.NominationDate)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                MCM Date :
+            </td>
+            <td>
+                @String.Format("{0:dd-MMM-yyyy}", Model.MCMDate)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Revocation Date :
+            </td>
+            <td>
+                @String.Format("{0:dd-MMM-yyyy}", Model.RevocationDate)
+            </td>
+        </tr>
+    </table>
+</fieldset>
+<p>
+   @if (IsFullAccess)
+            {
+        @Html.ActionLink("Edit", "Edit", new { id = Model.SocietyMemberNomineeID, societySubscriptionID = ViewBag.SocietySubscriptionID }, new { @class = "EditDelete" })
+        <text>|</text>
+    }
+    @Html.ActionLink("Back to List", "Index", new { societyMemberID = societyMember.SocietyMemberID, societySubscriptionID = ViewBag.SocietySubscriptionID }, new { @class = "EditDelete" })
+</p>

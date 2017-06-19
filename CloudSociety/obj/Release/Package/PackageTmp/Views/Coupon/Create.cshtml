@@ -1,0 +1,145 @@
+﻿@model CloudSocietyEntities.Coupon
+@{
+    ViewBag.Title = "Create Coupon";
+    ViewBag.Header = "Coupon";    
+}
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+@*==== Scripts to be added for AJAX calendar START ====*@
+<script src="@Url.Content("~/Content/AjaxControlToolkit/3.0.20820.16598/3.0.20820.0/MicrosoftAjax.debug.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Content/AjaxControlToolkit/3.0.20820.16598/3.0.20820.0/AjaxControlToolkit.ExtenderBase.BaseScripts.js")"
+        type="text/javascript"></script>
+<script src="@Url.Content("~/Content/AjaxControlToolkit/3.0.20820.16598/3.0.20820.0/AjaxControlToolkit.Common.Common.js")"
+        type="text/javascript"></script>
+<script src="@Url.Content("~/Content/AjaxControlToolkit/3.0.20820.16598/3.0.20820.0/AjaxControlToolkit.Common.DateTime.js")"
+        type="text/javascript"></script>
+<script src="@Url.Content("~/Content/AjaxControlToolkit/3.0.20820.16598/3.0.20820.0/AjaxControlToolkit.Animation.Animations.js")"
+        type="text/javascript"></script>
+<script src="@Url.Content("~/Content/AjaxControlToolkit/3.0.20820.16598/3.0.20820.0/AjaxControlToolkit.PopupExtender.PopupBehavior.js")"
+        type="text/javascript"></script>
+<script src="@Url.Content("~/Content/AjaxControlToolkit/3.0.20820.16598/3.0.20820.0/AjaxControlToolkit.Animation.AnimationBehavior.js")"
+        type="text/javascript"></script>
+<script src="@Url.Content("~/Content/AjaxControlToolkit/3.0.20820.16598/3.0.20820.0/AjaxControlToolkit.Common.Threading.js")"
+        type="text/javascript"></script>
+<script src="@Url.Content("~/Content/AjaxControlToolkit/3.0.20820.16598/3.0.20820.0/AjaxControlToolkit.Compat.Timer.Timer.js")"
+        type="text/javascript"></script>
+<script src="@Url.Content("~/Content/AjaxControlToolkit/3.0.20820.16598/3.0.20820.0/AjaxControlToolkit.Calendar.CalendarBehavior.js")"
+        type="text/javascript"></script>
+<script type="text/javascript">
+
+    Sys.Application.add_init(appInit);
+
+    function appInit() {
+        $create(AjaxControlToolkit.CalendarBehavior, { format: "dd-MMM-yyyy" }, null, null, $get('ValidityStart'));
+        $create(AjaxControlToolkit.CalendarBehavior, { format: "dd-MMM-yyyy" }, null, null, $get('ValidityEnd'));
+    }   
+</script>
+@*==== END ====*@
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(false, "Following errors occurred while processing your request")
+    <fieldset style="width: 600px">
+        <legend>Create Coupon</legend>
+        <br />
+        <table border="0" cellpadding="0" cellspacing="0">
+            <tr>
+                <td>
+                    @Html.Label("Coupon No :") 
+                </td>
+                <td>
+                     @Html.TextBox("CouponNo", null, new { @class = "mediumWidth" })@*@Html.EditorFor(model => model.CouponNo)*@
+                    <span class="editor-field">@Html.ValidationMessageFor(model => model.CouponNo)</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.Label("IPIN :")
+                </td>
+                <td>
+                     @Html.TextBox("IPIN", null, new { @class = "mediumWidth" })@*@Html.EditorFor(model => model.IPIN)*@
+                    <span class="editor-field">@Html.ValidationMessageFor(model => model.IPIN)</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.Label("Discount Percentage :")
+                </td>
+                <td>
+                    @Html.TextBox("DiscountPerc", null, new { @class = "mediumWidth" })@*@Html.EditorFor(model => model.DiscountPerc)*@
+                    <span class="editor-field">@Html.ValidationMessageFor(model => model.DiscountPerc)</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.Label("Discount Amount :")
+                </td>
+                <td>
+                     @Html.TextBox("DiscountAmount", null, new { @class = "mediumWidth" })@*@Html.EditorFor(model => model.DiscountAmount)*@
+                    <span class="editor-field">@Html.ValidationMessageFor(model => model.DiscountAmount)</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.Label("Validity Start :")
+                </td>
+                <td>
+                      @Html.TextBox("ValidityStart", null, new { @class = "mediumWidth" })@*@Html.EditorFor(model => model.ValidityStart)*@
+                    <span class="editor-field">@Html.ValidationMessageFor(model => model.ValidityStart)</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.Label("Validity End :")
+                </td>
+                <td>
+                    @Html.TextBox("ValidityEnd", null, new { @class = "mediumWidth" })@*@Html.EditorFor(model => model.ValidityEnd)*@
+                    <span class="editor-field">@Html.ValidationMessageFor(model => model.ValidityEnd)</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.Label("Minimum Amount :")
+                </td>
+                <td>
+                    @Html.TextBox("MinAmount", null, new { @class = "mediumWidth" })@*@Html.EditorFor(model => model.MinAmount)*@
+                    <span class="editor-field">@Html.ValidationMessageFor(model => model.MinAmount)</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.Label("Maximum Amount :")
+                </td>
+                <td>
+                    @Html.TextBox("MaxAmount", null, new { @class = "mediumWidth" })@*@Html.EditorFor(model => model.MaxAmount)*@
+                    <span class="editor-field">@Html.ValidationMessageFor(model => model.MaxAmount)</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.Label("Subscriber :")
+                </td>
+                <td>
+                    @Html.DropDownList("SubscriberID", new SelectList(ViewBag.subscriberlist as System.Collections.IEnumerable, "SubscriberID", "Name"), "<- Select Subscriber ->")
+                    <span class="editor-field">@Html.ValidationMessageFor(model => model.SubscriberID)</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.Label("Society :")
+                </td>
+                <td>
+                    @Html.DropDownList("SocietyID", new SelectList(ViewBag.societylist as System.Collections.IEnumerable, "SocietyID", "Name"), "<- Select Society ->")
+                    <span class="editor-field">@Html.ValidationMessageFor(model => model.SocietyID)</span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <input type="submit" value="Create" class="buttton" style="width: 45px; height: 23px;" />
+                </td>
+            </tr>
+            </table>
+    </fieldset>
+}
+<div>
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "EditDelete" })
+</div>

@@ -1,0 +1,150 @@
+﻿@model IEnumerable<CloudSocietyEntities.Society>
+@{
+    ViewBag.Title = "Society List For Support";
+    ViewBag.Header = "List Of Societies";
+    Layout = "~/Views/Shared/SubscriberLayout.cshtml";   
+}
+@using (Html.BeginForm("IndexForSupport", "Society", FormMethod.Get))
+{
+    @Html.ValidationSummary(false, "Following errors occurred while processing your request")
+    <fieldset style="width: 750px">
+        <legend>Search</legend>
+        <table>
+            <tr>
+                <td>
+                    By Name
+                </td>
+                <td>
+                    By Regd. No.
+                </td>
+                <td colspan ="2">
+                    By Subscriber
+                </td>
+            </tr>
+            <tr>
+                <td >
+                    @Html.TextBox("Name", null, new { @class = "mediumWidth" })
+                </td>
+                <td>
+                    @Html.TextBox("RegistrationNo", null, new { @class = "mediumWidth" })
+                </td>
+                <td>
+                    @Html.TextBox("Subscriber", null, new { @class = "mediumWidth" })
+                </td>
+                <td align="center">                   
+                    <input type="submit" value="Search" class="buttton" style="width: 45px; height: 23px;
+                        vertical-align: middle;" />
+                </td>
+            </tr>
+        </table>
+    </fieldset>   
+}
+@*<div class="buttton" style="width: 65px;">
+    @Html.ActionLink("Create New", "Create", new { id = ViewBag.SocietySubscriptionID })</div>
+<br />*@
+@if (Model.Count() > 0)
+{
+    var grid = new WebGrid(Model, canPage: true, defaultSort: "Name", canSort: true, rowsPerPage: 10);
+    grid.Pager(WebGridPagerModes.NextPrevious);
+    WebGridColumn[] columnSet = new WebGridColumn[6];
+    columnSet[0] = grid.Column("", "", @<text> @if (item.Active){@Html.ActionLink("Operate", "Select","SocietySubscription", new { id = item.SocietyID }, new { @class = "EditDelete" })}</text>);
+    columnSet[1] = grid.Column("Name", "Name", @<text><div style='width: 250px'>@item.Name</div></text>);
+    columnSet[2] = grid.Column("Address", "Address", @<text><div style='width: 250px'>@(item.Address != null ? item.Address  : "")<br/>@(item.City != null ? "City : "+item.City  : "")@(item.PIN != null ? "-" + item.PIN + ", " : "") @(item.State != null ? "State : "+item.State.Name+"."  : "")</div></text>);
+    columnSet[3] = grid.Column("RegistrationNo", "Regd. No.",@<text><div style='width: 150px'>@(item.RegistrationNo!=null?item.RegistrationNo:"")</div></text>);
+    columnSet[4] = grid.Column("item.Subscriber.Name", "Subscriber", @<text><div style='width: 150px'>@(item.Subscriber != null ? item.Subscriber.Name : "")</div></text>, canSort: false);
+    columnSet[5] = grid.Column("Active", "Active", @<text><div style='width: 30px'><center>@if(item.Active == true){<img src="@Url.Content("~/Content/Images/tick-green.png")" />}else{<img alt="" src="@Url.Content("~/Content/Images/Copy of cancel-icon.png")" />}</center></div></text>, canSort: false);   
+    @grid.GetHtml(tableStyle: "table", footerStyle: "webgrid-footer", rowStyle: "TableRow", alternatingRowStyle: "altTableRow", columns: grid.Columns(columnSet))
+}
+else
+{
+    <table>
+        <tr class="TableRow">
+            <td>
+                No Record Found.
+            </td>
+        </tr>
+    </table> 
+}
+
+@*@model IEnumerable<CloudSocietyEntities.Society>
+@{
+    ViewBag.Title = "Society List For Support";
+    ViewBag.Header = "List Of Societies";
+    Layout = "~/Views/Shared/SubscriberLayout.cshtml";        
+}
+<table cellpadding="2" class="table">
+    @{
+        int Count = 1;
+    }
+    @foreach (var item in Model)
+    {
+        if (Count == 1)
+        {
+        <tr>
+            <th>
+            </th>
+            <th>
+                Name
+            </th>
+            <th>
+                Address
+            </th>           
+            <th>
+                Regd. No.
+            </th>
+            <th>
+                Subscriber
+            </th>
+            <th>
+                Active
+            </th>
+        </tr>
+        }  
+        <tr @if ((Count % 2) == 0)
+            { <text> class="TableRow" </text> }
+            else
+            { <text> class="altTableRow" </text>} >
+            <td>
+                @if (item.Active)
+                {
+                    @Html.ActionLink("Operate", "Select", "SocietySubscription", new { id = item.SocietyID }, new { @class = "EditDelete" })
+                }
+            </td>
+            <td>@Html.DisplayFor(modelItem => item.Name)</td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address) @Html.DisplayFor(modelItem => item.City)
+                @Html.DisplayFor(modelItem => item.PIN) @Html.DisplayFor(modelItem => item.State.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RegistrationNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Subscriber.Name)
+            </td>
+            <td width="35px" align="center">
+                @if (item.Active == true)
+                {
+                    <text>
+                    <img src="@Url.Content("~/Content/Images/tick-green.png")"  />
+                    </text> 
+                }
+                else
+                { 
+                    <text>
+                    <img src="@Url.Content("~/Content/Images/Copy of cancel-icon.png")" />
+                    </text> 
+                }
+            </td>
+        </tr>
+                Count = Count + 1;
+    }
+    @if (Count == 1)
+    {
+        <tr class="TableRow">
+            <td>
+                Currently there are no Records
+            </td>
+        </tr> 
+    }
+</table>
+*@

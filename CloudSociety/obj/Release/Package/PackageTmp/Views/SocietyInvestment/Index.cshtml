@@ -1,0 +1,126 @@
+﻿@model IEnumerable<CloudSocietyEntities.SocietyInvestment>
+@{
+    ViewBag.Title = "Society Investment";
+    ViewBag.Header = "Society Investment List";
+    ViewBag.SocietyNameHeader = ViewBag.SocietyHead;
+    Layout = "~/Views/Shared/SocietyLayout.cshtml";
+}
+<div class="buttton" style="width: 65px;">
+    @Html.ActionLink("Create New", "Create", new { id = ViewBag.SocietySubscriptionID })</div>
+<br />
+<table border="0" cellpadding="2" cellspacing="0" class="table">
+    @{
+        int Count = 1;
+    }
+    @foreach (var item in Model)
+    {
+        if (Count == 1)
+        {
+        <tr>
+            <th>
+            </th>
+            <th>
+                Bank
+            </th>
+            <th>
+                Other Bank
+            </th>
+            <th>
+                Document No
+            </th>
+            <th>
+                Document Date
+            </th>
+            <th>
+                Maturity Date
+            </th>
+            <th>
+                Amount
+            </th>
+            <th>
+                Interest Rate
+            </th>
+            <th>
+                Cheque No
+            </th>
+            <th>
+                Cheque Date
+            </th>
+            <th>
+                Maturity Amount
+            </th>
+            <th>
+                Closure Date
+            </th>
+            <th>
+                Closure Amount
+            </th>
+            <th>
+                Realization Date
+            </th>
+        </tr>
+
+        }  
+        <tr @if ((Count % 2) == 0)
+            { <text> class="TableRow" </text> }
+            else
+            { <text> class="altTableRow" </text>} >
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.SocietyInvestmentID, societySubscriptionID = ViewBag.SocietySubscriptionID }, new { @class = "EditDelete" }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.SocietyInvestmentID, societySubscriptionID = ViewBag.SocietySubscriptionID }, new { @class = "EditDelete" })                
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BankEntity.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Bank)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DocumentNo)
+            </td>
+            <td>
+                @String.Format("{0:dd-MMM-yyyy}", item.DocumentDate)
+            </td>
+            <td>
+                @String.Format("{0:dd-MMM-yyyy}", item.MaturityDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Amount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InterestRate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ChequeNo)
+            </td>
+            <td>
+                @String.Format("{0:dd-MMM-yyyy}", item.ChequeDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaturityAmount)
+            </td>
+            <td>
+                @String.Format("{0:dd-MMM-yyyy}", item.ClosureDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClosureAmount)
+            </td>
+            <td>
+                @String.Format("{0:dd-MMM-yyyy}", item.RealizationDate)
+            </td>
+        </tr>
+           Count = Count + 1;
+    }
+    @if (Count == 1)
+    {
+        <tr class="TableRow">
+            <td>
+                Currently there are no Records
+            </td>
+        </tr> 
+    }
+</table>
+<br />
+<div>
+    @Html.ActionLink("Back", "Menu", "SocietySubscription", new { id = ViewBag.SocietySubscriptionID }, new { @class = "EditDelete" })
+</div>

@@ -1,0 +1,62 @@
+﻿@{
+    ViewBag.Title = "Generate Society Bill";
+    int noOfCurrentMembers = (int)ViewBag.NoOfCurrentMembers;
+    int noOfAllowMembers = (int)ViewBag.NoOfAllowMembers;
+    bool IsFullAccess = new CloudSociety.Controllers.AppInfoController().IsFullAccess();
+}
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(false, "Following errors occurred while processing your request")
+    @Html.Hidden("societySubscription", (Guid)ViewBag.SocietySubscriptionID)
+    @Html.Hidden("billAbbreviation", (string)ViewBag.BillAbbreviation)        
+    <center>
+        <fieldset style="width: 400px">
+            <legend>Generate Bills </legend>
+            @if ((bool)ViewBag.GenerateBill)
+            {
+                <center>
+                    <br />
+                    <div class="LabelDel">
+                        New Bills will be generated !<br />
+                        Do you want to proceed ?</div>
+                    <br />
+                    <table>
+                        <tr>
+                            <td>
+                                @*<div class="buttton" align="center" style="width: 37px;height: 14px;">*@
+                                @Html.ActionLink("Cancel", "Index", "SocietyBillSeries", new { id = ViewBag.SocietySubscriptionID }, new { @class = "buttton" })
+                            </td>
+                            @if (IsFullAccess)
+                            {
+                                <td>
+                                    <input type="submit" value=" Yes " class="buttton" style="width: 45px; height: 23px;" />
+                                </td>
+                            }
+                        </tr>
+                    </table>
+                </center>
+            }
+            else
+            {
+                <div class="divFailure">
+                    <h4>
+                        Bill cannot be generated !! Excess members created !!
+                    </h4>
+                    Your subscription allows @noOfAllowMembers members. You currently have @noOfCurrentMembers
+                    members.
+                    <br />
+                    Please delete @(noOfCurrentMembers - noOfAllowMembers)
+                    member/unit records to proceed.
+                </div>
+            
+            }
+        </fieldset>
+    </center>
+    if (!(bool)ViewBag.GenerateBill)
+    {
+        <br />   
+        <div>
+            @Html.ActionLink("Back to List", "Index", "SocietyBillSeries", new { id = ViewBag.SocietySubscriptionID }, new { @class = "EditDelete" })
+        </div>
+    }  
+}

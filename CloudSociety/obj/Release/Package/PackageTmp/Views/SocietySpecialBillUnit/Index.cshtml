@@ -1,0 +1,54 @@
+﻿@model IEnumerable<CloudSocietyEntities.SocietySpecialBillUnit>
+@{
+    ViewBag.Title = "Special Bill Unit";
+    ViewBag.Header = "Special Bill Unit List";
+    var societySpecialBill = (CloudSocietyEntities.SocietySpecialBill)ViewBag.SocietySpecialBill;
+    ViewBag.SocietyNameHeader = ViewBag.SocietyHead;
+    Layout = "~/Views/Shared/SocietyLayout.cshtml";
+}
+<div class="buttton" style="width: 65px;">
+    @Html.ActionLink("Create New", "Create", new { societySpecialBillID = societySpecialBill.SocietySpecialBillID, societySubscriptionID = ViewBag.SocietySubscriptionID })
+</div>
+<br />
+<table border="0" cellpadding="2" cellspacing="0" class="table">
+    @{
+        int Count = 1;
+    }
+    @foreach (var item in Model)
+    {
+        if (Count == 1)
+        {
+        <tr>
+            <th>
+            </th>
+            <th>
+                Society Building Unit
+            </th>
+        </tr>
+        }  
+        <tr @if ((Count % 2) == 0)
+            { <text> class="TableRow" </text> }
+            else
+            { <text> class="altTableRow" </text>} >
+            <td>
+                @Html.ActionLink("Delete", "Delete", new { societySpecialBillID = item.SocietySpecialBillID, societyBuildingUnitID = item.SocietyBuildingUnitID, societySubscriptionID = ViewBag.SocietySubscriptionID }, new { @class = "EditDelete" })
+            </td>
+            <td>
+                @item.SocietyBuildingUnit.SocietyBuilding.Building<span> - </span>@item.SocietyBuildingUnit.Unit
+            </td>
+        </tr>
+    Count = Count + 1;
+    }
+    @if (Count == 1)
+    {
+        <tr class="TableRow">
+            <td>
+                Currently there are no Records
+            </td>
+        </tr> 
+    }
+</table>
+<br />
+<div>
+    @Html.ActionLink("Back to Special Bill List", "Index", "SocietySpecialBill", new { id = ViewBag.SocietySubscriptionID }, new { @class = "EditDelete" })
+</div>

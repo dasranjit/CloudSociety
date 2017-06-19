@@ -1,0 +1,59 @@
+﻿@model IEnumerable<CloudSocietyEntities.UOM>
+
+@{
+    ViewBag.Title = "Unit Of Measurement";
+    ViewBag.Header = "Unit Of Measurement";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<div class="buttton" style="width: 65px;">
+    @Html.ActionLink("Create New", "Create")</div>
+<br />
+<table border="0" cellpadding="2" cellspacing="0" class="table">
+    @{
+        int Count = 1;
+    }
+    @foreach (var item in Model)
+    {
+        if (Count == 1)
+        {
+        <tr>
+            <th>
+            </th>
+            <th >
+                Unit
+            </th>
+            <th>
+                Active
+            </th>
+           
+        </tr>
+        }
+        <tr @if((Count % 2) == 0){ <text> class="TableRow" </text> } else { <text> class="altTableRow" </text>} >
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.UOMID }, new { @class = "EditDelete" }) 
+               @* @Html.ActionLink("Details", "Details", new { id = item.UOMID }, new { @class = "EditDelete" })*@ |
+                @Html.ActionLink("Delete", "Delete", new { id = item.UOMID }, new { @class = "EditDelete" })
+            </td>
+            <td width="200px">
+                @item.Unit
+            </td>
+             <td width="35px" align="center" >
+               @if (item.Active  == true)
+               { <text> <img src="@Url.Content("~/Content/Images/tick-green.png")"  /> </text> }
+               else
+               { <text> <img src="@Url.Content("~/Content/Images/Copy of cancel-icon.png")" /></text> }
+            </td>
+
+        </tr>
+    
+           Count = Count + 1;
+
+    }
+    @if (Count == 1)
+    {<tr class="TableRow"><td>Currently there are no Records</td></tr> }
+</table>
+
+
+
+
+

@@ -1,0 +1,70 @@
+﻿@model CloudSocietyEntities.ServiceType
+
+@{
+    ViewBag.Title = "Details";
+    ViewBag.Header = "Details";
+    
+}
+
+
+<fieldset style="width: 600px">
+    <legend>Service Type</legend>
+    <br />
+    <table border="0" cellpadding="0" cellspacing="0">
+        <tr>
+            <td class="editor-label"  >
+                Type :
+            </td>
+            <td>
+                @Model.Type
+            </td>
+        </tr>
+        <tr>
+            <td class="editor-label"  >
+                Mandatory :
+            </td>
+            <td>
+                @Model.Mandatory
+            </td>
+        </tr>
+        <tr>
+            <td class="editor-label"  >
+                Chargeability :
+            </td>
+            <td>
+                @Model.Chargeability
+            </td>
+        </tr>
+        <tr>
+            <td class="editor-label"  >
+                Basis :
+            </td>
+            <td>
+                @Model.Basis
+            </td>
+        </tr>
+        <tr>
+            <td class="editor-label"  >
+               Nature :
+            </td>
+            <td>
+                @Model.Nature
+            </td>
+        </tr>
+        <tr>
+            <td class="editor-label"  >
+               Sequence :
+            </td>
+            <td>
+                @Model.Sequence
+            </td>
+        </tr>
+       
+    </table>
+
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ServiceTypeID }, new { @class = "EditDelete" }) |
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "EditDelete" })
+</p>
+

@@ -1,0 +1,80 @@
+﻿@model CloudSocietyEntities.TDSCategoryRate
+@{
+    ViewBag.Title = "Delete TDS Category Rate";
+    ViewBag.Header = "TDS Category Rate";
+}
+<div class="LabelDel">
+    Are you sure you want to delete this?
+</div>
+<br />
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(false, "Following errors occurred while processing your request")
+    @Html.HiddenFor(model => model.TDSCategoryRateID)
+    <fieldset style="width: 450px">
+        <legend>TDS Category Rate Details</legend>
+        <br />
+        <table border="0" cellpadding="0" cellspacing="0">
+            <tr>
+                <td>
+                    TDS Category:
+                </td>
+                <td>
+                    @(Model.TDSCategory != null ? Model.TDSCategory.Category : "")
+                    @Html.HiddenFor(model => model.TDSCategoryID)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    From Date :
+                </td>
+                <td>
+                    @String.Format("{0:dd-MMM-yyyy}", Model.FromDate)
+                    @Html.HiddenFor(model => model.FromDate)
+                </td>
+            </tr>
+            @if (Model.ToDate != null)
+            {
+                <tr>
+                    <td>
+                        To Date :
+                    </td>
+                    <td>
+                        @String.Format("{0:dd-MMM-yyyy}", Model.ToDate)
+                        @Html.HiddenFor(model => model.ToDate)
+                    </td>
+                </tr>
+            }
+            <tr>
+                <td>
+                    Company Rate :
+                </td>
+                <td>
+                    @Model.CompanyRate
+                    @Html.HiddenFor(model => model.CompanyRate)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    NonCompany Rate :
+                </td>
+                <td>
+                    @Model.NonCompanyRate
+                    @Html.HiddenFor(model => model.NonCompanyRate)
+                </td>
+            </tr>
+            <tr>
+                <td align="center" colspan="2">
+                    <input type="submit" value="Delete" class="buttton" style="width: 45px; height: 23px;
+                        vertical-align: middle;" />
+                </td>
+            </tr>
+        </table>
+    </fieldset>
+    @Html.HiddenFor(model => model.CreatedByID)
+    @Html.HiddenFor(model => model.CreatedOn)
+    @Html.HiddenFor(model => model.UpdatedByID)
+    @Html.HiddenFor(model => model.UpdatedOn)
+}
+<br />
+@Html.ActionLink("Back to List", "Index", new { parentid = Model.TDSCategoryID }, new { @class = "EditDelete" })

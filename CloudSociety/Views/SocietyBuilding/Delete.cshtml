@@ -1,0 +1,66 @@
+﻿@model CloudSocietyEntities.SocietyBuilding
+@{
+    ViewBag.Title = "Delete Society Building";
+    ViewBag.Header = "Society Building";
+    ViewBag.SocietyNameHeader = ViewBag.SocietyHead;
+    Layout = "~/Views/Shared/SocietyLayout.cshtml";
+    bool IsFullAccess = new CloudSociety.Controllers.AppInfoController().IsFullAccess();
+}
+<div class="LabelDel">
+    Are you sure you want to delete this?
+</div>
+<br />
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(model=>model.Building) 
+    @Html.ValidationSummary(false, "Following errors occurred while processing your request")        
+    <fieldset style="width: 400px">
+        <legend>Society Building</legend>
+        <table>
+            <tr>
+                <td>
+                    Building :
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Building)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    No Of Floors :
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.NoOfFloors)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Lift :
+                </td>
+                <td>
+                    @if (Model.Lift == true)
+                    { <text>
+                        <img alt="" src="@Url.Content("~/Content/Images/tick-green.png")"  />
+                        </text> 
+                    }
+                    else
+                    { 
+                        <text>
+                        <img alt="" src="@Url.Content("~/Content/Images/Copy of cancel-icon.png")" /></text> 
+                    }
+                </td>
+            </tr>
+            @if (IsFullAccess)
+            {
+            <tr>
+                <td align="center" colspan="2">
+                    <input type="submit" value="Delete" class="buttton" style="width: 45px; height: 23px;" />
+                </td>
+            </tr>
+            }
+        </table>
+    </fieldset>   
+}
+<div>
+    @Html.ActionLink("Back to List", "Index", new { id = (Guid)ViewBag.SocietySubscriptionID }, new { @class = "EditDelete" })
+</div>

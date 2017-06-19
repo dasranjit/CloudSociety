@@ -1,0 +1,185 @@
+﻿@model CloudSocietyEntities.SocietyReceipt
+@{
+    ViewBag.Title = "Create Society Receipt";
+    ViewBag.Header = "Society Receipt";
+    ViewBag.SocietyNameHeader = ViewBag.SocietyHead;
+    Layout = "~/Views/Shared/SocietyLayout.cshtml";
+    ModelStateDictionary ModelState = (ModelStateDictionary)ViewBag.ModelState;
+    var SocietyBuildingUnit = (CloudSocietyEntities.SocietyBuildingUnit)ViewBag.SocietyBuildingUnit;
+    bool IsFullAccess = new CloudSociety.Controllers.AppInfoController().IsFullAccess();
+}
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/DateFuncs.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/SocietyReceipt.js")" type="text/javascript"></script>
+@*==== Scripts to be added for AJAX calendar START ====*@
+<script src="@Url.Content("~/Content/AjaxControlToolkit/3.0.20820.16598/3.0.20820.0/MicrosoftAjax.debug.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Content/AjaxControlToolkit/3.0.20820.16598/3.0.20820.0/AjaxControlToolkit.ExtenderBase.BaseScripts.js")"
+        type="text/javascript"></script>
+<script src="@Url.Content("~/Content/AjaxControlToolkit/3.0.20820.16598/3.0.20820.0/AjaxControlToolkit.Common.Common.js")"
+        type="text/javascript"></script>
+<script src="@Url.Content("~/Content/AjaxControlToolkit/3.0.20820.16598/3.0.20820.0/AjaxControlToolkit.Common.DateTime.js")"
+        type="text/javascript"></script>
+<script src="@Url.Content("~/Content/AjaxControlToolkit/3.0.20820.16598/3.0.20820.0/AjaxControlToolkit.Animation.Animations.js")"
+        type="text/javascript"></script>
+<script src="@Url.Content("~/Content/AjaxControlToolkit/3.0.20820.16598/3.0.20820.0/AjaxControlToolkit.PopupExtender.PopupBehavior.js")"
+        type="text/javascript"></script>
+<script src="@Url.Content("~/Content/AjaxControlToolkit/3.0.20820.16598/3.0.20820.0/AjaxControlToolkit.Animation.AnimationBehavior.js")"
+        type="text/javascript"></script>
+<script src="@Url.Content("~/Content/AjaxControlToolkit/3.0.20820.16598/3.0.20820.0/AjaxControlToolkit.Common.Threading.js")"
+        type="text/javascript"></script>
+<script src="@Url.Content("~/Content/AjaxControlToolkit/3.0.20820.16598/3.0.20820.0/AjaxControlToolkit.Compat.Timer.Timer.js")"
+        type="text/javascript"></script>
+<script src="@Url.Content("~/Content/AjaxControlToolkit/3.0.20820.16598/3.0.20820.0/AjaxControlToolkit.Calendar.CalendarBehavior.js")"
+        type="text/javascript"></script>
+<script type="text/javascript">
+    Sys.Application.add_init(appInit);
+    function appInit() {
+        $create(AjaxControlToolkit.CalendarBehavior, { format: "dd-MMM-yyyy" }, null, null, $get('ReceiptDate'));
+        $create(AjaxControlToolkit.CalendarBehavior, { format: "dd-MMM-yyyy" }, null, null, $get('PayRefDate'));
+    }      
+</script>
+<script type="text/javascript">
+    function CheckReceiptDate() {
+        return DateRangeCheck($("#ReceiptDate").val(),
+$("#StartRange").val(), $("#EndRange").val());
+    }
+</script>
+@*==== END ====*@
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(false, "Following errors occurred while processing your request")
+    @Html.Hidden("EndRange", String.Format("{0:dd-MMM-yyyy}", (DateTime)ViewBag.EndRange)) 
+    @Html.Hidden("StartRange", String.Format("{0:dd-MMM-yyyy}", (DateTime)ViewBag.StartRange))       
+    @Html.Hidden("BillAbbreviation", (String)ViewBag.BillAbbreviation);
+    @Html.Hidden("SocietyBuildingUnitID", SocietyBuildingUnit.SocietyBuildingUnitID); 
+    @Html.Hidden("SocietyID", (Guid)ViewBag.SocietyID)
+    @Html.Hidden("SocietySubscriptionID", (Guid)ViewBag.SocietySubscriptionID)
+
+    <span class="SocName">Building Unit : @SocietyBuildingUnit.SocietyBuilding.Building
+        - @SocietyBuildingUnit.Unit </span> <span>&nbsp&nbsp</span>
+    <span class="SocName">Bill Abbreviation : @ViewBag.BillAbbreviation </span>
+    <br />
+    <br />                                                                                                  
+    <fieldset style="width: 550px">
+        <legend>Create Society Receipt</legend>
+        <table border="0" cellpadding="0" cellspacing="0">
+            <tr>
+                <td>
+                    Society Member :
+                </td>
+                <td>
+                    @Html.DropDownList("SocietyMemberID", new SelectList(ViewBag.SocietyMemberList as System.Collections.IEnumerable, "SocietyMemberID", "Member"))
+                    <span class="editor-field">@Html.ValidationMessageFor(model => model.SocietyMemberID)</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Receipt Date :
+                </td>
+                <td>
+                    @Html.TextBox("ReceiptDate", null, new { @class = "shortWidth", onmouseover = "ShowLastBillDate()", onmouseout = "HideLastBillDate()", onkeypress="return false;", onkeydown="return false;"})
+                    <div id="displayLastBillDate" style="visibility: hidden">
+                        Receipt Date must be in between @String.Format("{0:dd-MMM-yyyy}", (DateTime)ViewBag.StartRange)
+                        and @String.Format("{0:dd-MMM-yyyy}", (DateTime)ViewBag.EndRange)</div>
+                    <span class="editor-field">@Html.ValidationMessageFor(model => model.ReceiptDate)</span>
+                </td>
+            </tr>
+            @*<tr>
+                <td>
+                    AcYear :
+                </td>
+                <td>
+                    @Html.TextBox("AcYear", null, new { @class = "shortWidth" })
+                    <span class="editor-field">@Html.ValidationMessageFor(model => model.AcYear)</span>
+                </td>
+            </tr>    
+            <tr>
+                <td>
+                    Serial No :
+                </td>
+                <td>
+                    @Html.TextBox("Serial", null, new { @class = "shortWidth" })
+                    <span class="editor-field">@Html.ValidationMessageFor(model => model.Serial)</span>
+                </td>
+            </tr>      *@
+            <tr>
+                <td>
+                    Amount :
+                </td>
+                <td>
+                    @Html.TextBox("Amount", null, new { @class = "shortWidth" })
+                    <span class="editor-field">@Html.ValidationMessageFor(model => model.Amount)</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Particulars :
+                </td>
+                <td>
+                    @Html.TextBox("Particulars", null, new { @class = "maxWidth" })
+                    <span class="editor-field">@Html.ValidationMessageFor(model => model.Particulars)</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Pay Mode :
+                </td>
+                <td>
+                    @Html.DropDownList("PayModeCode", new SelectList(ViewBag.PayModeList as System.Collections.IEnumerable, "PayModeCode", "PayMode"))
+                    <span class="editor-field">@Html.ValidationMessageFor(model => model.PayModeCode)</span>
+                </td>
+            </tr>
+        </table>
+        <table border="0" cellpadding="0" cellspacing="0">
+            <tr>
+                <td width="108px">
+                    Pay Ref No :
+                </td>
+                <td>
+                    @Html.TextBox("PayRefNo", null, new { @class = "shortWidth" })
+                    <span class="editor-field">@Html.ValidationMessageFor(model => model.PayRefNo)</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Pay Ref Date :
+                </td>
+                <td>
+                    @Html.TextBox("PayRefDate", null, new { @class = "shortWidth" })
+                    <span class="editor-field">@Html.ValidationMessageFor(model => model.PayRefDate)</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Bank :
+                </td>
+                <td>
+                    @Html.DropDownList("BankID", new SelectList(ViewBag.BankList as System.Collections.IEnumerable, "BankID", "Name"), "<- Select Bank ->")
+                    <span class="editor-field">@Html.ValidationMessageFor(model => model.BankID)</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Branch :
+                </td>
+                <td>
+                    @Html.TextBox("Branch", null, new { @class = "maxWidth" })
+                    <span class="editor-field">@Html.ValidationMessageFor(model => model.Branch)</span>
+                </td>
+            </tr>
+            @if (IsFullAccess)
+            {
+                <tr>
+                    <td align="center" colspan="2">
+                        <input type="submit" value="Create" class="buttton" style="width: 45px; height: 23px;"
+                            onclick="return CheckReceiptDate()" />
+                    </td>
+                </tr>
+            }
+        </table>
+    </fieldset>
+}
+<div>
+    @Html.ActionLink("Back to List", "Index", new { id = ViewBag.SocietySubscriptionID }, new { @class = "EditDelete" })
+</div>

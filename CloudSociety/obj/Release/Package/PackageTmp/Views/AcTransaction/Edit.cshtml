@@ -1,0 +1,307 @@
+﻿@model CloudSocietyEntities.AcTransaction
+@{
+    ViewBag.Title = "Edit Account Transaction";
+    ViewBag.Header = "Account Transaction";
+    ViewBag.SocietyNameHeader = ViewBag.SocietyHead;
+    Layout = "~/Views/Shared/SocietyLayout.cshtml";
+    bool IsFullAccess = new CloudSociety.Controllers.AppInfoController().IsFullAccess();    
+}
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/DateFuncs.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/SocietyReceipt.js")" type="text/javascript"></script>
+@*==== Scripts to be added for AJAX calendar START ====*@
+<script src="@Url.Content("~/Content/AjaxControlToolkit/3.0.20820.16598/3.0.20820.0/MicrosoftAjax.debug.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Content/AjaxControlToolkit/3.0.20820.16598/3.0.20820.0/AjaxControlToolkit.ExtenderBase.BaseScripts.js")"
+        type="text/javascript"></script>
+<script src="@Url.Content("~/Content/AjaxControlToolkit/3.0.20820.16598/3.0.20820.0/AjaxControlToolkit.Common.Common.js")"
+        type="text/javascript"></script>
+<script src="@Url.Content("~/Content/AjaxControlToolkit/3.0.20820.16598/3.0.20820.0/AjaxControlToolkit.Common.DateTime.js")"
+        type="text/javascript"></script>
+<script src="@Url.Content("~/Content/AjaxControlToolkit/3.0.20820.16598/3.0.20820.0/AjaxControlToolkit.Animation.Animations.js")"
+        type="text/javascript"></script>
+<script src="@Url.Content("~/Content/AjaxControlToolkit/3.0.20820.16598/3.0.20820.0/AjaxControlToolkit.PopupExtender.PopupBehavior.js")"
+        type="text/javascript"></script>
+<script src="@Url.Content("~/Content/AjaxControlToolkit/3.0.20820.16598/3.0.20820.0/AjaxControlToolkit.Animation.AnimationBehavior.js")"
+        type="text/javascript"></script>
+<script src="@Url.Content("~/Content/AjaxControlToolkit/3.0.20820.16598/3.0.20820.0/AjaxControlToolkit.Common.Threading.js")"
+        type="text/javascript"></script>
+<script src="@Url.Content("~/Content/AjaxControlToolkit/3.0.20820.16598/3.0.20820.0/AjaxControlToolkit.Compat.Timer.Timer.js")"
+        type="text/javascript"></script>
+<script src="@Url.Content("~/Content/AjaxControlToolkit/3.0.20820.16598/3.0.20820.0/AjaxControlToolkit.Calendar.CalendarBehavior.js")"
+        type="text/javascript"></script>
+<script type="text/javascript">
+    Sys.Application.add_init(appInit);
+    function appInit() {
+        $create(AjaxControlToolkit.CalendarBehavior, { format: "dd-MMM-yyyy" }, null, null, $get('DocDate'));
+        //        $("#DocDate").change(function () {
+        //            return DateRangeCheck(this.value, $("#StartRange").val(), $("#EndRange").val());
+        //        });
+    } 
+</script>
+<script type="text/javascript">
+    function CheckDocDate() {
+        return (DateRangeCheck($("#DocDate").val(), $("#StartRange").val(), $("#EndRange").val()) && ValidateAcHead())
+    }
+    function ValidateAcHead() {   
+        var achead = $get("AcHeadID");
+        if (achead != null) {
+            if ($("#AcHeadID").val() == "") {
+                alert("Account Head must be selected !");
+                return false;
+            }
+            else {
+                return true;
+            }
+        }
+        else {
+            return true
+        }
+    }
+</script>
+@*==== END ====*@ @*<div>
+    <span class="SocName">Document Type : @(Model.DocType == "CP" ? "Cash Payment" : (Model.DocType == "CR" ? "Cash Receipt" : (Model.DocType == "BP" ? "Bank Payment" : (Model.DocType == "BR" ? "Bank Receipt" : (Model.DocType == "PB" ? "Puchase Bill" : (Model.DocType == "EB" ? "Expense Bill" : (Model.DocType == "SB" ? "SocietyBill" : (Model.DocType == "JV" ? "Journal Voucher" : ""))))))))</span>
+</div>*@
+<div>
+    <span class="SocName">Document Type : @(Model.DocType == "CP" ? "Cash Payment" : (Model.DocType == "CR" ? "Cash Receipt" : (Model.DocType == "BP" ? "Bank Payment" : (Model.DocType == "BR" ? "Bank Receipt" : (Model.DocType == "PB" ? "Puchase Bill" : (Model.DocType == "EB" ? "Expense Bill" : (Model.DocType == "SB" ? "SocietyBill" : (Model.DocType == "JV" ? "Journal Voucher" : (Model.DocType == "MC" ? "Member Collection" : (Model.DocType == "OP" ? "Opening Balance" : (Model.DocType == "YC" ? "Year End Closing Transaction" : "")))))))))))</span>
+</div>
+<br />
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(false, "Following errors occurred while processing your request")
+    <fieldset style="width: 600px">
+        <legend>Edit Account Transaction</legend>
+        <table border="0" cellpadding="0" cellspacing="0">
+            @* <tr>
+                <td>
+                    Document Type :
+                </td>
+                <td>
+                    <strong>@(Model.DocType == "C" ? "Cash Payment" : (Model.DocType == "R" ? "Cash Receipt" : (Model.DocType == "P" ? "Bank Payment" : (Model.DocType == "B" ? "Bank Receipt" : (Model.DocType == "U" ? "Purchase" : (Model.DocType == "E" ? "Expense" : (Model.DocType == "S" ? "Bill" : (Model.DocType == "J" ? "Journal Voucher" : ""))))))))</strong>                   
+                </td>
+            </tr>*@
+            <tr>
+                <td>
+                    Document No :
+                </td>
+                <td>
+                    <strong>@Model.DocNo</strong>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Document Date :
+                </td>
+                <td>
+                    @Html.TextBox("DocDate", String.Format("{0:dd-MMM-yyyy}", Model.DocDate), new { @class = "shortWidth", onmouseover = "ShowLastBillDate()", onmouseout = "HideLastBillDate()", onkeypress="return false;", onkeydown="return false;" })@*@Html.EditorFor(model => model.DocDate)*@
+                    <div id="displayLastBillDate" style="visibility: hidden">
+                        Document Date must be in between @String.Format("{0:dd-MMM-yyyy}", (DateTime)ViewBag.StartRange)
+                        and @String.Format("{0:dd-MMM-yyyy}", (DateTime)ViewBag.EndRange)</div>
+                    <span class="editor-field">@Html.ValidationMessageFor(model => model.DocDate)</span>
+                </td>
+            </tr>
+            @if (Model.DocType != "JV")
+            {             
+                <tr>
+                    <td>
+                        Account Head :
+                    </td>
+                    <td>
+                        @Html.DropDownList("AcHeadID", new SelectList(ViewBag.AcHeadList as System.Collections.IEnumerable, "AcHeadID", "Name"))
+                        <span class="editor-field">@Html.ValidationMessageFor(model => model.AcHeadID)</span>
+                    </td>
+                </tr> 
+            }
+            <tr>
+                <td>
+                    Particulars :
+                </td>
+                <td>
+                    @Html.TextBox("Particulars", Model.Particulars, new { @class = "maxWidth" })@*@Html.EditorFor(model => model.Particulars)*@
+                    <span class="editor-field">@Html.ValidationMessageFor(model => model.Particulars)</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Debit Amount :
+                </td>
+                <td>
+                    @Html.TextBox("Amount", Model.DrAmount, new { @class = "shortWidth", disabled = "disabled" })
+                    <span class="editor-field">@Html.ValidationMessageFor(model => model.DrAmount)</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Credit Amount :
+                </td>
+                <td>
+                    @Html.TextBox("Amount", Model.CrAmount, new { @class = "shortWidth", disabled = "disabled" })
+                    <span class="editor-field">@Html.ValidationMessageFor(model => model.CrAmount)</span>
+                </td>
+            </tr>
+            @if (Model.DocType == "BP")
+            {
+                <tr>
+                    <td>
+                        Cheque No. :
+                    </td>
+                    <td>
+                        @Html.TextBox("PayRefNo", Model.PayRefNo, new { @class = "shortWidth" })@*@Html.EditorFor(model => model.PayRefNo)*@
+                        <span class="editor-field">@Html.ValidationMessageFor(model => model.PayRefNo)</span>
+                    </td>
+                </tr>
+                @Html.HiddenFor(m => m.PayRefDate) 
+            }
+            @if (Model.DocType == "BR")
+            {      
+                <tr>
+                    <td>
+                        Pay Mode :
+                    </td>
+                    <td>
+                        @Html.DropDownList("PayModeCode", new SelectList(ViewBag.PayModeList as System.Collections.IEnumerable, "PayModeCode", "PayMode"), "<- Select Mode ->")
+                        <span class="editor-field">@Html.ValidationMessageFor(model => model.PayModeCode)</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Pay Ref. No :
+                    </td>
+                    <td>
+                        @Html.TextBox("PayRefNo", Model.PayRefNo, new { @class = "shortWidth" })@*@Html.EditorFor(model => model.PayRefNo)*@
+                        <span class="editor-field">@Html.ValidationMessageFor(model => model.PayRefNo)</span>
+                    </td>
+                </tr>              
+                <script type="text/javascript">
+                    Sys.Application.add_init(appInit);
+                    function appInit() {
+                        $create(AjaxControlToolkit.CalendarBehavior, { format: "dd-MMM-yyyy" }, null, null, $get('PayRefDate'));
+                    } 
+                </script>
+                <tr>
+                    <td>
+                        Pay Ref. Date :
+                    </td>
+                    <td>
+                        @Html.TextBox("PayRefDate", String.Format("{0:dd-MMM-yyyy}", Model.PayRefDate), new { @class = "shortWidth" })
+                        <span class="editor-field">@Html.ValidationMessageFor(model => model.PayRefDate)</span>
+                    </td>
+                </tr>      
+                <tr>
+                    <td>
+                        Bank :
+                    </td>
+                    <td>
+                        @Html.DropDownList("BankID", new SelectList(ViewBag.BankList as System.Collections.IEnumerable, "BankID", "Name"), "<- Select Bank->")
+                        <span class="editor-field">@Html.ValidationMessageFor(model => model.BankID)</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Branch :
+                    </td>
+                    <td>
+                        @Html.TextBox("Branch", Model.Branch, new { @class = "maxWidth" })@*@Html.EditorFor(model => model.Branch)*@
+                        <span class="editor-field">@Html.ValidationMessageFor(model => model.Branch)</span>
+                    </td>
+                </tr>                
+            }
+            @if (Model.DocType == "SB" || Model.DocType == "EB")
+            {
+                <tr>
+                    <td>
+                        Bill No :
+                    </td>
+                    <td>
+                        @Html.TextBox("BillNo", Model.BillNo, new { @class = "mediumWidth" })@*@Html.EditorFor(model => model.BillNo)*@
+                        <span class="editor-field">@Html.ValidationMessageFor(model => model.BillNo)</span>
+                    </td>
+                </tr>
+                <script type="text/javascript">
+                    function appInit() {
+                        $create(AjaxControlToolkit.CalendarBehavior, { format: "dd-MMM-yyyy" }, null, null, $get('BillDate'));
+                    } </script>
+                <tr>
+                    <td>
+                        Bill Date :
+                    </td>
+                    <td>
+                        @Html.TextBox("BillDate", String.Format("{0:dd-MMM-yyyy}", Model.BillDate), new { @class = "shortWidth" })
+                        <span class="editor-field">@Html.ValidationMessageFor(model => model.BillDate)</span>
+                    </td>
+                </tr>
+            }
+            @if (Model.DocType == "PB")
+            {               
+                <tr>
+                    <td>
+                        Bill No :
+                    </td>
+                    <td>
+                        @Html.TextBox("BillNo", Model.BillNo, new { @class = "mediumWidth" })@*@Html.EditorFor(model => model.BillNo)*@
+                        <span class="editor-field">@Html.ValidationMessageFor(model => model.BillNo)</span>
+                    </td>
+                </tr>
+                <script type="text/javascript">
+                    function appInit() {
+                        $create(AjaxControlToolkit.CalendarBehavior, { format: "dd-MMM-yyyy" }, null, null, $get('BillDate'));
+                    } </script>
+                <tr>
+                    <td>
+                        Bill Date :
+                    </td>
+                    <td>
+                        @Html.TextBox("BillDate", String.Format("{0:dd-MMM-yyyy}", Model.BillDate), new { @class = "shortWidth" })
+                        <span class="editor-field">@Html.ValidationMessageFor(model => model.BillDate)</span>
+                    </td>
+                </tr>               
+                <tr>
+                    <td>
+                        Delivery Document No :
+                    </td>
+                    <td>
+                        @Html.TextBox("DelDocNo", Model.DelDocNo, new { @class = "mediumWidth" })@*@Html.EditorFor(model => model.DelDocNo)*@
+                        <span class="editor-field">@Html.ValidationMessageFor(model => model.DelDocNo)</span>
+                    </td>
+                </tr>
+                <script type="text/javascript">
+                    function appInit() {
+                        $create(AjaxControlToolkit.CalendarBehavior, { format: "dd-MMM-yyyy" }, null, null, $get('DelDocDate'));
+                    } </script>
+                <tr>
+                    <td>
+                        Delivery Document Date :
+                    </td>
+                    <td>
+                        @Html.TextBox("DelDocDate", String.Format("{0:dd-MMM-yyyy}", Model.DocDate), new { @class = "shortWidth" })
+                        <span class="editor-field">@Html.ValidationMessageFor(model => model.DelDocDate)</span>
+                    </td>
+                </tr>
+            }
+            @if (IsFullAccess)
+            {
+                <tr>
+                    <td colspan="2" align="center">
+                        <input type="submit" value="Save" class="buttton" style="width: 45px; height: 23px;"
+                            onclick="return CheckDocDate()" />
+                    </td>
+                </tr>
+            }
+        </table>
+        @Html.HiddenFor(model => model.DocType)
+        @Html.HiddenFor(model => model.Serial)
+        @Html.HiddenFor(model => model.DocNo)
+        @Html.HiddenFor(model => model.DrAmount)
+        @Html.HiddenFor(model => model.CrAmount)
+        @Html.HiddenFor(model => model.AcTransactionID)
+        @Html.HiddenFor(model => model.SocietySubscriptionID)
+        @Html.HiddenFor(model => model.SocietyID)
+        @Html.HiddenFor(model => model.CreatedByID)
+        @Html.HiddenFor(model => model.CreatedOn)
+        @Html.Hidden("EndRange", String.Format("{0:dd-MMM-yyyy}", (DateTime)ViewBag.EndRange))
+        @Html.Hidden("StartRange", String.Format("{0:dd-MMM-yyyy}", (DateTime)ViewBag.StartRange))
+    </fieldset>
+}
+<div>
+    @Html.ActionLink("Back to List", "Index", new { societySubscriptionID = Model.SocietySubscriptionID, docType = Model.DocType }, new { @class = "EditDelete" })
+</div>

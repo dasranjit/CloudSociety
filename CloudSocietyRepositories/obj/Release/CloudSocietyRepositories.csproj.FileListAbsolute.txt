@@ -1,0 +1,77 @@
+D:\MySoftware\CloudComputing\CloudSociety\CloudSocietyRepositories\bin\Release\CloudSocietyRepositories.dll
+D:\MySoftware\CloudComputing\CloudSociety\CloudSocietyRepositories\bin\Release\CloudSocietyRepositories.pdb
+D:\MySoftware\CloudComputing\CloudSociety\CloudSocietyRepositories\bin\Release\CloudSocietyEntities.dll
+D:\MySoftware\CloudComputing\CloudSociety\CloudSocietyRepositories\bin\Release\CloudSocietyLib.dll
+D:\MySoftware\CloudComputing\CloudSociety\CloudSocietyRepositories\bin\Release\CloudSocietyModels.dll
+D:\MySoftware\CloudComputing\CloudSociety\CloudSocietyRepositories\bin\Release\CommonLib.dll
+D:\MySoftware\CloudComputing\CloudSociety\CloudSocietyRepositories\bin\Release\WebActivator.dll
+D:\MySoftware\CloudComputing\CloudSociety\CloudSocietyRepositories\bin\Release\DataAnnotationsExtensions.ClientValidation.dll
+D:\MySoftware\CloudComputing\CloudSociety\CloudSocietyRepositories\bin\Release\DataAnnotationsExtensions.dll
+D:\MySoftware\CloudComputing\CloudSociety\CloudSocietyRepositories\bin\Release\itextsharp.dll
+D:\MySoftware\CloudComputing\CloudSociety\CloudSocietyRepositories\bin\Release\CloudSocietyEntities.pdb
+D:\MySoftware\CloudComputing\CloudSociety\CloudSocietyRepositories\bin\Release\CloudSocietyLib.pdb
+D:\MySoftware\CloudComputing\CloudSociety\CloudSocietyRepositories\bin\Release\CloudSocietyModels.pdb
+D:\MySoftware\CloudComputing\CloudSociety\CloudSocietyRepositories\bin\Release\CommonLib.pdb
+D:\MySoftware\CloudComputing\CloudSociety\CloudSocietyRepositories\obj\Release\CloudSocietyRepositories.csprojResolveAssemblyReference.cache
+D:\MySoftware\CloudComputing\CloudSociety\CloudSocietyRepositories\obj\Release\CloudSocietyRepositories.dll
+D:\MySoftware\CloudComputing\CloudSociety\CloudSocietyRepositories\obj\Release\CloudSocietyRepositories.pdb
+C:\My Files\MySoftware\CloudComputing\CloudSociety\CloudSocietyRepositories\bin\Release\CloudSocietyRepositories.dll.config
+C:\My Files\MySoftware\CloudComputing\CloudSociety\CloudSocietyRepositories\bin\Release\CloudSocietyRepositories.dll
+C:\My Files\MySoftware\CloudComputing\CloudSociety\CloudSocietyRepositories\bin\Release\CloudSocietyRepositories.pdb
+C:\My Files\MySoftware\CloudComputing\CloudSociety\CloudSocietyRepositories\bin\Release\CloudSocietyEntities.dll
+C:\My Files\MySoftware\CloudComputing\CloudSociety\CloudSocietyRepositories\bin\Release\CloudSocietyLib.dll
+C:\My Files\MySoftware\CloudComputing\CloudSociety\CloudSocietyRepositories\bin\Release\CloudSocietyModels.dll
+C:\My Files\MySoftware\CloudComputing\CloudSociety\CloudSocietyRepositories\bin\Release\CommonLib.dll
+C:\My Files\MySoftware\CloudComputing\CloudSociety\CloudSocietyRepositories\bin\Release\WebActivator.dll
+C:\My Files\MySoftware\CloudComputing\CloudSociety\CloudSocietyRepositories\bin\Release\DataAnnotationsExtensions.ClientValidation.dll
+C:\My Files\MySoftware\CloudComputing\CloudSociety\CloudSocietyRepositories\bin\Release\DataAnnotationsExtensions.dll
+C:\My Files\MySoftware\CloudComputing\CloudSociety\CloudSocietyRepositories\bin\Release\System.Web.Mvc.dll
+C:\My Files\MySoftware\CloudComputing\CloudSociety\CloudSocietyRepositories\bin\Release\itextsharp.dll
+C:\My Files\MySoftware\CloudComputing\CloudSociety\CloudSocietyRepositories\bin\Release\System.Web.Razor.dll
+C:\My Files\MySoftware\CloudComputing\CloudSociety\CloudSocietyRepositories\bin\Release\System.Web.WebPages.Razor.dll
+C:\My Files\MySoftware\CloudComputing\CloudSociety\CloudSocietyRepositories\bin\Release\System.Web.WebPages.dll
+C:\My Files\MySoftware\CloudComputing\CloudSociety\CloudSocietyRepositories\bin\Release\System.Web.WebPages.Deployment.dll
+C:\My Files\MySoftware\CloudComputing\CloudSociety\CloudSocietyRepositories\bin\Release\CloudSocietyEntities.pdb
+C:\My Files\MySoftware\CloudComputing\CloudSociety\CloudSocietyRepositories\bin\Release\CloudSocietyLib.pdb
+C:\My Files\MySoftware\CloudComputing\CloudSociety\CloudSocietyRepositories\bin\Release\CloudSocietyModels.pdb
+C:\My Files\MySoftware\CloudComputing\CloudSociety\CloudSocietyRepositories\bin\Release\CommonLib.pdb
+C:\My Files\MySoftware\CloudComputing\CloudSociety\CloudSocietyRepositories\obj\Release\CloudSocietyRepositories.csprojResolveAssemblyReference.cache
+C:\My Files\MySoftware\CloudComputing\CloudSociety\CloudSocietyRepositories\obj\Release\CloudSocietyRepositories.dll
+C:\My Files\MySoftware\CloudComputing\CloudSociety\CloudSocietyRepositories\obj\Release\CloudSocietyRepositories.pdb
+D:\MyWork\CloudSociety\CloudSocietyRepositories\bin\Release\CloudSocietyRepositories.dll.config
+D:\MyWork\CloudSociety\CloudSocietyRepositories\bin\Release\CloudSocietyRepositories.dll
+D:\MyWork\CloudSociety\CloudSocietyRepositories\bin\Release\CloudSocietyRepositories.pdb
+D:\MyWork\CloudSociety\CloudSocietyRepositories\bin\Release\CloudSocietyEntities.dll
+D:\MyWork\CloudSociety\CloudSocietyRepositories\bin\Release\CloudSocietyLib.dll
+D:\MyWork\CloudSociety\CloudSocietyRepositories\bin\Release\CloudSocietyModels.dll
+D:\MyWork\CloudSociety\CloudSocietyRepositories\bin\Release\CommonLib.dll
+D:\MyWork\CloudSociety\CloudSocietyRepositories\bin\Release\WebActivator.dll
+D:\MyWork\CloudSociety\CloudSocietyRepositories\bin\Release\DataAnnotationsExtensions.ClientValidation.dll
+D:\MyWork\CloudSociety\CloudSocietyRepositories\bin\Release\DataAnnotationsExtensions.dll
+D:\MyWork\CloudSociety\CloudSocietyRepositories\bin\Release\System.Web.Mvc.dll
+D:\MyWork\CloudSociety\CloudSocietyRepositories\bin\Release\itextsharp.dll
+D:\MyWork\CloudSociety\CloudSocietyRepositories\bin\Release\CloudSocietyEntities.pdb
+D:\MyWork\CloudSociety\CloudSocietyRepositories\bin\Release\CloudSocietyLib.pdb
+D:\MyWork\CloudSociety\CloudSocietyRepositories\bin\Release\CloudSocietyModels.pdb
+D:\MyWork\CloudSociety\CloudSocietyRepositories\bin\Release\CommonLib.pdb
+D:\MyWork\CloudSociety\CloudSocietyRepositories\obj\Release\CloudSocietyRepositories.csprojResolveAssemblyReference.cache
+D:\MyWork\CloudSociety\CloudSocietyRepositories\obj\Release\CloudSocietyRepositories.dll
+D:\MyWork\CloudSociety\CloudSocietyRepositories\obj\Release\CloudSocietyRepositories.pdb
+D:\MyWork\CloudSociety\CloudSocietyDev\CloudSocietyRepositories\obj\Release\CloudSocietyRepositories.csprojResolveAssemblyReference.cache
+D:\MyWork\CloudSociety\CloudSocietyDev\CloudSocietyRepositories\bin\Release\CloudSocietyRepositories.dll.config
+D:\MyWork\CloudSociety\CloudSocietyDev\CloudSocietyRepositories\bin\Release\CloudSocietyRepositories.dll
+D:\MyWork\CloudSociety\CloudSocietyDev\CloudSocietyRepositories\bin\Release\CloudSocietyRepositories.pdb
+D:\MyWork\CloudSociety\CloudSocietyDev\CloudSocietyRepositories\bin\Release\CloudSocietyEntities.dll
+D:\MyWork\CloudSociety\CloudSocietyDev\CloudSocietyRepositories\bin\Release\CloudSocietyLib.dll
+D:\MyWork\CloudSociety\CloudSocietyDev\CloudSocietyRepositories\bin\Release\CloudSocietyModels.dll
+D:\MyWork\CloudSociety\CloudSocietyDev\CloudSocietyRepositories\bin\Release\CommonLib.dll
+D:\MyWork\CloudSociety\CloudSocietyDev\CloudSocietyRepositories\bin\Release\WebActivator.dll
+D:\MyWork\CloudSociety\CloudSocietyDev\CloudSocietyRepositories\bin\Release\DataAnnotationsExtensions.ClientValidation.dll
+D:\MyWork\CloudSociety\CloudSocietyDev\CloudSocietyRepositories\bin\Release\DataAnnotationsExtensions.dll
+D:\MyWork\CloudSociety\CloudSocietyDev\CloudSocietyRepositories\bin\Release\itextsharp.dll
+D:\MyWork\CloudSociety\CloudSocietyDev\CloudSocietyRepositories\bin\Release\CloudSocietyEntities.pdb
+D:\MyWork\CloudSociety\CloudSocietyDev\CloudSocietyRepositories\bin\Release\CloudSocietyLib.pdb
+D:\MyWork\CloudSociety\CloudSocietyDev\CloudSocietyRepositories\bin\Release\CloudSocietyModels.pdb
+D:\MyWork\CloudSociety\CloudSocietyDev\CloudSocietyRepositories\bin\Release\CommonLib.pdb
+D:\MyWork\CloudSociety\CloudSocietyDev\CloudSocietyRepositories\obj\Release\CloudSocietyRepositories.dll
+D:\MyWork\CloudSociety\CloudSocietyDev\CloudSocietyRepositories\obj\Release\CloudSocietyRepositories.pdb

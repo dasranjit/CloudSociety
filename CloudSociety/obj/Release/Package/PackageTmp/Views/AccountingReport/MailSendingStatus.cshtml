@@ -1,0 +1,18 @@
+﻿@{
+    ViewBag.Title = "Mail Sending Status";
+    ViewBag.Header = "Mail Sending Status";    
+    Layout = "~/Views/Shared/SocietyLayout.cshtml";
+}
+
+<h3>
+    The Mail has been send to following mailers successfully
+    <br />
+    @ViewBag.MailIDs</h3>
+    <br /><br />
+@*<div>
+    @Html.ActionLink("Back To Final Report", "FinalReports", null, new { id = ViewBag.SocietySubscriptionID }, new { @class = "EditDelete" })
+</div>
+*@
+<div>
+    @Html.ActionLink("Back", "Menu", "SocietySubscription", new { id = ViewBag.SocietySubscriptionID }, new { @class = "EditDelete" })
+</div>

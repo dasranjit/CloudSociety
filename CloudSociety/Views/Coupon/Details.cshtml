@@ -1,0 +1,154 @@
+﻿@model CloudSocietyEntities.Coupon
+
+@{
+    ViewBag.Title = "Coupon Details";
+    ViewBag.Header = "Coupon Details";
+   
+}
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(false, "Following errors occurred while processing your request")
+<fieldset style="width: 600px">
+    <legend>Coupon</legend>
+    <br />
+    <table border="0" cellpadding="0" cellspacing="0">
+     <tr>
+            <td>
+                CouponNo :
+            </td>
+            <td>
+            @Model.CouponNo            
+            </td>
+        </tr>
+         <tr>
+            <td>
+                IPIN :
+            </td>
+            <td>
+                @Model.IPIN
+            </td>
+        </tr>
+         <tr>
+            <td>
+                DiscountPerc :
+            </td>
+            <td>
+                @Model.DiscountPerc
+            </td>
+        </tr>
+         <tr>
+            <td>
+                DiscountAmount :
+            </td>
+            <td>
+                @Model.DiscountAmount
+            </td>
+        </tr>
+         <tr>
+            <td class="editor-label"  >
+                ValidityStart :
+            </td>
+            <td>
+                @Model.ValidityStart
+            </td>
+        </tr>
+         <tr>
+            <td class="editor-label"  >
+                ValidityEnd :
+            </td>
+            <td>
+                @Model.ValidityEnd
+            </td>
+        </tr>
+         <tr>
+            <td class="editor-label"  >
+                MinAmount :
+            </td>
+            <td>
+                @Model.MinAmount
+            </td>
+        </tr>
+         <tr>
+            <td class="editor-label"  >
+                MaxAmount :
+            </td>
+            <td>
+                @Model.MaxAmount
+            </td>
+        </tr>
+         <tr>
+            <td class="editor-label"  >
+                Subscriber :
+            </td>
+         <td>
+                @(Model.Subscriber != null ? Model.Subscriber.Name : "")              
+
+            </td>
+        </tr>
+         <tr>
+            <td class="editor-label"  >
+                Society :
+            </td>
+        <td>
+                @(Model.Society != null ? Model.Society.Name : "")
+               
+            </td>
+        </tr>
+         <tr>
+            <td class="editor-label"  >
+                Used :
+            </td>
+            <td>
+               @if (Model.SubscriptionInvoices.Count() > 0)
+               { <text> <img src="@Url.Content("~/Content/Images/tick-green.png")"  /> </text> }
+            </td>
+        </tr>
+        </table>
+
+</fieldset>
+}
+<div>
+     @Html.ActionLink("Edit", "Edit", new { code =Model.CouponNo }, new { @class = "EditDelete" }) |
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "EditDelete" })
+</div>
+
+
+
+
+
+
+
+    @*<div class="display-label">CouponNo</div>
+    <div class="display-field">@Model.CouponNo</div>
+
+    <div class="display-label">IPIN</div>
+    <div class="display-field">@Model.IPIN</div>
+
+    <div class="display-label">DiscountPerc</div>
+    <div class="display-field">@String.Format("{0:F}", Model.DiscountPerc)</div>
+
+    <div class="display-label">DiscountAmount</div>
+    <div class="display-field">@Model.DiscountAmount</div>
+
+    <div class="display-label">ValidityStart</div>
+    <div class="display-field">@String.Format("{0:g}", Model.ValidityStart)</div>
+
+    <div class="display-label">ValidityEnd</div>
+    <div class="display-field">@String.Format("{0:g}", Model.ValidityEnd)</div>
+
+    <div class="display-label">MinAmount</div>
+    <div class="display-field">@Model.MinAmount</div>
+
+    <div class="display-label">MaxAmount</div>
+    <div class="display-field">@Model.MaxAmount</div>
+
+    <div class="display-label">AssignedToID</div>
+    <div class="display-field">@Model.AssignedToID</div>
+
+ 
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>*@
+

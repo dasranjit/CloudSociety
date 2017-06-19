@@ -1,0 +1,48 @@
+﻿@model CloudSocietyEntities.UnitType
+
+@{
+    ViewBag.Title = "Delete Unit Type";
+    ViewBag.Header = "Unit Type";   
+}
+<div class="LabelDel">
+    Are you sure you want to delete this?</div>
+<br />
+<fieldset style="width: 500px">
+    <legend>Unit Type Details</legend>
+
+     <br />
+    <table>
+        <tr>
+            <td>
+                Type :
+            </td>
+            <td>
+                @Model.Type
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Active :
+            </td>
+            <td  >
+               @if (Model.Active == true)
+               { <text> <img src="@Url.Content("~/Content/Images/tick-green.png")"  /> </text> }
+               else
+               { <text> <img src="@Url.Content("~/Content/Images/Copy of cancel-icon.png")" /></text> }
+            </td>
+        </tr>
+        @using (Html.BeginForm())
+{
+     <tr>
+       <td colspan="2">
+    <input type="submit" value="Delete" class="buttton" style="width: 45px; height: 23px;
+        vertical-align: middle;" />
+        </td>
+     </tr>   
+}
+    </table>
+</fieldset>
+<br />
+@Html.ActionLink("Back to List", "Index", null, new { @class = "EditDelete" })
+
+

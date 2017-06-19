@@ -1,0 +1,65 @@
+﻿@model IEnumerable<CloudSocietyEntities.SocietyMemberDocument>
+@{
+    ViewBag.Title = "Member Document";
+    ViewBag.Header = "Member Document";
+    ViewBag.SocietyNameHeader = ViewBag.SocietyHead;
+    Layout = "~/Views/Shared/SocietyLayout.cshtml";
+    var societyMember = (CloudSocietyEntities.SocietyMember)ViewBag.SocietyMember;
+}
+<span class="SocName">@societyMember.Member</span>
+<br />
+<br />
+<div class="buttton" style="width: 65px;">
+    @Html.ActionLink("Create New", "Create", new { societyMemberID = societyMember.SocietyMemberID, societySubscriptionID = ViewBag.SocietySubscriptionID })
+</div>
+<br />
+<table border="0" cellpadding="2" cellspacing="0" class="table">
+    @{
+        int Count = 1;
+    }
+    @foreach (var item in Model)
+    {
+        if (Count == 1)
+        {
+        <tr>
+            <th></th>
+            <th>Document Name
+            </th>
+            <th>Document Type
+            </th>
+            <th>Document
+            </th>
+        </tr>
+        }  
+        <tr @if ((Count % 2) == 0)
+            { <text> class="TableRow" </text> }
+            else
+            { <text> class="altTableRow" </text>} >
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.SocietyMemberDocumentID, societySubscriptionID = ViewBag.SocietySubscriptionID }, new { @class = "EditDelete" })
+                | @Html.ActionLink("Delete", "Delete", new { id = item.SocietyMemberDocumentID, societySubscriptionID = ViewBag.SocietySubscriptionID }, new { @class = "EditDelete" })
+                | @Html.ActionLink("Details", "Details", new { id = item.SocietyMemberDocumentID, societySubscriptionID = ViewBag.SocietySubscriptionID }, new { @class = "EditDelete" })
+            </td>
+            <td>
+                @item.DocumentName
+            </td>
+            <td>
+                @item.DocumentType.DocumentType1
+            </td>
+            <td>File
+            </td>
+        </tr>
+            Count = Count + 1;
+    }
+    @if (Count == 1)
+    {
+        <tr class="TableRow">
+            <td>Currently there are no Records
+            </td>
+        </tr> 
+    }
+</table>
+<br />
+<div>
+    @Html.ActionLink("Back to Member List", "Index", "SocietyMember", new { id = ViewBag.SocietySubscriptionID }, new { @class = "EditDelete" })
+</div>

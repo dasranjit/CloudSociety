@@ -1,0 +1,31 @@
+﻿@{
+    ViewBag.Title = "Password Reset Status";
+    ViewBag.Header = "Password Reset Status";
+}
+<br />
+@if (ViewBag.ResetStatus)
+{
+    <h3>
+        Your password has been reset successfully</h3>
+    <div>
+        @Html.ActionLink("LogOn Now ?", "LogOn", "Account", null, new { @class = "EditDelete" })
+        |
+        @Html.ActionLink("Back To Home", "Index", "Home", null, new { @class = "EditDelete" })
+    </div>
+}
+else
+{
+    <h3>
+        Your password did not reset. This may happen due to wrong answer.
+    </h3> 
+     
+    <p style="color: #FF0000">
+        Warning Message: If you try wrong answer more than five times, your account will
+        lock automatically.
+    </p>
+    <div>
+        @Html.ActionLink("Try Again ?", "AskUserName", "Account", null, new { @class = "EditDelete" })
+        |
+        @Html.ActionLink("Back To Home", "Index", "Home", null, new { @class = "EditDelete" })
+    </div>
+}

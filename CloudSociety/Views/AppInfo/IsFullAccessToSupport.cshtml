@@ -1,0 +1,31 @@
+﻿@{
+    ViewBag.Title = "Manage Support User Access";
+    ViewBag.Header = " Manage Support User Access ";
+    Layout = "~/Views/Shared/AdminLayout.cshtml"; 
+}
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(false, "Following errors occurred while processing your request")
+    <fieldset style="width: 400px">
+        <legend>Support User Access</legend>
+        <br />
+        <table border="0" cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="editor-label">
+                    Full Access To Support User :
+                </td>
+                <td>
+                    @Html.CheckBox("IsFullAccessToSupport", (bool)ViewBag.IsFullAccessToSupport)
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="submit" value="Save" class="buttton" style="width: 45px; height: 23px;
+                        vertical-align: middle;" />
+                </td>
+            </tr>
+        </table>
+    </fieldset>
+}

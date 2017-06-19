@@ -1,0 +1,216 @@
+﻿@model IEnumerable<CloudSocietyEntities.Society>
+@{
+    ViewBag.Title = "Index";
+    ViewBag.Header = "Society";
+    Layout = "~/Views/Shared/SubscriberLayout.cshtml";
+}
+@if (ViewBag.ShowSubscription)
+{
+    if (!Roles.IsUserInRole("Support"))
+    {
+    <div class="buttton" style="width: 65px;">
+        @Html.ActionLink("Create New", "Create", "SocietySubscription")
+    </div>
+    }
+}
+@*<p>
+    @if (ViewBag.ShowSubscription)
+    {
+        @Html.ActionLink("Pay", "PayIndex", "Society")
+    }
+&nbsp;&nbsp;
+    @if (ViewBag.ShowChangeProfile)
+    {
+        @Html.ActionLink("Edit My Profile", "Edit", "Subscriber", new { id = ViewBag.SubscriberID }, null)
+    }
+&nbsp;&nbsp;
+    @if (ViewBag.ShowCreateAdminUser)
+    {
+        @Html.ActionLink("Admin Users", "Index", "Account", new { role = "SocietyAdmin", id = ViewBag.SubscriberID }, null)
+    }
+&nbsp;&nbsp;
+    @if (ViewBag.ShowCreateSocietyUser)
+    {
+        @Html.ActionLink("Society Users", "Index", "Account", new { role = "SocietyUser", id = ViewBag.SubscriberID }, null)
+    }
+&nbsp;&nbsp;
+    @if (ViewBag.ShowCreateCompanyUser)
+    {
+        @Html.ActionLink("Company Users", "Index", "Account", new { role = "CompanyUser" }, null)
+    }
+</p>*@
+<br />
+<table border="0" cellpadding="2" cellspacing="0" class="table">
+    @{
+        int Count = 1;
+    }
+    @foreach (var item in Model)
+    {
+        if (Count == 1)
+        {
+        <tr>
+            <th width="218px">
+            </th>
+            <th width="150px">
+                Name
+            </th>
+            @*        <th>
+            Abbreviation
+        </th>
+        <th>
+            Registration Date
+        </th>
+*@
+            <th width="250px">
+                Address
+            </th>
+            <th width="120px">
+                City
+            </th>
+            <th width="80px">
+                PIN
+            </th>
+            <th>
+                State
+            </th>
+            <th width="50px">
+                No Of Members
+            </th>
+            @*        <th>
+            Billing Frequency
+        </th>
+        <th>
+            Bill Day
+        </th>
+        <th>
+            Interest Rate
+        </th>
+        <th>
+            Account Posting
+        </th>
+        <th>
+            Min Date
+        </th>
+        <th>
+            Max Date
+        </th>
+        <th>
+            Subscriber
+        </th>
+*@
+            <th>
+                Active
+            </th>
+        </tr>
+        }
+
+@*@foreach (var item in Model) {
+    <tr>
+        <td>
+        @if(item.Active)
+        {
+            if (ViewBag.ShowSubscription)
+            {
+                @Html.ActionLink("Change Subscription", "Edit", "Subscription", new { id = item.SocietyID }, null)<span> |</span>
+            }
+            @Html.ActionLink("Operate", "Operate", new { id = item.SocietyID })
+            @* |
+            @Html.ActionLink("Delete", "Delete", new { id=item.SocietyID })
+        }
+*@
+        <tr @if ((Count % 2) == 0)
+            { <text> class="TableRow" </text> }
+            else
+            { <text> class="altTableRow" </text>} >
+            <td>
+                @if (ViewBag.ShowSubscription)
+                {
+                    @Html.ActionLink("Subscriptions", "Index", "SocietySubscription", new { id = item.SocietyID }, new { @class = "EditDelete" })
+                }
+                @if (ViewBag.ShowSubscription && item.Active)
+                {
+                    <span>|</span>
+                }
+                @if (item.Active)
+                {
+                    @Html.ActionLink("Operate", "Select", "SocietySubscription", new { id = item.SocietyID }, new { @class = "EditDelete" })
+                }
+                @if ((ViewBag.ShowSubscription || item.Active) && (ViewBag.ShowCreateSocietyUser || ViewBag.ShowCreateCompanyUser))
+                {
+                    <span>|</span>
+                }
+                @if (ViewBag.ShowCreateSocietyUser || ViewBag.ShowCreateCompanyUser)
+                {
+                    @Html.ActionLink("Allocate User", "AllocateUser", "SocietyUser", new { id = item.SocietyID }, new { @class = "EditDelete" })
+                }
+            </td>
+            <td>
+                @item.Name
+            </td>
+            @*        <td width="20px">
+            @item.Abbreviation
+        </td>
+        <td>
+            @String.Format("{0:g}", item.RegistrationDate)
+        </td>
+*@
+            <td>
+                @item.Address
+            </td>
+            <td>
+                @item.City
+            </td>
+            <td>
+                @item.PIN
+            </td>
+            <td>
+                @(item.State == null ? "" : item.State.Name)
+            </td>
+            <td align="center">
+                @item.uNoOfMembers
+            </td>
+            @*        <td width="20px">
+            @item.BillingFrequency
+        </td>
+        <td width="20px">
+            @item.BillDay
+        </td>
+        <td>
+            @String.Format("{0:F}", item.InterestRate)
+        </td>
+        <td width="20px">
+            @item.AccountPosting
+        </td>
+        <td>
+            @String.Format("{0:g}", item.uMinDate)
+        </td>
+        <td>
+            @String.Format("{0:g}", item.uMaxDate)
+        </td>
+        <td width="20px">
+            @item.Subscriber.Name
+        </td>
+       <td width="20px">
+            @(item.Active ? "Y" : "N")
+        </td>*@
+            <td width="35px" align="center">
+                @if (item.Active == true)
+                { <text>
+                    <img src="@Url.Content("~/Content/Images/tick-green.png")"  />
+                    </text> }
+                else
+                { <text>
+                    <img src="@Url.Content("~/Content/Images/Copy of cancel-icon.png")" /></text> }
+            </td>
+        </tr>
+    
+                Count = Count + 1;
+
+    }
+    @if (Count == 1)
+    {<tr class="TableRow">
+        <td>
+            Currently there are no Records
+        </td>
+    </tr> }
+</table>

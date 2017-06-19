@@ -1,0 +1,235 @@
+﻿@model IEnumerable<CloudSocietyEntities.AcTransaction>
+@{
+    ViewBag.Title = "Account Transaction";
+    ViewBag.Header = "Account Transaction List";
+    ViewBag.SocietyNameHeader = ViewBag.SocietyHead;
+    Layout = "~/Views/Shared/SocietyLayout.cshtml";
+    string DocType = (String)ViewBag.DocType;
+    var lockedTillDate = (DateTime?)ViewBag.LockedTillDate;
+        //decimal DrTotal = 0, CrTotal = 0;
+}
+<center>
+    <span class="SocName">Document Type : @(DocType == "CP" ? "Cash Payment" : (DocType == "CR" ? "Cash Receipt" : (DocType == "BP" ? "Bank Payment" : (DocType == "BR" ? "Bank Receipt" : (DocType == "PB" ? "Puchase Bill" : (DocType == "EB" ? "Expense Bill" : (DocType == "SB" ? "Society Bill" : (DocType == "JV" ? "Journal Voucher" : (DocType == "MC" ? "Member Collection" : (DocType == "OP" ? "Opening Balance" : (DocType == "YC" ? "Year End Closing Transaction" : (DocType == "CV" ? "Collection Revesal" : ""))))))))))))</span>
+</center>
+@if (DocType == "MC" || DocType == "YC" || ((bool)ViewBag.ShowBillingMenu && DocType == "SB") || DocType == "CV" || (bool)ViewBag.YearClosed)
+{    
+    <div>
+        @*  <input id="submit" type="submit" value="Create New" disabled="disabled" style="background-color: #CCCCCC; width: 85px; height: 25px;" />*@
+    </div>
+}
+else
+{   
+    <div class="buttton" style="width: 65px;">
+        @Html.ActionLink("Create New", "Create", new { societySubscriptionID = ViewBag.SocietySubscriptionID, docType = DocType })
+    </div>
+}
+<br />
+<table border="0" cellpadding="2" cellspacing="0" class="table">
+    @{
+        int Count = 1;
+    }
+    @foreach (var item in Model)
+    {
+        if (Count == 1)
+        {
+        <tr>
+            <th>
+            </th>
+            <th>
+                Doc No
+            </th>
+            <th>
+                Doc Date
+            </th>
+            <th>
+                Particulars
+            </th>
+            @if (DocType != "JV")
+            {       
+                <th>
+                    Account Head
+                </th>
+            }
+            <th align="right">
+                DrAmount
+            </th>
+            <th align="right">
+                CrAmount
+            </th>
+            @if (DocType == "BP")
+            {           
+                <th>
+                    Cheque No.
+                </th>              
+            }
+            @if (DocType == "BR")
+            {  
+                <th>
+                    Pay Mode
+                </th>                   
+                <th>
+                    Pay Ref. No
+                </th>                
+                <th>
+                    Pay Ref. Date
+                </th>                
+                <th>
+                    Bank
+                </th>                
+                <th>
+                    Branch
+                </th> 
+            }
+            @if (DocType == "SB" || DocType == "EB")
+            {
+            
+                <th>
+                    Bill No
+                </th>
+                
+                <th>
+                    Bill Date
+                </th>               
+            }
+            @if (DocType == "PB")
+            { 
+                <th>
+                    Bill No
+                </th>
+                
+                <th>
+                    Bill Date
+                </th>                
+                <th>
+                    Delivery Doc No
+                </th>               
+                <th>
+                    Delivery Doc Date
+                </th>               
+            }
+        </tr>
+            //DrTotal += item.DrAmount ?? 0;
+            //CrTotal += item.CrAmount ?? 0;
+        }
+        <tr @if ((Count % 2) == 0)
+            { <text> class="TableRow" </text> }
+            else
+            { <text> class="altTableRow" </text>} >
+            <td>
+                @if (DocType == "MC" || DocType == "YC" || ((bool)ViewBag.ShowBillingMenu && DocType == "SB") || DocType == "CV" || (bool)ViewBag.YearClosed)
+                {
+                     <span></span>                     
+                }
+                else
+                {
+                if ((lockedTillDate == null || item.DocDate > lockedTillDate))
+                {
+
+                    @Html.ActionLink("Edit", "Edit", new { id = item.AcTransactionID }, new { @class = "EditDelete" })                    
+                    <text>|</text>
+                    @Html.ActionLink("Delete", "Delete", new { id = item.AcTransactionID }, new { @class = "EditDelete" })
+                    <text>|</text>
+                }
+                }
+                @Html.ActionLink("Details", "Details", new { id = item.AcTransactionID }, new { @class = "EditDelete" })
+                |
+                @Html.ActionLink("Accounts", "Index", "AcTransactionAc", new { AcTransactionID = item.AcTransactionID }, new { @class = "EditDelete" })
+                
+            </td>
+            <td>
+                @item.DocNo
+            </td>
+            <td>
+                @String.Format("{0:dd-MMM-yyyy}", item.DocDate)
+            </td>
+            <td>
+                @item.Particulars
+            </td>
+            @if (DocType != "JV")
+            {
+                <td>
+                    @(item.AcHead == null ? "" : item.AcHead.Name)
+                </td>
+            }
+            <td align="right">
+                @item.DrAmount
+            </td>
+            <td align="right">
+                @item.CrAmount
+            </td>
+            @if (DocType == "BP")
+            {             
+                <td>
+                    @item.PayRefNo
+                </td>
+            }
+            @if (DocType == "BR")
+            {
+                <td>
+                    @(item.SocietyPayMode == null ? "" : item.SocietyPayMode.PayMode)
+                </td>            
+                <td>
+                    @item.PayRefNo
+                </td>            
+                <td>
+                    @String.Format("{0:dd-MMM-yyyy}", item.PayRefDate)
+                </td>                  
+                <td>
+                    @(item.Bank == null ? "" : item.Bank.Name)
+                </td>                          
+                <td>
+                    @item.Branch
+                </td> 
+            }
+            @if (DocType == "SB" || DocType == "EB")
+            {           
+                <td>
+                    @item.BillNo
+                </td>           
+                <td>
+                    @String.Format("{0:dd-MMM-yyyy}", item.BillDate)
+                </td>           
+            }
+            @if (DocType == "PB")
+            { 
+                <td>
+                    @item.BillNo
+                </td>           
+                <td>
+                    @String.Format("{0:dd-MMM-yyyy}", item.BillDate)
+                </td>           
+                <td>
+                    @item.DelDocNo
+                </td>          
+                <td>
+                    @String.Format("{0:dd-MMM-yyyy}", item.DocDate)
+                </td>          
+            }
+        </tr>
+            Count = Count + 1;
+    }
+    @if (Count == 1)
+    {
+        <tr class="TableRow">
+            <td>
+                Currently there are no Records
+            </td>
+        </tr> 
+    }
+@*else
+    {<tr>
+        <td colspan="5" align="right">
+            Total :
+        </td>
+        <td align="right">
+            <span class="WebRupee">Rs&nbsp;&nbsp;</span>@DrTotal
+        </td>
+        <td align="right">
+            <span class="WebRupee">Rs&nbsp;&nbsp;</span>@CrTotal
+        </td>
+    </tr> }*@
+</table>
+<br />
+<div>
+    @Html.ActionLink("Back", "Menu", "SocietySubscription", new { id = ViewBag.SocietySubscriptionID }, new { @class = "EditDelete" })
+</div>

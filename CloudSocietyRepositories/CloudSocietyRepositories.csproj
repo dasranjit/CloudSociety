@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{6C9DF962-B2D7-44EB-963F-423505FE4A0F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CloudSocietyRepositories</RootNamespace>
+    <AssemblyName>CloudSocietyRepositories</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AcCategoryRepository.cs" />
+    <Compile Include="AcHeadRepository.cs" />
+    <Compile Include="AcSubCategoryRepository.cs" />
+    <Compile Include="AcTransactionAcRepository.cs" />
+    <Compile Include="AcTransactionRepository.cs" />
+    <Compile Include="AcTransactionTDSRepository.cs" />
+    <Compile Include="AppInfoRepository.cs" />
+    <Compile Include="BankRepository.cs" />
+    <Compile Include="CommunicationRecipientRepository.cs" />
+    <Compile Include="CommunicationReplyRepository.cs" />
+    <Compile Include="CommunicationRepository.cs" />
+    <Compile Include="CommunicationTypeRepository.cs" />
+    <Compile Include="DocumentTypeRepository.cs" />
+    <Compile Include="CouponRepository.cs" />
+    <Compile Include="MemberClassRepository.cs" />
+    <Compile Include="OccupationRepository.cs" />
+    <Compile Include="ParkingTypeRepository.cs" />
+    <Compile Include="PasswordQuestionRepository.cs" />
+    <Compile Include="PayModeRepository.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RelationshipRepository.cs" />
+    <Compile Include="ServiceTypeRepository.cs" />
+    <Compile Include="SocietyBillChargeHeadRepository.cs" />
+    <Compile Include="SocietyBillRepository.cs" />
+    <Compile Include="SocietyBillSeriesRepository.cs" />
+    <Compile Include="SocietyBuildingRepository.cs" />
+    <Compile Include="SocietyBuildingUnitChargeHeadRepository.cs" />
+    <Compile Include="SocietyBuildingUnitRepository.cs" />
+    <Compile Include="SocietyBuildingUnitSubscriptionBalanceRepository.cs" />
+    <Compile Include="SocietyBuildingUnitTransferRepository.cs" />
+    <Compile Include="SocietyChargeHeadRepository.cs" />
+    <Compile Include="SocietyCollectionReversalRepository.cs" />
+    <Compile Include="SocietyInvestmentRepository.cs" />
+    <Compile Include="SocietyMemberDocumentRepository.cs" />
+    <Compile Include="SocietyMemberJointHolderRepository.cs" />
+    <Compile Include="SocietyMemberNomineeRepository.cs" />
+    <Compile Include="SocietyMemberRepository.cs" />
+    <Compile Include="SocietyMemberTenantRepository.cs" />
+    <Compile Include="SocietyParkingRepository.cs" />
+    <Compile Include="SocietyParkingTransferRepository.cs" />
+    <Compile Include="SocietyPayModeRepository.cs" />
+    <Compile Include="SocietyReceiptRepository.cs" />
+    <Compile Include="SocietyRepository.cs" />
+    <Compile Include="SocietySpecialBillChargeHeadRepository.cs" />
+    <Compile Include="SocietySpecialBillRepository.cs" />
+    <Compile Include="SocietySpecialBillUnitRepository.cs" />
+    <Compile Include="SocietySubscriptionRepository.cs" />
+    <Compile Include="SocietySubscriptionServiceRepository.cs" />
+    <Compile Include="SocietyUserRepository.cs" />
+    <Compile Include="StandardAcCategoryRepository.cs" />
+    <Compile Include="StandardAcHeadRepository.cs" />
+    <Compile Include="StandardAcSubCategoryRepository.cs" />
+    <Compile Include="StandardChargeHeadRepository.cs" />
+    <Compile Include="StateRepository.cs" />
+    <Compile Include="SubscriberRepository.cs" />
+    <Compile Include="SubscriptionInvoiceRepository.cs" />
+    <Compile Include="TariffRateRepository.cs" />
+    <Compile Include="TariffRepository.cs" />
+    <Compile Include="TaxRepository.cs" />
+    <Compile Include="TDSCategoryRateRepository.cs" />
+    <Compile Include="TDSCategoryRepository.cs" />
+    <Compile Include="UnitTypeRepository.cs" />
+    <Compile Include="UOMRepository.cs" />
+    <Compile Include="UserDetailRepository.cs" />
+    <Compile Include="UserRepository.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CloudSocietyEntities\CloudSocietyEntities.csproj">
+      <Project>{C2F40B2E-5285-4F27-98A8-7D69CD414652}</Project>
+      <Name>CloudSocietyEntities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CloudSocietyLib\CloudSocietyLib.csproj">
+      <Project>{08153F79-9412-4660-9847-8E4E5210E5FD}</Project>
+      <Name>CloudSocietyLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CloudSocietyModels\CloudSocietyModels.csproj">
+      <Project>{72482B26-DE1C-4272-A816-7EF05840DC9C}</Project>
+      <Name>CloudSocietyModels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CommonLib\CommonLib.csproj">
+      <Project>{ADBC68CC-88C5-40FB-8754-44E45E014B1E}</Project>
+      <Name>CommonLib</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
