@@ -2170,10 +2170,13 @@ namespace CloudSociety.Controllers
                 PaymentOrder objPaymentRequest = new PaymentOrder();
                 //Required POST parameters
                 objPaymentRequest.name = societyMember.Member;
-                objPaymentRequest.email = societyMember.EmailId;
-                objPaymentRequest.phone = societyMember.MobileNo;
+                objPaymentRequest.email = System.Configuration.ConfigurationManager.AppSettings["BuyerEmailId"];
+                objPaymentRequest.phone = System.Configuration.ConfigurationManager.AppSettings["BuyerPhone"];
                 objPaymentRequest.amount = (double?)societyReceipt.Amount;
                 objPaymentRequest.currency = "INR";
+                objPaymentRequest.description = societyReceipt.BillAbbreviation.Trim() + " - Payment";
+                //objPaymentRequest.send_email = false;
+                //objPaymentRequest.send_sms = false;
                 redirectURL = "/SocietyReport/GenerateOnholdReceipt?";
                 redirectURL += "SocietySubscriptionID=" + societyReceipt.SocietySubscriptionID.ToString();
                 redirectURL += "&SocietyMemberID=" + societyReceipt.SocietyMemberID.ToString();

@@ -41,6 +41,6 @@ D:\MyWork\CloudSociety\CloudSocietyDev\CloudSocietyEntities\bin\Release\DataAnno
 D:\MyWork\CloudSociety\CloudSocietyDev\CloudSocietyEntities\bin\Release\DataAnnotationsExtensions.dll
 D:\MyWork\CloudSociety\CloudSocietyDev\CloudSocietyEntities\bin\Release\Microsoft.Web.Infrastructure.dll
 D:\MyWork\CloudSociety\CloudSocietyDev\CloudSocietyEntities\bin\Release\WebActivator.dll
+D:\MyWork\CloudSociety\CloudSocietyDev\CloudSocietyEntities\obj\Release\CloudSocietyEntities.csprojResolveAssemblyReference.cache
 D:\MyWork\CloudSociety\CloudSocietyDev\CloudSocietyEntities\obj\Release\CloudSocietyEntities.dll
 D:\MyWork\CloudSociety\CloudSocietyDev\CloudSocietyEntities\obj\Release\CloudSocietyEntities.pdb
-D:\MyWork\CloudSociety\CloudSocietyDev\CloudSocietyEntities\obj\Release\CloudSocietyEntities.csprojResolveAssemblyReference.cache

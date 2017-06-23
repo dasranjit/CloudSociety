@@ -57,7 +57,6 @@ D:\MyWork\CloudSociety\CloudSocietyRepositories\bin\Release\CommonLib.pdb
 D:\MyWork\CloudSociety\CloudSocietyRepositories\obj\Release\CloudSocietyRepositories.csprojResolveAssemblyReference.cache
 D:\MyWork\CloudSociety\CloudSocietyRepositories\obj\Release\CloudSocietyRepositories.dll
 D:\MyWork\CloudSociety\CloudSocietyRepositories\obj\Release\CloudSocietyRepositories.pdb
-D:\MyWork\CloudSociety\CloudSocietyDev\CloudSocietyRepositories\obj\Release\CloudSocietyRepositories.csprojResolveAssemblyReference.cache
 D:\MyWork\CloudSociety\CloudSocietyDev\CloudSocietyRepositories\bin\Release\CloudSocietyRepositories.dll.config
 D:\MyWork\CloudSociety\CloudSocietyDev\CloudSocietyRepositories\bin\Release\CloudSocietyRepositories.dll
 D:\MyWork\CloudSociety\CloudSocietyDev\CloudSocietyRepositories\bin\Release\CloudSocietyRepositories.pdb
@@ -73,5 +72,6 @@ D:\MyWork\CloudSociety\CloudSocietyDev\CloudSocietyRepositories\bin\Release\Clou
 D:\MyWork\CloudSociety\CloudSocietyDev\CloudSocietyRepositories\bin\Release\CloudSocietyLib.pdb
 D:\MyWork\CloudSociety\CloudSocietyDev\CloudSocietyRepositories\bin\Release\CloudSocietyModels.pdb
 D:\MyWork\CloudSociety\CloudSocietyDev\CloudSocietyRepositories\bin\Release\CommonLib.pdb
+D:\MyWork\CloudSociety\CloudSocietyDev\CloudSocietyRepositories\obj\Release\CloudSocietyRepositories.csprojResolveAssemblyReference.cache
 D:\MyWork\CloudSociety\CloudSocietyDev\CloudSocietyRepositories\obj\Release\CloudSocietyRepositories.dll
 D:\MyWork\CloudSociety\CloudSocietyDev\CloudSocietyRepositories\obj\Release\CloudSocietyRepositories.pdb

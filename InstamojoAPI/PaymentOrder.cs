@@ -35,6 +35,9 @@ namespace InstamojoAPI
 		public string webhook_url { get; set;}
 		public string currency { get; set; }
 
+        //public bool send_sms { get; set; }
+        //public bool send_email { get; set; }
+        
 		//Extra POST parameters 
 
 		public string description { get; set; }

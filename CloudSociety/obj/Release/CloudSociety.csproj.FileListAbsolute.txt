@@ -113,12 +113,16 @@ D:\MyWork\CloudSociety\CloudSociety\bin\CloudSocietyModels.pdb
 D:\MyWork\CloudSociety\CloudSociety\obj\Debug\CloudSociety.csprojResolveAssemblyReference.cache
 D:\MyWork\CloudSociety\CloudSociety\obj\Debug\CloudSociety.dll
 D:\MyWork\CloudSociety\CloudSociety\obj\Debug\CloudSociety.pdb
+D:\MyWork\CloudSociety\CloudSocietyDev\CloudSociety\obj\Debug\CloudSociety.csprojResolveAssemblyReference.cache
+D:\MyWork\CloudSociety\CloudSocietyDev\CloudSociety\obj\Debug\CloudSociety.dll
+D:\MyWork\CloudSociety\CloudSocietyDev\CloudSociety\obj\Debug\CloudSociety.pdb
 D:\MyWork\CloudSociety\CloudSocietyDev\CloudSociety\bin\CloudSociety.dll
 D:\MyWork\CloudSociety\CloudSocietyDev\CloudSociety\bin\CloudSociety.pdb
 D:\MyWork\CloudSociety\CloudSocietyDev\CloudSociety\bin\CloudSocietyCaching.dll
 D:\MyWork\CloudSociety\CloudSocietyDev\CloudSociety\bin\CloudSocietyEntities.dll
 D:\MyWork\CloudSociety\CloudSocietyDev\CloudSociety\bin\CloudSocietyLib.dll
 D:\MyWork\CloudSociety\CloudSocietyDev\CloudSociety\bin\CommonLib.dll
+D:\MyWork\CloudSociety\CloudSocietyDev\CloudSociety\bin\InstamojoAPI.dll
 D:\MyWork\CloudSociety\CloudSocietyDev\CloudSociety\bin\Microsoft.Web.Infrastructure.dll
 D:\MyWork\CloudSociety\CloudSocietyDev\CloudSociety\bin\CloudSocietyRepositories.dll
 D:\MyWork\CloudSociety\CloudSocietyDev\CloudSociety\bin\WebActivator.dll
@@ -131,10 +135,6 @@ D:\MyWork\CloudSociety\CloudSocietyDev\CloudSociety\bin\CloudSocietyLib.pdb
 D:\MyWork\CloudSociety\CloudSocietyDev\CloudSociety\bin\CommonLib.pdb
 D:\MyWork\CloudSociety\CloudSocietyDev\CloudSociety\bin\CloudSocietyRepositories.pdb
 D:\MyWork\CloudSociety\CloudSocietyDev\CloudSociety\bin\CloudSocietyModels.pdb
-D:\MyWork\CloudSociety\CloudSocietyDev\CloudSociety\obj\Debug\CloudSociety.csprojResolveAssemblyReference.cache
-D:\MyWork\CloudSociety\CloudSocietyDev\CloudSociety\obj\Debug\CloudSociety.dll
-D:\MyWork\CloudSociety\CloudSocietyDev\CloudSociety\obj\Debug\CloudSociety.pdb
 D:\MyWork\CloudSociety\CloudSocietyDev\CloudSociety\obj\Release\CloudSociety.csprojResolveAssemblyReference.cache
 D:\MyWork\CloudSociety\CloudSocietyDev\CloudSociety\obj\Release\CloudSociety.dll
 D:\MyWork\CloudSociety\CloudSocietyDev\CloudSociety\obj\Release\CloudSociety.pdb
-D:\MyWork\CloudSociety\CloudSocietyDev\CloudSociety\bin\InstamojoAPI.dll
