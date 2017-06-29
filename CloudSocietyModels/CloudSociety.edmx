@@ -1517,6 +1517,8 @@
           <Property Name="UpdatedByID" Type="uniqueidentifier" />
           <Property Name="UpdatedOn" Type="datetime" />
           <Property Name="TransactionId" Type="varchar" Nullable="false" MaxLength="250" />
+          <Property Name="ReceiptCreatedOn" Type="datetime" />
+          <Property Name="IsReceiptCreated" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="SocietyReceipts">
           <Key>
@@ -4723,6 +4725,9 @@
             <End Role="SocietyMember" EntitySet="SocietyMembers" />
             <End Role="SocietyMemberDocument" EntitySet="SocietyMemberDocuments" />
           </AssociationSet>
+          <FunctionImport Name="GenerateReceiptForOnHoldReciept">
+          <Parameter Name="SocietyReceiptOnholdID" Mode="In" Type="Guid" />
+          </FunctionImport>
           <EntitySet Name="SocietyReceiptOnholds" EntityType="CloudSocietyModel.SocietyReceiptOnhold" />
           <AssociationSet Name="FK_SocietyReceiptOnholds_Societies" Association="CloudSocietyModel.FK_SocietyReceiptOnholds_Societies">
             <End Role="Society" EntitySet="Societies" />
@@ -4744,9 +4749,6 @@
             <End Role="SocietySubscription" EntitySet="SocietySubscriptions" />
             <End Role="SocietyReceiptOnhold" EntitySet="SocietyReceiptOnholds" />
           </AssociationSet>
-          <FunctionImport Name="GenerateReceiptForOnHoldReciept">
-          <Parameter Name="SocietyReceiptOnholdID" Mode="In" Type="Guid" />
-          </FunctionImport>
           </EntityContainer>
         <EntityType Name="AcCategory">
           <Key>
@@ -8158,12 +8160,14 @@
           <Property Type="DateTime" Name="CreatedOn" Nullable="false" Precision="0" />
           <Property Type="Guid" Name="UpdatedByID" />
           <Property Type="DateTime" Name="UpdatedOn" Precision="3" />
+          <Property Type="String" Name="TransactionId" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="ReceiptCreatedOn" Precision="3" />
+          <Property Type="Boolean" Name="IsReceiptCreated" Nullable="false" />
           <NavigationProperty Name="Society" Relationship="CloudSocietyModel.FK_SocietyReceiptOnholds_Societies" FromRole="SocietyReceiptOnhold" ToRole="Society" />
           <NavigationProperty Name="SocietyBillSery" Relationship="CloudSocietyModel.FK_SocietyReceiptOnholds_SocietyBillSeries" FromRole="SocietyReceiptOnhold" ToRole="SocietyBillSeries" />
           <NavigationProperty Name="SocietyBuildingUnit" Relationship="CloudSocietyModel.FK_SocietyReceiptOnholds_SocietyBuildingUnits" FromRole="SocietyReceiptOnhold" ToRole="SocietyBuildingUnit" />
           <NavigationProperty Name="SocietyMember" Relationship="CloudSocietyModel.FK_SocietyReceiptOnholds_SocietyMembers" FromRole="SocietyReceiptOnhold" ToRole="SocietyMember" />
           <NavigationProperty Name="SocietySubscription" Relationship="CloudSocietyModel.FK_SocietyReceiptOnholds_SocietySubscriptions" FromRole="SocietyReceiptOnhold" ToRole="SocietySubscription" />
-          <Property Type="String" Name="TransactionId" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK_SocietyReceiptOnholds_Societies">
           <End Type="CloudSocietyModel.Society" Role="Society" Multiplicity="1" />
@@ -9702,9 +9706,12 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GenerateReceiptForOnHoldReciept" FunctionName="CloudSocietyModel.Store.CreateReceiptForOnHoldReciept" />
           <EntitySetMapping Name="SocietyReceiptOnholds">
             <EntityTypeMapping TypeName="CloudSocietyModel.SocietyReceiptOnhold">
               <MappingFragment StoreEntitySet="SocietyReceiptOnholds">
+                <ScalarProperty Name="IsReceiptCreated" ColumnName="IsReceiptCreated" />
+                <ScalarProperty Name="ReceiptCreatedOn" ColumnName="ReceiptCreatedOn" />
                 <ScalarProperty Name="TransactionId" ColumnName="TransactionId" />
                 <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
                 <ScalarProperty Name="UpdatedByID" ColumnName="UpdatedByID" />
@@ -9721,7 +9728,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="GenerateReceiptForOnHoldReciept" FunctionName="CloudSocietyModel.Store.CreateReceiptForOnHoldReciept" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -12284,7 +12290,7 @@
         <EntityTypeShape EntityType="CloudSocietyModel.SocietyMemberDocument" Width="1.5" PointX="6.5330280692004727" PointY="17.120458670482254" />
         <AssociationConnector Association="CloudSocietyModel.FK_SocietyMemberDocuments_DocumentTypes" />
         <AssociationConnector Association="CloudSocietyModel.FK_SocietyMemberDocuments_SocietyMembers" />
-        <EntityTypeShape EntityType="CloudSocietyModel.SocietyReceiptOnhold" Width="1.5" PointX="8.4001604357735076" PointY="20.562108556070417" />
+        <EntityTypeShape EntityType="CloudSocietyModel.SocietyReceiptOnhold" Width="1.5" PointX="1.9052903549304654" PointY="13.30594710135178" />
         <AssociationConnector Association="CloudSocietyModel.FK_SocietyReceiptOnholds_Societies" />
         <AssociationConnector Association="CloudSocietyModel.FK_SocietyReceiptOnholds_SocietyBillSeries" />
         <AssociationConnector Association="CloudSocietyModel.FK_SocietyReceiptOnholds_SocietyBuildingUnits" />

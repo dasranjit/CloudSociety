@@ -149,6 +149,7 @@
     <Compile Include="Customization\SocietyCommunicationSetting.cs" />
     <Compile Include="Customization\SocietyMember.cs" />
     <Compile Include="Customization\SocietyReceipt.cs" />
+    <Compile Include="Customization\SocietyReceiptOnhold.cs" />
     <Compile Include="Customization\SocietySubscription.cs" />
     <Compile Include="Customization\Subscriber.cs" />
     <Compile Include="DocumentType.cs">

@@ -158,6 +158,17 @@ namespace CloudSocietyEntities
             get;
             set;
         }
+        public virtual Nullable<System.DateTime> ReceiptCreatedOn
+        {
+            get;
+            set;
+        }
+        [Required]
+        public virtual bool IsReceiptCreated
+        {
+            get;
+            set;
+        }
 
         #endregion
 

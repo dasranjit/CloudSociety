@@ -64,6 +64,8 @@ namespace CloudSociety.Repositories
                 entity.CreatedOn = DateTime.Now;
                 var curUser = Membership.GetUser();
                 entity.CreatedByID = (Guid)curUser.ProviderUserKey;
+                //entity.IsReceiptCreated = true;
+                entity.CreatedOn = DateTime.Now;
                 entities.SocietyReceiptOnholds.AddObject(entity);
                 entities.SaveChanges();
             }

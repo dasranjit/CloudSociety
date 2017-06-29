@@ -1,8 +1,7 @@
 /* begin Menu */
 /* menu structure */
 
-.art-menu a, .art-menu a:link, .art-menu a:visited, .art-menu a:hover
-{
+.art-menu a, .art-menu a:link, .art-menu a:visited, .art-menu a:hover {
     text-align: left;
     text-decoration: none;
     outline: none;
@@ -10,8 +9,7 @@
     word-spacing: normal;
 }
 
-.art-menu, .art-menu ul
-{
+.art-menu, .art-menu ul {
     margin: 0;
     padding: 0;
     border: 0;
@@ -19,123 +17,108 @@
     display: block;
 }
 
-.art-menu li
-{
-    margin: 0;
-    padding: 0;
-    border: 0;
-    display: block;
-    float: left;
-    position: relative;
-    z-index: 5;
-    background: none;
-}
+    .art-menu li {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        display: block;
+        float: left;
+        position: relative;
+        z-index: 5;
+        background: none;
+    }
 
-.art-menu li:hover
-{
-    z-index: 10000;
-    white-space: normal;
-}
+        .art-menu li:hover {
+            z-index: 10000;
+            white-space: normal;
+        }
 
-.art-menu li li
-{
-    float: none;
-}
+        .art-menu li li {
+            float: none;
+        }
 
-.art-menu ul
-{
-    visibility: hidden;
-    position: absolute;
-    z-index: 10;
-    left: 0;
-    top: 0;
-    background: none;
-}
+    .art-menu ul {
+        visibility: hidden;
+        position: absolute;
+        z-index: 10;
+        left: 0;
+        top: 0;
+        background: none;
+    }
 
-.art-menu li:hover > ul
-{
-    visibility: visible;
-    top: 100%;
-}
+    .art-menu li:hover > ul {
+        visibility: visible;
+        top: 100%;
+    }
 
-.art-menu li li:hover > ul
-{
-    top: 0;
-    left: 100%;
-}
+    .art-menu li li:hover > ul {
+        top: 0;
+        left: 100%;
+    }
 
-.art-menu:after, .art-menu ul:after
-{
-    content: ".";
-    height: 0;
-    display: block;
-    visibility: hidden;
-    overflow: hidden;
-    clear: both;
-}
-.art-menu, .art-menu ul
-{
-    min-height: 0;
-}
+    .art-menu:after, .art-menu ul:after {
+        content: ".";
+        height: 0;
+        display: block;
+        visibility: hidden;
+        overflow: hidden;
+        clear: both;
+    }
 
-.art-menu ul
-{
-    background-image: url(images/spacer.gif);
-    padding: 10px 30px 30px 30px;
-    margin: -10px 0 0 -30px;
-}
+    .art-menu, .art-menu ul {
+        min-height: 0;
+    }
 
-.art-menu ul ul
-{
-    padding: 30px 30px 30px 10px;
-    margin: -30px 0 0 -10px;
-}
+        .art-menu ul {
+            background-image: url(images/spacer.gif);
+            padding: 10px 30px 30px 30px;
+            margin: -10px 0 0 -30px;
+        }
+
+            .art-menu ul ul {
+                padding: 30px 30px 30px 10px;
+                margin: -30px 0 0 -10px;
+            }
 
 
 
 
 /* menu structure */
 
-.art-menu
-{
+.art-menu {
     padding: 3px 3px 3px 3px;
 }
 
-.art-nav
-{
+.art-nav {
     position: relative;
     height: 29px;
     z-index: 0;
 }
 
-.art-nav .l, .art-nav .r
-{
-    position: absolute;
-    z-index: -1;
-    top: 0;
-    height: 29px;
-    background-image: url('images/nav.png');
-}
+    .art-nav .l, .art-nav .r {
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        height: 29px;
+        background-image: url('images/nav.png');
+    }
 
-.art-nav .l
-{
-    left: 0;
-    right: 0;
-}
+    .art-nav .l {
+        left: 0;
+        right: 0;
+    }
 
-.art-nav .r
-{
-    right: 0;
-    width: 874px;
-    clip: rect(auto, auto, auto, 874px);
-}
+    .art-nav .r {
+        right: 0;
+        width: 874px;
+        clip: rect(auto, auto, auto, 874px);
+    }
 
 
 /* end Menu */
 
 /* begin MenuItem */
-.art-menu a
-{
+.art-menu a {
     position: relative;
     display: block;
     overflow: hidden;
@@ -144,15 +127,13 @@
     text-decoration: none;
 }
 
-.art-menu ul li
-{
+.art-menu ul li {
     margin: 0;
     clear: both;
 }
 
 
-.art-menu a .r, .art-menu a .l
-{
+.art-menu a .r, .art-menu a .l {
     position: absolute;
     display: block;
     top: 0;
@@ -161,21 +142,18 @@
     background-image: url('images/menuitem.png');
 }
 
-.art-menu a .l
-{
+.art-menu a .l {
     left: 0;
     right: 8px;
 }
 
-.art-menu a .r
-{
+.art-menu a .r {
     width: 416px;
     right: 0;
     clip: rect(auto, auto, auto, 408px);
 }
 
-.art-menu a .t
-{
+.art-menu a .t {
     margin-right: 10px;
     margin-left: 10px;
     color: #0D0D0D;
@@ -185,32 +163,27 @@
     text-align: center;
 }
 
-.art-menu a:hover .l, .art-menu a:hover .r
-{
+.art-menu a:hover .l, .art-menu a:hover .r {
     top: -23px;
 }
 
-.art-menu li:hover > a .l, .art-menu li:hover > a .r
-{
+.art-menu li:hover > a .l, .art-menu li:hover > a .r {
     top: -23px;
 }
 
-.art-menu li:hover a .l, .art-menu li:hover a .r
-{
+.art-menu li:hover a .l, .art-menu li:hover a .r {
     top: -23px;
 }
-.art-menu a:hover .t
-{
+
+.art-menu a:hover .t {
     color: #B5B5B5;
 }
 
-.art-menu li:hover a .t
-{
+.art-menu li:hover a .t {
     color: #B5B5B5;
 }
 
-.art-menu li:hover > a .t
-{
+.art-menu li:hover > a .t {
     color: #B5B5B5;
 }
 
@@ -219,8 +192,7 @@
 /* begin MenuSeparator */
 
 
-.art-menu .art-menu-li-separator
-{
+.art-menu .art-menu-li-separator {
     display: block;
     width: 8px;
     height: 23px;
@@ -229,8 +201,7 @@
 /* end MenuSeparator */
 
 /* begin MenuSubItem */
-.art-menu ul a
-{
+.art-menu ul a {
     display: block;
     text-align: center;
     white-space: nowrap;
@@ -245,8 +216,7 @@
     border-style: solid;
 }
 
-.art-nav ul.art-menu ul span, .art-nav ul.art-menu ul span span
-{
+.art-nav ul.art-menu ul span, .art-nav ul.art-menu ul span span {
     display: inline;
     float: none;
     margin: inherit;
@@ -256,38 +226,33 @@
     text-decoration: inherit;
 }
 
-.art-menu ul a, .art-menu ul a:link, .art-menu ul a:visited, .art-menu ul a:hover, .art-menu ul a:active, .art-nav ul.art-menu ul span, .art-nav ul.art-menu ul span span
-{
-    text-align: left;
-    text-indent: 12px;
-    text-decoration: none;
-    line-height: 26px;
-    color: #000000;
-    margin-right: 10px;
-    margin-left: 10px;
-    margin: 0;
-    padding: 0;
-}
+    .art-menu ul a, .art-menu ul a:link, .art-menu ul a:visited, .art-menu ul a:hover, .art-menu ul a:active, .art-nav ul.art-menu ul span, .art-nav ul.art-menu ul span span {
+        text-align: left;
+        text-indent: 12px;
+        text-decoration: none;
+        line-height: 26px;
+        color: #000000;
+        margin-right: 10px;
+        margin-left: 10px;
+        margin: 0;
+        padding: 0;
+    }
 
-.art-menu ul li a:hover
-{
+.art-menu ul li a:hover {
     color: #B5B5B5;
     background-position: 0 -26px; /*border-left:1px solid white;   border-right :1px solid white;*/
 }
 
-.art-menu ul li:hover > a
-{
+.art-menu ul li:hover > a {
     color: #B5B5B5;
     background-position: 0 -26px;
 }
 
-.art-nav .art-menu ul li a:hover span, .art-nav .art-menu ul li a:hover span span
-{
+.art-nav .art-menu ul li a:hover span, .art-nav .art-menu ul li a:hover span span {
     color: #B5B5B5;
 }
 
-.art-nav .art-menu ul li:hover > a span, .art-nav .art-menu ul li:hover > a span span
-{
+.art-nav .art-menu ul li:hover > a span, .art-nav .art-menu ul li:hover > a span span {
     color: #B5B5B5;
 }
 
@@ -295,104 +260,101 @@
 /* end MenuSubItem */
 
 
-.toptitle, .toptitle a
-{
+.toptitle, .toptitle a {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 16px;
     color: #FFFFFF;
     font-weight: bold;
 }
-.whitetitle, .whitetitle a
-{
+
+.whitetitle, .whitetitle a {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 13px;
     color: #FFFFFF;
     font-weight: bold;
 }
-.red
-{
+
+.red {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 11px;
     color: #FF0000;
     font-weight: bold;
 }
-.redleft
-{
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 12px;
-    color: #F7141F;
-}
-a.redleft:link
-{
+
+.redleft {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 12px;
     color: #F7141F;
 }
 
-a.redleft:hover
-{
+a.redleft:link {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    color: #F7141F;
+}
+
+a.redleft:hover {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 12px;
     color: #999999;
 }
-.blackbold
-{
+
+.blackbold {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 10px;
     font-weight: bold;
     color: #000000;
 }
-.formtitle
-{
+
+.formtitle {
     border: 1px solid #999999;
 }
-.forcustomer
-{
+
+.forcustomer {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 13px;
     color: #7F7F7F;
 }
-.bluehead
-{
+
+.bluehead {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 20px;
     color: #0080FF;
     font-weight: bold;
 }
-.bluetitle
-{
+
+.bluetitle {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 12px;
     color: #0081FD;
 }
-.redline
-{
+
+.redline {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 16px;
     color: #F81520;
 }
-.greytext
-{
+
+.greytext {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 12px;
     color: #666666;
 }
 
-.redtopic
-{
+.redtopic {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 16px;
     color: #F81520;
 }
-.bluebold
-{
+
+.bluebold {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 10px;
     font-weight: bold;
     color: #0081FD;
 }
-.greybold
-{
+
+.greybold {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 10px;
     font-weight: bold;
@@ -401,97 +363,82 @@ a.redleft:hover
 
 /* Styles for validation helpers
 -----------------------------------------------------------*/
-.field-validation-error
-{
+.field-validation-error {
     color: #ff0000;
     font-size: 11px;
 }
 
-.field-validation-valid
-{
+.field-validation-valid {
     display: none;
 }
 
-.input-validation-error
-{
+.input-validation-error {
     border: 1px solid #ff0000;
     background-color: #ffeeee;
 }
 
-.validation-summary-errors
-{
+.validation-summary-errors {
     font-weight: bold;
     color: #ff0000;
 }
 
-.validation-summary-valid
-{
+.validation-summary-valid {
     display: none;
 }
 
 /* Styles for editor and display helpers
 ----------------------------------------------------------*/
-.display-label, .editor-label
-{
+.display-label, .editor-label {
     margin: 1em 0 0 0;
     text-align: left;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 12px;
 }
 
-.display-field, .editor-field
-{
+.display-field, .editor-field {
     margin: 0.5em 0 0 0;
     text-align: left;
 }
 
-.text-box
-{
+.text-box {
     width: 30em;
 }
 
-.text-box.multi-line
-{
-    height: 6.5em;
-}
+    .text-box.multi-line {
+        height: 6.5em;
+    }
 
-.tri-state
-{
+.tri-state {
     width: 6em;
 }
 
-fieldset
-{
+fieldset {
     border: 1px solid #ddd;
     padding: 0 1.4em 1.4em 1.4em;
     margin: 0 0 1.5em 0; /*background-image: url('images/subitem.png');*/
 }
 
-legend
-{
+legend {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 14px;
     font-weight: bold;
     color: #696969;
 }
 
-.DivHeader
-{
+.DivHeader {
     width: 459px;
     vertical-align: bottom;
     text-align: center;
 }
 
-.DivHeaderFont
-{
+.DivHeaderFont {
     font-size: 16px;
     font-weight: bold;
     font-family: Arial;
 }
 
 
-.divCreateSuccessLeft
-{
+.divCreateSuccessLeft {
     text-align: center;
     width: 90%;
     border: 1px solid #DDDDDD;
@@ -502,8 +449,7 @@ legend
 }
 
 
-.table
-{
+.table {
     /*background-color: Maroon;*/
     font-family: Arial, Helvetica, sans-serif;
     font-size: 12px;
@@ -511,50 +457,46 @@ legend
     border-collapse: collapse;
     border: 1px solid Maroon;
 }
-.table th
-{
-    font-weight: bold;
-    background-color: #B80103;
-    background-image: url('images/fadedBar4.png');
-    text-align: center;
-    border: 1px solid Maroon;
-}
+
+    .table th {
+        font-weight: bold;
+        background-color: #B80103;
+        background-image: url('images/fadedBar4.png');
+        text-align: center;
+        border: 1px solid Maroon;
+    }
 
 
-.table th a:link
-{
-    color: black;
-}
-.table th a:visited
-{
-    color: black;
-}
-.table th a:hover
-{
-    color: #B80103;
-}
-.table th a:active
-{
-    color: black;
-}
+        .table th a:link {
+            color: black;
+        }
 
-.table td
-{
-    border: 1px solid Maroon;
-}
+        .table th a:visited {
+            color: black;
+        }
 
-.TableRow
-{
+        .table th a:hover {
+            color: #B80103;
+        }
+
+        .table th a:active {
+            color: black;
+        }
+
+    .table td {
+        border: 1px solid Maroon;
+    }
+
+.TableRow {
     background-color: #F4F4F4;
 }
-.altTableRow
-{
+
+.altTableRow {
     background-color: White;
 }
 
 
-.buttton
-{
+.buttton {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 11px;
     color: #FFFFFF;
@@ -565,13 +507,11 @@ legend
     cursor: pointer;
 }
 
-.buttton a
-{
-    color: #FFFFFF;
-}
+    .buttton a {
+        color: #FFFFFF;
+    }
 
-.list
-{
+.list {
     background: #B80103;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 11px;
@@ -579,8 +519,7 @@ legend
     width: 160px;
 }
 
-.EditDelete
-{
+.EditDelete {
     padding-left: 2px;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 11px;
@@ -588,15 +527,13 @@ legend
     color: #B80103;
 }
 
-a.EditDelete:hover
-{
+a.EditDelete:hover {
     /*background: #EEEEEE;*/
     color: #999999;
 }
 
 
-.LabelDel
-{
+.LabelDel {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 14px; /*font-weight: bold;*/
     font-style: italic;
@@ -604,8 +541,7 @@ a.EditDelete:hover
 }
 
 
-.ajax__calendar_container
-{
+.ajax__calendar_container {
     padding: 4px;
     position: absolute;
     cursor: default;
@@ -615,16 +551,16 @@ a.EditDelete:hover
     font-family: tahoma,verdana,helvetica;
     font-weight: bold;
 }
-.ajax__calendar_body
-{
+
+.ajax__calendar_body {
     height: 139px;
     width: 170px;
     position: relative;
     overflow: hidden;
     margin: auto;
 }
-.ajax__calendar_days, .ajax__calendar_months, .ajax__calendar_years
-{
+
+.ajax__calendar_days, .ajax__calendar_months, .ajax__calendar_years {
     top: 0px;
     left: 0px;
     height: 139px;
@@ -633,19 +569,19 @@ a.EditDelete:hover
     text-align: center;
     margin: auto;
 }
-.ajax__calendar_container TABLE
-{
+
+.ajax__calendar_container TABLE {
     font-size: 11px;
     border-bottom: 1px solid #646464;
     border-left: 1px solid #646464;
 }
-.ajax__calendar_header
-{
+
+.ajax__calendar_header {
     height: 20px;
     width: 100%;
 }
-.ajax__calendar_prev
-{
+
+.ajax__calendar_prev {
     cursor: pointer;
     width: 15px;
     height: 15px;
@@ -654,8 +590,8 @@ a.EditDelete:hover
     background-position: 50% 50%;
     background-image: url(AjaxControlToolkit/3.0.20820.16598/3.0.20820.0/AjaxControlToolkit.Calendar.arrow-left.gif);
 }
-.ajax__calendar_next
-{
+
+.ajax__calendar_next {
     cursor: pointer;
     width: 15px;
     height: 15px;
@@ -664,45 +600,37 @@ a.EditDelete:hover
     background-position: 50% 50%;
     background-image: url(AjaxControlToolkit/3.0.20820.16598/3.0.20820.0/AjaxControlToolkit.Calendar.arrow-right.gif);
 }
-.ajax__calendar_title
-{
+
+.ajax__calendar_title {
     cursor: pointer;
     font-weight: bold;
 }
-.ajax__calendar_footer
-{
+
+.ajax__calendar_footer {
     height: 15px;
 }
-.ajax__calendar_today
-{
+
+.ajax__calendar_today {
     cursor: pointer;
     padding-top: 3px;
 }
-.ajax__calendar_dayname
-{
+
+.ajax__calendar_dayname {
     height: 17px;
     width: 17px;
     text-align: right;
     padding: 0 2px;
 }
-.ajax__calendar_day
-{
+
+.ajax__calendar_day {
     height: 17px;
     width: 18px;
     text-align: right;
     padding: 0 2px;
     cursor: pointer;
 }
-.ajax__calendar_month
-{
-    height: 44px;
-    width: 40px;
-    text-align: center;
-    cursor: pointer;
-    overflow: hidden;
-}
-.ajax__calendar_year
-{
+
+.ajax__calendar_month {
     height: 44px;
     width: 40px;
     text-align: center;
@@ -710,74 +638,76 @@ a.EditDelete:hover
     overflow: hidden;
 }
 
-.ajax__calendar .ajax__calendar_container
-{
+.ajax__calendar_year {
+    height: 44px;
+    width: 40px;
+    text-align: center;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.ajax__calendar .ajax__calendar_container {
     border: 1px solid #646464;
     background-color: #C2C2C2;
     color: #BF0000;
 }
-.ajax__calendar .ajax__calendar_footer
-{
+
+.ajax__calendar .ajax__calendar_footer {
     border-top: 1px solid #f5f5f5;
 }
 /*.ajax__calendar .ajax__calendar_dayname {border-bottom:1px solid #f5f5f5;}*/
 
 
-.ajax__calendar .ajax__calendar_active .ajax__calendar_day
-{
-    background-color: #BF0000;
-    border-color: #0066cc;
-    color: #FFFFFF;
-}
-.ajax__calendar .ajax__calendar_active .ajax__calendar_month
-{
-    background-color: #BF0000;
-    border-color: #0066cc;
-    color: #FFFFFF;
-}
-.ajax__calendar .ajax__calendar_active .ajax__calendar_year
-{
+.ajax__calendar .ajax__calendar_active .ajax__calendar_day {
     background-color: #BF0000;
     border-color: #0066cc;
     color: #FFFFFF;
 }
 
-.ajax__calendar .ajax__calendar_other .ajax__calendar_day
-{
-    color: #000000;
+.ajax__calendar .ajax__calendar_active .ajax__calendar_month {
+    background-color: #BF0000;
+    border-color: #0066cc;
+    color: #FFFFFF;
 }
-.ajax__calendar .ajax__calendar_other .ajax__calendar_year
-{
+
+.ajax__calendar .ajax__calendar_active .ajax__calendar_year {
+    background-color: #BF0000;
+    border-color: #0066cc;
+    color: #FFFFFF;
+}
+
+.ajax__calendar .ajax__calendar_other .ajax__calendar_day {
     color: #000000;
 }
 
-.ajax__calendar .ajax__calendar_hover .ajax__calendar_day
-{
-    background-color: White;
-    border-color: #0066cc;
+.ajax__calendar .ajax__calendar_other .ajax__calendar_year {
+    color: #000000;
 }
-.ajax__calendar .ajax__calendar_hover .ajax__calendar_month
-{
-    background-color: White;
-    border-color: #0066cc;
-}
-.ajax__calendar .ajax__calendar_hover .ajax__calendar_year
-{
+
+.ajax__calendar .ajax__calendar_hover .ajax__calendar_day {
     background-color: White;
     border-color: #0066cc;
 }
 
-.ajax__calendar .ajax__calendar_hover .ajax__calendar_title
-{
-    color: White;
+.ajax__calendar .ajax__calendar_hover .ajax__calendar_month {
+    background-color: White;
+    border-color: #0066cc;
 }
-.ajax__calendar .ajax__calendar_hover .ajax__calendar_today
-{
+
+.ajax__calendar .ajax__calendar_hover .ajax__calendar_year {
+    background-color: White;
+    border-color: #0066cc;
+}
+
+.ajax__calendar .ajax__calendar_hover .ajax__calendar_title {
     color: White;
 }
 
-.ajax__calendar_container td
-{
+.ajax__calendar .ajax__calendar_hover .ajax__calendar_today {
+    color: White;
+}
+
+.ajax__calendar_container td {
     border-right: 1px solid #646464;
     border-top: 1px solid #646464;
     color: #BF0000;
@@ -788,36 +718,31 @@ a.EditDelete:hover
 }
 
 
-.ServiceTypeTableRowDisabled
-{
+.ServiceTypeTableRowDisabled {
     color: #A5A5A5;
     font-style: italic;
     background-color: White;
 }
 
-.ServiceTypeTableRowEnabled
-{
+.ServiceTypeTableRowEnabled {
     color: #000000;
     font-style: normal;
     background-color: White;
 }
 
-.altServiceTypeTableRowDisabled
-{
+.altServiceTypeTableRowDisabled {
     color: #A5A5A5;
     font-style: italic;
     background-color: #F4F4F4;
 }
 
-.altServiceTypeTableRowEnabled
-{
+.altServiceTypeTableRowEnabled {
     color: #000000;
     font-style: normal;
     background-color: #F4F4F4;
 }
 
-.SocName
-{
+.SocName {
     border: 1px solid #800000;
     background-color: #F4F4F4;
     padding: 2px 8px 2px 8px;
@@ -826,82 +751,80 @@ a.EditDelete:hover
     font-size: 14px;
     color: #2D2D2D;
 }
-.shortWidth
-{
+
+.shortWidth {
     width: 90px;
 }
-.mediumWidth
-{
+
+.mediumWidth {
     width: 200px;
 }
-.maxWidth
-{
+
+.maxWidth {
     width: 300px;
 }
-.width800
-{
+
+.width800 {
     width: 800px;
 }
 /* ######### CSS classes applied to design the footer of WebGrid for page number  ######### */
-.webgrid-footer
-{
+.webgrid-footer {
     color: Maroon;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 11px;
     text-align: center;
     background-color: #F4F4F4;
 }
-.webgrid-footer a:link
-{
-    color: Maroon;
-    background-image: url(../../Content/images/NormalPageGrt9.gif);
-    background-position: center;
-    background-repeat: no-repeat;
-    margin-left: 3px;
-    margin-right: 3px;
-    padding: 0px 4px 1px 6px;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 11px;
-}
-.webgrid-footer a:visited
-{
-    color: Maroon;
-    background-image: url(../../Content/images/NormalPageGrt9.gif);
-    background-position: center;
-    background-repeat: no-repeat;
-    margin-left: 3px;
-    margin-right: 3px;
-    padding: 0px 4px 1px 6px;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 11px;
-}
-.webgrid-footer a:hover
-{
-    color: White;
-    background-image: url(../../Content/images/SelectedPageGrt9.gif);
-    background-position: center;
-    background-repeat: no-repeat;
-    margin-left: 3px;
-    margin-right: 3px;
-    padding: 0px 4px 1px 6px;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 11px;
-}
-.webgrid-footer a:active
-{
-    color: White;
-    background-image: url(../../Content/images/SelectedPageGrt9.gif);
-    background-position: center;
-    background-repeat: no-repeat;
-    margin-left: 3px;
-    margin-right: 3px;
-    padding: 0px 4px 1px 6px;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 11px;
-}
+
+    .webgrid-footer a:link {
+        color: Maroon;
+        background-image: url(../../Content/images/NormalPageGrt9.gif);
+        background-position: center;
+        background-repeat: no-repeat;
+        margin-left: 3px;
+        margin-right: 3px;
+        padding: 0px 4px 1px 6px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 11px;
+    }
+
+    .webgrid-footer a:visited {
+        color: Maroon;
+        background-image: url(../../Content/images/NormalPageGrt9.gif);
+        background-position: center;
+        background-repeat: no-repeat;
+        margin-left: 3px;
+        margin-right: 3px;
+        padding: 0px 4px 1px 6px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 11px;
+    }
+
+    .webgrid-footer a:hover {
+        color: White;
+        background-image: url(../../Content/images/SelectedPageGrt9.gif);
+        background-position: center;
+        background-repeat: no-repeat;
+        margin-left: 3px;
+        margin-right: 3px;
+        padding: 0px 4px 1px 6px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 11px;
+    }
+
+    .webgrid-footer a:active {
+        color: White;
+        background-image: url(../../Content/images/SelectedPageGrt9.gif);
+        background-position: center;
+        background-repeat: no-repeat;
+        margin-left: 3px;
+        margin-right: 3px;
+        padding: 0px 4px 1px 6px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 11px;
+    }
 /* ######### ######### ######### ######### */
-.divFailure
-{
+.divFailure {
     text-align: center;
     font-size: small;
     color: Red;
@@ -911,161 +834,148 @@ a.EditDelete:hover
     padding-right: 10px;
     padding-top: 10px;
 }
-a.sm:active
-{
+
+a.sm:active {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 12px;
     color: #666666;
 }
-a.sm:hover
-{
+
+a.sm:hover {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 14px;
     color: #FF0000;
 }
-a.sm:visited
-{
+
+a.sm:visited {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 12px;
     color: #666666;
 }
-a.sm:link
-{
+
+a.sm:link {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 12px;
     color: #666666;
 }
-a.greybold:active
-{
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 10px;
-    color: #666666;
-}
-a.greybold:link
-{
+
+a.greybold:active {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 10px;
     color: #666666;
 }
 
-a.greybold:visited
-{
+a.greybold:link {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 10px;
     color: #666666;
 }
 
-a.greybold:hover
-{
+a.greybold:visited {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    color: #666666;
+}
+
+a.greybold:hover {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 11px;
     color: #FF0000;
 }
-.toptitle
-{
+
+.toptitle {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 16px;
     color: #FFFFFF;
     font-weight: bold;
 }
-.grey
-{
+
+.grey {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 16px;
     font-weight: bold;
     color: #666666;
 }
 
-.whitetitle
-{
+.whitetitle {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 13px;
     color: #FFFFFF;
     font-weight: bold;
 }
-.red
-{
+
+.red {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 11px;
     color: #d8041d;
     font-weight: bold;
 }
-.redleft
-{
+
+.redleft {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 12px;
     color: #d8041d;
     font-weight: bolder;
 }
 
-a.redleft:link
-{
+a.redleft:link {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 12px;
     color: #F7141F;
 }
 
-a.redleft:hover
-{
+a.redleft:hover {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 14px;
     font-weight: bold;
     color: #999999;
 }
 
-.blackbold
-{
+.blackbold {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 10px;
     font-weight: bold;
     color: #000000;
 }
 
-.formtitle
-{
+.formtitle {
     border: 1px solid #999999;
 }
 
-.forcustomer
-{
+.forcustomer {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 13px;
     color: #7F7F7F;
     text-align: justify;
 }
 
-.bluehead
-{
+.bluehead {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 20px;
     color: #0080FF;
     font-weight: bold;
 }
 
-.redline
-{
+.redline {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 16px;
     color: #d8041d;
 }
 
-.greytext
-{
+.greytext {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 12px;
     color: #666666;
 }
 
 
-.redtopic
-{
+.redtopic {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 16px;
     color: #d8041d;
 }
 
-.bluebold
-{
+.bluebold {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 10px;
     font-weight: bold;
@@ -1074,8 +984,7 @@ a.redleft:hover
 
 
 
-.greysmall
-{
+.greysmall {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 13px;
     font-weight: bold;
@@ -1089,44 +998,38 @@ a.redleft:hover
 	color: #0081FD;
 }*/
 
-a.bluetitle:link
-{
+a.bluetitle:link {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 12px;
     color: #0081FD;
 }
 
-a.bluetitle:hover
-{
+a.bluetitle:hover {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 12px;
     color: #999999;
 }
 
-a.bluetitle:visited
-{
+a.bluetitle:visited {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 12px;
     color: #0081FD;
 }
 
-a.bluetitle:active
-{
+a.bluetitle:active {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 12px;
     color: #0081FD;
 }
 
-.challanDate
-{
+.challanDate {
     font-size: xx-small;
     width: 23px;
     height: 5px;
 }
 
 /*From Dhabal*/
-.jqueryslidemenu
-{
+.jqueryslidemenu {
     font: bold 15px Arial;
     background: #F7141F;
     width: 580px;
@@ -1134,87 +1037,76 @@ a.bluetitle:active
     margin-right: auto;
 }
 
-.jqueryslidemenu ul
-{
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
-}
+    .jqueryslidemenu ul {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+    }
 
-/*Top level list items*/
-.jqueryslidemenu ul li
-{
-    position: relative;
-    display: inline;
-    float: left;
-}
+        /*Top level list items*/
+        .jqueryslidemenu ul li {
+            position: relative;
+            display: inline;
+            float: left;
+        }
 
-/*Top level menu link items style*/
-.jqueryslidemenu ul li a
-{
-    display: block;
-    background: #d8041d; /*background of tabs (default state)*/
-    color: white;
-    padding: 8px 10px; /*border-right: 0px solid #778;*/
-    color: #ffffff;
-    text-decoration: none;
-}
+            /*Top level menu link items style*/
+            .jqueryslidemenu ul li a {
+                display: block;
+                background: #d8041d; /*background of tabs (default state)*/
+                color: white;
+                padding: 8px 10px; /*border-right: 0px solid #778;*/
+                color: #ffffff;
+                text-decoration: none;
+            }
 
-* html .jqueryslidemenu ul li a
-{
-    /*IE6 hack to get sub menu links to behave correctly*/
-    display: inline-block;
-}
+            * html .jqueryslidemenu ul li a {
+                /*IE6 hack to get sub menu links to behave correctly*/
+                display: inline-block;
+            }
 
-.jqueryslidemenu ul li a:link, .jqueryslidemenu ul li a:visited
-{
-    color: white;
-}
+                .jqueryslidemenu ul li a:link, .jqueryslidemenu ul li a:visited {
+                    color: white;
+                }
 
-.jqueryslidemenu ul li a:hover
-{
-    background-image: url(images/menubg.jpg); /*background: #F0F0EE; tab link background during hover state*/
-    color: #F7141F;
-    font-family: Arial, Helvetica, sans-serif;
-}
+                .jqueryslidemenu ul li a:hover {
+                    background-image: url(images/menubg.jpg); /*background: #F0F0EE; tab link background during hover state*/
+                    color: #F7141F;
+                    font-family: Arial, Helvetica, sans-serif;
+                }
 
-/*1st sub level menu*/
-.jqueryslidemenu ul li ul
-{
-    position: absolute;
-    left: 0;
-    display: block;
-    visibility: hidden;
-}
+            /*1st sub level menu*/
+            .jqueryslidemenu ul li ul {
+                position: absolute;
+                left: 0;
+                display: block;
+                visibility: hidden;
+            }
 
-/*Sub level menu list items (undo style from Top level List Items)*/
-.jqueryslidemenu ul li ul li
-{
-    display: list-item;
-    float: none;
-}
+                /*Sub level menu list items (undo style from Top level List Items)*/
+                .jqueryslidemenu ul li ul li {
+                    display: list-item;
+                    float: none;
+                }
 
-/*All subsequent sub menu levels vertical offset after 1st level sub menu */
-.jqueryslidemenu ul li ul li ul
-{
-    top: 0;
-}
+                    /*All subsequent sub menu levels vertical offset after 1st level sub menu */
+                    .jqueryslidemenu ul li ul li ul {
+                        top: 0;
+                    }
 
-/* Sub level menu links style */
-.jqueryslidemenu ul li ul li a
-{
-    font-family: Arial;
-    font-size: 12px;
-    width: 160px; /*width of sub menus*/
-    font-weight: bold;
-    padding: 5px;
-    margin: 0;
-    border-top-width: 0;
-    border-bottom: 1px solid white;
-}
+                    /* Sub level menu links style */
+                    .jqueryslidemenu ul li ul li a {
+                        font-family: Arial;
+                        font-size: 12px;
+                        width: 160px; /*width of sub menus*/
+                        font-weight: bold;
+                        padding: 5px;
+                        margin: 0;
+                        border-top-width: 0;
+                        border-bottom: 1px solid white;
+                    }
 
-.jqueryslidemenuz ul li ul li a:hover
-{
+.jqueryslidemenuz ul li ul li a:hover {
     /*sub menus hover style*/
     background: #eff9ff;
     color: #FF0000;
@@ -1222,42 +1114,51 @@ a.bluetitle:active
 
 /* ######### CSS classes applied to down and right arrow images  ######### */
 
-.downarrowclass
-{
+.downarrowclass {
     position: absolute;
     top: 12px;
     right: 7px;
 }
 
-.rightarrowclass
-{
+.rightarrowclass {
     position: absolute;
     top: 6px;
     right: 5px;
 }
+
 .loader {
-  border: 16px solid #F4F4F4;
-  border-radius: 50%;
-  border-top: 16px solid #C70102;
-  width: 46px;
-  height: 46px;
-  -webkit-animation: spin 2s linear infinite;
-  animation: spin 2s linear infinite;
+    border: 16px solid #F4F4F4;
+    border-radius: 50%;
+    border-top: 16px solid #C70102;
+    width: 46px;
+    height: 46px;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
 }
 
 @-webkit-keyframes spin {
-  0% { -webkit-transform: rotate(0deg); }
-  100% { -webkit-transform: rotate(360deg); }
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 /* The Modal (background) */
 .modal {
-    display: none ; /* Hidden by default */
+    display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
     padding-top: 200px; /* Location of the box */
@@ -1277,10 +1178,39 @@ a.bluetitle:active
     padding: 20px;
     border: 1px solid #888;
     width: 76px;
-    text-align:center;
-    vertical-align:middle;
+    text-align: center;
+    vertical-align: middle;
 }
 
+.flash-modal {
+    display: block; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 200px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    border: 1px solid Maroon;
+}
+
+.flash-modal-content {
+    background-color: #F4F4F4;
+    border-width: 2px !important;
+    border-color: Maroon !important;
+    margin: auto;
+    font-size: 18px;
+    color: maroon;
+    /*padding: 20px;*/
+    border: 1px solid #888;
+    width: 400px;
+    height: 200px;
+    text-align: center;
+    vertical-align: middle;
+}
 /* The Close Button */
 .close {
     color: #aaaaaa;
@@ -1289,9 +1219,65 @@ a.bluetitle:active
     font-weight: bold;
 }
 
-.close:hover,
-.close:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
+    .close:hover,
+    .close:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+
+.Width5Per {
+    width: 5%;
+}
+
+.Width4Per {
+    width: 4%;
+    text-align: center;
+}
+
+.Width100Per {
+    width: 100%;
+}
+
+.Width10Per {
+    width: 10%;
+}
+
+.Width20Per {
+    width: 20%;
+}
+
+.Width7Per {
+    width: 7%;
+}
+
+.Width7PerCen {
+    width: 7%;
+    text-align: center;
+}
+
+.Width40Per {
+    width: 40%;
+}
+
+.AlignRight {
+    text-align: right;
+}
+
+i {
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+}
+
+.up {
+    transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
+}
+
+.down {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
 }

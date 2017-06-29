@@ -66,58 +66,7 @@
     }
 
 </script>
-<style>
-    .Width5Per {
-        width: 5%;
-    }
 
-    .Width4Per {
-        width: 4%;
-        text-align: center;
-    }
-
-    .Width100Per {
-        width: 100%;
-    }
-
-    .Width10Per {
-        width: 10%;
-    }
-
-    .Width20Per {
-        width: 20%;
-    }
-
-    .Width7Per {
-        width: 7%;
-    }
-
-    .Width7PerCen {
-        width: 7%;
-        text-align: center;
-    }
-
-    .Width40Per {
-        width: 40%;
-    }
-
-    i {
-        border: solid black;
-        border-width: 0 3px 3px 0;
-        display: inline-block;
-        padding: 3px;
-    }
-
-    .up {
-        transform: rotate(-135deg);
-        -webkit-transform: rotate(-135deg);
-    }
-
-    .down {
-        transform: rotate(45deg);
-        -webkit-transform: rotate(45deg);
-    }
-</style>
 
 @using (Html.BeginForm("Index", "Communication", FormMethod.Get))
 {
@@ -161,8 +110,7 @@
                 <td>
                     @Html.DropDownList("CommunicationTypeID", new SelectList(ViewBag.communicationTypeList as System.Collections.IEnumerable, "CommunicationTypeID", "CommunicationType1"), "<- Select Communication Type ->")
                 </td>
-            </tr>
-            <tr>
+            </tr>            
             <tr>
                 <td>Ticket Status</td>
                 <td>:</td>

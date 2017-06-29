@@ -384,17 +384,33 @@ namespace CloudSociety.Controllers
         }
 
         public ActionResult Menu(Guid id)
-        {
+        {            
             if (Roles.IsUserInRole("Member") || Roles.IsUserInRole("OfficeBearer"))
                 return RedirectToAction("Menu", "SocietyMember", new { id = id });
             ViewBag.SocietySubscriptionID = id;
             var societySubscriptionService = new CloudSociety.Services.SocietySubscriptionService(this.ModelState);
             ViewBag.ShowSocietyMenu = true;
+            var societySubscription = societySubscriptionService.GetById(id);
             ViewBag.ShowAccountingMenu = societySubscriptionService.AccountingEnabled(id);
             ViewBag.ShowBillingMenu = societySubscriptionService.BillingEnabled(id);
             ViewBag.SocietyHead = societySubscriptionService.SocietyYear(id);
             ViewBag.TrialUser = (Roles.IsUserInRole("TrialUser"));
             ViewBag.IsPrevYearAccountingEnabled = societySubscriptionService.PrevYearAccountingEnabled(id);
+            ViewBag.SubscriptionExpairDays = 0;
+            if (Roles.IsUserInRole("Subscriber") || Roles.IsUserInRole("OfficeBearer"))
+            {
+                if (societySubscription.PaidTillDate.HasValue)
+                {
+                    if (societySubscription.PaidTillDate.Value > DateTime.Now)
+                    {
+                        int totalDays = Convert.ToInt16((societySubscription.PaidTillDate.Value - DateTime.Now).TotalDays);
+                        if (totalDays <= 20)
+                        {
+                            ViewBag.SubscriptionExpairDays = totalDays;
+                        }
+                    }
+                }
+            }
             return View();
         }
         public ActionResult ChangeYear(Guid id)//id=societySubscriptionId

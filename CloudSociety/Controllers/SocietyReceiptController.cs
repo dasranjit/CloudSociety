@@ -533,7 +533,7 @@ namespace CloudSociety.Controllers
 
         // GET : All Hold receipt transactions
         [HttpGet]
-        public ActionResult HoldReceipts(Guid id)
+        public ActionResult HoldReceipts(Guid id, string MemberName = "", string BuildingUnit = "")
         {
             ViewBag.SocietySubscriptionID = id;
             var societySubscriptionService = new CloudSociety.Services.SocietySubscriptionService(this.ModelState);
@@ -547,7 +547,9 @@ namespace CloudSociety.Controllers
             ViewBag.IsPrevYearAccountingEnabled = societySubscriptionService.PrevYearAccountingEnabled(id);
             ViewBag.LockedTillDate = societySubscription.LockedTillDate;
             ViewBag.CreateReceiptStatusMessage = TempData["CreateReceiptStatusMessage"];
-            return View(_service.GetOnholdReceipts(societySubscription.SocietyID, id));
+            ViewBag.MemberName = MemberName;
+            ViewBag.BuildingUnit = BuildingUnit;
+            return View(_service.GetOnholdReceipts(societySubscription.SocietyID, id, memberName: MemberName, buildingUnit: BuildingUnit));
         }
         [HttpPost]
         public ActionResult CreateReceipt(SocietyReceiptOnhold objSocietyReceiptOnhold)

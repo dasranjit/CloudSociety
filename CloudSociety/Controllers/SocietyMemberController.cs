@@ -44,7 +44,7 @@ namespace CloudSociety.Controllers
             IEnumerable<SocietyMember> SocietyMemberList = _service.ListByParentId(societySubscriptionService.GetById(id).SocietyID);
             if (Name != "")
                 SocietyMemberList = SocietyMemberList.Where(a => a.Member.ToLower().IndexOf(Name.ToLower().Trim()) != -1);
-            return View("Index",SocietyMemberList);
+            return View("Index", SocietyMemberList);
         }
 
         // GET: /To display Detail list of Society Member added by Ranjit
@@ -300,10 +300,10 @@ namespace CloudSociety.Controllers
             }
         }
 
-        public JsonResult ListForBuildingUnit(Guid societybuildingunitid) 
+        public JsonResult ListForBuildingUnit(Guid societybuildingunitid)
         {
             var SocietyMemberList = new SelectList(_service.ListBySocietyBuildUnitID(societybuildingunitid) as System.Collections.IEnumerable, "SocietyMemberID", "Member");
-            return Json(SocietyMemberList, JsonRequestBehavior.AllowGet); 
+            return Json(SocietyMemberList, JsonRequestBehavior.AllowGet);
         }
 
         //Show menu added by Nityananda
@@ -321,6 +321,14 @@ namespace CloudSociety.Controllers
         //}
         public ActionResult Menu(Guid id)   // societysubscriptionid
         {
+            //var createdBy = Membership.GetUser(entity.CreatedByID);
+            //if (null != createdBy)
+            //{
+            //    if (Roles.IsUserInRole(createdBy.UserName, "OfficeBearer") || entity.CreatedByID == (Guid)createdBy.ProviderUserKey)
+            //    {
+            //        entity.ShowClose = true;
+            //    }
+            //}
             ViewBag.SocietySubscriptionID = id;
             var societySubscriptionService = new CloudSociety.Services.SocietySubscriptionService(this.ModelState);
             ViewBag.SocietyHead = societySubscriptionService.SocietyYear(id);
@@ -330,10 +338,25 @@ namespace CloudSociety.Controllers
             var societymemberid = (Guid)new Services.UserDetailService(this.ModelState).GetById(userid).SocietyMemberID;
             var societyMemberService = new CloudSociety.Services.SocietyMemberService(this.ModelState);
             ViewBag.MemberName = societyMemberService.GetById(societymemberid).Member;
-            var societySubscription =  societySubscriptionService.GetById(id);
+            var societySubscription = societySubscriptionService.GetById(id);
             ViewBag.ShowFinalReports = societySubscription.Closed;
             //Session["ShowCommunication"] = societyMemberService.IsCommunicationEnabled(societySubscription.SocietyID);
             ViewBag.ShowCommunication = societyMemberService.IsCommunicationEnabled(societySubscription.SocietyID);
+            ViewBag.SubscriptionExpairDays = 0;
+            if (Roles.IsUserInRole("Subscriber") || Roles.IsUserInRole("OfficeBearer"))
+            {
+                if (societySubscription.PaidTillDate.HasValue)
+                {
+                    if (societySubscription.PaidTillDate.Value > DateTime.Now)
+                    {
+                        int totalDays = Convert.ToInt16((societySubscription.PaidTillDate.Value - DateTime.Now).TotalDays);
+                        if (totalDays <= 20)
+                        {
+                            ViewBag.SubscriptionExpairDays = totalDays;
+                        }   
+                    }                    
+                }
+            }
             return View();
         }
 

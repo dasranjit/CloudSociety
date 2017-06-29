@@ -3,4 +3,20 @@
     ViewBag.SocietyNameHeader = ViewBag.SocietyHead;
     Layout = "~/Views/Shared/SocietyLayout.cshtml";
 }
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<script type="text/javascript">
+    function hideFlashModal() {
+        var modal = document.getElementById('myModal');
+        modal.style.display = "none";
+    }
+</script>
+@if(ViewBag.SubscriptionExpairDays != 0)
+{
+<div id="myModal" class="flash-modal">
+    <!-- Modal content -->
+    <div class="flash-modal-content">
+        <div class="close" onclick="hideFlashModal()" >&times;</div>
+        <div style="margin-top: 60px;">Your subscription is going to end after @ViewBag.SubscriptionExpairDays days..</div>
+    </div>
+</div>
+}
