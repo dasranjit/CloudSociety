@@ -1,6 +1,0 @@
-D:\MyProjects\instamojo-csharp-master\instamojo-csharp-master\InstamojoAPI\bin\Release\InstamojoAPI.dll
-D:\MyProjects\instamojo-csharp-master\instamojo-csharp-master\InstamojoAPI\obj\Release\InstamojoAPI.csprojResolveAssemblyReference.cache
-D:\MyProjects\instamojo-csharp-master\instamojo-csharp-master\InstamojoAPI\obj\Release\InstamojoAPI.dll
-D:\MyWork\CloudSociety\CloudSocietyDev\InstamojoAPI\bin\Release\InstamojoAPI.dll
-D:\MyWork\CloudSociety\CloudSocietyDev\InstamojoAPI\obj\Release\InstamojoAPI.csprojResolveAssemblyReference.cache
-D:\MyWork\CloudSociety\CloudSocietyDev\InstamojoAPI\obj\Release\InstamojoAPI.dll
